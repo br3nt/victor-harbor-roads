@@ -14,13 +14,21 @@ async function fetchBin(url) {
   return maybeGunzip(buf);
 }
 
+/** Years after this are too far out to show (2051 dropped by the author): both apps ignore those runs. */
+export const LAST_YEAR = 2041;
+export function lastYear(index) {
+  index.runs = (index.runs || []).filter((r) => +r.year <= LAST_YEAR);
+  if (index.jammed) index.jammed = index.jammed.filter((j) => +j.year <= LAST_YEAR);
+  return index;
+}
+
 /** Find the data folder: ?data=<url>, else the first of `fallbacks` with an index.json. */
 export async function findData(search = location.search, fallbacks = ['data/', 'data/sample/']) {
   const q = new URLSearchParams(search).get('data');
   const candidates = q ? [q.replace(/\/?$/, '/')] : fallbacks;
   let lastErr;
   for (const base of candidates) {
-    try { return { base, index: await fetchJson(`${base}index.json`) }; } catch (e) { lastErr = e; }
+    try { return { base, index: lastYear(await fetchJson(`${base}index.json`)) }; } catch (e) { lastErr = e; }
   }
   throw new Error(`No viewer data found (tried ${candidates.map((c) => c + 'index.json').join(', ')}): ${lastErr?.message}`);
 }

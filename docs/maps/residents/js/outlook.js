@@ -1,6 +1,6 @@
 // The options a resident can compare, and which simulated runs exist for each (year, growth, day type).
 
-export const YEARS = [2025, 2031, 2036, 2041, 2051];
+export const YEARS = [2025, 2031, 2036, 2041];
 import { THIS_YEAR, NOW_YEAR, NEAR_YEAR, LONG_RANGE_FROM, yearLong, yearShort, isLongRange } from '../../js/format.js';
 export { THIS_YEAR, NOW_YEAR, NEAR_YEAR, LONG_RANGE_FROM, yearLong, yearShort, isLongRange };
 export const GROWTH = { moderate: 'moderate growth', high: 'high growth' };

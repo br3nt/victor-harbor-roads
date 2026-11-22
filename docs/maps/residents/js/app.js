@@ -758,7 +758,7 @@ async function renderAbout() {
         Some future years come from a single run so far; there the band is ${SINGLE_ABS_S / 60} minute or ${SINGLE_REL * 100}%, and the result says so.</li>
       <li>Trip times are from the nearest simulated road at each end. They don't include parking, walking, or waiting at the shops.</li>
       <li>Not included yet: drivers changing when or where they travel because of the changes, road closures for events, and parking search in the town centre.</li>
-      <li>"Now" means today's roads with traffic built from 2025 data (see "Data used" below). "In about 5 years" is 2031 and "in about 10 years" 2036; 2041 and 2051 are longer range and less certain.</li>
+      <li>"Now" means today's roads with traffic built from 2025 data (see "Data used" below). "In about 5 years" is 2031 and "in about 10 years" 2036; 2041 (about 15 years) is longer range and less certain.</li>
       <li>Growth: "moderate" is about 8,000 more people and "high" about 19,000 more, following the two growth scenarios in the Council's Urban Growth Management Strategy.
         Summer holidays add visitor traffic so that Victor Harbor Road carries over 11,000 vehicles a day into town, as counted in summer.</li>
     </ul>

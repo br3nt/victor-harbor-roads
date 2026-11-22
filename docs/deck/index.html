@@ -3,20 +3,255 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Presentation · Victor Harbor roads</title>
+<title>Victor Harbor road changes: slides</title>
+<meta name="description" content="A short presentation of what a traffic simulation of Victor Harbor shows about the council's town-centre package.">
 <style>
-:root { --bg: #f4f6f5; --fg: #17262b; --muted: #51636a; --accent: #0b6b88; color-scheme: light dark; }
-@media (prefers-color-scheme: dark) { :root { --bg: #111a1d; --fg: #e6eef0; --muted: #9fb2b8; --accent: #6cc4de; } }
-body { background: var(--bg); color: var(--fg); font: 17px/1.6 system-ui, -apple-system, sans-serif; margin: 0; }
-main { max-width: 40rem; margin: 0 auto; padding: 3rem 16px; }
-a { color: var(--accent); } p { color: var(--muted); }
+:root { --bg:#f7f8f6; --fg:#17262b; --muted:#4f6168; --line:#dde3e1; --accent:#0b6b88; --bad:#c0392b; --good:#1e8449; --grey:#8a9aa0; color-scheme: light; }
+* { box-sizing: border-box; }
+html, body { margin:0; height:100%; background:var(--bg); color:var(--fg); overflow:hidden;
+  font: 16px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; -webkit-text-size-adjust:100%; }
+a { color: var(--accent); }
+abbr[title] { text-decoration: underline dotted; }
+.deck { position:fixed; inset:0; }
+.slide { position:absolute; inset:0; display:none; flex-direction:column; justify-content:center;
+  padding: 4vh max(16px, 7vw) 11vh; overflow-y:auto; }
+.slide.on { display:flex; animation: in .25s ease-out; }
+@keyframes in { from { opacity:0; transform: translateY(8px); } to { opacity:1; transform:none; } }
+.kicker { font-size: clamp(.8rem, 1.6vw, 1rem); text-transform: uppercase; letter-spacing:.08em; color: var(--accent); font-weight:700; margin:0 0 .6em; }
+h1 { font-size: clamp(1.9rem, 5.5vw, 4rem); line-height:1.08; margin:0 0 .4em; letter-spacing:-.015em; }
+h2 { font-size: clamp(1.5rem, 4vw, 3rem); line-height:1.12; margin:0 0 .5em; letter-spacing:-.01em; }
+p, li { font-size: clamp(1rem, 2.1vw, 1.45rem); max-width: 48rem; }
+p { margin: .4em 0; color: var(--muted); }
+ul { margin:.3em 0; padding-left:1.2em; } li { margin:.3em 0; }
+.big { font-size: clamp(3.5rem, 15vw, 10rem); font-weight:800; line-height:.95; color:var(--bad); letter-spacing:-.03em; font-variant-numeric: tabular-nums; }
+.big.good { color: var(--good); }
+.big small { font-size:.35em; font-weight:700; letter-spacing:0; }
+.sub { font-size: clamp(1.05rem, 2.6vw, 1.7rem); color: var(--fg); margin-top:.3em; }
+.title { background: linear-gradient(160deg, #0f3d4c, #0b6b88); color:#fff; }
+.title h1 { color:#fff; } .title p { color:#d6ecf3; } .title a { color:#fff; } .title .kicker { color:#9fd8ea; }
+/* before / after */
+.ba { display:grid; grid-template-columns: 1fr 1fr; gap: clamp(.75rem, 3vw, 2.5rem); max-width: 56rem; margin-top: .5em; }
+.ba div { border-radius:12px; padding: clamp(.75rem, 2vw, 1.5rem); background:#fff; border:1px solid var(--line); }
+.ba .lbl { font-size: clamp(.8rem,1.5vw,1rem); text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin:0; font-weight:700; }
+.ba .v { font-size: clamp(2.4rem, 9vw, 6rem); font-weight:800; line-height:1; color:var(--grey); font-variant-numeric: tabular-nums; }
+.ba .after .v { color: var(--bad); }
+.ba .unit { font-size: clamp(.9rem,1.8vw,1.2rem); color:var(--muted); margin:.2em 0 0; }
+/* bars */
+.bars { max-width: 52rem; margin-top:.6em; }
+.r { display:grid; grid-template-columns: minmax(8rem, 15rem) 1fr; gap:.75rem; align-items:center; margin:.55em 0; font-size: clamp(.9rem, 1.8vw, 1.2rem); }
+.t { position:relative; height: clamp(1.6rem, 3.5vh, 2.4rem); background:#eaeeec; border-radius:6px;
+  background-image: linear-gradient(90deg, transparent calc(50% - 1px), #9aa7ab calc(50% - 1px) calc(50% + 1px), transparent calc(50% + 1px)); }
+.b { position:absolute; top:0; bottom:0; border-radius:6px; color:#fff; font-weight:700; display:flex; align-items:center; padding:0 .5em; white-space:nowrap; min-width:3.2rem; }
+.b.bad { left:50%; background:var(--bad); justify-content:flex-end; }
+.b.good { right:50%; background:var(--good); }
+.two { display:grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: clamp(.75rem, 3vw, 2rem); max-width: 60rem; }
+.two h3 { margin:.2em 0; font-size: clamp(1.1rem, 2.4vw, 1.6rem); }
+.two p { font-size: clamp(.95rem, 1.8vw, 1.2rem); }
+.shot { max-height: 42vh; max-width:100%; width:auto; border-radius:10px; border:1px solid var(--line); margin-top:.6em; align-self:flex-start; }
+.slot { border:2px dashed var(--accent); border-radius:10px; padding:.6em 1em; background:#eef7fa; max-width:48rem; }
+.slot p { color: var(--accent); margin:0; }
+blockquote { margin:.5em 0; padding:.1em 1em; border-left:5px solid var(--accent); font-size: clamp(1.15rem, 2.8vw, 2rem); max-width: 48rem; }
+.links { display:grid; grid-template-columns: repeat(auto-fit, minmax(13rem,1fr)); gap:.75rem; max-width:56rem; margin-top:.6em; }
+.links a { display:block; padding: .8em 1em; border:1px solid var(--line); background:#fff; border-radius:10px; text-decoration:none; font-size: clamp(.95rem,1.8vw,1.15rem); }
+.links a strong { display:block; } .links a span { color:var(--muted); font-size:.9em; }
+/* controls */
+.ctl { position:fixed; left:0; right:0; bottom:0; background:rgba(247,248,246,.94); border-top:1px solid var(--line); display:flex; align-items:center; gap:.75rem; padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); z-index:3; }
+.ctl button { border:1px solid var(--line); background:#fff; color:var(--fg); border-radius:999px; width:2.6rem; height:2.6rem; font-size:1.2rem; cursor:pointer; }
+.ctl button:disabled { opacity:.35; cursor:default; }
+.ctl .count { font-size:.9rem; color:var(--muted); font-variant-numeric: tabular-nums; min-width:3.5rem; }
+.ctl .prog { flex:1; height:4px; background:#e1e6e4; border-radius:2px; overflow:hidden; }
+.ctl .prog i { display:block; height:100%; background:var(--accent); width:0; transition: width .2s; }
+.ctl a { font-size:.9rem; white-space:nowrap; }
+@media (max-width: 600px) {
+  .slide { justify-content:flex-start; padding-top: 6vh; }
+  .r { grid-template-columns: 1fr; gap:.2rem; }
+  .ctl a { display:none; }
+}
+@media print {
+  html, body { overflow:visible; height:auto; }
+  .deck { position:static; } .slide { position:relative; display:flex; min-height:100vh; page-break-after:always; }
+  .ctl { display:none; }
+}
 </style>
 </head>
 <body>
-<main>
-<h1>Presentation</h1>
-<p>The presentation slides are coming here.</p>
-<p><a href="../index.html">← Back to the project home</a></p>
-</main>
+<div class="deck" id="deck">
+
+<section class="slide title">
+  <p class="kicker">Victor Harbor transport consultation, 2026</p>
+  <h1>Victor Harbor's road changes: what the evidence shows</h1>
+  <p>A traffic simulation of the whole town, run on the council's proposed changes and on cheaper alternatives.</p>
+  <p style="font-size:clamp(.9rem,1.7vw,1.1rem)">Brent Jacobs, Encounter Bay resident and ratepayer, writing independently. "Now" is built on 2025 data. Use the arrow keys, tap or swipe.</p>
+</section>
+
+<section class="slide">
+  <p class="kicker">The proposal</p>
+  <h2>The council's town-centre package</h2>
+  <ul>
+    <li>30&nbsp;km/h and shared streets in the town centre</li>
+    <li>A one-way loop: Torrens St, Eyre Tce, Flinders Pde, Esplanade</li>
+    <li>Traffic signals at Torrens St / Seaview Rd and Torrens St / Crozier Rd</li>
+  </ul>
+  <p>I simulated it against today's roads, with today's traffic.</p>
+</section>
+
+<section class="slide">
+  <p class="kicker">1 · Worse, for no traffic gain</p>
+  <div class="big">+60%</div>
+  <p class="sub">more time stopped in queues on a summer peak day</p>
+  <p>That is +275 vehicle-hours a day, and about +28 seconds per trip on average. On a school-term weekday: +58% and +14&nbsp;s per trip. Most trips change by seconds; the cost lands on particular streets.</p>
+</section>
+
+<section class="slide">
+  <p class="kicker">2 · Trucks on the foreshore</p>
+  <h2>The clockwise loop sends trucks into Coral St</h2>
+  <div class="ba">
+    <div><p class="lbl">Today</p><div class="v">10–15</div><p class="unit">trucks a day</p></div>
+    <div class="after"><p class="lbl">Council package</p><div class="v">~180</div><p class="unit">trucks a day</p></div>
+  </div>
+  <p>Via Bridge Tce and north Flinders Pde, the foreshore end of the town centre.</p>
+</section>
+
+<section class="slide">
+  <p class="kicker">2 · Side streets</p>
+  <h2>Lindsay St residents getting onto Crozier Rd</h2>
+  <div class="ba">
+    <div><p class="lbl">Today</p><div class="v">15&nbsp;s</div><p class="unit">wait</p></div>
+    <div class="after"><p class="lbl">Council package</p><div class="v">80&nbsp;s</div><p class="unit">wait</p></div>
+  </div>
+  <p>Acraman St carries about three times today's traffic, and already has crash hotspots. Inman St / Newland St: 38&nbsp;s → 81&nbsp;s.</p>
+</section>
+
+<section class="slide">
+  <p class="kicker">2 · Why it spreads</p>
+  <h2>Drivers pick the fastest route</h2>
+  <p class="sub">Slow the town centre, and traffic moves into residential streets the plan does not mention.</p>
+  <p>Summer trips: Encounter Bay to a supermarket about a minute longer; McCracken to medical services 1–1.5 minutes longer. The one-way loop is the biggest single cause on a summer day; the signals on a weekday.</p>
+  <img class="shot" src="../onboarding/img/trip-checker.webp" alt="Trip checker map with roads coloured slower in orange under the council package.">
+</section>
+
+<section class="slide">
+  <p class="kicker">3 · Never tested or costed</p>
+  <h2>No report tests the loop or 30&nbsp;km/h</h2>
+  <ul>
+    <li>The consultant SMEC's only report (Aug 2026) contains neither; only a "Do Nothing" network was run.</li>
+    <li>Testing, modelling and costings: Feb–Jun 2027, <strong>after</strong> this consultation.</li>
+    <li>Council debate on 26 Oct 2026: about 5 minutes; nobody mentioned the loop, 30&nbsp;km/h or the signals. No costs.</li>
+    <li>Newest town-centre counts: April 2017.</li>
+  </ul>
+</section>
+
+<section class="slide">
+  <p class="kicker">3 · The State's own guide</p>
+  <h2>Department for Infrastructure and Transport (<abbr title="Department for Infrastructure and Transport">DIT</abbr>) Speed Limit Guideline</h2>
+  <blockquote>A 30/40&nbsp;km/h limit "is not intended for streets with short holiday or tourism peaks"</blockquote>
+  <p>Freight and major traffic routes are "unsuitable". Torrens St and Hindmarsh Rd are State roads and freight routes.</p>
+</section>
+
+<section class="slide">
+  <p class="kicker">4 · Cheaper, targeted fixes do better</p>
+  <h2>Fix the delay where it is</h2>
+  <div class="bars" role="img" aria-label="Change in time stopped in queues compared with today's roads: council package summer now plus 60 percent; N9 summer now minus 18 percent; council package 2041 plus 61 percent; N7 2041 minus 24 percent.">
+    <div class="r"><span>Council package, summer, now</span><div class="t"><div class="b bad" style="width:43%">+60%</div></div></div>
+    <div class="r"><span>N9, summer, now</span><div class="t"><div class="b good" style="width:13%">−18%</div></div></div>
+    <div class="r"><span>Council package, 2041</span><div class="t"><div class="b bad" style="width:44%">+61%</div></div></div>
+    <div class="r"><span>N7, 2041</span><div class="t"><div class="b good" style="width:17%">−24%</div></div></div>
+  </div>
+  <p><strong>N9:</strong> turn lanes on Crozier Rd at Armstrong Rd + a roundabout at Hindmarsh Rd / Grantley Ave. <strong>N7:</strong> roundabouts on Armstrong Rd at Crozier and Greenhills, and at Hindmarsh / Grantley. 2041 = in about 15 years, high growth. Rough layouts, not designs.</p>
+</section>
+
+<section class="slide">
+  <p class="kicker">5 · Ring road and 6 · Growth</p>
+  <div class="two">
+    <div>
+      <h3>Ring road</h3>
+      <p>Widening today's ring to four lanes alone makes 2041 worse unless the Crozier Rd junction is fixed (wait about 29&nbsp;s → 50–55&nbsp;s).</p>
+      <div class="slot"><p><strong>Option 1 (new outer freight ring road):</strong> modelling in progress.</p></div>
+    </div>
+    <div>
+      <h3>Growth</h3>
+      <div class="big" style="font-size:clamp(3rem,10vw,7rem)">4×</div>
+      <p>today's time stopped, term weekday, 2041 high growth. Summer jams in every option. The whole network, with its future streets, must be modelled before committing.</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <p class="kicker">7 · What we ask Council</p>
+  <h2>Before endorsing a Vision</h2>
+  <ul>
+    <li>Publish the model and the data</li>
+    <li>Model every option, including summer and event days, against both growth scenarios</li>
+    <li>Collect current traffic counts</li>
+    <li>Trial before committing, with before/after data</li>
+    <li>Put alternatives on the table: turn lanes, roundabouts, time-based speed limits, two-way streets</li>
+    <li>Publish costs, and answer the questions</li>
+  </ul>
+</section>
+
+<section class="slide">
+  <p class="kicker">8 · How sure · 9 · Explore it yourself</p>
+  <h2>Open model, open data</h2>
+  <p>Simulation of Urban Mobility (<abbr title="Simulation of Urban Mobility">SUMO</abbr>), an open-source simulator, built from OpenStreetMap, Australian Bureau of Statistics (<abbr title="Australian Bureau of Statistics">ABS</abbr>), <abbr title="Department for Infrastructure and Transport">DIT</abbr> and council data. Partly calibrated; town-centre delays are more likely understated. Read results as differences, not exact times.</p>
+  <div class="links">
+    <a href="../maps/residents/index.html"><strong>Trip checker</strong><span>Try "Summer holidays, leaving 12:30"</span></a>
+    <a href="../onboarding/index.html"><strong>The full evidence</strong><span>Every number, explained</span></a>
+    <a href="../maps/engineer.html"><strong>Detailed viewer</strong><span>Street by street</span></a>
+    <a href="../kb/index.html"><strong>Knowledge base</strong><span>Every source and assumption</span></a>
+    <a href="https://github.com/br3nt/victor-harbor-roads"><strong>Code</strong><span>github.com/br3nt/victor-harbor-roads</span></a>
+  </div>
+</section>
+
+</div>
+
+<div class="ctl">
+  <button id="prev" aria-label="Previous slide">←</button>
+  <button id="next" aria-label="Next slide">→</button>
+  <span class="count" id="count" aria-live="polite"></span>
+  <div class="prog"><i id="bar"></i></div>
+  <a href="../onboarding/index.html">Full evidence page</a>
+</div>
+
+<script>
+(function () {
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var n = slides.length, i = 0;
+  function show(k) {
+    i = Math.max(0, Math.min(n - 1, k));
+    slides.forEach(function (s, j) { s.classList.toggle('on', j === i); });
+    document.getElementById('count').textContent = (i + 1) + ' / ' + n;
+    document.getElementById('bar').style.width = ((i + 1) / n * 100) + '%';
+    document.getElementById('prev').disabled = i === 0;
+    document.getElementById('next').disabled = i === n - 1;
+    if (location.hash !== '#' + (i + 1)) history.replaceState(null, '', '#' + (i + 1));
+  }
+  function fromHash() { var k = parseInt(location.hash.slice(1), 10); return isNaN(k) ? 0 : k - 1; }
+  document.getElementById('prev').addEventListener('click', function () { show(i - 1); });
+  document.getElementById('next').addEventListener('click', function () { show(i + 1); });
+  document.addEventListener('keydown', function (e) {
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    if (['ArrowRight', 'ArrowDown', 'PageDown', ' ', 'Enter'].indexOf(e.key) >= 0) { e.preventDefault(); show(i + 1); }
+    else if (['ArrowLeft', 'ArrowUp', 'PageUp', 'Backspace'].indexOf(e.key) >= 0) { e.preventDefault(); show(i - 1); }
+    else if (e.key === 'Home') show(0);
+    else if (e.key === 'End') show(n - 1);
+  });
+  // click on empty slide space: right two-thirds forward, left third back
+  document.getElementById('deck').addEventListener('click', function (e) {
+    if (e.target.closest('a, button, abbr')) return;
+    if (window.getSelection && String(window.getSelection())) return;
+    show(e.clientX < window.innerWidth / 3 ? i - 1 : i + 1);
+  });
+  var x0 = null, y0 = null;
+  document.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; y0 = e.touches[0].clientY; }, { passive: true });
+  document.addEventListener('touchend', function (e) {
+    if (x0 === null) return;
+    var dx = e.changedTouches[0].clientX - x0, dy = e.changedTouches[0].clientY - y0;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) show(dx < 0 ? i + 1 : i - 1);
+    x0 = null;
+  }, { passive: true });
+  window.addEventListener('hashchange', function () { show(fromHash()); });
+  show(fromHash());
+})();
+</script>
 </body>
 </html>

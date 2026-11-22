@@ -154,7 +154,7 @@ def body() -> str:
 </ul>
 <h2 id="to-check">Known issues to check</h2><ul>
 <li>Under the council package, Torrens Lane (tagged a residential street in OpenStreetMap) goes from tens to 500–700 vehicles a day. If it is really a narrow service lane, this inflates the package's penalty slightly.</li>
-<li>Growth: at 2041 (about 15 years from now) high growth (State high series) a term weekday finishes (see <a href="#better-options">better options</a>), but a summer day does not: every option jams by early afternoon, and at 2051 (about 25 years from now) high growth even a term weekday jams in every option tested (<code>sim/assumptions/integration.md</code> A-INT-05). Growth areas load onto today's roads, without their future streets and link roads. Saturday, New Year's Eve and the outer ring road options (C5/C6) are not yet run.</li>
+<li>Growth: at 2041 (about 15 years from now) high growth (State high series) a term weekday finishes (see <a href="#better-options">better options</a>), but a summer day does not: every option jams by early afternoon (<code>sim/assumptions/integration.md</code> A-INT-05). Growth areas load onto today's roads, without their future streets and link roads. Saturday, New Year's Eve and the outer ring road options (C5/C6) are not yet run.</li>
 </ul>
 <p>Interactive maps of every run: <a rel="related" href="../maps/index.html">Victor Harbor Road Options</a> (a residents' trip checker, plus the detailed viewer with travel time to any place, congestion per lane and direction, and before/after). Source: <code>viewer/</code> in the project.</p>""")
     return "\n".join(o)

@@ -3,20 +3,236 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Getting started · Victor Harbor roads</title>
-<style>
-:root { --bg: #f4f6f5; --fg: #17262b; --muted: #51636a; --accent: #0b6b88; color-scheme: light dark; }
-@media (prefers-color-scheme: dark) { :root { --bg: #111a1d; --fg: #e6eef0; --muted: #9fb2b8; --accent: #6cc4de; } }
-body { background: var(--bg); color: var(--fg); font: 17px/1.6 system-ui, -apple-system, sans-serif; margin: 0; }
-main { max-width: 40rem; margin: 0 auto; padding: 3rem 16px; }
-a { color: var(--accent); } p { color: var(--muted); }
-</style>
+<title>Victor Harbor road changes: the evidence</title>
+<meta name="description" content="What a traffic simulation of Victor Harbor shows about the council's town-centre package, the alternatives, and growth.">
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<main>
-<h1>Getting started</h1>
-<p>A short guided introduction to the simulation and the evidence is coming here.</p>
-<p><a href="../index.html">← Back to the project home</a></p>
+
+<header class="hero">
+  <div class="wrap">
+    <h1>Victor Harbor's road changes: what the evidence shows</h1>
+    <p>The City of Victor Harbor is consulting on a transport Vision that includes a town-centre package: 30&nbsp;km/h, shared streets, a one-way loop and new traffic signals. I built a traffic simulation of the whole town to see what those changes would do. This page sets out what it found, in plain language.</p>
+    <p class="byline">By Brent Jacobs, an Encounter Bay resident and ratepayer, writing independently. I am not paid by, or acting for, any council, agency, consultant or group. <a href="../deck/index.html">Prefer slides? See the short presentation.</a></p>
+  </div>
+</header>
+
+<nav class="toc" aria-label="Sections">
+  <ol>
+    <li><a href="#worse">1. Worse, no gain</a></li>
+    <li><a href="#who">2. Who it hurts</a></li>
+    <li><a href="#untested">3. Never tested</a></li>
+    <li><a href="#fixes">4. Better fixes</a></li>
+    <li><a href="#ring">5. Ring road</a></li>
+    <li><a href="#growth">6. Growth</a></li>
+    <li><a href="#ask">7. What we ask</a></li>
+    <li><a href="#sure">8. How sure</a></li>
+    <li><a href="#explore">9. Explore it</a></li>
+  </ol>
+</nav>
+
+<main class="wrap">
+
+<p class="note"><strong>About the years.</strong> The simulation's "now" is built on 2025 data. Future years are written as 2031 (in about 5 years) or 2041 (in about 15 years). "High growth" means the State's high-growth population targets.</p>
+
+<!-- 1 -->
+<section id="worse">
+  <h2><span class="n">1</span>The council's town-centre package makes traffic worse, for no traffic gain</h2>
+  <p class="lede">The package is: 30&nbsp;km/h in the town centre, shared streets, a one-way loop (Torrens St, Eyre Tce, Flinders Pde and the Esplanade), and traffic signals at Torrens St / Seaview Rd and Torrens St / Crozier Rd.</p>
+  <p>In the simulation, with today's traffic (2025 data), trips take a little longer on average and much more time is spent stopped in queues.</p>
+
+  <div class="stats">
+    <div class="stat"><b>+60%</b><span>total time stopped in queues on a summer peak day</span></div>
+    <div class="stat"><b>+275</b><span>extra vehicle-hours stopped in queues, each summer peak day</span></div>
+    <div class="stat"><b>+28&nbsp;s</b><span>per trip on average, summer peak day</span></div>
+    <div class="stat"><b>+58%</b><span>time stopped on a school-term weekday (+14&nbsp;s per trip)</span></div>
+  </div>
+
+  <div class="chart" role="img" aria-label="Increase in total time stopped in queues with the council package: summer peak day now plus 60 percent; term weekday now plus 58 percent; term weekday 2041 high growth plus 61 percent.">
+    <h4>Extra time stopped in queues with the council package, compared with today's roads</h4>
+    <div class="row"><span class="k">Summer peak day, now</span><div class="track"><div class="bar bad" style="width:86%">+60%</div></div></div>
+    <div class="row"><span class="k">Term weekday, now</span><div class="track"><div class="bar bad" style="width:83%">+58%</div></div></div>
+    <div class="row"><span class="k">Term weekday, 2041 (in about 15 years, high growth)</span><div class="track"><div class="bar bad" style="width:87%">+61%</div></div></div>
+  </div>
+
+  <p>Most single trips change by only seconds, so an average can look small. The cost is not spread evenly: it lands on particular streets, at particular times of day, as the next section shows.</p>
+
+  <figure>
+    <img src="img/cp-travel-time.webp" width="1400" height="900" loading="lazy" alt="Map of Victor Harbor showing roads coloured by the change in driving time to a town-centre supermarket with the council package. Most of the town is coloured slower.">
+    <figcaption>Change in driving time to a town-centre supermarket with the council package, summer peak day, now. Red roads are slower; the list on the left shows the streets that change most.</figcaption>
+  </figure>
+</section>
+
+<!-- 2 -->
+<section id="who">
+  <h2><span class="n">2</span>It hurts specific streets and people</h2>
+
+  <h3>Trucks on the foreshore</h3>
+  <p>The clockwise loop sends trucks via Bridge Tce and the north end of Flinders Pde into Coral St, the foreshore end of the town centre. That is about <strong>180 trucks a day</strong> there, where today there are about 10–15. It is around twice the caravans, and three to five times the cars, that take the same path.</p>
+  <div class="chart" role="img" aria-label="Trucks a day on the Bridge Terrace, Flinders Parade, Coral Street path: about 10 to 15 today, about 180 with the council package.">
+    <h4>Trucks a day into Coral St via Bridge Tce and north Flinders Pde</h4>
+    <div class="row"><span class="k">Today's roads</span><div class="track"><div class="bar today" style="width:7%">10–15</div></div></div>
+    <div class="row"><span class="k">Council package</span><div class="track"><div class="bar bad" style="width:90%">about 180</div></div></div>
+  </div>
+  <figure>
+    <img src="img/foreshore-cp.webp" width="980" height="678" loading="lazy" alt="Close-up map of Bridge Terrace, Eyre Terrace, Flinders Parade and Coral Street, with the roads used by the one-way loop highlighted.">
+    <figcaption>The foreshore end of the town centre: change in queued vehicles with the council package, summer peak day around midday. Coloured streets carry more queued traffic.</figcaption>
+  </figure>
+
+  <h3>Side streets</h3>
+  <p>Acraman St carries about <strong>three times</strong> today's traffic, and it already has crash hotspots. Residents of Lindsay St wait about <strong>80 seconds instead of 15</strong> to get out onto Crozier Rd.</p>
+  <div class="chart" role="img" aria-label="Average wait to get out of the side street. Lindsay Street: 15 seconds today, 80 with the package. Back streets near the town-centre Caltex: 15 seconds today, 36 with the package. Inman Street and Newland Street: 38 seconds today, 81 with the package.">
+    <h4>Wait to get out of the side street, summer peak (worst approach)</h4>
+    <div class="row two"><span class="k">Lindsay St onto Crozier Rd</span><div class="track"><div class="bar today" style="width:17%">15 s</div><div class="bar bad" style="width:89%">80 s</div></div></div>
+    <div class="row two"><span class="k">Back streets near the town-centre Caltex</span><div class="track"><div class="bar today" style="width:17%">15 s</div><div class="bar bad" style="width:40%">36 s</div></div></div>
+    <div class="row two"><span class="k">Inman St / Newland St</span><div class="track"><div class="bar today" style="width:42%">38 s</div><div class="bar bad" style="width:90%">81 s</div></div></div>
+    <div class="legend"><span><i style="background:var(--neutral)"></i>Today's roads</span><span><i style="background:var(--bad)"></i>Council package</span></div>
+  </div>
+  <figure>
+    <div class="pair">
+      <div><p class="lbl">Today's roads</p><img src="img/lindsay-today.webp" width="980" height="678" loading="lazy" alt="Close-up of Acraman Street, Lindsay Street and Crozier Road on today's roads, with light queues."></div>
+      <div><p class="lbl">Council package</p><img src="img/lindsay-cp.webp" width="980" height="678" loading="lazy" alt="The same streets with the council package: Acraman Street and Lindsay Street show heavier queues."></div>
+    </div>
+    <figcaption>Acraman St, Lindsay St and Crozier Rd, summer peak day around midday. Darker, thicker colour means more vehicles queued.</figcaption>
+  </figure>
+
+  <h3>Everyday summer trips</h3>
+  <ul>
+    <li>Encounter Bay to a supermarket: about <strong>a minute longer</strong> on a typical summer trip.</li>
+    <li>McCracken to medical services: <strong>1 to 1.5 minutes longer</strong>.</li>
+  </ul>
+  <figure>
+    <img src="img/trip-checker.webp" width="1400" height="900" loading="lazy" alt="The trip checker showing roads coloured by how much slower the drive to a supermarket is with the council package.">
+    <figcaption>The trip checker lets anyone see their own trips. Orange roads are slower with the council package.</figcaption>
+  </figure>
+
+  <h3>Why the damage spreads</h3>
+  <p>Drivers pick the fastest route. When the town centre slows down, traffic moves into residential streets to get around it. That is why the harm shows up in streets the plan does not mention.</p>
+
+  <h3>Which part does it</h3>
+  <p>On a summer day the <strong>one-way loop</strong> is the largest single cause. On a school-term weekday the <strong>new signals</strong> are.</p>
+</section>
+
+<!-- 3 -->
+<section id="untested">
+  <h2><span class="n">3</span>It was never tested or costed</h2>
+  <ul>
+    <li><strong>The only technical report does not include it.</strong> The council's engineering consultant SMEC's Phase&nbsp;1 report (Revision&nbsp;2, August 2026) contains no one-way loop and no 30&nbsp;km/h proposal. Its model is a "simplified transport demand model" of a typical weekday, and only a "Do Nothing" network was run.</li>
+    <li><strong>Testing comes after the consultation.</strong> Testing, modelling and costings are scheduled for February to June 2027.</li>
+    <li><strong>About five minutes of debate.</strong> At the 26 October 2026 council meeting (item 10.1), no speaker mentioned the loop, 30&nbsp;km/h or the signals. A councillor asked for cost estimates; the fact sheet has no costs.</li>
+    <li><strong>Old counts.</strong> The newest town-centre traffic counts are from April 2017, during school holidays. SMEC's own volumes are half to two-thirds of the Department for Infrastructure and Transport (<abbr title="Department for Infrastructure and Transport">DIT</abbr>) counts.</li>
+  </ul>
+  <h3>The State's own speed-limit guide</h3>
+  <p><abbr title="Department for Infrastructure and Transport">DIT</abbr>'s Speed Limit Guideline (version&nbsp;3, October 2023) says a 30 or 40&nbsp;km/h limit</p>
+  <blockquote>"is not intended for streets with short holiday or tourism peaks"</blockquote>
+  <p>It also says freight and major traffic routes are unsuitable, and that 30&nbsp;km/h needs a road designed for it and alternative routes. Torrens St and Hindmarsh Rd are State roads and <abbr title="Department for Infrastructure and Transport">DIT</abbr> freight routes.</p>
+</section>
+
+<!-- 4 -->
+<section id="fixes">
+  <h2><span class="n">4</span>Cheaper, targeted fixes do better</h2>
+  <p class="lede">Fix the delay where it actually is.</p>
+  <p>In the simulation, the delay is mostly <strong>side-street right turns onto single-lane main roads around midday</strong>:</p>
+  <ul>
+    <li>Victoria St, between Bay Rd and Torrens St;</li>
+    <li>side streets off Hindmarsh Rd;</li>
+    <li>the Bridge Tce / Grantley Ave link onto Hindmarsh Rd;</li>
+    <li>as the town grows, Crozier Rd and Greenhills Rd joining Armstrong Rd (Crozier Rd waits 53–74&nbsp;s in 2041, in about 15 years, at high growth).</li>
+  </ul>
+  <p>It is <strong>not</strong> the town-centre roundabouts: most of their approaches wait 3–8 seconds.</p>
+
+  <div class="chart div" role="img" aria-label="Change in total time stopped in queues compared with today's roads. Option N9 now: minus 11 percent on a term weekday, minus 18 percent on a summer day. Option N7 in 2041: minus 24 percent. Council package in 2041: about plus 60 percent.">
+    <h4>Change in total time stopped in queues, compared with today's roads</h4>
+    <div class="row"><span class="k">Council package, summer day, now</span><div class="track"><div class="bar bad" style="width:43%">+60%</div></div></div>
+    <div class="row"><span class="k">N9, summer day, now</span><div class="track"><div class="bar good" style="width:13%">−18%</div></div></div>
+    <div class="row"><span class="k">N9, term weekday, now</span><div class="track"><div class="bar good" style="width:8%">−11%</div></div></div>
+    <div class="row"><span class="k">Council package, 2041 high growth</span><div class="track"><div class="bar bad" style="width:44%">+61%</div></div></div>
+    <div class="row"><span class="k">N7, 2041 high growth</span><div class="track"><div class="bar good" style="width:17%">−24%</div></div></div>
+    <div class="legend"><span><i style="background:var(--good)"></i>Less time stopped (better)</span><span><i style="background:var(--bad)"></i>More time stopped (worse)</span></div>
+  </div>
+
+  <div class="stats">
+    <div class="stat good"><b>N9</b><span>Turn lanes on Crozier Rd at Armstrong Rd, plus a roundabout at Hindmarsh Rd / Grantley Ave. −11% time stopped on a term weekday and −18% on a summer day, now.</span></div>
+    <div class="stat good"><b>N7</b><span>Roundabouts at Armstrong / Crozier, Armstrong / Greenhills and Hindmarsh / Grantley. −24% in 2041 (in about 15 years, high growth), where the council package is about +60%.</span></div>
+    <div class="stat good"><b>Staged</b><span>N9 now, then the Armstrong Rd roundabouts as the growth areas fill.</span></div>
+  </div>
+
+  <figure>
+    <img src="img/n9-queues.webp" width="1400" height="900" loading="lazy" alt="Map comparing queued vehicles on today's roads and with option N9; the list shows fewer vehicles halted on Crozier Road and nearby streets.">
+    <figcaption>Option N9 compared with today's roads, summer peak day: the biggest changes are fewer vehicles waiting on Crozier Rd and nearby streets.</figcaption>
+  </figure>
+
+  <p class="note"><strong>Caveat.</strong> These are rough layouts, not designs. Cost classes are guesses: $ under $0.5&nbsp;million, $$ $0.5–3&nbsp;million, $$$ $3–10&nbsp;million. Options N4 and N9 sit beside a level crossing, which a real design would have to deal with.</p>
+</section>
+
+<!-- 5 -->
+<section id="ring">
+  <h2><span class="n">5</span>The ring road</h2>
+  <p>The consultation offers <strong>Option&nbsp;1</strong>, a new outer freight ring road, and <strong>Option&nbsp;2</strong>, keeping the current ring along Welch Rd and Armstrong Rd.</p>
+  <ul>
+    <li>Widening the current ring to four lanes, on its own, makes 2041 <strong>worse</strong> unless the Crozier Rd junction is fixed: drivers from Crozier Rd wait about 29&nbsp;s now, and 50–55&nbsp;s with the wider ring.</li>
+    <li>Roundabouts at its Crozier Rd and Greenhills Rd junctions help most.</li>
+  </ul>
+  <div class="slot" id="option1-slot">
+    <strong>Option&nbsp;1 results: modelling in progress.</strong>
+    <p style="margin:.4rem 0 0">The new outer freight ring road is being simulated now. Its results will be added here when they are ready.</p>
+  </div>
+</section>
+
+<!-- 6 -->
+<section id="growth">
+  <h2><span class="n">6</span>Growth is not solved by any option tested</h2>
+  <div class="stats">
+    <div class="stat"><b>4×</b><span>today's time stopped in queues, term weekday, 2041 (in about 15 years, high growth), on today's roads</span></div>
+    <div class="stat"><b>Jams</b><span>on a summer day at 2041 high growth, in every option tested</span></div>
+  </div>
+  <p>The 2041 runs load the new suburbs onto today's roads, without the new streets and link roads that will come with them. So they show the <strong>size of the problem</strong>, not the answer. That is why the whole network, including those future roads, needs to be modelled before any one piece is committed.</p>
+</section>
+
+<!-- 7 -->
+<section id="ask">
+  <h2><span class="n">7</span>What we ask Council to do</h2>
+  <ol class="asks">
+    <li><strong>Publish the model and the data</strong> (counts, calibration, assumptions) and have them peer reviewed.</li>
+    <li><strong>Model every option, including summer and event days</strong>, against both growth scenarios, and publish the results before endorsing a Vision.</li>
+    <li><strong>Collect current counts</strong>: term-time and summer turning counts at the town-centre intersections, and permanent counters on Torrens St and Hindmarsh Rd.</li>
+    <li><strong>Trial before committing</strong>, with temporary works through busy periods and before/after data, with success criteria published in advance.</li>
+    <li><strong>Put alternatives on the table</strong>: turn lanes and roundabouts where the delay is, time- or event-based speed limits instead of a permanent 30&nbsp;km/h, and keeping two-way streets.</li>
+    <li><strong>Publish cost estimates</strong> for each element, as a councillor asked on 26 October.</li>
+    <li><strong>Answer the questions</strong>: who proposed the loop and 30&nbsp;km/h, and on what evidence; why the outer freight ring road became part of the Vision; the costs; and <abbr title="Department for Infrastructure and Transport">DIT</abbr>'s position.</li>
+  </ol>
+</section>
+
+<!-- 8 -->
+<section id="sure">
+  <h2><span class="n">8</span>How sure are these results?</h2>
+  <ul>
+    <li><strong>Built from public data.</strong> The simulation uses Simulation of Urban Mobility (<abbr title="Simulation of Urban Mobility">SUMO</abbr>), an open-source traffic simulator, with roads from OpenStreetMap, people and trips from the Australian Bureau of Statistics (<abbr title="Australian Bureau of Statistics">ABS</abbr>), and counts from <abbr title="Department for Infrastructure and Transport">DIT</abbr> and the council.</li>
+    <li><strong>Partly calibrated.</strong> The town centre carries about 80% of the counted traffic, so town-centre delays are more likely understated than overstated.</li>
+    <li><strong>Read the results as differences</strong> between options, not as exact times.</li>
+    <li><strong>Everything is open.</strong> Every source and assumption is in the <a href="../kb/index.html">knowledge base</a>.</li>
+  </ul>
+</section>
+
+<!-- 9 -->
+<section id="explore">
+  <h2><span class="n">9</span>Explore it yourself</h2>
+  <div class="cta">
+    <a class="primary" href="../maps/residents/index.html"><strong>Trip checker</strong><span>Check your own trips. Try "Summer holidays, leaving 12:30".</span></a>
+    <a href="../maps/engineer.html"><strong>Detailed viewer</strong><span>Every option, day and year, street by street.</span></a>
+    <a href="../kb/index.html"><strong>Knowledge base</strong><span>Sources, assumptions and full results.</span></a>
+    <a href="https://github.com/br3nt/victor-harbor-roads"><strong>Code</strong><span>The simulation and these pages, open source.</span></a>
+  </div>
+  <figure>
+    <img src="img/town-3d.webp" width="1400" height="900" loading="lazy" alt="Three-dimensional view of the Victor Harbor town centre with roads coloured by congestion.">
+    <figcaption>The detailed viewer in 3D: the town centre coloured by congestion on a summer peak day.</figcaption>
+  </figure>
+</section>
+
 </main>
+
+<footer class="wrap">
+  <p>Written by Brent Jacobs, Encounter Bay resident and ratepayer, independently. Map images © OpenStreetMap contributors; terrain © Commonwealth of Australia (Geoscience Australia) 2017, CC BY 4.0. <a href="../index.html">Project home</a> · <a href="../deck/index.html">Slides</a></p>
+</footer>
 </body>
 </html>

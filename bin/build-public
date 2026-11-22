@@ -11,7 +11,8 @@ OUT (default publish/public-repo, git-ignored) gets:
   - README.md, LICENSE, .gitignore and a placeholder submission/README.md;
   - docs/, the GitHub Pages site (served from /docs): a landing page, the knowledge base exported with bin/kb from
     the pseudonymised notes, the trip checker and engineer viewer (data from --viewer-data, default
-    sim/data/viewer or $VIEWER_DATA_DIR), the game, placeholders for onboarding/ and deck/, and .nojekyll.
+    sim/data/viewer or $VIEWER_DATA_DIR), the game, the evidence page
+    (viewer/onboarding/ to onboarding/) and slides (viewer/deck/ to deck/), and .nojekyll.
 Then it scans the whole tree (contents, file names, gzip payloads) and fails if a private name, a forbidden term,
 a phone number or a personal email address is left, if a file is 100 MB or more, or if docs/ relies on claude.ai.
 
@@ -534,14 +535,25 @@ def stage_game(out: Path) -> None:
             shutil.copy(f, dst / "data")
 
 
+def stage_pages(out: Path) -> None:
+    """The evidence page and the slides (viewer/onboarding/, viewer/deck/) become docs/onboarding/ and docs/deck/;
+    a placeholder stands in for either one that is not committed yet."""
+    docs = out / "docs"
+    for name, (title, text) in PLACEHOLDERS.items():
+        src = out / "viewer" / name
+        if (src / "index.html").exists():
+            shutil.copytree(src, docs / name)
+        else:
+            (docs / name).mkdir()
+            (docs / name / "index.html").write_text(placeholder_page(title, text))
+
+
 def build_site(out: Path, viewer_data: Path) -> dict:
     docs = out / "docs"
     docs.mkdir()
     (docs / ".nojekyll").write_text("")
     (docs / "index.html").write_text(LANDING)
-    for name, (title, text) in PLACEHOLDERS.items():
-        (docs / name).mkdir()
-        (docs / name / "index.html").write_text(placeholder_page(title, text))
+    stage_pages(out)
     stage_kb(out)
     n_maps = stage_maps(out, viewer_data)
     stage_game(out)

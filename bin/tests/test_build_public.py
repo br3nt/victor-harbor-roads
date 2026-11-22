@@ -360,3 +360,17 @@ def test_local_path_check(tmp_path):
 
 def test_generated_gitignore_keeps_the_build_marker_out():
     assert bp.MARKER in bp.GITIGNORE.splitlines()
+
+
+# --- evidence page and slides ------------------------------------------------------------------------------------
+
+def test_stage_pages_copies_onboarding_and_deck_or_falls_back_to_placeholders(tmp_path):
+    out = tmp_path / "out"
+    (out / "viewer" / "onboarding" / "img").mkdir(parents=True)
+    (out / "viewer" / "onboarding" / "index.html").write_text("<h1>evidence</h1>")
+    (out / "viewer" / "onboarding" / "img" / "a.webp").write_bytes(b"RIFF")
+    (out / "docs").mkdir()
+    bp.stage_pages(out)
+    assert (out / "docs/onboarding/index.html").read_text() == "<h1>evidence</h1>"
+    assert (out / "docs/onboarding/img/a.webp").exists()
+    assert "coming here" in (out / "docs/deck/index.html").read_text()

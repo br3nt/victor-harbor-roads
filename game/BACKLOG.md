@@ -68,4 +68,5 @@ Two linked missions plus a side job. Every possible target shows its own marker 
 - Validate every job by playing it with input-only scripts in `game/tests/`: no state hacks, failure paths included.
 - Jobs declare their `requires()` for the dead-end card (Restart job / Restart night / Keep playing).
 - One shared movement and collision path for every actor and vehicle.
+- Invalid placements must be impossible by construction. Spawns only come from typed slots that are baked and validated at map-build time (outside buildings, off water or on water as appropriate, clearance free, reachable by the right access mode), and only through `Spawn.pick`. A test bans raw-coordinate spawns.
 - Playful names are fine if the twist still relates to the thing (e.g. ULTRA TUNE-UP, not ULTRA TOON).

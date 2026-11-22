@@ -117,7 +117,7 @@ test('findRun prefers the seed mean and treats 2025 as today (base growth)', () 
 test('timeline lists every year, greying out what is not simulated', () => {
   const tl = timelineFor(RUNS, 'baseline', 'weekday_term', 'high');
   assert.deepEqual(tl.map((p) => p.year), YEARS);
-  assert.deepEqual(tl.map((p) => p.available), [true, false, false, true, false]);
+  assert.deepEqual(tl.map((p) => p.available), [true, false, false, true]);
   assert.equal(tl[0].growth, 'base');
   assert.equal(tl[3].runId, 'baseline__weekday_term__2041-high__mean');
 });
@@ -160,8 +160,8 @@ test('yearLong places each year relative to 2026', () => {
 });
 
 test('yearShort: Now / the year / +N yrs (2036 is about 10 years); only 2041 and 2051 are long range', () => {
-  assert.deepEqual(YEARS.map((y) => yearShort(y)), ['Now', '2031', '2036', '2041', '2051']);
-  assert.deepEqual(YEARS.map((y) => yearShort(y, { plus: true })), ['Now', '+5 yrs', '+10 yrs', '+15 yrs', '+25 yrs']);
-  assert.deepEqual(YEARS.map(isLongRange), [false, false, false, true, true]);
+  assert.deepEqual(YEARS.map((y) => yearShort(y)), ['Now', '2031', '2036', '2041']);
+  assert.deepEqual(YEARS.map((y) => yearShort(y, { plus: true })), ['Now', '+5 yrs', '+10 yrs', '+15 yrs']);
+  assert.deepEqual(YEARS.map(isLongRange), [false, false, false, true]);
   assert.equal(NEAR_YEAR, 2031);
 });
