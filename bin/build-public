@@ -679,6 +679,37 @@ def add_bylines(docs: Path) -> int:
     return n
 
 
+SITE_URL = "https://br3nt.github.io/victor-harbor-roads"
+SHARE_DESC = ("An independent traffic simulation of Victor Harbor: what Council's one-way loop, 30 km/h and ring road "
+              "plans would do, hotspot by hotspot. Check your own street.")
+
+
+def add_social_cards(docs: Path, out: Path) -> int:
+    """Preview card (Open Graph / Twitter) on every page, so shared links show a title, description and picture."""
+    card = out / "viewer" / "share" / "card.png"
+    if not card.exists():
+        return 0
+    shutil.copy2(card, docs / "share-card.png")
+    n = 0
+    for f in docs.rglob("*.html"):
+        s = f.read_text()
+        if 'property="og:image"' in s or "<head>" not in s:
+            continue
+        rel = f.relative_to(docs).as_posix()
+        url = f"{SITE_URL}/" + ("" if rel == "index.html" else rel.removesuffix("index.html"))
+        m = re.search(r"<title>(.*?)</title>", s, re.S)
+        title = html.unescape(m.group(1).strip()) if m else "Victor Harbor road changes"
+        if rel == "index.html":
+            title = "What would Victor Harbor's road changes actually do?"
+        tags = (f'<meta property="og:type" content="website"><meta property="og:site_name" content="Victor Harbor roads">'
+                f'<meta property="og:title" content="{html.escape(title)}"><meta property="og:description" content="{html.escape(SHARE_DESC)}">'
+                f'<meta property="og:url" content="{url}"><meta property="og:image" content="{SITE_URL}/share-card.png">'
+                f'<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">'
+                f'<meta name="twitter:card" content="summary_large_image"><meta name="description" content="{html.escape(SHARE_DESC)}">')
+        f.write_text(s.replace("<head>", "<head>" + tags, 1)); n += 1
+    return n
+
+
 def add_home_links(docs: Path) -> list[str]:
     done = []
     for page, find, repl in HOME_LINKS:
@@ -707,7 +738,8 @@ def build_site(out: Path, viewer_data: Path) -> dict:
     method = stage_method(out)
     homes = add_home_links(docs)
     bylines = add_bylines(docs)
-    return {"map_data_files": n_maps, **method, "home_links": homes, "bylines": bylines}
+    cards = add_social_cards(docs, out)
+    return {"map_data_files": n_maps, **method, "home_links": homes, "bylines": bylines, "social_cards": cards}
 
 
 def build(root: Path, out: Path, viewer_data: Path | None = None, ref: str = "HEAD", site: bool = True) -> dict:

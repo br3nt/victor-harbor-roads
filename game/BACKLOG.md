@@ -59,6 +59,32 @@ Brent approved (22 Nov 2026) creating a **public** repo `br3nt/schoolies-mayhem`
   - Enable Discussions and add the issue templates in the public repo.
   - Say that GitHub needs an account; offer an email alternative only if Brent provides one.
 
+## Community contributions (part of the launch round, in the public repo)
+- **README "Contributing" section:** actively invite people to point their own coding agents (Claude Code, Codex, Copilot and similar) at the repo to fix bugs and build feature requests as PRs.
+  - Ship an `AGENTS.md` (and `CLAUDE.md`) that tells agents how the game is built: the shared movement path, spawn slots via `Spawn.pick`, the content rules (no weapons, no real people, original assets), how to run the lint and the input-only playthrough harness, and that every PR must pass them.
+  - Add issue templates, a PR template with a checklist (tests run, screenshots, no raw-coordinate spawns), and CI running the lint and harness on PRs.
+- **Discussions categories:** Bugs (pointing to issues), Ideas, and **Lore and local legends**, with a pinned post asking locals for in-jokes, local history, legendary past Schoolies parties, famous local events, and things people reminisce about.
+  - Moderation note: no real private people named, and historical figures only in respectful, factual nods.
+
+## Lore round (ongoing, fed by the Lore discussions)
+- **Locals reminiscing:** ambient chatter and bench conversations ("back in '98 the Schoolies party went till sunrise on the causeway…"), unlocking as you explore.
+- **Encounter Bay's namesake:** the 1802 meeting off the coast between Matthew Flinders (HMS Investigator) and Nicolas Baudin (Le Géographe).
+  - An in-game plaque with the real history.
+  - A comic nod: a **fictional** third vessel that "missed the meeting" and wrecked in the rough water on the far side of the Bluff, findable by boat or jet ski, with **sunken treasure** to dive for. It must be clearly fictional: neither real ship wrecked there.
+  - Also consider nods to real local maritime and whaling history (the historic shipwreck trail, the 1830s whaling station at Rosetta Head) via plaques or easter eggs, fact-checked first.
+- **Legendary past Schoolies party:** a hidden spot with remnants and a story, plus an easter-egg flashback.
+- **Notorious local "criminals" and events:** only invented or clearly comic characters. Real events only as respectful, fact-checked nods; no real private individuals.
+- **Ngarrindjeri (Ramindjeri) country:** any acknowledgement or cultural content only with care and proper sources or consultation; never invent cultural stories.
+
+## Blog post (after rounds A and B land, with fresh screenshots)
+- **Brent wants:** a funny write-up for his blog (`~/Development/br3nt.github.io`, Jekyll). Write it as a DRAFT in `_drafts/` for him to review. Don't publish or push it, and don't touch his other uncommitted blog changes.
+- **Content:**
+  - screenshots of the new game (title, each character, the lock-up, a chase, a doorbell-cam post, the fireworks);
+  - a short bit of background about Schoolies in Victor Harbor and grumpy locals posting doorbell or dashcam footage of ding-dong-ditchers to the community page (the inspiration);
+  - how it came out of the traffic project, with a brief link to his council submission (get the URL from the traffic session) and to the public site;
+  - links to play the game.
+- **Tone:** light and funny, in Brent's voice. Match the front matter and style of his recent posts (e.g. the flOw post).
+
 ## Steam round (later, if the free launch catches on)
 - **Brent does himself:** the Steamworks partner signup and the US$100 Steam Direct fee, plus identity, tax and bank checks.
 - **Desktop wrapper** (Electron or Tauri) with Windows and macOS builds and full-screen support.
