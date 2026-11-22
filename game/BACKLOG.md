@@ -31,6 +31,16 @@ Two linked missions plus a side job. Every possible target shows its own marker 
 - **Bowls:** keep the bowls club, and let any character pay to play a game (Round B's bowls mini-game, with a fee).
 - **Postie bike:** a postie-style step-through motorbike (Brent liked it; Round B).
 
+## Update detection (right after round A lands; needs its job-level saves)
+- **Version stamp:** each build writes `version.json` (the build ID, e.g. the git short hash plus a timestamp) and stamps the same ID into the game. Script and data URLs carry `?v=<build>`, so a reload never mixes old and new files.
+- **Checking:** the game fetches `version.json` with `cache: 'no-store'` every few minutes and at safe points (job complete and saved, the night summary, the title screen).
+- **When a newer build exists:**
+  - mid-job, only a small corner badge: "UPDATE READY · RELOADS AT THE NEXT BREAK";
+  - at the next safe point, a short "NEW VERSION! RELOADING…" with a "NOT NOW" option that postpones to the following break, then a reload that resumes from the job-level save.
+- **Never** reload during a job, chase, struggle, cut-scene or shop.
+- The build ID is shown in the pause menu and included in the "Report a bug" form.
+- The public-site build (traffic session's `bin/build-public`) and the itch zip must write `version.json` too.
+
 ## Launch round (after rounds A and B land)
 Brent approved (22 Nov 2026) creating a **public** repo `br3nt/schoolies-mayhem` for GitHub Pages once rounds A and B have landed.
 - **The public repo holds only the game** (copied from `game/`, without `data/raw/`, `tools/` test scratch, or anything from the traffic project). The licence notes keep the OpenStreetMap ODbL credit.

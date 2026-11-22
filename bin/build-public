@@ -180,7 +180,7 @@ def exclusion_reason(path: str) -> str | None:
             if path.startswith(prefix):
                 return reason
         return "not published (outside the published folders)"
-    if path.lower().endswith(".pdf"):
+    if path.lower().endswith(".pdf") and path != "viewer/submission/submission.pdf":   # our own letter is published
         return "third-party document (PDF); URL and sha256 in its SOURCES file"
     return None
 
