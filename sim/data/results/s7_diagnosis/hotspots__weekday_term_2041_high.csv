@@ -1,0 +1,11 @@
+scenario,condition,year,growth,seeds,network_wait_veh_h,Armstrong Rd / Crozier Rd,Armstrong Rd / Greenhills Rd,Hindmarsh Rd / Grantley Ave / Bridge Tce,"Victoria St, Bay Rd to Torrens St (side streets, accesses)",Hindmarsh Rd side streets (Wattle Dr ... Rupara Ave),Torrens St / Coral St,Torrens/Seaview/Eyre roundabout + Eyre Tce/McKinlay St,Torrens St / Crozier Rd roundabout,Crozier Rd / Burke St,Bay Rd / Victoria St / George Main Rd roundabout,McCracken roundabout
+baseline,weekday_term,2041,high,3,584.2,54.3,12.0,20.3,110.2,39.4,13.9,24.5,5.5,15.0,5.5,9.3
+cp,weekday_term,2041,high,3,948.8,92.1,16.4,3.3,154.3,36.9,8.1,20.8,30.3,42.5,7.6,7.9
+bp,weekday_term,2041,high,3,935.5,106.2,25.9,16.0,194.4,37.4,13.3,19.6,3.8,18.5,13.2,5.0
+b3,weekday_term,2041,high,3,722.4,91.8,24.5,17.7,141.7,36.3,12.3,22.8,5.2,16.1,8.9,8.3
+n2,weekday_term,2041,high,1,536.9,7.1,8.0,21.7,117.6,38.8,11.8,25.2,4.5,16.0,7.2,9.3
+n3,weekday_term,2041,high,2,546.7,46.3,11.4,16.4,114.8,35.9,12.7,22.4,4.5,14.8,5.1,9.3
+n4,weekday_term,2041,high,2,610.6,66.2,14.5,6.9,124.4,40.2,10.2,17.8,4.1,12.9,7.6,8.8
+n5,weekday_term,2041,high,2,492.6,4.2,2.6,21.2,95.8,41.7,13.6,27.0,5.0,10.9,5.7,10.5
+n7,weekday_term,2041,high,2,445.9,4.4,2.8,7.4,97.6,46.2,10.0,18.2,3.3,10.9,6.4,9.7
+n9,weekday_term,2041,high,3,532.2,54.0,12.7,6.6,112.9,38.9,8.8,16.1,3.8,12.3,5.6,8.9

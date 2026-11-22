@@ -1,0 +1,4102 @@
+{
+"type": "FeatureCollection",
+"features": [
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.610805,
+-35.557195
+]
+},
+"properties": {
+"poi_id": "poi_n319484015",
+"category": "services",
+"name": "Victor Harbor Town Library",
+"weight": 1.0,
+"source": "S-E03 node/319484015; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.625139,
+-35.556488
+]
+},
+"properties": {
+"poi_id": "poi_n537640523",
+"category": "recreation",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 node/537640523; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.625183,
+-35.5572
+]
+},
+"properties": {
+"poi_id": "poi_n537641582",
+"category": "beach_foreshore",
+"name": "Victor Harbor Horse Drawn Tram",
+"weight": 1.0,
+"source": "S-E03 node/537641582; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.624721,
+-35.556313
+]
+},
+"properties": {
+"poi_id": "poi_n537641583",
+"category": "shops",
+"name": "Victor Harbor Tourist Office",
+"weight": 1.0,
+"source": "S-E03 node/537641583; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.606237,
+-35.556634
+]
+},
+"properties": {
+"poi_id": "poi_n571285589",
+"category": "services",
+"name": "Victor Harbor Police Station",
+"weight": 1.0,
+"source": "S-E03 node/571285589; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.636806,
+-35.540054
+]
+},
+"properties": {
+"poi_id": "poi_n574172067",
+"category": "beach_foreshore",
+"name": "Kleinig's Lookout",
+"weight": 1.0,
+"source": "S-E03 node/574172067; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.638381,
+-35.538582
+]
+},
+"properties": {
+"poi_id": "poi_n582807172",
+"category": "services",
+"name": "McCracken Caltex",
+"weight": 1.0,
+"source": "S-E03 node/582807172; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.620124,
+-35.55289
+]
+},
+"properties": {
+"poi_id": "poi_n634805672",
+"category": "supermarket",
+"name": "Woolworths",
+"weight": 3.8,
+"source": "S-E03 node/634805672; weight poi.named_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.623816,
+-35.550254
+]
+},
+"properties": {
+"poi_id": "poi_n949241785",
+"category": "shops",
+"name": "See Optometry",
+"weight": 1.0,
+"source": "S-E03 node/949241785; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.624012,
+-35.550096
+]
+},
+"properties": {
+"poi_id": "poi_n984956643",
+"category": "shops",
+"name": "Rumbelow's Restaurant",
+"weight": 1.0,
+"source": "S-E03 node/984956643; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.623031,
+-35.552934
+]
+},
+"properties": {
+"poi_id": "poi_n1000667622",
+"category": "shops",
+"name": "Rivers",
+"weight": 1.0,
+"source": "S-E03 node/1000667622; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.621711,
+-35.554085
+]
+},
+"properties": {
+"poi_id": "poi_n1313039335",
+"category": "shops",
+"name": "Fellas Hair Dresser",
+"weight": 1.0,
+"source": "S-E03 node/1313039335; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.604485,
+-35.56333
+]
+},
+"properties": {
+"poi_id": "poi_n1575141714",
+"category": "dining",
+"name": "The Boulevard Cafe On The Lake",
+"weight": 1.0,
+"source": "S-E03 node/1575141714; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.620591,
+-35.553201
+]
+},
+"properties": {
+"poi_id": "poi_n2875621237",
+"category": "shops",
+"name": "Mega Health Victor Harbor",
+"weight": 1.0,
+"source": "S-E03 node/2875621237; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.646769,
+-35.524538
+]
+},
+"properties": {
+"poi_id": "poi_n4375076842",
+"category": "shops",
+"name": "Stihl Shop Victor Harbor",
+"weight": 1.0,
+"source": "S-E03 node/4375076842; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.647472,
+-35.524228
+]
+},
+"properties": {
+"poi_id": "poi_n4375076865",
+"category": "shops",
+"name": "Shed Boss Fleurieu",
+"weight": 1.0,
+"source": "S-E03 node/4375076865; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.646793,
+-35.524344
+]
+},
+"properties": {
+"poi_id": "poi_n4375077803",
+"category": "shops",
+"name": "Totally Workwear",
+"weight": 1.0,
+"source": "S-E03 node/4375077803; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.640815,
+-35.535978
+]
+},
+"properties": {
+"poi_id": "poi_n4375081883",
+"category": "medical",
+"name": "TerryWhite Chemmart",
+"weight": 1.0,
+"source": "S-E03 node/4375081883; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.623274,
+-35.55411
+]
+},
+"properties": {
+"poi_id": "poi_n4375135208",
+"category": "accommodation",
+"name": "Grosvenor Hotel",
+"weight": 20.0,
+"source": "S-E03 node/4375135208; weight poi.named_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.620825,
+-35.553876
+]
+},
+"properties": {
+"poi_id": "poi_n4376935537",
+"category": "services",
+"name": "Caltex",
+"weight": 1.0,
+"source": "S-E03 node/4376935537; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.620154,
+-35.553488
+]
+},
+"properties": {
+"poi_id": "poi_n4376937819",
+"category": "shops",
+"name": "Liquorland",
+"weight": 1.0,
+"source": "S-E03 node/4376937819; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.619395,
+-35.552898
+]
+},
+"properties": {
+"poi_id": "poi_n4376938279",
+"category": "shops",
+"name": "Big W",
+"weight": 3.0,
+"source": "S-E03 node/4376938279; weight poi.named_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.639694,
+-35.536723
+]
+},
+"properties": {
+"poi_id": "poi_n4406755912",
+"category": "services",
+"name": "OTR Victor Harbor",
+"weight": 1.0,
+"source": "S-E03 node/4406755912; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.605544,
+-35.561589
+]
+},
+"properties": {
+"poi_id": "poi_n4513236690",
+"category": "school",
+"name": "Victor Harbor Childcare",
+"weight": 2.0,
+"source": "S-E03 node/4513236690; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.616201,
+-35.557613
+]
+},
+"properties": {
+"poi_id": "poi_n5289107417",
+"category": "supermarket",
+"name": "Harbour Bakery",
+"weight": 0.3,
+"source": "S-E03 node/5289107417; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.616099,
+-35.557729
+]
+},
+"properties": {
+"poi_id": "poi_n5289107418",
+"category": "supermarket",
+"name": "IGA",
+"weight": 0.8,
+"source": "S-E03 node/5289107418; weight poi.named_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.623355,
+-35.555451
+]
+},
+"properties": {
+"poi_id": "poi_n5338267514",
+"category": "shops",
+"name": "Thirsty Camel",
+"weight": 1.0,
+"source": "S-E03 node/5338267514; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.623047,
+-35.555463
+]
+},
+"properties": {
+"poi_id": "poi_n5338268461",
+"category": "dining",
+"name": "Subway",
+"weight": 1.0,
+"source": "S-E03 node/5338268461; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.623044,
+-35.555328
+]
+},
+"properties": {
+"poi_id": "poi_n5338268462",
+"category": "supermarket",
+"name": "Ocean Street Bakery",
+"weight": 0.3,
+"source": "S-E03 node/5338268462; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.623055,
+-35.555414
+]
+},
+"properties": {
+"poi_id": "poi_n5338278421",
+"category": "shops",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 node/5338278421; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.623037,
+-35.555267
+]
+},
+"properties": {
+"poi_id": "poi_n5338278423",
+"category": "shops",
+"name": "Tudor Homewares and The Coffee Palace",
+"weight": 1.0,
+"source": "S-E03 node/5338278423; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.623274,
+-35.555131
+]
+},
+"properties": {
+"poi_id": "poi_n5338281807",
+"category": "shops",
+"name": "Harbor Barber",
+"weight": 1.0,
+"source": "S-E03 node/5338281807; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.604043,
+-35.591535
+]
+},
+"properties": {
+"poi_id": "poi_n6191289985",
+"category": "beach_foreshore",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 node/6191289985; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.634112,
+-35.564549
+]
+},
+"properties": {
+"poi_id": "poi_n6482657022",
+"category": "beach_foreshore",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 node/6482657022; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.624799,
+-35.557117
+]
+},
+"properties": {
+"poi_id": "poi_n6988842085",
+"category": "dining",
+"name": "Causeway Caf\u00e9",
+"weight": 1.0,
+"source": "S-E03 node/6988842085; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.623248,
+-35.554975
+]
+},
+"properties": {
+"poi_id": "poi_n9409889225",
+"category": "dining",
+"name": "The Original Fish Shop",
+"weight": 1.0,
+"source": "S-E03 node/9409889225; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.584404,
+-35.598616
+]
+},
+"properties": {
+"poi_id": "poi_n9456850917",
+"category": "beach_foreshore",
+"name": "Whale Lookout",
+"weight": 1.0,
+"source": "S-E03 node/9456850917; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.62278,
+-35.554897
+]
+},
+"properties": {
+"poi_id": "poi_n9559436450",
+"category": "shops",
+"name": "Makani Apparel",
+"weight": 1.0,
+"source": "S-E03 node/9559436450; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.626446,
+-35.564705
+]
+},
+"properties": {
+"poi_id": "poi_n10964812505",
+"category": "beach_foreshore",
+"name": "Umbrella Rock",
+"weight": 1.0,
+"source": "S-E03 node/10964812505; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.626672,
+-35.563592
+]
+},
+"properties": {
+"poi_id": "poi_n10964812506",
+"category": "beach_foreshore",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 node/10964812506; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.628944,
+-35.562435
+]
+},
+"properties": {
+"poi_id": "poi_n10964817505",
+"category": "beach_foreshore",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 node/10964817505; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.631256,
+-35.565429
+]
+},
+"properties": {
+"poi_id": "poi_n10965148508",
+"category": "beach_foreshore",
+"name": "Ngurunderi Lookout",
+"weight": 1.0,
+"source": "S-E03 node/10965148508; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.604318,
+-35.589872
+]
+},
+"properties": {
+"poi_id": "poi_n10966537605",
+"category": "beach_foreshore",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 node/10966537605; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.625452,
+-35.547132
+]
+},
+"properties": {
+"poi_id": "poi_n10991168607",
+"category": "dining",
+"name": "Planted Coffee House",
+"weight": 1.0,
+"source": "S-E03 node/10991168607; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.605936,
+-35.556636
+]
+},
+"properties": {
+"poi_id": "poi_n11135426258",
+"category": "services",
+"name": "Victor Harbor Courthouse",
+"weight": 1.0,
+"source": "S-E03 node/11135426258; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.623079,
+-35.555176
+]
+},
+"properties": {
+"poi_id": "poi_n11160090266",
+"category": "shops",
+"name": "Bag Boutique",
+"weight": 1.0,
+"source": "S-E03 node/11160090266; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.623078,
+-35.555115
+]
+},
+"properties": {
+"poi_id": "poi_n11160090276",
+"category": "services",
+"name": "Commonwealth Bank",
+"weight": 1.0,
+"source": "S-E03 node/11160090276; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.623002,
+-35.554788
+]
+},
+"properties": {
+"poi_id": "poi_n11160090294",
+"category": "shops",
+"name": "Mr Menswear",
+"weight": 1.0,
+"source": "S-E03 node/11160090294; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.623161,
+-35.553978
+]
+},
+"properties": {
+"poi_id": "poi_n11164887963",
+"category": "dining",
+"name": "Grosvenor Hotel",
+"weight": 20.0,
+"source": "S-E03 node/11164887963; weight poi.named_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.669562,
+-35.535688
+]
+},
+"properties": {
+"poi_id": "poi_n11294351237",
+"category": "beach_foreshore",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 node/11294351237; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.62219,
+-35.555857
+]
+},
+"properties": {
+"poi_id": "poi_n11747249896",
+"category": "accommodation",
+"name": "Pan Co. Victor Harbor",
+"weight": 20.0,
+"source": "S-E03 node/11747249896; weight poi.named_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.62746,
+-35.559511
+]
+},
+"properties": {
+"poi_id": "poi_n11747274256",
+"category": "beach_foreshore",
+"name": "The Big Duck Boat Tours",
+"weight": 1.0,
+"source": "S-E03 node/11747274256; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.62294,
+-35.554459
+]
+},
+"properties": {
+"poi_id": "poi_n11747362155",
+"category": "shops",
+"name": "Easy Store",
+"weight": 1.0,
+"source": "S-E03 node/11747362155; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.617537,
+-35.55714
+]
+},
+"properties": {
+"poi_id": "poi_n12133714744",
+"category": "medical",
+"name": "Amcal",
+"weight": 1.0,
+"source": "S-E03 node/12133714744; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.639411,
+-35.536109
+]
+},
+"properties": {
+"poi_id": "poi_n12242556101",
+"category": "services",
+"name": "Mobil",
+"weight": 1.0,
+"source": "S-E03 node/12242556101; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.622206,
+-35.55169
+]
+},
+"properties": {
+"poi_id": "poi_n12751263027",
+"category": "supermarket",
+"name": "Drakes",
+"weight": 1.8,
+"source": "S-E03 node/12751263027; weight poi.named_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.598345,
+-35.586578
+]
+},
+"properties": {
+"poi_id": "poi_n12976730318",
+"category": "dining",
+"name": "Whaler's Seaside Dining",
+"weight": 1.0,
+"source": "S-E03 node/12976730318; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.619546,
+-35.553193
+]
+},
+"properties": {
+"poi_id": "poi_n13897945244",
+"category": "shops",
+"name": "Telstra",
+"weight": 1.0,
+"source": "S-E03 node/13897945244; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.619978,
+-35.553532
+]
+},
+"properties": {
+"poi_id": "poi_n13897945245",
+"category": "shops",
+"name": "OPSM",
+"weight": 1.0,
+"source": "S-E03 node/13897945245; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.619679,
+-35.537373
+]
+},
+"properties": {
+"poi_id": "poi_n13925217414",
+"category": "beach_foreshore",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 node/13925217414; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.619951,
+-35.536861
+]
+},
+"properties": {
+"poi_id": "poi_n13925217431",
+"category": "beach_foreshore",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 node/13925217431; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.618121,
+-35.556991
+]
+},
+"properties": {
+"poi_id": "poi_n14289679760",
+"category": "shops",
+"name": "PennyLane Patchwork",
+"weight": 1.0,
+"source": "S-E03 node/14289679760; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.614587,
+-35.540949
+]
+},
+"properties": {
+"poi_id": "poi_n14289686647",
+"category": "shops",
+"name": "K & M Art and Craft Supplies",
+"weight": 1.0,
+"source": "S-E03 node/14289686647; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.620374,
+-35.553131
+]
+},
+"properties": {
+"poi_id": "poi_n14395156861",
+"category": "services",
+"name": "Victor Harbor Central CPA",
+"weight": 1.0,
+"source": "S-E03 node/14395156861; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.622829,
+-35.55642
+]
+},
+"properties": {
+"poi_id": "poi_w42926980",
+"category": "dining",
+"name": "Hotel Victor",
+"weight": 1.0,
+"source": "S-E03 way/42926980; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.606488,
+-35.561482
+]
+},
+"properties": {
+"poi_id": "poi_w46504899",
+"category": "medical",
+"name": "South Coast District Hospital",
+"weight": 6.0,
+"source": "S-E03 way/46504899; weight poi.named_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.623154,
+-35.553212
+]
+},
+"properties": {
+"poi_id": "poi_w46823710",
+"category": "services",
+"name": "Victor Harbor Post Office",
+"weight": 1.0,
+"source": "S-E03 way/46823710; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.612789,
+-35.556895
+]
+},
+"properties": {
+"poi_id": "poi_w50905578",
+"category": "recreation",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/50905578; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.601623,
+-35.554181
+]
+},
+"properties": {
+"poi_id": "poi_w51188046",
+"category": "recreation",
+"name": "Encounter Bay Oval",
+"weight": 1.0,
+"source": "S-E03 way/51188046; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.599933,
+-35.553842
+]
+},
+"properties": {
+"poi_id": "poi_w51188090",
+"category": "recreation",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/51188090; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.600344,
+-35.553154
+]
+},
+"properties": {
+"poi_id": "poi_w51188095",
+"category": "recreation",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/51188095; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.600428,
+-35.59223
+]
+},
+"properties": {
+"poi_id": "poi_w84835805",
+"category": "beach_foreshore",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/84835805; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.604652,
+-35.564041
+]
+},
+"properties": {
+"poi_id": "poi_w95360599",
+"category": "beach_foreshore",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/95360599; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.601369,
+-35.570835
+]
+},
+"properties": {
+"poi_id": "poi_w95360600",
+"category": "beach_foreshore",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/95360600; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.61233,
+-35.559942
+]
+},
+"properties": {
+"poi_id": "poi_w120276938",
+"category": "caravan_park",
+"name": "Victor Harbour Beachfront Holiday Park",
+"weight": 150.0,
+"source": "S-E03 way/120276938; weight poi.named_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.631429,
+-35.533396
+]
+},
+"properties": {
+"poi_id": "poi_w120293481",
+"category": "recreation",
+"name": "McCracken Country Club",
+"weight": 2.0,
+"source": "S-E03 way/120293481; weight poi.named_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.613455,
+-35.556244
+]
+},
+"properties": {
+"poi_id": "poi_w120299784",
+"category": "recreation",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/120299784; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.625114,
+-35.550055
+]
+},
+"properties": {
+"poi_id": "poi_w120675254",
+"category": "recreation",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/120675254; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.62451,
+-35.551853
+]
+},
+"properties": {
+"poi_id": "poi_w120675255",
+"category": "recreation",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/120675255; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.624717,
+-35.55266
+]
+},
+"properties": {
+"poi_id": "poi_w120675256",
+"category": "recreation",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/120675256; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.624925,
+-35.553548
+]
+},
+"properties": {
+"poi_id": "poi_w120675257",
+"category": "recreation",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/120675257; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.625739,
+-35.549097
+]
+},
+"properties": {
+"poi_id": "poi_w120675258",
+"category": "recreation",
+"name": "Victor Harbor Croquet Club",
+"weight": 1.0,
+"source": "S-E03 way/120675258; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.624835,
+-35.55314
+]
+},
+"properties": {
+"poi_id": "poi_w120675261",
+"category": "recreation",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/120675261; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.62711,
+-35.551579
+]
+},
+"properties": {
+"poi_id": "poi_w120676973",
+"category": "beach_foreshore",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/120676973; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.649306,
+-35.539241
+]
+},
+"properties": {
+"poi_id": "poi_w120679443",
+"category": "beach_foreshore",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/120679443; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.619133,
+-35.558894
+]
+},
+"properties": {
+"poi_id": "poi_w120802886",
+"category": "beach_foreshore",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/120802886; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.606822,
+-35.570113
+]
+},
+"properties": {
+"poi_id": "poi_w120803593",
+"category": "beach_foreshore",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/120803593; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.601164,
+-35.548004
+]
+},
+"properties": {
+"poi_id": "poi_w121528627",
+"category": "recreation",
+"name": "Victor Harbor Golf Club",
+"weight": 2.0,
+"source": "S-E03 way/121528627; weight poi.named_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.623589,
+-35.555621
+]
+},
+"properties": {
+"poi_id": "poi_w121530944",
+"category": "dining",
+"name": "Crown Hotel",
+"weight": 1.0,
+"source": "S-E03 way/121530944; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.608579,
+-35.558328
+]
+},
+"properties": {
+"poi_id": "poi_w160250978",
+"category": "caravan_park",
+"name": "Victor Harbor Holiday Park",
+"weight": 200.0,
+"source": "S-E03 way/160250978; weight poi.named_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.634949,
+-35.563792
+]
+},
+"properties": {
+"poi_id": "poi_w183818072",
+"category": "dining",
+"name": "Granite Island Recreation Park Cafe",
+"weight": 1.0,
+"source": "S-E03 way/183818072; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.627868,
+-35.541118
+]
+},
+"properties": {
+"poi_id": "poi_w189986726",
+"category": "caravan_park",
+"name": "Adare Camp and Caravan Park",
+"weight": 250.0,
+"source": "S-E03 way/189986726; weight poi.named_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.608089,
+-35.582146
+]
+},
+"properties": {
+"poi_id": "poi_w247558140",
+"category": "beach_foreshore",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/247558140; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.603133,
+-35.589002
+]
+},
+"properties": {
+"poi_id": "poi_w253027254",
+"category": "beach_foreshore",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/253027254; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.592427,
+-35.594729
+]
+},
+"properties": {
+"poi_id": "poi_w253027257",
+"category": "beach_foreshore",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/253027257; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.599409,
+-35.560567
+]
+},
+"properties": {
+"poi_id": "poi_w334326466",
+"category": "services",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/334326466; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.62438,
+-35.553553
+]
+},
+"properties": {
+"poi_id": "poi_w379045777",
+"category": "accommodation",
+"name": "Anchorage Seafront",
+"weight": 40.0,
+"source": "S-E03 way/379045777; weight poi.named_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.624667,
+-35.551853
+]
+},
+"properties": {
+"poi_id": "poi_w407080727",
+"category": "recreation",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/407080727; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.624606,
+-35.552175
+]
+},
+"properties": {
+"poi_id": "poi_w407080748",
+"category": "recreation",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/407080748; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.624671,
+-35.551885
+]
+},
+"properties": {
+"poi_id": "poi_w407080757",
+"category": "recreation",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/407080757; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.624519,
+-35.551891
+]
+},
+"properties": {
+"poi_id": "poi_w407080767",
+"category": "recreation",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/407080767; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.621497,
+-35.554603
+]
+},
+"properties": {
+"poi_id": "poi_w439836097",
+"category": "supermarket",
+"name": "Veg Out",
+"weight": 0.3,
+"source": "S-E03 way/439836097; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.603098,
+-35.56958
+]
+},
+"properties": {
+"poi_id": "poi_w439836889",
+"category": "beach_foreshore",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/439836889; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.623147,
+-35.550953
+]
+},
+"properties": {
+"poi_id": "poi_w439837008",
+"category": "services",
+"name": "Shell",
+"weight": 1.0,
+"source": "S-E03 way/439837008; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.601313,
+-35.56662
+]
+},
+"properties": {
+"poi_id": "poi_w439976041",
+"category": "beach_foreshore",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/439976041; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.622107,
+-35.552188
+]
+},
+"properties": {
+"poi_id": "poi_w439977314",
+"category": "accommodation",
+"name": "",
+"weight": 30.0,
+"source": "S-E03 way/439977314; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.62255,
+-35.553491
+]
+},
+"properties": {
+"poi_id": "poi_w439978921",
+"category": "accommodation",
+"name": "Victor Harbor City Inn",
+"weight": 30.0,
+"source": "S-E03 way/439978921; weight poi.named_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.60028,
+-35.555362
+]
+},
+"properties": {
+"poi_id": "poi_w439989409",
+"category": "recreation",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/439989409; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.598962,
+-35.557085
+]
+},
+"properties": {
+"poi_id": "poi_w439990408",
+"category": "services",
+"name": "Encounter Bay Veterinary Clinic",
+"weight": 1.0,
+"source": "S-E03 way/439990408; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.61266,
+-35.560393
+]
+},
+"properties": {
+"poi_id": "poi_w443025942",
+"category": "caravan_park",
+"name": "Unpowered",
+"weight": 30.0,
+"source": "S-E03 way/443025942; weight poi.named_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.611684,
+-35.556329
+]
+},
+"properties": {
+"poi_id": "poi_w443028097",
+"category": "school",
+"name": "Victor Harbor High School",
+"weight": 4.0,
+"source": "S-E03 way/443028097; weight poi.named_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.624261,
+-35.541169
+]
+},
+"properties": {
+"poi_id": "poi_w443028983",
+"category": "school",
+"name": "Victor Harbor R-7 School",
+"weight": 3.0,
+"source": "S-E03 way/443028983; weight poi.named_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.621128,
+-35.553564
+]
+},
+"properties": {
+"poi_id": "poi_w491900970",
+"category": "dining",
+"name": "KFC",
+"weight": 1.5,
+"source": "S-E03 way/491900970; weight poi.named_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.620349,
+-35.552888
+]
+},
+"properties": {
+"poi_id": "poi_w491901394",
+"category": "shops",
+"name": "Victor Central Shopping Centre",
+"weight": 5.0,
+"source": "S-E03 way/491901394; weight poi.named_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.613184,
+-35.554843
+]
+},
+"properties": {
+"poi_id": "poi_w545443397",
+"category": "recreation",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/545443397; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.61676,
+-35.556905
+]
+},
+"properties": {
+"poi_id": "poi_w547383524",
+"category": "shops",
+"name": "Victor Harbour Cycle & Skate",
+"weight": 1.0,
+"source": "S-E03 way/547383524; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.617208,
+-35.55758
+]
+},
+"properties": {
+"poi_id": "poi_w547383536",
+"category": "shops",
+"name": "Toyworld",
+"weight": 1.0,
+"source": "S-E03 way/547383536; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.624678,
+-35.556273
+]
+},
+"properties": {
+"poi_id": "poi_w552963155",
+"category": "recreation",
+"name": "National Trust Museum and Gift Shop",
+"weight": 1.0,
+"source": "S-E03 way/552963155; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.63778,
+-35.536191
+]
+},
+"properties": {
+"poi_id": "poi_w714958374",
+"category": "shops",
+"name": "Bunnings Warehouse",
+"weight": 3.0,
+"source": "S-E03 way/714958374; weight poi.named_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.637188,
+-35.53491
+]
+},
+"properties": {
+"poi_id": "poi_w714958375",
+"category": "supermarket",
+"name": "Coles",
+"weight": 3.5,
+"source": "S-E03 way/714958375; weight poi.named_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.613396,
+-35.556081
+]
+},
+"properties": {
+"poi_id": "poi_w1050900854",
+"category": "recreation",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/1050900854; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.612617,
+-35.557191
+]
+},
+"properties": {
+"poi_id": "poi_w1050900855",
+"category": "recreation",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/1050900855; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.612767,
+-35.557243
+]
+},
+"properties": {
+"poi_id": "poi_w1050900856",
+"category": "recreation",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/1050900856; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.612907,
+-35.557304
+]
+},
+"properties": {
+"poi_id": "poi_w1050900857",
+"category": "recreation",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/1050900857; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.613052,
+-35.557352
+]
+},
+"properties": {
+"poi_id": "poi_w1050900858",
+"category": "recreation",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/1050900858; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.613207,
+-35.557053
+]
+},
+"properties": {
+"poi_id": "poi_w1050900859",
+"category": "recreation",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/1050900859; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.613076,
+-35.557007
+]
+},
+"properties": {
+"poi_id": "poi_w1050900860",
+"category": "recreation",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/1050900860; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.612923,
+-35.556955
+]
+},
+"properties": {
+"poi_id": "poi_w1050900861",
+"category": "recreation",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/1050900861; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.61302,
+-35.557333
+]
+},
+"properties": {
+"poi_id": "poi_w1050900862",
+"category": "recreation",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/1050900862; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.612837,
+-35.557266
+]
+},
+"properties": {
+"poi_id": "poi_w1050900863",
+"category": "recreation",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/1050900863; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.612623,
+-35.557189
+]
+},
+"properties": {
+"poi_id": "poi_w1050900864",
+"category": "recreation",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/1050900864; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.612816,
+-35.556891
+]
+},
+"properties": {
+"poi_id": "poi_w1050900865",
+"category": "recreation",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/1050900865; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.613189,
+-35.557039
+]
+},
+"properties": {
+"poi_id": "poi_w1050900866",
+"category": "recreation",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/1050900866; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.613001,
+-35.556963
+]
+},
+"properties": {
+"poi_id": "poi_w1050900867",
+"category": "recreation",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/1050900867; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.611939,
+-35.555439
+]
+},
+"properties": {
+"poi_id": "poi_w1123262320",
+"category": "recreation",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/1123262320; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.638742,
+-35.532762
+]
+},
+"properties": {
+"poi_id": "poi_w1189940214",
+"category": "shops",
+"name": "Victor Harbour Hyundai",
+"weight": 1.0,
+"source": "S-E03 way/1189940214; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.638191,
+-35.530231
+]
+},
+"properties": {
+"poi_id": "poi_w1189940215",
+"category": "supermarket",
+"name": "Aldi",
+"weight": 1.7,
+"source": "S-E03 way/1189940215; weight poi.named_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.637886,
+-35.534048
+]
+},
+"properties": {
+"poi_id": "poi_w1189940216",
+"category": "shops",
+"name": "The Reject Shop",
+"weight": 1.0,
+"source": "S-E03 way/1189940216; weight poi.named_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.601932,
+-35.574905
+]
+},
+"properties": {
+"poi_id": "poi_w1200655100",
+"category": "dining",
+"name": "Beach House Cafe",
+"weight": 1.0,
+"source": "S-E03 way/1200655100; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.602186,
+-35.57463
+]
+},
+"properties": {
+"poi_id": "poi_w1200655102",
+"category": "shops",
+"name": "Yilki Store",
+"weight": 1.0,
+"source": "S-E03 way/1200655102; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.606078,
+-35.569763
+]
+},
+"properties": {
+"poi_id": "poi_w1200706604",
+"category": "recreation",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/1200706604; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.606456,
+-35.566205
+]
+},
+"properties": {
+"poi_id": "poi_w1200711887",
+"category": "beach_foreshore",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/1200711887; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.596642,
+-35.555706
+]
+},
+"properties": {
+"poi_id": "poi_w1201086086",
+"category": "recreation",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/1201086086; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.597795,
+-35.555037
+]
+},
+"properties": {
+"poi_id": "poi_w1201086087",
+"category": "recreation",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/1201086087; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.597656,
+-35.554974
+]
+},
+"properties": {
+"poi_id": "poi_w1201086088",
+"category": "recreation",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/1201086088; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.597964,
+-35.555122
+]
+},
+"properties": {
+"poi_id": "poi_w1201086089",
+"category": "recreation",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/1201086089; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.613534,
+-35.558134
+]
+},
+"properties": {
+"poi_id": "poi_w1201486273",
+"category": "supermarket",
+"name": "",
+"weight": 0.3,
+"source": "S-E03 way/1201486273; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.616498,
+-35.556815
+]
+},
+"properties": {
+"poi_id": "poi_w1201585148",
+"category": "gym",
+"name": "Anytime Fitness",
+"weight": 2.0,
+"source": "S-E03 way/1201585148; weight poi.named_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.616185,
+-35.557044
+]
+},
+"properties": {
+"poi_id": "poi_w1201585190",
+"category": "shops",
+"name": "Simplicity Funerals",
+"weight": 1.0,
+"source": "S-E03 way/1201585190; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.622985,
+-35.556
+]
+},
+"properties": {
+"poi_id": "poi_w1201668189",
+"category": "dining",
+"name": "Flight at Warland",
+"weight": 1.0,
+"source": "S-E03 way/1201668189; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.622904,
+-35.555895
+]
+},
+"properties": {
+"poi_id": "poi_w1201668191",
+"category": "dining",
+"name": "Everest Ice Cream",
+"weight": 1.0,
+"source": "S-E03 way/1201668191; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.622762,
+-35.555759
+]
+},
+"properties": {
+"poi_id": "poi_w1201668193",
+"category": "dining",
+"name": "Nino's",
+"weight": 1.0,
+"source": "S-E03 way/1201668193; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.613172,
+-35.533178
+]
+},
+"properties": {
+"poi_id": "poi_w1201726521",
+"category": "recreation",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/1201726521; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.618666,
+-35.549965
+]
+},
+"properties": {
+"poi_id": "poi_w1203858553",
+"category": "services",
+"name": "ECH Hill Court",
+"weight": 1.0,
+"source": "S-E03 way/1203858553; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.617852,
+-35.549726
+]
+},
+"properties": {
+"poi_id": "poi_w1203858563",
+"category": "services",
+"name": "ECH Wilkinson Court",
+"weight": 1.0,
+"source": "S-E03 way/1203858563; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.61956,
+-35.550421
+]
+},
+"properties": {
+"poi_id": "poi_w1203858565",
+"category": "services",
+"name": "ECH Mervyn Graham Lodge",
+"weight": 1.0,
+"source": "S-E03 way/1203858565; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.618272,
+-35.549278
+]
+},
+"properties": {
+"poi_id": "poi_w1203862767",
+"category": "recreation",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/1203862767; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.619788,
+-35.548375
+]
+},
+"properties": {
+"poi_id": "poi_w1204058702",
+"category": "recreation",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/1204058702; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.624717,
+-35.556092
+]
+},
+"properties": {
+"poi_id": "poi_w1204058716",
+"category": "recreation",
+"name": "Victor Harbor Station Master's Residence",
+"weight": 1.0,
+"source": "S-E03 way/1204058716; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.624796,
+-35.550759
+]
+},
+"properties": {
+"poi_id": "poi_w1204058720",
+"category": "recreation",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/1204058720; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.624652,
+-35.550766
+]
+},
+"properties": {
+"poi_id": "poi_w1204058721",
+"category": "recreation",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/1204058721; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.624577,
+-35.551653
+]
+},
+"properties": {
+"poi_id": "poi_w1204058722",
+"category": "shops",
+"name": "Qahwa Coffee Roasters and Espresso Bar",
+"weight": 1.0,
+"source": "S-E03 way/1204058722; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.624685,
+-35.551484
+]
+},
+"properties": {
+"poi_id": "poi_w1204058723",
+"category": "recreation",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/1204058723; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.624556,
+-35.551449
+]
+},
+"properties": {
+"poi_id": "poi_w1204058724",
+"category": "recreation",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/1204058724; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.624686,
+-35.551251
+]
+},
+"properties": {
+"poi_id": "poi_w1204058726",
+"category": "recreation",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/1204058726; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.624534,
+-35.551249
+]
+},
+"properties": {
+"poi_id": "poi_w1204058727",
+"category": "recreation",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/1204058727; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.622271,
+-35.554215
+]
+},
+"properties": {
+"poi_id": "poi_w1204067864",
+"category": "services",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/1204067864; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.624152,
+-35.548772
+]
+},
+"properties": {
+"poi_id": "poi_w1204071471",
+"category": "recreation",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/1204071471; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.623129,
+-35.550925
+]
+},
+"properties": {
+"poi_id": "poi_w1204306227",
+"category": "supermarket",
+"name": "Reddy Express",
+"weight": 0.3,
+"source": "S-E03 way/1204306227; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.622624,
+-35.551119
+]
+},
+"properties": {
+"poi_id": "poi_w1204306229",
+"category": "dining",
+"name": "McDonald's",
+"weight": 2.0,
+"source": "S-E03 way/1204306229; weight poi.named_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.623273,
+-35.553527
+]
+},
+"properties": {
+"poi_id": "poi_w1204654276",
+"category": "shops",
+"name": "The Centre",
+"weight": 1.5,
+"source": "S-E03 way/1204654276; weight poi.named_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.623293,
+-35.55231
+]
+},
+"properties": {
+"poi_id": "poi_w1204654287",
+"category": "shops",
+"name": "The White Rabbit",
+"weight": 1.0,
+"source": "S-E03 way/1204654287; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.624108,
+-35.550542
+]
+},
+"properties": {
+"poi_id": "poi_w1204654292",
+"category": "dining",
+"name": "Mums Beard Cafe",
+"weight": 1.0,
+"source": "S-E03 way/1204654292; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.625134,
+-35.549926
+]
+},
+"properties": {
+"poi_id": "poi_w1206473715",
+"category": "recreation",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/1206473715; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.627262,
+-35.546417
+]
+},
+"properties": {
+"poi_id": "poi_w1206473753",
+"category": "recreation",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/1206473753; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.624343,
+-35.541391
+]
+},
+"properties": {
+"poi_id": "poi_w1207626812",
+"category": "recreation",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/1207626812; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.620294,
+-35.543254
+]
+},
+"properties": {
+"poi_id": "poi_w1207640666",
+"category": "services",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/1207640666; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.620625,
+-35.543317
+]
+},
+"properties": {
+"poi_id": "poi_w1207640669",
+"category": "services",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/1207640669; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.621454,
+-35.543618
+]
+},
+"properties": {
+"poi_id": "poi_w1207641625",
+"category": "recreation",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/1207641625; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.624394,
+-35.540551
+]
+},
+"properties": {
+"poi_id": "poi_w1208169414",
+"category": "recreation",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/1208169414; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.625082,
+-35.540274
+]
+},
+"properties": {
+"poi_id": "poi_w1208169415",
+"category": "recreation",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/1208169415; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.626923,
+-35.53402
+]
+},
+"properties": {
+"poi_id": "poi_w1211640401",
+"category": "recreation",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/1211640401; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.634896,
+-35.53468
+]
+},
+"properties": {
+"poi_id": "poi_w1212975020",
+"category": "recreation",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/1212975020; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.635056,
+-35.534694
+]
+},
+"properties": {
+"poi_id": "poi_w1212975021",
+"category": "recreation",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/1212975021; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.624321,
+-35.541355
+]
+},
+"properties": {
+"poi_id": "poi_w1392101155",
+"category": "recreation",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/1392101155; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.624412,
+-35.541418
+]
+},
+"properties": {
+"poi_id": "poi_w1392101156",
+"category": "recreation",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/1392101156; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.624341,
+-35.541488
+]
+},
+"properties": {
+"poi_id": "poi_w1392101157",
+"category": "recreation",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/1392101157; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.624253,
+-35.541424
+]
+},
+"properties": {
+"poi_id": "poi_w1392101158",
+"category": "recreation",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/1392101158; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.658867,
+-35.523302
+]
+},
+"properties": {
+"poi_id": "poi_w1432164914",
+"category": "recreation",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/1432164914; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.664888,
+-35.532112
+]
+},
+"properties": {
+"poi_id": "poi_w1433072992",
+"category": "shops",
+"name": "Mitre 10",
+"weight": 1.5,
+"source": "S-E03 way/1433072992; weight poi.named_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.601544,
+-35.591784
+]
+},
+"properties": {
+"poi_id": "poi_w1457482139",
+"category": "beach_foreshore",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/1457482139; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.61349,
+-35.558126
+]
+},
+"properties": {
+"poi_id": "poi_w1533436636",
+"category": "services",
+"name": "Liberty Victor Harbor",
+"weight": 1.0,
+"source": "S-E03 way/1533436636; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.558169,
+-35.52829
+]
+},
+"properties": {
+"poi_id": "poi_w1536453836",
+"category": "gym",
+"name": "Back Valley Tennis Club",
+"weight": 1.0,
+"source": "S-E03 way/1536453836; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.556997,
+-35.529177
+]
+},
+"properties": {
+"poi_id": "poi_w1536453837",
+"category": "gym",
+"name": "Victor Harbor Archery Club",
+"weight": 1.0,
+"source": "S-E03 way/1536453837; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.556946,
+-35.529107
+]
+},
+"properties": {
+"poi_id": "poi_w1536453838",
+"category": "recreation",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/1536453838; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.557816,
+-35.528307
+]
+},
+"properties": {
+"poi_id": "poi_w1536453839",
+"category": "recreation",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/1536453839; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.558033,
+-35.528303
+]
+},
+"properties": {
+"poi_id": "poi_w1536453840",
+"category": "recreation",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/1536453840; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.558187,
+-35.528299
+]
+},
+"properties": {
+"poi_id": "poi_w1536453841",
+"category": "recreation",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/1536453841; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.558335,
+-35.528298
+]
+},
+"properties": {
+"poi_id": "poi_w1536453842",
+"category": "recreation",
+"name": "",
+"weight": 1.0,
+"source": "S-E03 way/1536453842; weight poi.default_weight"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.6238,
+-35.5563
+]
+},
+"properties": {
+"poi_id": "poi_x_warland_reserve",
+"category": "beach_foreshore",
+"name": "Warland Reserve",
+"weight": 6.0,
+"source": "S-E01 way 124862539"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.6255,
+-35.5578
+]
+},
+"properties": {
+"poi_id": "poi_x_granite_island_causeway",
+"category": "beach_foreshore",
+"name": "Granite Island causeway",
+"weight": 5.0,
+"source": "assumption (foreshore end of the causeway, S-E01)"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.6115,
+-35.5641
+]
+},
+"properties": {
+"poi_id": "poi_x_kent_reserve",
+"category": "recreation",
+"name": "Kent Reserve",
+"weight": 2.0,
+"source": "S-E01 node 316602167"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.6015,
+-35.5714
+]
+},
+"properties": {
+"poi_id": "poi_x_encounter_bay_foreshore",
+"category": "beach_foreshore",
+"name": "Encounter Bay foreshore",
+"weight": 3.0,
+"source": "S-E01 way 439835772 (park on the Esplanade, Encounter Bay)"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.6135,
+-35.5562
+]
+},
+"properties": {
+"poi_id": "poi_x_victor_harbor_oval",
+"category": "recreation",
+"name": "Victor Harbor Oval",
+"weight": 2.0,
+"source": "S-E01 way 443028100"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.6217,
+-35.5536
+]
+},
+"properties": {
+"poi_id": "poi_x_grosvenor_gardens",
+"category": "recreation",
+"name": "Grosvenor Gardens",
+"weight": 1.0,
+"source": "S-E01 way 116482758"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.6064,
+-35.5632
+]
+},
+"properties": {
+"poi_id": "poi_x_john_simmons_park",
+"category": "recreation",
+"name": "John Simmons Park",
+"weight": 1.0,
+"source": "S-E01 way 1201089560"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.5975,
+-35.5749
+]
+},
+"properties": {
+"poi_id": "poi_x_encounter_bay_recreation_reserve",
+"category": "recreation",
+"name": "Encounter Bay Recreation Reserve",
+"weight": 1.0,
+"source": "S-E01 (The Yilki Common way 1208756169)"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.637771,
+-35.535404
+]
+},
+"properties": {
+"poi_id": "poi_mb40202030000_school",
+"category": "school",
+"name": "Education mesh block 40202030000 (McCracken)",
+"weight": 2.0,
+"source": "S-C30; S-S2-01 (ABS mesh block category)"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.596975,
+-35.555273
+]
+},
+"properties": {
+"poi_id": "poi_mb40215149700_school",
+"category": "school",
+"name": "Education mesh block 40215149700 (Victor Harbor)",
+"weight": 2.0,
+"source": "S-C30; S-S2-01 (ABS mesh block category)"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.636779,
+-35.52843
+]
+},
+"properties": {
+"poi_id": "poi_mb40215154300_school",
+"category": "school",
+"name": "Education mesh block 40215154300 (Hayborough)",
+"weight": 2.0,
+"source": "S-C30; S-S2-01 (ABS mesh block category)"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.606833,
+-35.561503
+]
+},
+"properties": {
+"poi_id": "poi_work_mb40199800000",
+"category": "work",
+"name": "Hospital/Medical mesh block 40199800000 (Victor Harbor)",
+"weight": 172.0,
+"source": "S-C30 (category, area); assumption work.jobs_per_ha"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.621254,
+-35.555243
+]
+},
+"properties": {
+"poi_id": "poi_work_mb40200021000",
+"category": "work",
+"name": "Commercial mesh block 40200021000 (Victor Harbor)",
+"weight": 60.8,
+"source": "S-C30 (category, area); assumption work.jobs_per_ha"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.622002,
+-35.556201
+]
+},
+"properties": {
+"poi_id": "poi_work_mb40200022000",
+"category": "work",
+"name": "Commercial mesh block 40200022000 (Victor Harbor)",
+"weight": 103.6,
+"source": "S-C30 (category, area); assumption work.jobs_per_ha"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.599679,
+-35.587024
+]
+},
+"properties": {
+"poi_id": "poi_work_mb40200182000",
+"category": "work",
+"name": "Commercial mesh block 40200182000 (Encounter Bay)",
+"weight": 80.8,
+"source": "S-C30 (category, area); assumption work.jobs_per_ha"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.620255,
+-35.553196
+]
+},
+"properties": {
+"poi_id": "poi_work_mb40200400000",
+"category": "work",
+"name": "Commercial mesh block 40200400000 (Victor Harbor)",
+"weight": 203.2,
+"source": "S-C30 (category, area); assumption work.jobs_per_ha"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.615176,
+-35.558143
+]
+},
+"properties": {
+"poi_id": "poi_work_mb40200471000",
+"category": "work",
+"name": "Commercial mesh block 40200471000 (Victor Harbor)",
+"weight": 104.4,
+"source": "S-C30 (category, area); assumption work.jobs_per_ha"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.625652,
+-35.541662
+]
+},
+"properties": {
+"poi_id": "poi_work_mb40200730000",
+"category": "work",
+"name": "Education mesh block 40200730000 (Victor Harbor)",
+"weight": 188.4,
+"source": "S-C30 (category, area); assumption work.jobs_per_ha"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.623495,
+-35.554891
+]
+},
+"properties": {
+"poi_id": "poi_work_mb40201081000",
+"category": "work",
+"name": "Commercial mesh block 40201081000 (Victor Harbor)",
+"weight": 58.0,
+"source": "S-C30 (category, area); assumption work.jobs_per_ha"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.621756,
+-35.554811
+]
+},
+"properties": {
+"poi_id": "poi_work_mb40201082000",
+"category": "work",
+"name": "Commercial mesh block 40201082000 (Victor Harbor)",
+"weight": 43.6,
+"source": "S-C30 (category, area); assumption work.jobs_per_ha"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.622623,
+-35.554585
+]
+},
+"properties": {
+"poi_id": "poi_work_mb40201083000",
+"category": "work",
+"name": "Commercial mesh block 40201083000 (Victor Harbor)",
+"weight": 62.8,
+"source": "S-C30 (category, area); assumption work.jobs_per_ha"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.62382,
+-35.551307
+]
+},
+"properties": {
+"poi_id": "poi_work_mb40201301000",
+"category": "work",
+"name": "Commercial mesh block 40201301000 (Victor Harbor)",
+"weight": 89.2,
+"source": "S-C30 (category, area); assumption work.jobs_per_ha"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.622461,
+-35.552959
+]
+},
+"properties": {
+"poi_id": "poi_work_mb40201302000",
+"category": "work",
+"name": "Commercial mesh block 40201302000 (Victor Harbor)",
+"weight": 74.4,
+"source": "S-C30 (category, area); assumption work.jobs_per_ha"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.623203,
+-35.552902
+]
+},
+"properties": {
+"poi_id": "poi_work_mb40201303000",
+"category": "work",
+"name": "Commercial mesh block 40201303000 (Victor Harbor)",
+"weight": 47.2,
+"source": "S-C30 (category, area); assumption work.jobs_per_ha"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.624322,
+-35.553205
+]
+},
+"properties": {
+"poi_id": "poi_work_mb40201304000",
+"category": "work",
+"name": "Commercial mesh block 40201304000 (Victor Harbor)",
+"weight": 24.0,
+"source": "S-C30 (category, area); assumption work.jobs_per_ha"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.623794,
+-35.553089
+]
+},
+"properties": {
+"poi_id": "poi_work_mb40201305000",
+"category": "work",
+"name": "Commercial mesh block 40201305000 (Victor Harbor)",
+"weight": 40.8,
+"source": "S-C30 (category, area); assumption work.jobs_per_ha"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.600259,
+-35.558972
+]
+},
+"properties": {
+"poi_id": "poi_work_mb40201441000",
+"category": "work",
+"name": "Industrial mesh block 40201441000 (Encounter Bay)",
+"weight": 82.95,
+"source": "S-C30 (category, area); assumption work.jobs_per_ha"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.603168,
+-35.558433
+]
+},
+"properties": {
+"poi_id": "poi_work_mb40201442000",
+"category": "work",
+"name": "Industrial mesh block 40201442000 (Victor Harbor)",
+"weight": 14.55,
+"source": "S-C30 (category, area); assumption work.jobs_per_ha"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.60183,
+-35.558556
+]
+},
+"properties": {
+"poi_id": "poi_work_mb40201443000",
+"category": "work",
+"name": "Industrial mesh block 40201443000 (Victor Harbor)",
+"weight": 75.9,
+"source": "S-C30 (category, area); assumption work.jobs_per_ha"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.63956,
+-35.5353
+]
+},
+"properties": {
+"poi_id": "poi_work_mb40202021000",
+"category": "work",
+"name": "Commercial mesh block 40202021000 (Hayborough)",
+"weight": 114.4,
+"source": "S-C30 (category, area); assumption work.jobs_per_ha"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.639425,
+-35.532791
+]
+},
+"properties": {
+"poi_id": "poi_work_mb40202023000",
+"category": "work",
+"name": "Commercial mesh block 40202023000 (Hayborough)",
+"weight": 58.4,
+"source": "S-C30 (category, area); assumption work.jobs_per_ha"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.639107,
+-35.534006
+]
+},
+"properties": {
+"poi_id": "poi_work_mb40202024000",
+"category": "work",
+"name": "Commercial mesh block 40202024000 (Hayborough)",
+"weight": 56.4,
+"source": "S-C30 (category, area); assumption work.jobs_per_ha"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.641227,
+-35.535764
+]
+},
+"properties": {
+"poi_id": "poi_work_mb40202025000",
+"category": "work",
+"name": "Commercial mesh block 40202025000 (Hayborough)",
+"weight": 55.2,
+"source": "S-C30 (category, area); assumption work.jobs_per_ha"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.637771,
+-35.535404
+]
+},
+"properties": {
+"poi_id": "poi_work_mb40202030000",
+"category": "work",
+"name": "Education mesh block 40202030000 (McCracken)",
+"weight": 117.3,
+"source": "S-C30 (category, area); assumption work.jobs_per_ha"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.626658,
+-35.528288
+]
+},
+"properties": {
+"poi_id": "poi_work_mb40202072000",
+"category": "work",
+"name": "Other mesh block 40202072000 (Hindmarsh Valley)",
+"weight": 52.05,
+"source": "S-C30 (category, area); assumption work.jobs_per_ha"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.647822,
+-35.5231
+]
+},
+"properties": {
+"poi_id": "poi_work_mb40215048200",
+"category": "work",
+"name": "Industrial mesh block 40215048200 (Hindmarsh Valley)",
+"weight": 385.35,
+"source": "S-C30 (category, area); assumption work.jobs_per_ha"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.612247,
+-35.55631
+]
+},
+"properties": {
+"poi_id": "poi_work_mb40215103500",
+"category": "work",
+"name": "Education mesh block 40215103500 (Victor Harbor)",
+"weight": 184.05,
+"source": "S-C30 (category, area); assumption work.jobs_per_ha"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.596975,
+-35.555273
+]
+},
+"properties": {
+"poi_id": "poi_work_mb40215149700",
+"category": "work",
+"name": "Education mesh block 40215149700 (Victor Harbor)",
+"weight": 123.3,
+"source": "S-C30 (category, area); assumption work.jobs_per_ha"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.636779,
+-35.52843
+]
+},
+"properties": {
+"poi_id": "poi_work_mb40215154300",
+"category": "work",
+"name": "Education mesh block 40215154300 (Hayborough)",
+"weight": 64.35,
+"source": "S-C30 (category, area); assumption work.jobs_per_ha"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.624043,
+-35.554786
+]
+},
+"properties": {
+"poi_id": "poi_work_mb40215154400",
+"category": "work",
+"name": "Transport mesh block 40215154400 (Victor Harbor)",
+"weight": 9.95,
+"source": "S-C30 (category, area); assumption work.jobs_per_ha"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.622206,
+-35.551786
+]
+},
+"properties": {
+"poi_id": "poi_work_mb40215275100",
+"category": "work",
+"name": "Commercial mesh block 40215275100 (Victor Harbor)",
+"weight": 82.4,
+"source": "S-C30 (category, area); assumption work.jobs_per_ha"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+138.6203,
+-35.5529
+]
+},
+"properties": {
+"poi_id": "poi_work_town_centre",
+"category": "work",
+"name": "Town centre (Victor Central)",
+"weight": 400.0,
+"source": "assumption work.town_centre_weight; S-E03 location"
+}
+}
+]
+}

@@ -1,0 +1,89 @@
+{
+ "added": {
+  "edges": 4,
+  "ids": [
+   "s7_ring_hindmarsh_grantley_0_1",
+   "s7_ring_hindmarsh_grantley_1_2",
+   "s7_ring_hindmarsh_grantley_2_3",
+   "s7_ring_hindmarsh_grantley_3_0"
+  ]
+ },
+ "checks": {
+  "edges": 4685,
+  "ok": true,
+  "roundabout_problems": {},
+  "traffic_lights": 0,
+  "undrivable_passenger": [],
+  "undrivable_truck": []
+ },
+ "components": [
+  "n3",
+  "n4"
+ ],
+ "edges_touched_directed_km": 0.928,
+ "junction_aliases": {
+  "s7_rb_hindmarsh_grantley_0": {
+   "junction_id": "hindmarsh_grantley_bridge",
+   "kind": "roundabout ring node",
+   "replaces": [
+    "1948692238"
+   ]
+  },
+  "s7_rb_hindmarsh_grantley_1": {
+   "junction_id": "hindmarsh_grantley_bridge",
+   "kind": "roundabout ring node",
+   "replaces": [
+    "1948692238"
+   ]
+  },
+  "s7_rb_hindmarsh_grantley_2": {
+   "junction_id": "hindmarsh_grantley_bridge",
+   "kind": "roundabout ring node",
+   "replaces": [
+    "1948692238"
+   ]
+  },
+  "s7_rb_hindmarsh_grantley_3": {
+   "junction_id": "hindmarsh_grantley_bridge",
+   "kind": "roundabout ring node",
+   "replaces": [
+    "1948692238"
+   ]
+  }
+ },
+ "movements_extra": [],
+ "movements_missing": {},
+ "movements_removed_after_guess": [],
+ "net": "sim/data/networks/n9_bays.net.xml",
+ "new_signals": [],
+ "notes": [
+  "armstrong_crozier: Crozier Road approach 39946279 flared to 2 lanes for its last 40 m (left/straight kerb lane, right/U median lane)",
+  "hindmarsh_grantley: priority junction 1948692238 (hindmarsh_grantley_bridge) -> single-lane roundabout, radius 12 m, 4 legs, ring 21 km/h, centre moved 8 m away from -184390360#1"
+ ],
+ "removed": {
+  "directed_km": 0.0,
+  "edges": 0,
+  "ids": []
+ },
+ "rerouted_to_new_node": {
+  "edges": 8,
+  "ids": [
+   "-184390360#1",
+   "-42530401#0",
+   "-50904904#6",
+   "-50904904#7",
+   "184390360#0",
+   "42530401#0",
+   "50904904#6",
+   "50904904#7"
+  ]
+ },
+ "scenario": "n9",
+ "signal_cycles_s": {},
+ "speed_changed": {},
+ "turn_bays": 177,
+ "widened": {
+  "directed_km": 0.195,
+  "edges": 1
+ }
+}

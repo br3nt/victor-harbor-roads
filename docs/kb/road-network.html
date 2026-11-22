@@ -1,0 +1,55 @@
+<!DOCTYPE html><html lang="en"><head profile="https://br3nt.github.io/okf/">
+<meta charset="utf-8">
+<title>Road Network</title>
+<link rel="canonical" href="road-network.html">
+<meta name="uuid" scheme="UUID" content="4ff095ec-1821-4f4c-bb97-412857e4f820">
+<meta name="created" scheme="ISO8601" content="2026-11-21T09:41:18+10:30">
+<meta name="updated" scheme="ISO8601" content="2026-11-21T13:29:09+10:30">
+<meta name="keywords" content="network, simulation">
+<link rev="chapter" href="victor-harbor-traffic-investigation.html">
+<link rel="stylesheet" href="kb.css">
+</head>
+<body><nav class="kb-nav"><a href="victor-harbor-traffic-investigation.html">⌂ Home</a> · <a href="sitemap.html">Sitemap</a> · <a class="pn-navlink" href="private-names-review.html">Private residents</a></nav>
+<h1>Road Network</h1>
+<p>The town's road network as OpenStreetMap records it (data timestamp <time datetime="2026-11-20T23:03:20Z">20 Nov 2026</time>), the base for the simulation network (<a rel="related" href="investigation-plan.html#R12">R12</a>). Extract and analysis: <a href="sources-register.html#S-E01">[S-E01]</a>; full write-up <code>research/E-network.md</code>.</p>
+
+<h2 id="spine">The arterial spine</h2>
+<p>Torrens Street, Victoria Street, Bay Road, Hindmarsh Road and Port Elliot Road carry route <strong>B37</strong>; Adelaide Road and Victor Harbor Road carry <strong>A13</strong> — State-numbered routes, tagged trunk/primary at 60 km/h. Torrens and Victoria Streets are divided roads (split carriageways). Ocean Street and Railway Terrace are already one-way <a href="sources-register.html#S-E01">[S-E01]</a>.</p>
+
+<h2 id="intersections">Key town-centre intersections today</h2>
+<p><strong>No intersection in the area is signalised.</strong> The only signals are three pedestrian crossings (two on Torrens Street near Coral Street, one near Bay Road/Franklin Parade) <a href="sources-register.html#S-E01">[S-E01]</a>. To be confirmed on the ground.</p>
+<table>
+<thead><tr><th>Intersection</th><th>Control today</th><th>Victor Harbor Integrated Transport Strategy (<abbr title="Victor Harbor Integrated Transport Strategy">VHITS</abbr>) proposal</th></tr></thead>
+<tbody>
+<tr><td>Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd</td><td>Roundabout (multi-leg, split carriageways)</td><td><strong>Signals</strong> (<a href="options-register.html#C4">C4</a>)</td></tr>
+<tr><td>Torrens St / Crozier Rd</td><td>Roundabout (built since the 2017 strategy recommended it)</td><td><strong>Signals</strong> (<a href="options-register.html#C4">C4</a>)</td></tr>
+<tr><td>Torrens St / Victoria St / Wills St</td><td>Roundabout</td><td>On the one-way loop (<a href="options-register.html#C3">C3</a>)</td></tr>
+<tr><td>Bay Rd / Victoria St / George Main Rd</td><td>Roundabout</td><td>—</td></tr>
+<tr><td>Esplanade / King St</td><td>Roundabout</td><td>Inside / edge of 30 km/h area</td></tr>
+<tr><td>Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken)</td><td>Roundabout</td><td>Main entry roundabout (<a href="options-register.html#B4">B4</a> candidate)</td></tr>
+<tr><td>Torrens St with Coral, Hill, Ocean, Stuart Sts</td><td>Priority (give way)</td><td>—</td></tr>
+<tr><td>Victoria St with Burke, King, Island, Granite Sts</td><td>Priority, no right turn from Victoria St</td><td>—</td></tr>
+<tr><td>Coral St, Albert Pl, Eyre Tce, Flinders Pde junctions (≈12)</td><td>Priority</td><td>Inside 30 km/h / shared zones</td></tr>
+</tbody></table>
+<p><strong>Inference:</strong> the council's "traffic lights" proposal replaces two existing roundabouts with signals. The 2017 strategy judged signals likely to add delay at the neighbouring Torrens/Victoria roundabout (<a rel="related" href="2017-town-centre-traffic-strategy.html">2017 strategy</a>). This is a direct, testable comparison for the simulation.</p>
+
+<h2 id="gaps">Data quality for simulation</h2>
+<ul>
+<li>Of 1,323 drivable ways: lanes missing on 95%, speed limit on 60%. Arterial segments without a speed tag would default to the wrong speed in Simulation of Urban MObility (<abbr title="Simulation of Urban MObility, an open-source traffic simulator">SUMO</abbr>), so lanes and speeds on the arterials must be set by hand from imagery and the Department for Infrastructure and Transport (<abbr title="Department for Infrastructure and Transport">DIT</abbr>) speed-zone data.</li>
+<li>About 20 roundabouts import as "incomplete" in Simulation of Urban MObility (<abbr title="Simulation of Urban MObility, an open-source traffic simulator">SUMO</abbr>) and need checking by hand.</li>
+<li>Car-park capacities are almost entirely missing (146 car parks, 2 with a capacity).</li>
+<li>Granite Island causeway is pedestrian / horse tram only — not a car route.</li>
+</ul>
+
+<h2 id="pois">Points of interest</h2>
+<p>405 POIs extracted <a href="sources-register.html#S-E03">[S-E03]</a>: 12 supermarket/food retail (Woolworths at Victor Central, Drakes, IGA; Coles and Aldi at McCracken), 33 other shops, 17 food and drink, 1 hospital, 2 pharmacies, 6 fuel, 4 caravan/camp sites, 5 hotels/motels, 2 schools, 64 sports pitches, 2 golf courses, 14 beaches, 24 bus stops. Cafes, restaurants, clinics and gyms are thinly mapped — supplement before computing accessibility (<a href="investigation-plan.html#R14">R14</a>).</p>
+
+<h2 id="residential">Residential areas</h2>
+<p>71 residential land-use areas (874.5 ha); 11 construction areas (29.5 ha), including new streets at Seascape Rise and Sandpiper Drive, Encounter Bay. Suburbs with boundaries: Victor Harbor, Encounter Bay, Hayborough, McCracken, Hindmarsh Valley, Port Elliot, Chiton, Back Valley, Lower Inman Valley, Waitpinga <a href="sources-register.html#S-E02">[S-E02]</a>.</p>
+
+<h2 id="toolchain">Toolchain</h2>
+<p>Simulation of Urban MObility (<abbr title="Simulation of Urban MObility, an open-source traffic simulator">SUMO</abbr>) 1.28.0 installs from PyPI on this Mac (<code>python3 -m venv .venv &amp;&amp; .venv/bin/pip install eclipse-sumo traci sumolib</code>). A test import of the extract with <code>netconvert</code> succeeded in 0.7 s <a href="sources-register.html#S-E04">[S-E04]</a>. See <a rel="related" href="simulation-design.html">Simulation Design</a>.</p>
+<aside class="kb-backlinks"><h2>Linked from</h2><ul><li><span class="rel">chapter</span> ← <a href="victor-harbor-traffic-investigation.html">Victor Harbor Traffic Investigation</a></li></ul></aside>
+
+
+</body></html>

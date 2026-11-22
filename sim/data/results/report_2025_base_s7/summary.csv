@@ -1,0 +1,29 @@
+condition,scenario,label,seeds,mean_trip_min,p95_trip_min,time_stopped_veh_h,stopped_change_pct,trip_change_s,teleports
+weekday_term,baseline,Today's network,3,6.29,13.07,136.63,0.0,0.0,0.0
+weekday_term,cp,Council package (C1a+C2+C3+C4),3,6.53,13.39,215.83,58.0,14.4,1.33
+weekday_term,bp,Brent's package (B3+B4+B5),3,6.25,12.92,133.6,-2.2,-2.4,0.67
+weekday_term,b3,B3 four-lane ring road,3,6.25,12.93,130.93,-4.2,-2.4,0.0
+weekday_term,b5,B5 roundabout slip lanes,3,6.29,13.07,137.33,0.5,0.0,0.0
+weekday_term,n1,N1 Grantley Ave crossing closed,3,6.32,13.09,143.77,5.2,1.8,0.0
+weekday_term,n2,N2 roundabout at Armstrong Rd / Crozier Rd,3,6.32,13.18,140.43,2.8,1.8,0.0
+weekday_term,n3,N3 Crozier Rd flare at Armstrong Rd,3,6.28,13.06,132.4,-3.1,-0.6,0.0
+weekday_term,n4,N4 roundabout at Hindmarsh Rd / Grantley Ave,3,6.3,13.08,125.23,-8.3,0.6,0.0
+weekday_term,n5,N5 roundabouts at Armstrong/Crozier and Armstrong/Greenhills,3,6.35,13.29,144.0,5.4,3.6,0.0
+weekday_term,n6,"N6 no right turn out of Granite St, Coral St, Wattle Dr",3,6.3,13.07,138.0,1.0,0.6,0.0
+weekday_term,n7,N7 combination (N5 + N4),3,6.36,13.32,134.37,-1.7,4.2,0.0
+weekday_term,n8,"N8 Victoria St left-turn lanes (Oval Rd, IGA car park)",3,6.29,13.06,137.83,0.9,0.0,0.33
+weekday_term,n9,N9 combination (N3 + N4),3,6.29,13.08,121.6,-11.0,0.0,0.0
+summer_peak,baseline,Today's network,3,6.84,14.0,459.73,0.0,0.0,2.67
+summer_peak,cp,Council package (C1a+C2+C3+C4),3,7.31,14.86,734.43,59.8,28.2,12.0
+summer_peak,bp,Brent's package (B3+B4+B5),3,6.84,14.01,491.53,6.9,0.0,7.67
+summer_peak,b3,B3 four-lane ring road,3,6.83,13.99,477.6,3.9,-0.6,2.33
+summer_peak,b5,B5 roundabout slip lanes,3,6.92,14.24,519.87,13.1,4.8,3.67
+summer_peak,n1,N1 Grantley Ave crossing closed,3,7.05,14.49,592.67,28.9,12.6,9.33
+summer_peak,n2,N2 roundabout at Armstrong Rd / Crozier Rd,3,6.91,14.19,490.3,6.6,4.2,2.0
+summer_peak,n3,N3 Crozier Rd flare at Armstrong Rd,3,6.8,13.87,426.5,-7.2,-2.4,2.0
+summer_peak,n4,N4 roundabout at Hindmarsh Rd / Grantley Ave,3,6.84,14.04,428.93,-6.7,0.0,2.0
+summer_peak,n5,N5 roundabouts at Armstrong/Crozier and Armstrong/Greenhills,3,6.95,14.34,505.43,9.9,6.6,4.33
+summer_peak,n6,"N6 no right turn out of Granite St, Coral St, Wattle Dr",3,6.98,14.38,561.47,22.1,8.4,8.67
+summer_peak,n7,N7 combination (N5 + N4),3,6.87,14.14,412.43,-10.3,1.8,1.67
+summer_peak,n8,"N8 Victoria St left-turn lanes (Oval Rd, IGA car park)",3,6.88,14.1,499.57,8.7,2.4,10.0
+summer_peak,n9,N9 combination (N3 + N4),3,6.78,13.86,377.8,-17.8,-3.6,1.0

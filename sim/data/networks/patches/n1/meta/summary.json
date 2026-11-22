@@ -1,0 +1,47 @@
+{
+ "added": {
+  "edges": 0,
+  "ids": []
+ },
+ "checks": {
+  "edges": 4680,
+  "ok": true,
+  "roundabout_problems": {},
+  "traffic_lights": 0,
+  "undrivable_passenger": [],
+  "undrivable_truck": []
+ },
+ "components": [
+  "n1"
+ ],
+ "edges_touched_directed_km": 0.035,
+ "junction_aliases": {},
+ "movements_extra": [],
+ "movements_missing": {},
+ "movements_removed_after_guess": [],
+ "net": "sim/data/networks/n1_bays.net.xml",
+ "new_signals": [],
+ "notes": [
+  "N1 Grantley Ave rail crossing closed: 2 edges removed (35 m directed: -184390360#1, 184390360#0), 0 left without access"
+ ],
+ "removed": {
+  "directed_km": 0.035,
+  "edges": 2,
+  "ids": [
+   "-184390360#1",
+   "184390360#0"
+  ]
+ },
+ "rerouted_to_new_node": {
+  "edges": 0,
+  "ids": []
+ },
+ "scenario": "n1",
+ "signal_cycles_s": {},
+ "speed_changed": {},
+ "turn_bays": 179,
+ "widened": {
+  "directed_km": 0.0,
+  "edges": 0
+ }
+}

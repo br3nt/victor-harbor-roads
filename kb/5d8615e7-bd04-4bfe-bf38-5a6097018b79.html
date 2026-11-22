@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head profile="https://br3nt.github.io/okf/">
+<meta charset="utf-8">
+<title>Traffic and Crash Data</title>
+<link rel="canonical" href="/n/traffic-and-crash-data">
+<meta name="uuid" scheme="UUID" content="5d8615e7-bd04-4bfe-bf38-5a6097018b79">
+<meta name="created" scheme="ISO8601" content="2026-11-21T09:44:04+10:30">
+<meta name="updated" scheme="ISO8601" content="2026-11-21T19:03:48+10:30">
+<meta name="keywords" content="traffic, data">
+<link rev="chapter" href="/n/victor-harbor-traffic-investigation">
+<link rev="related" href="/n/brents-questions">
+<link rev="related" href="/n/simulation-results">
+<link rev="related" href="/n/simulation-results">
+</head>
+<body>
+<h1>Traffic and Crash Data</h1>
+<p>What public data says about how traffic moves today (<a rel="related" href="/n/investigation-plan#R8">R8</a>, <a rel="related" href="/n/investigation-plan#R3">R3</a>). Full write-up: <code>research/D-traffic.md</code>.</p>
+
+<h2 id="through-road">The through road</h2>
+<p>Victor Harbor's main through road is one State road (Department for Infrastructure and Transport [DIT] road 04760): Victor Harbor Road → Adelaide Road → Hindmarsh Road → Torrens Street, ending at the Torrens/Victoria Street roundabout <a href="/n/sources-register#S-D05">[S-D05]</a>.</p>
+
+<h2 id="aadt">Daily volumes (Department for Infrastructure and Transport [DIT], 2026 release)</h2>
+<script type="application/json" id="aadt-data">
+{"source":"S-D01","unit":"vehicles/day, both directions, annual average","rows":[
+ {"road":"Hindmarsh Rd","section":"RRD 47.66-49.10","aadt":19300,"count_year":2024,"cv_pct":2},
+ {"road":"Hindmarsh Rd","section":"RRD 49.10-50.00","aadt":17300,"count_year":2024,"cv_pct":2},
+ {"road":"Torrens St","section":"RRD 50.00-50.38","aadt":15500,"count_year":2024,"cv_pct":2},
+ {"road":"Torrens St","section":"RRD 50.38-50.56","aadt":12900,"count_year":2024,"cv_pct":2},
+ {"road":"Port Elliot Rd","section":"Victor Harbor end","aadt":9500,"count_year":2025,"cv_pct":9},
+ {"road":"Victor Harbor Rd","section":"north of town","aadt":"7700-8400","count_year":2025,"cv_pct":"12.5-16.5"},
+ {"road":"Adelaide Rd","section":"","aadt":7200,"count_year":2025,"cv_pct":11},
+ {"road":"Victoria St / Inman Valley Rd","section":"Victoria St end","aadt":12000,"count_year":2021,"cv_pct":8.5}
+]}
+</script>
+<table>
+<thead><tr><th>Road</th><th>Vehicles/day</th><th>Count year</th><th>Commercial %</th></tr></thead>
+<tbody>
+<tr><td>Hindmarsh Rd (two sections)</td><td>19,300 / 17,300</td><td>2024</td><td>2*</td></tr>
+<tr><td>Torrens St (two sections)</td><td>15,500 / 12,900</td><td>2024</td><td>2*</td></tr>
+<tr><td>Victoria St / Inman Valley Rd</td><td>12,000</td><td>2021</td><td>8.5</td></tr>
+<tr><td>Port Elliot Rd (Victor end)</td><td>9,500</td><td>2025</td><td>9</td></tr>
+<tr><td>Victor Harbor Rd (north of town)</td><td>7,700–8,400</td><td>2025</td><td>12.5–16.5</td></tr>
+<tr><td>Adelaide Rd</td><td>7,200</td><td>2025</td><td>11</td></tr>
+</tbody></table>
+<p>Source <a href="/n/sources-register#S-D01">[S-D01]</a>, extract <a href="/n/sources-register#S-D02">[S-D02]</a>. *The 2% on the town sections has no class breakdown and looks assumed (<strong>inference</strong>); 2017 turning counts gave about 1.4% heavy <a href="/n/sources-register#S-D19">[S-D19]</a>.</p>
+<p><strong>Trend:</strong> Hindmarsh Rd went from 14,000 (count year 2009) to 18,400 (2021) to 19,300 (2024) — about 38% over 15 years. Torrens St has been flat (15,600 → 15,100 → 15,500) <a href="/n/sources-register#S-D02">[S-D02]</a>. <strong>Inference:</strong> growth is landing on Hindmarsh Rd (the approach), not in the town-centre stretch — consistent with new housing and shopping at McCracken / north.</p>
+
+<h2 id="turning-counts">Turning counts — the best local data</h2>
+<ul>
+<li>12-hour (7am–7pm) turning counts at seven Torrens St / Hindmarsh Rd intersections on <time datetime="2017-04-26">Wed 26 Apr 2017</time>, in 15-minute bins with light/heavy/cycle splits <a href="/n/sources-register#S-D19">[S-D19 App. A]</a>. Taken during school holidays; described as reasonably typical.</li>
+<li>About 7,600 vehicles entered and 6,700 left the town centre in those 12 hours.</li>
+<li><strong>Peaks are midday, not commuter:</strong> the busiest hour at each intersection falls between 11:15 and 14:15, carrying 1,281–1,823 vehicles/hour; Seaview/Eyre is the busiest (1,823, 11:45–12:45).</li>
+<li>Torrens St right turn into Ocean St about 700 vehicles/day; Stuart St about 530 left and 180 right turns.</li>
+</ul>
+<p>These counts are nine years old and from April, not peak summer. They are the calibration starting point (<a href="/n/investigation-plan#R26">R26</a>); fresh counts would be better.</p>
+
+<h2 id="projected-counts">Projected counts (2017 to 2025)</h2>
+<p>The 2017 counts are nine years old, so the simulation uses a separate projected copy, scaled road by road to 2025 and labelled as projected, never as observed. Method, files and limits: <code>sim/data/counts/PROJECTION.md</code>. The 2017 data itself is unchanged.</p>
+<table>
+<thead><tr><th>Road</th><th>Basis for the factor</th><th>Factor, 2017 to 2025</th></tr></thead>
+<tbody>
+<tr><td>Torrens St</td><td>State count history by count year (2010, 2021, 2024; two sections)</td><td>0.98</td></tr>
+<tr><td>Hindmarsh Rd</td><td>State count history (2010, 2021, 2024)</td><td>1.05</td></tr>
+<tr><td>Victoria St</td><td>State count history (2014, 2016, 2021)</td><td>0.91</td></tr>
+<tr><td>Council streets (not counted by the State)</td><td>Estimated resident population growth 2018–2025, about 1.95% a year over 8.2 years <a href="/n/sources-register#S-C03">[S-C03]</a></td><td>1.17</td></tr>
+</tbody></table>
+<p>The State counts are the Department for Infrastructure and Transport (DIT) annual average daily traffic figures <a href="/n/sources-register#S-D01">[S-D01]</a>. A movement between two roads takes the geometric mean of the two road factors; no adjustment is made for term time against school holidays, because no local evidence exists for one (an assumption).</p>
+<p><strong>Validation:</strong> compared with the Department for Infrastructure and Transport (DIT) 2024 annual average daily traffic, five of six projected positions on Torrens St and Hindmarsh Rd are within ±10% (ratios 0.91 to 1.09), and all six are within 17% (lowest 0.83, at Coral St, cause not established). Against the consultant's estimated daily volumes <a href="/n/sources-register#S-B04">[S-B04 p.22]</a>, the projection agrees for Coral St (1.01) and Seaview Rd (0.87) but not for Eyre Terrace (2.17) or Torrens St (1.68; the consultant's 8,500 contradicts the State's own count of about 15,500 for that street). The comparison is rough: the State figure is an all-days annual mean, the 2017 count was a school-holiday weekday, and the 12-hour to daily conversion carries 5–10% uncertainty <code>sim/data/counts/PROJECTION.md</code>. The model carries about 0.80 of the projected 2025 counted volume at matched movements (figure reported by the simulation stream).</p>
+<p><strong>Inference:</strong> a 2018 council count on Armstrong Rd of about 6,000 vehicles a day <a href="/n/sources-register#S-B34">[S-B34]</a> against the consultant's later estimate of 7,200 <a href="/n/sources-register#S-B04">[S-B04 p.22]</a> would be a 20% rise, faster than population. It compares a count with an estimate, so it is only a hint that the 1.17 factor for council streets may be low <code>sim/data/counts/PROJECTION.md</code>.</p>
+
+<h2 id="summer">Summer peak evidence</h2>
+<ul>
+<li>Department for Infrastructure and Transport (DIT): more than 11,000 vehicles/day on Victor Harbor Rd north of town in the summer holiday peak <a href="/n/sources-register#S-D18">[S-D18]</a>, against 7,700–8,400 annual average — roughly +30–40% (<strong>inference</strong>).</li>
+<li>Parking surveys: the core central business district (CBD) (Ocean St between Torrens and Coral St, Coral St between Torrens St and Flinders Pde) was <q>consistently more than 80%</q> occupied on a typical weekday (Wed 2 Dec 2015) as well as on 30 Dec 2015, when <q>All streets within the CBD including the length of Flinders Parade were at or near capacity</q> <a href="/n/sources-register#S-D21">[S-D21 s7.2]</a>. What summer changed was the extent: on a typical day parking was readily available outside the core. (The 26–29% average in the 2017 strategy is across all ~2,000 on-street spaces in the wider study area, not the core.)</li>
+<li>The 2015–16 study warned the Hindmarsh/Seaview/Eyre roundabout would reach capacity in summer peaks if the Grantley Avenue crossing stayed open <a href="/n/sources-register#S-D21">[S-D21 s13.3.15]</a>.</li>
+<li>No hourly, permanent-counter or seasonal profiles exist on the State data portal.</li>
+</ul>
+
+<h2 id="crashes">Crashes 2021–2025 (town centre box)</h2>
+<p>97 crashes: 65 property damage only, 24 minor injury, 7 serious injury, 1 fatal (a pedestrian, January 2023, near Torrens St / Stuart St). 40 right-angle crashes, 7 involving pedestrians. By year: 22, 21, 12, 24, 18 <a href="/n/sources-register#S-D13">[S-D13]</a> <a href="/n/sources-register#S-D16">[S-D16]</a>.</p>
+<p>Hotspots: Torrens St / Eyre Tce roundabout 6 (5 right-angle); Acraman St / Hill St 6; Acraman St / Seaview Rd 5; Armstrong Rd / Crozier Rd 4. Wider area: 354 crashes, 5 fatal. Street labels are approximate (crash data has coordinates only, snapped to the nearest street).</p>
+<p><strong>Inference:</strong> the crash record points at right-angle crashes at priority junctions on the side streets (Acraman, Armstrong, Crozier) more than at the arterial roundabouts the signals proposal targets.</p>
+
+<h2 id="conflicts">Disagreements between sources</h2>
+<ul>
+<li>Daily volumes: SMEC's Victor Harbor Integrated Transport Strategy (VHITS) report gives Hindmarsh Rd 9,500 and Torrens St 8,500 — roughly 1.5–2 times lower than the Department for Infrastructure and Transport (DIT)'s figures (see <a rel="related" href="/n/due-diligence-assessment#data-conflict">Due Diligence Assessment</a>) <a href="/n/sources-register#S-B04">[S-B04 p.22]</a>.</li>
+<li>Torrens St speed limit: Department for Infrastructure and Transport (DIT)'s legal-limit layer says 50 km/h <a href="/n/sources-register#S-D05">[S-D05]</a>; OpenStreetMap (OSM) tags 60 km/h <a href="/n/sources-register#S-E01">[S-E01]</a>. DIT notes its layer may not match posted signs. Check on the ground.</li>
+</ul>
+</body>
+</html>

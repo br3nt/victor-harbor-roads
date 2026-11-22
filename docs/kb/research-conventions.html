@@ -1,0 +1,29 @@
+<!DOCTYPE html><html lang="en"><head profile="https://br3nt.github.io/okf/">
+<meta charset="utf-8">
+<title>Research Conventions</title>
+<link rel="canonical" href="research-conventions.html">
+<meta name="uuid" scheme="UUID" content="e0994ae2-be11-4375-9df8-6fced444f7b7">
+<meta name="created" scheme="ISO8601" content="2026-11-21T09:35:43+10:30">
+<meta name="updated" scheme="ISO8601" content="2026-11-21T13:29:08+10:30">
+<meta name="keywords" content="provenance">
+<link rev="chapter" href="victor-harbor-traffic-investigation.html">
+<link rev="describedby" href="investigation-plan.html">
+<link rev="describedby" href="sources-register.html">
+<link rel="stylesheet" href="kb.css">
+</head>
+<body><nav class="kb-nav"><a href="victor-harbor-traffic-investigation.html">⌂ Home</a> · <a href="sitemap.html">Sitemap</a> · <a class="pn-navlink" href="private-names-review.html">Private residents</a></nav>
+<h1>Research Conventions</h1>
+<p>How provenance is kept (<a rel="describedby" href="investigation-plan.html#R18">R18</a>). The working copy for research agents is <code>research/CONVENTIONS.md</code> in the project.</p>
+<ul>
+<li>Every source gets an id (<span class="src-id">S-&lt;stream&gt;&lt;nn&gt;</span>), an archived copy in <code>sources/&lt;stream&gt;/</code>, its retrieval time and a sha256 hash, recorded in the <a rel="describedby" href="sources-register.html">Sources Register</a>.</li>
+<li>Every claim cites its source id, with a page, section, or short quote.</li>
+<li>What a source says is kept apart from our inference; inferences are labelled.</li>
+<li>Numbers keep their units, date and geography as the source states them. Disagreeing sources are both recorded.</li>
+<li>Primary sources (council documents and minutes, state data, Australian Bureau of Statistics [<abbr title="Australian Bureau of Statistics">ABS</abbr>]) outrank news and social media, which are leads only.</li>
+<li>In notes, a source citation is a link to its row in the Sources Register (<code>#S-xxx</code>); an external link carries <code>rel="external"</code>.</li>
+<li>Status attributes (<code>data-status="todo|partial|found|missing"</code>) on requirements and expected items make progress machine-readable.</li>
+</ul>
+<aside class="kb-backlinks"><h2>Linked from</h2><ul><li><span class="rel">chapter</span> ← <a href="victor-harbor-traffic-investigation.html">Victor Harbor Traffic Investigation</a></li><li><span class="rel">describedby</span> ← <a href="investigation-plan.html">Investigation Plan</a>, <a href="sources-register.html">Sources Register</a></li></ul></aside>
+
+
+</body></html>

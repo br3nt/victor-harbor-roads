@@ -1,0 +1,24 @@
+[out:xml][timeout:180][bbox:-35.60,138.55,-35.46,138.67];
+(
+  way["highway"];
+  node["highway"];
+  relation["type"="restriction"];
+  way["landuse"];
+  way["leisure"];
+  way["amenity"];
+  node["amenity"];
+  way["shop"];
+  node["shop"];
+  way["tourism"];
+  node["tourism"];
+  way["building"~"retail|commercial|school|hospital"];
+  way["railway"];
+  way["natural"="beach"];
+  relation["type"="multipolygon"]["landuse"];
+  relation["type"="multipolygon"]["leisure"];
+  relation["type"="multipolygon"]["amenity"];
+  node["place"];
+  way["place"];
+);
+(._;>;);
+out meta;

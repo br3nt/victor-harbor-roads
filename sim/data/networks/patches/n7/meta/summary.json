@@ -1,0 +1,151 @@
+{
+ "added": {
+  "edges": 10,
+  "ids": [
+   "s7_ring_armstrong_crozier_0_1",
+   "s7_ring_armstrong_crozier_1_2",
+   "s7_ring_armstrong_crozier_2_0",
+   "s7_ring_armstrong_greenhills_0_1",
+   "s7_ring_armstrong_greenhills_1_2",
+   "s7_ring_armstrong_greenhills_2_0",
+   "s7_ring_hindmarsh_grantley_0_1",
+   "s7_ring_hindmarsh_grantley_1_2",
+   "s7_ring_hindmarsh_grantley_2_3",
+   "s7_ring_hindmarsh_grantley_3_0"
+  ]
+ },
+ "checks": {
+  "edges": 4687,
+  "ok": true,
+  "roundabout_problems": {},
+  "traffic_lights": 0,
+  "undrivable_passenger": [],
+  "undrivable_truck": []
+ },
+ "components": [
+  "n2",
+  "n5_greenhills",
+  "n4"
+ ],
+ "edges_touched_directed_km": 4.447,
+ "junction_aliases": {
+  "s7_rb_armstrong_crozier_0": {
+   "junction_id": "armstrong_crozier",
+   "kind": "roundabout ring node",
+   "replaces": [
+    "598111160"
+   ]
+  },
+  "s7_rb_armstrong_crozier_1": {
+   "junction_id": "armstrong_crozier",
+   "kind": "roundabout ring node",
+   "replaces": [
+    "598111160"
+   ]
+  },
+  "s7_rb_armstrong_crozier_2": {
+   "junction_id": "armstrong_crozier",
+   "kind": "roundabout ring node",
+   "replaces": [
+    "598111160"
+   ]
+  },
+  "s7_rb_armstrong_greenhills_0": {
+   "junction_id": "armstrong_greenhills",
+   "kind": "roundabout ring node",
+   "replaces": [
+    "598113188"
+   ]
+  },
+  "s7_rb_armstrong_greenhills_1": {
+   "junction_id": "armstrong_greenhills",
+   "kind": "roundabout ring node",
+   "replaces": [
+    "598113188"
+   ]
+  },
+  "s7_rb_armstrong_greenhills_2": {
+   "junction_id": "armstrong_greenhills",
+   "kind": "roundabout ring node",
+   "replaces": [
+    "598113188"
+   ]
+  },
+  "s7_rb_hindmarsh_grantley_0": {
+   "junction_id": "hindmarsh_grantley_bridge",
+   "kind": "roundabout ring node",
+   "replaces": [
+    "1948692238"
+   ]
+  },
+  "s7_rb_hindmarsh_grantley_1": {
+   "junction_id": "hindmarsh_grantley_bridge",
+   "kind": "roundabout ring node",
+   "replaces": [
+    "1948692238"
+   ]
+  },
+  "s7_rb_hindmarsh_grantley_2": {
+   "junction_id": "hindmarsh_grantley_bridge",
+   "kind": "roundabout ring node",
+   "replaces": [
+    "1948692238"
+   ]
+  },
+  "s7_rb_hindmarsh_grantley_3": {
+   "junction_id": "hindmarsh_grantley_bridge",
+   "kind": "roundabout ring node",
+   "replaces": [
+    "1948692238"
+   ]
+  }
+ },
+ "movements_extra": [],
+ "movements_missing": {},
+ "movements_removed_after_guess": [],
+ "net": "sim/data/networks/n7_bays.net.xml",
+ "new_signals": [],
+ "notes": [
+  "armstrong_crozier: priority junction 598111160 (armstrong_crozier) -> single-lane roundabout, radius 20 m, 3 legs, ring 27 km/h",
+  "armstrong_greenhills: priority junction 598113188 (armstrong_greenhills) -> single-lane roundabout, radius 15 m, 3 legs, ring 24 km/h",
+  "hindmarsh_grantley: priority junction 1948692238 (hindmarsh_grantley_bridge) -> single-lane roundabout, radius 12 m, 4 legs, ring 21 km/h, centre moved 8 m away from -184390360#1"
+ ],
+ "removed": {
+  "directed_km": 0.0,
+  "edges": 0,
+  "ids": []
+ },
+ "rerouted_to_new_node": {
+  "edges": 20,
+  "ids": [
+   "-184390360#1",
+   "-29282260#0",
+   "-29282260#1",
+   "-29282260#2",
+   "-29282260#3",
+   "-39946279",
+   "-42530401#0",
+   "-46824359",
+   "-50904904#6",
+   "-50904904#7",
+   "184390360#0",
+   "29282260#1",
+   "29282260#2",
+   "29282260#3",
+   "39946279",
+   "42530401#0",
+   "46824359",
+   "50904904#6",
+   "50904904#7",
+   "97536780"
+  ]
+ },
+ "scenario": "n7",
+ "signal_cycles_s": {},
+ "speed_changed": {},
+ "turn_bays": 174,
+ "widened": {
+  "directed_km": 0.0,
+  "edges": 0
+ }
+}

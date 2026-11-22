@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your Trips, Victor Harbor</title>
+<meta name="description" content="See how the road options being considered for Victor Harbor would change the drive times for the trips you make.">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/5.6.0/maplibre-gl.css">
+<link rel="stylesheet" href="residents.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/5.6.0/maplibre-gl.js"></script>
+<script type="module" src="js/app.js"></script>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Victor Harbor road options</p>
+    <h1>How would the road plans change your trips?</h1>
+    <p class="lead">Add the trips you make most often. We'll show how long each one takes on today's roads, and how that changes with each option being considered, now and as the town grows.</p>
+  </div>
+</header>
+
+<div id="notice" class="notice" role="status" hidden></div>
+
+<main class="layout">
+  <div class="content">
+
+    <section class="card" id="trips-card" aria-labelledby="trips-h">
+      <h2 id="trips-h">My trips</h2>
+      <p class="privacy"><span class="lock" aria-hidden="true"></span>Your trips and places stay in this browser. They are saved on this device only and are never sent anywhere. The address list is downloaded once and searched on this device: what you type into the address boxes is not sent. <span id="storage-state"></span></p>
+      <ol id="trip-list" class="trip-list"></ol>
+      <p id="no-trips" class="muted">No trips yet. Add one below, for example Home → supermarket.</p>
+
+      <form id="add-trip" class="add-trip" autocomplete="off">
+        <h3>Add a trip</h3>
+        <div class="field">
+          <label for="from">From</label>
+          <div class="row">
+            <div class="combo">
+              <input id="from" placeholder="Type your address or a place, or pick on the map" required>
+              <ul id="from-list" class="suggest" aria-label="Suggestions for where the trip starts" hidden></ul>
+            </div>
+            <button type="button" class="btn ghost pick" data-pick="from">Pick on map</button>
+          </div>
+          <div id="from-note" class="addr-note" role="status" hidden></div>
+        </div>
+        <div class="field">
+          <label for="to">To</label>
+          <div class="row">
+            <div class="combo">
+              <input id="to" placeholder="e.g. Woolworths, or an address" required>
+              <ul id="to-list" class="suggest" aria-label="Suggestions for where the trip goes" hidden></ul>
+            </div>
+            <button type="button" class="btn ghost pick" data-pick="to">Pick on map</button>
+          </div>
+          <div id="to-note" class="addr-note" role="status" hidden></div>
+        </div>
+        <div class="row two">
+          <div class="field"><label for="time">Usually leaving at</label><select id="time"></select></div>
+          <div class="field"><label for="day">On a</label><select id="day"></select></div>
+        </div>
+        <p class="hint">Tip: type your address (for example "12 Bay Rd Encounter Bay" or "unit 3/5 Ocean St") and choose it from the list, or pick your home on the map. Then type a name such as "Home" over it: named places are remembered for your next trips.</p>
+        <p id="form-error" class="error" role="alert" hidden></p>
+        <button class="btn primary" type="submit">Add trip</button>
+      </form>
+      <datalist id="place-list"></datalist>
+      <button id="clear-all" class="btn link danger" type="button">Remove all my trips and places from this browser</button>
+    </section>
+
+    <section class="card" id="options-card" aria-labelledby="options-h">
+      <h2 id="options-h">Compare an option with today</h2>
+      <p class="muted">Choose an option. Each trip above shows its time with that option and the change from today's roads, now and in about 5 years (2031).</p>
+      <div id="option-list" class="option-list" role="radiogroup" aria-labelledby="options-h"></div>
+      <div class="key" aria-label="Colour key">
+        <span class="chip better">▼ Faster</span>
+        <span class="chip same">= About the same</span>
+        <span class="chip worse">▲ Slower</span>
+      </div>
+      <p class="hint">"About the same" means within 30 seconds or 5% of today's time, whichever is larger. We treat smaller differences as noise: the simulation can vary by about that much from run to run, even when nothing changes.</p>
+    </section>
+
+    <section class="card" id="glance-card" aria-labelledby="glance-h">
+      <h2 id="glance-h">All options at a glance</h2>
+      <p class="muted">Every option for each of your trips. Choose whether to see it now or in about 5 years (2031, using the growth setting under "Looking ahead"). This downloads the road data for every option (about <span id="glance-size">1</span> MB each).</p>
+      <div class="field"><span class="label" id="glance-when-l">When</span>
+        <div class="seg" role="radiogroup" aria-labelledby="glance-when-l">
+          <label><input type="radio" name="glance-when" value="now" checked><span>Now</span></label>
+          <label><input type="radio" name="glance-when" value="near"><span>In 5 years (2031)</span></label>
+        </div>
+      </div>
+      <button id="glance-go" class="btn">Work out all options</button>
+      <div id="glance" class="glance"></div>
+    </section>
+
+    <section class="card" id="ahead-card" aria-labelledby="ahead-h">
+      <h2 id="ahead-h">Looking ahead</h2>
+      <p class="muted">How your trips change as Victor Harbor grows, on today's roads and with the option you chose. This year is 2026: "now" uses demand built on 2025 data, and 2031 is about 5 years ahead.</p>
+      <div class="row two">
+        <div class="field"><span class="label" id="growth-l">Growth</span>
+          <div class="seg" role="radiogroup" aria-labelledby="growth-l">
+            <label><input type="radio" name="growth" value="moderate" checked><span>Moderate</span></label>
+            <label><input type="radio" name="growth" value="high"><span>High</span></label>
+          </div>
+        </div>
+        <div class="field"><label for="season">Day</label>
+          <select id="season">
+            <option value="trip">As set for each trip</option>
+            <option value="weekday">Normal weekday</option>
+            <option value="summer">Summer holidays</option>
+          </select>
+        </div>
+      </div>
+      <div class="years">
+        <button id="year-play" class="btn ghost" type="button">Play</button>
+        <input id="year" type="range" min="0" max="3" step="1" value="0" aria-label="Year" list="year-ticks">
+        <datalist id="year-ticks"><option value="0"></option><option value="1"></option><option value="2"></option><option value="3"></option></datalist>
+      </div>
+      <div class="year-labels" aria-hidden="true"><span>Now</span><span>2031<br>+5 yrs</span><span class="far">2041<br>+15 yrs</span><span class="far">2051<br>+25 yrs</span></div>
+      <p class="hint far-note">2041 and 2051 are longer range and less certain.</p>
+      <p id="year-note" class="hint"></p>
+      <div id="ahead" class="ahead"></div>
+    </section>
+
+    <section class="card" id="heat-card" aria-labelledby="heat-h">
+      <h2 id="heat-h">How long from anywhere?</h2>
+      <p class="muted">Pick a place to see how long it takes to drive there from every street.</p>
+      <p class="muted" id="heat-year"></p>
+      <div class="field"><label for="heat-place">To</label><select id="heat-place"></select></div>
+      <div class="row two">
+        <div class="field"><label for="heat-time">Leaving at</label><select id="heat-time"></select></div>
+        <div class="field"><label for="heat-day">On a</label><select id="heat-day"></select></div>
+      </div>
+      <div class="field"><span class="label" id="heat-show-l">Show</span>
+        <div class="seg" role="radiogroup" aria-labelledby="heat-show-l">
+          <label><input type="radio" name="heat-show" value="today" checked><span>Today</span></label>
+          <label><input type="radio" name="heat-show" value="option"><span id="heat-opt-name">Option</span></label>
+          <label><input type="radio" name="heat-show" value="diff"><span>Change</span></label>
+        </div>
+      </div>
+      <button id="heat-go" class="btn primary" type="button">Show on the map</button>
+    </section>
+
+    <section class="card" id="about-card" aria-labelledby="about-h">
+      <h2 id="about-h">How this works, and how sure we are</h2>
+      <div id="about"></div>
+    </section>
+    <p class="footer muted">Incorporates or developed using <a href="https://data.gov.au/data/dataset/geocoded-national-address-file-g-naf" target="_blank" rel="noopener">G-NAF</a> &copy; Geoscape Australia licensed by the Commonwealth of Australia under the Open Geo-coded National Address File (G-NAF) <a href="https://data.gov.au/data/dataset/19432f89-dc3a-4ef3-b943-5326ef1dbecc/resource/09f74802-08b1-4214-a6ea-3591b2753d30/download/20160226-eula-open-g-naf.pdf" target="_blank" rel="noopener">End User Licence Agreement</a>. Modified: reduced to this area and simplified.</p>
+    <p class="footer muted">For engineers: the <a href="../engineer.html">detailed results viewer</a> shows congestion lane by lane.</p>
+  </div>
+
+  <aside class="mapcol" aria-label="Map">
+    <div class="mapbox">
+      <div id="map" class="map" role="region" aria-label="Map of Victor Harbor"></div>
+      <div id="map-caption" class="map-caption" aria-live="polite"></div>
+      <div id="map-legend" class="map-legend"></div>
+      <div id="pick-banner" class="pick-banner" hidden></div>
+    </div>
+  </aside>
+</main>
+<noscript>This page needs JavaScript.</noscript>
+</body>
+</html>

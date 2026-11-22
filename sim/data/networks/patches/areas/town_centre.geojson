@@ -1,0 +1,31 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "area_id": "vhits_town_centre",
+        "name": "VHITS town-centre lower-speed area (C1)",
+        "source": "S-A04c / S-B03 p.93 (VHITS town-centre map), shading traced by S6; Inference",
+        "method": "Map georeferenced from three named junctions (Torrens/Seaview/Eyre roundabout, Torrens/Crozier roundabout, Coral St/Flinders Pde; residual < 5 m). The shading is traced and each side moved 10-25 m outward so the streets it is drawn along (Eyre Tce, Flinders Pde, Esplanade, Albert Pl, Crozier Rd, Torrens St) fall inside; the north-west side runs along the west kerb of Torrens St so both Torrens St carriageways are inside (C1a excludes them by name). Vertices: Torrens/Seaview/Eyre roundabout, Eyre Tce/Flinders Pde, foreshore, south-east and south-west corners on the coast, Albert Pl/Ocean St, Victoria St/Crozier Rd, Torrens/Crozier roundabout, west kerb of Torrens St."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [138.62310, -35.55150],
+          [138.62460, -35.55235],
+          [138.62538, -35.55314],
+          [138.62618, -35.55733],
+          [138.62594, -35.55811],
+          [138.62300, -35.55744],
+          [138.62300, -35.55585],
+          [138.62230, -35.55565],
+          [138.62083, -35.55446],
+          [138.62105, -35.55380],
+          [138.62280, -35.55170],
+          [138.62310, -35.55150]
+        ]]
+      }
+    }
+  ]
+}

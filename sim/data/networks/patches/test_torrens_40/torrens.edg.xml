@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Test scenario proving the patch mechanism (not a VHITS option):
+     one Torrens Street edge (northbound carriageway, OSM way 50904910) set to 40 km/h. -->
+<edges>
+    <edge id="50904910#0" speed="11.11"/>
+</edges>

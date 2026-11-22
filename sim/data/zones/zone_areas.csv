@@ -1,0 +1,427 @@
+zone_id,suburb,kind,access,gateway_id,lon,lat
+GA1_00,Growth area 1 (north),growth_area,inside,,138.611718,-35.541103
+GA1_01,Growth area 1 (north),growth_area,inside,,138.614028,-35.541103
+GA1_02,Growth area 1 (north),growth_area,inside,,138.610924,-35.537462
+GA1_03,Growth area 1 (north),growth_area,inside,,138.61444,-35.537589
+GA1_04,Growth area 1 (north),growth_area,inside,,138.618439,-35.53679
+GA1_05,Growth area 1 (north),growth_area,inside,,138.621022,-35.536765
+GA1_06,Growth area 1 (north),growth_area,inside,,138.611839,-35.534325
+GA1_07,Growth area 1 (north),growth_area,inside,,138.61444,-35.533901
+GA1_08,Growth area 1 (north),growth_area,inside,,138.618439,-35.533901
+GA1_09,Growth area 1 (north),growth_area,inside,,138.622278,-35.533371
+GA1_10,Growth area 1 (north),growth_area,inside,,138.607833,-35.528583
+GA1_11,Growth area 1 (north),growth_area,inside,,138.611102,-35.53085
+GA1_12,Growth area 1 (north),growth_area,inside,,138.61444,-35.529901
+GA1_13,Growth area 1 (north),growth_area,inside,,138.618439,-35.529901
+GA1_14,Growth area 1 (north),growth_area,inside,,138.622439,-35.529639
+GA1_15,Growth area 1 (north),growth_area,inside,,138.625483,-35.529316
+GA1_16,Growth area 1 (north),growth_area,inside,,138.604214,-35.524473
+GA1_17,Growth area 1 (north),growth_area,inside,,138.607002,-35.526473
+GA1_18,Growth area 1 (north),growth_area,inside,,138.610439,-35.525901
+GA1_19,Growth area 1 (north),growth_area,inside,,138.61444,-35.525901
+GA1_20,Growth area 1 (north),growth_area,inside,,138.618439,-35.525901
+GA1_21,Growth area 1 (north),growth_area,inside,,138.622439,-35.525901
+GA1_22,Growth area 1 (north),growth_area,inside,,138.625879,-35.525882
+GA1_23,Growth area 1 (north),growth_area,inside,,138.603336,-35.521795
+GA1_24,Growth area 1 (north),growth_area,inside,,138.606439,-35.521901
+GA1_25,Growth area 1 (north),growth_area,inside,,138.610439,-35.521901
+GA1_26,Growth area 1 (north),growth_area,inside,,138.61444,-35.521901
+GA1_27,Growth area 1 (north),growth_area,inside,,138.618439,-35.521901
+GA1_28,Growth area 1 (north),growth_area,inside,,138.622439,-35.52236
+GA1_29,Growth area 1 (north),growth_area,inside,,138.624892,-35.522294
+GA1_30,Growth area 1 (north),growth_area,inside,,138.603439,-35.517944
+GA1_31,Growth area 1 (north),growth_area,inside,,138.606439,-35.51849
+GA1_32,Growth area 1 (north),growth_area,inside,,138.610439,-35.517901
+GA1_33,Growth area 1 (north),growth_area,inside,,138.61444,-35.517901
+GA1_34,Growth area 1 (north),growth_area,inside,,138.617036,-35.517007
+GA1_35,Growth area 1 (north),growth_area,inside,,138.62075,-35.51927
+GA1_36,Growth area 1 (north),growth_area,inside,,138.60812,-35.515625
+GA1_37,Growth area 1 (north),growth_area,inside,,138.611439,-35.514484
+GA1_38,Growth area 1 (north),growth_area,inside,,138.61444,-35.51476
+GA1_39,Growth area 1 (north),growth_area,inside,,138.616641,-35.514752
+GA1_40,Growth area 1 (north),growth_area,inside,,138.612094,-35.510868
+GA1_41,Growth area 1 (north),growth_area,inside,,138.614066,-35.510999
+GA2_00,Growth area 2 (north-east),growth_area,inside,,138.617268,-35.511454
+GA2_01,Growth area 2 (north-east),growth_area,inside,,138.620723,-35.51079
+GA2_02,Growth area 2 (north-east),growth_area,inside,,138.624723,-35.510733
+GA2_03,Growth area 2 (north-east),growth_area,inside,,138.627549,-35.51071
+GA2_04,Growth area 2 (north-east),growth_area,inside,,138.616723,-35.505922
+GA2_05,Growth area 2 (north-east),growth_area,inside,,138.620723,-35.506885
+GA2_06,Growth area 2 (north-east),growth_area,inside,,138.624723,-35.506885
+GA2_07,Growth area 2 (north-east),growth_area,inside,,138.627655,-35.506885
+GA2_08,Growth area 2 (north-east),growth_area,inside,,138.616723,-35.503483
+GA2_09,Growth area 2 (north-east),growth_area,inside,,138.620723,-35.502885
+GA2_10,Growth area 2 (north-east),growth_area,inside,,138.624723,-35.502885
+GA2_11,Growth area 2 (north-east),growth_area,inside,,138.627766,-35.502885
+GA2_12,Growth area 2 (north-east),growth_area,inside,,138.616933,-35.498885
+GA2_13,Growth area 2 (north-east),growth_area,inside,,138.620723,-35.498885
+GA2_14,Growth area 2 (north-east),growth_area,inside,,138.624723,-35.499002
+GA2_15,Growth area 2 (north-east),growth_area,inside,,138.627294,-35.498207
+GA2_16,Growth area 2 (north-east),growth_area,inside,,138.617387,-35.494695
+GA2_17,Growth area 2 (north-east),growth_area,inside,,138.620723,-35.495099
+GA2_18,Growth area 2 (north-east),growth_area,inside,,138.623195,-35.494213
+GA2_19,Growth area 2 (north-east),growth_area,inside,,138.617845,-35.491907
+GA2_20,Growth area 2 (north-east),growth_area,inside,,138.619984,-35.491907
+GA3_00,Growth area 3 (north-west),growth_area,inside,,138.604229,-35.514927
+GA3_01,Growth area 3 (north-west),growth_area,inside,,138.607114,-35.514062
+GA3_02,Growth area 3 (north-west),growth_area,inside,,138.609967,-35.514319
+GA3_03,Growth area 3 (north-west),growth_area,inside,,138.600213,-35.510954
+GA3_04,Growth area 3 (north-west),growth_area,inside,,138.603115,-35.510439
+GA3_05,Growth area 3 (north-west),growth_area,inside,,138.607114,-35.511067
+GA3_06,Growth area 3 (north-west),growth_area,inside,,138.610509,-35.511407
+GA3_07,Growth area 3 (north-west),growth_area,inside,,138.596217,-35.508013
+GA3_08,Growth area 3 (north-west),growth_area,inside,,138.599114,-35.507067
+GA3_09,Growth area 3 (north-west),growth_area,inside,,138.603115,-35.507067
+GA3_10,Growth area 3 (north-west),growth_area,inside,,138.607114,-35.507335
+GA3_11,Growth area 3 (north-west),growth_area,inside,,138.609713,-35.507839
+GA3_12,Growth area 3 (north-west),growth_area,inside,,138.595517,-35.50243
+GA3_13,Growth area 3 (north-west),growth_area,inside,,138.599114,-35.503067
+GA3_14,Growth area 3 (north-west),growth_area,inside,,138.603115,-35.503067
+GA3_15,Growth area 3 (north-west),growth_area,inside,,138.606713,-35.503922
+GA3_16,Growth area 3 (north-west),growth_area,inside,,138.599213,-35.500737
+GA3_17,Growth area 3 (north-west),growth_area,inside,,138.603115,-35.500734
+GA3_18,Growth area 3 (north-west),growth_area,inside,,138.606035,-35.500468
+GARP_IV_00,GARP growth (Inman Valley Rd),growth_area,inside,,138.563125,-35.543689
+GARP_IV_01,GARP growth (Inman Valley Rd),growth_area,inside,,138.566452,-35.545174
+GARP_IV_02,GARP growth (Inman Valley Rd),growth_area,inside,,138.569908,-35.544039
+GARP_IV_03,GARP growth (Inman Valley Rd),growth_area,inside,,138.572876,-35.544986
+GARP_IV_04,GARP growth (Inman Valley Rd),growth_area,inside,,138.562057,-35.540683
+GARP_IV_05,GARP growth (Inman Valley Rd),growth_area,inside,,138.565908,-35.540813
+GARP_IV_06,GARP growth (Inman Valley Rd),growth_area,inside,,138.569908,-35.541632
+GARP_IV_07,GARP growth (Inman Valley Rd),growth_area,inside,,138.572702,-35.541632
+GARP_IV_08,GARP growth (Inman Valley Rd),growth_area,inside,,138.561955,-35.537198
+GARP_IV_09,GARP growth (Inman Valley Rd),growth_area,inside,,138.565012,-35.536145
+GARP_IV_10,GARP growth (Inman Valley Rd),growth_area,inside,,138.568357,-35.538145
+GARP_IV_11,GARP growth (Inman Valley Rd),growth_area,inside,,138.562729,-35.534076
+MB40199760000,Encounter Bay,mesh_block,inside,,138.589692,-35.582174
+MB40199770000,Waitpinga,mesh_block,gateway,gw_wai,138.552,-35.583157
+MB40199780000,Encounter Bay,mesh_block,inside,,138.594914,-35.577072
+MB40199790000,Encounter Bay,mesh_block,inside,,138.603391,-35.570645
+MB40199800000,Victor Harbor,mesh_block,inside,,138.606833,-35.561503
+MB40199810000,Victor Harbor,mesh_block,inside,,138.61197,-35.551593
+MB40199820000,Victor Harbor,mesh_block,inside,,138.613988,-35.545818
+MB40199830000,Victor Harbor,mesh_block,inside,,138.617661,-35.557572
+MB40199850000,McCracken,mesh_block,inside,,138.621882,-35.538855
+MB40199860000,Victor Harbor,mesh_block,inside,,138.623967,-35.543893
+MB40199870000,McCracken,mesh_block,inside,,138.629646,-35.539406
+MB40199880000,McCracken,mesh_block,inside,,138.637613,-35.538726
+MB40199890000,Hayborough,mesh_block,inside,,138.641645,-35.532152
+MB40199900000,Hayborough,mesh_block,inside,,138.644285,-35.534175
+MB40199920000,Hayborough,mesh_block,inside,,138.649699,-35.533399
+MB40199940000,McCracken,mesh_block,inside,,138.628488,-35.543339
+MB40199950000,McCracken,mesh_block,inside,,138.636928,-35.532184
+MB40199960000,McCracken,mesh_block,inside,,138.632246,-35.527699
+MB40199970000,McCracken,mesh_block,inside,,138.636129,-35.535732
+MB40199980000,McCracken,mesh_block,inside,,138.626115,-35.538838
+MB40199990000,McCracken,mesh_block,inside,,138.628698,-35.53371
+MB40200000000,McCracken,mesh_block,inside,,138.624714,-35.532666
+MB40200010000,Victor Harbor,mesh_block,inside,,138.624333,-35.547897
+MB40200021000,Victor Harbor,mesh_block,inside,,138.621254,-35.555243
+MB40200022000,Victor Harbor,mesh_block,inside,,138.622002,-35.556201
+MB40200030000,Victor Harbor,mesh_block,inside,,138.618446,-35.538824
+MB40200041000,Victor Harbor,mesh_block,inside,,138.618534,-35.545714
+MB40200042000,Victor Harbor,mesh_block,inside,,138.618838,-35.543963
+MB40200060000,Victor Harbor,mesh_block,inside,,138.617368,-35.551094
+MB40200070000,Victor Harbor,mesh_block,inside,,138.618423,-35.5527
+MB40200090000,Victor Harbor,mesh_block,inside,,138.614664,-35.559097
+MB40200100000,Victor Harbor,mesh_block,inside,,138.603438,-35.557522
+MB40200130000,Encounter Bay,mesh_block,inside,,138.598275,-35.565368
+MB40200140000,Encounter Bay,mesh_block,inside,,138.601335,-35.574857
+MB40200160000,Encounter Bay,mesh_block,inside,,138.597044,-35.578926
+MB40200181000,Encounter Bay,mesh_block,inside,,138.597408,-35.586013
+MB40200182000,Encounter Bay,mesh_block,inside,,138.599679,-35.587024
+MB40200190000,Encounter Bay,mesh_block,inside,,138.594213,-35.585803
+MB40200200000,Encounter Bay,mesh_block,inside,,138.595009,-35.582844
+MB40200220000,Hindmarsh Valley,mesh_block,inside,,138.624187,-35.515827
+MB40200230000,Encounter Bay,mesh_block,inside,,138.592669,-35.577965
+MB40200240000,Encounter Bay,mesh_block,inside,,138.603767,-35.572559
+MB40200250000,Victor Harbor,mesh_block,inside,,138.615225,-35.553044
+MB40200260000,Victor Harbor,mesh_block,inside,,138.616425,-35.548786
+MB40200270000,Victor Harbor,mesh_block,inside,,138.625673,-35.545611
+MB40200280000,McCracken,mesh_block,inside,,138.627452,-35.537358
+MB40200290000,McCracken,mesh_block,inside,,138.63147,-35.539776
+MB40200300000,Hayborough,mesh_block,inside,,138.643899,-35.535341
+MB40200320000,Hayborough,mesh_block,inside,,138.646469,-35.532603
+MB40200330000,Hayborough,mesh_block,inside,,138.640399,-35.534401
+MB40200340000,Hayborough,mesh_block,inside,,138.641012,-35.530542
+MB40200350000,McCracken,mesh_block,inside,,138.638687,-35.539296
+MB40200360000,McCracken,mesh_block,inside,,138.630268,-35.528598
+MB40200370000,McCracken,mesh_block,inside,,138.62406,-35.538654
+MB40200380000,McCracken,mesh_block,inside,,138.627776,-35.533527
+MB40200390000,Victor Harbor,mesh_block,inside,,138.622408,-35.550403
+MB40200400000,Victor Harbor,mesh_block,inside,,138.620255,-35.553196
+MB40200410000,Victor Harbor,mesh_block,inside,,138.618284,-35.542101
+MB40200420000,Victor Harbor,mesh_block,inside,,138.613684,-35.542907
+MB40200430000,Victor Harbor,mesh_block,inside,,138.622195,-35.546726
+MB40200440000,Victor Harbor,mesh_block,inside,,138.619445,-35.550461
+MB40200450000,Victor Harbor,mesh_block,inside,,138.610044,-35.552366
+MB40200460000,Victor Harbor,mesh_block,inside,,138.617171,-35.555917
+MB40200471000,Victor Harbor,mesh_block,inside,,138.615176,-35.558143
+MB40200472000,Victor Harbor,mesh_block,inside,,138.616777,-35.55843
+MB40200500000,Encounter Bay,mesh_block,inside,,138.595783,-35.56319
+MB40200510000,Encounter Bay,mesh_block,inside,,138.60124,-35.568484
+MB40200521000,Encounter Bay,mesh_block,inside,,138.601679,-35.564724
+MB40200522000,Encounter Bay,mesh_block,inside,,138.603829,-35.562951
+MB40200531000,Encounter Bay,mesh_block,inside,,138.602234,-35.567034
+MB40200532000,Encounter Bay,mesh_block,inside,,138.602063,-35.566265
+MB40200540000,Encounter Bay,mesh_block,inside,,138.599483,-35.574125
+MB40200550000,Encounter Bay,mesh_block,inside,,138.595205,-35.57213
+MB40200560000,Encounter Bay,mesh_block,inside,,138.595755,-35.581374
+MB40200570000,Encounter Bay,mesh_block,inside,,138.590319,-35.579351
+MB40200580000,Encounter Bay,mesh_block,inside,,138.596075,-35.58623
+MB40200600000,Encounter Bay,mesh_block,inside,,138.588952,-35.585746
+MB40200610000,Encounter Bay,mesh_block,inside,,138.585502,-35.578529
+MB40200620000,Waitpinga,mesh_block,inside,,138.583062,-35.558543
+MB40200630000,Encounter Bay,mesh_block,inside,,138.594781,-35.574461
+MB40200640000,Encounter Bay,mesh_block,inside,,138.605891,-35.570475
+MB40200650000,Hayborough,mesh_block,inside,,138.645406,-35.536625
+MB40200660000,Hayborough,mesh_block,inside,,138.649608,-35.534481
+MB40200670000,Hayborough,mesh_block,inside,,138.64138,-35.53349
+MB40200680000,Hayborough,mesh_block,inside,,138.642289,-35.527815
+MB40200690000,McCracken,mesh_block,inside,,138.636176,-35.539256
+MB40200700000,McCracken,mesh_block,inside,,138.631008,-35.541044
+MB40200710000,McCracken,mesh_block,inside,,138.631767,-35.538011
+MB40200730000,Victor Harbor,mesh_block,inside,,138.625652,-35.541662
+MB40200740000,Victor Harbor,mesh_block,inside,,138.626502,-35.547274
+MB40200750000,Victor Harbor,mesh_block,inside,,138.619627,-35.555157
+MB40200760000,Victor Harbor,mesh_block,inside,,138.621345,-35.548055
+MB40200770000,Victor Harbor,mesh_block,inside,,138.617899,-35.547393
+MB40200790000,Victor Harbor,mesh_block,inside,,138.619393,-35.551108
+MB40200800000,Victor Harbor,mesh_block,inside,,138.616646,-35.551848
+MB40200810000,Victor Harbor,mesh_block,inside,,138.616302,-35.555283
+MB40200831000,Encounter Bay,mesh_block,inside,,138.598309,-35.560569
+MB40200832000,Encounter Bay,mesh_block,inside,,138.596144,-35.562068
+MB40200840000,Encounter Bay,mesh_block,inside,,138.603894,-35.565637
+MB40200850000,Encounter Bay,mesh_block,inside,,138.606063,-35.565762
+MB40200861000,Encounter Bay,mesh_block,inside,,138.599801,-35.56678
+MB40200870000,Encounter Bay,mesh_block,inside,,138.601045,-35.572893
+MB40200880000,Encounter Bay,mesh_block,inside,,138.598298,-35.577669
+MB40200890000,Encounter Bay,mesh_block,inside,,138.595172,-35.578464
+MB40200900000,Encounter Bay,mesh_block,inside,,138.591576,-35.574931
+MB40200921000,Encounter Bay,mesh_block,inside,,138.595874,-35.583996
+MB40200922000,Encounter Bay,mesh_block,inside,,138.594869,-35.584708
+MB40200930000,Encounter Bay,mesh_block,inside,,138.585852,-35.585118
+MB40200940000,Encounter Bay,mesh_block,inside,,138.586361,-35.582189
+MB40200950000,Lower Inman Valley,mesh_block,inside,,138.558017,-35.512218
+MB40200960000,Encounter Bay,mesh_block,inside,,138.594877,-35.575942
+MB40200970000,Hayborough,mesh_block,inside,,138.642956,-35.5372
+MB40200990000,Hayborough,mesh_block,inside,,138.643095,-35.533333
+MB40201010000,McCracken,mesh_block,inside,,138.638495,-35.540645
+MB40201020000,McCracken,mesh_block,inside,,138.63341,-35.54075
+MB40201030000,McCracken,mesh_block,inside,,138.628928,-35.541451
+MB40201040000,McCracken,mesh_block,inside,,138.635885,-35.537155
+MB40201050000,McCracken,mesh_block,inside,,138.62812,-35.536685
+MB40201060000,Victor Harbor,mesh_block,inside,,138.626948,-35.544827
+MB40201070000,Victor Harbor,mesh_block,inside,,138.623315,-35.549365
+MB40201081000,Victor Harbor,mesh_block,inside,,138.623495,-35.554891
+MB40201082000,Victor Harbor,mesh_block,inside,,138.621756,-35.554811
+MB40201083000,Victor Harbor,mesh_block,inside,,138.622623,-35.554585
+MB40201090000,Victor Harbor,mesh_block,inside,,138.616476,-35.542045
+MB40201100000,Victor Harbor,mesh_block,inside,,138.620208,-35.546506
+MB40201110000,Victor Harbor,mesh_block,inside,,138.616112,-35.545547
+MB40201121000,Victor Harbor,mesh_block,inside,,138.61831,-35.5497
+MB40201122000,Victor Harbor,mesh_block,inside,,138.620127,-35.55012
+MB40201130000,Victor Harbor,mesh_block,inside,,138.618941,-35.551868
+MB40201140000,Victor Harbor,mesh_block,inside,,138.618544,-35.554332
+MB40201150000,Victor Harbor,mesh_block,inside,,138.616282,-35.557022
+MB40201160000,Victor Harbor,mesh_block,inside,,138.607009,-35.558964
+MB40201170000,Encounter Bay,mesh_block,inside,,138.607567,-35.568368
+MB40201180000,Encounter Bay,mesh_block,inside,,138.603917,-35.571226
+MB40201191000,Encounter Bay,mesh_block,inside,,138.60166,-35.563997
+MB40201192000,Encounter Bay,mesh_block,inside,,138.602843,-35.564432
+MB40201200000,Encounter Bay,mesh_block,inside,,138.603324,-35.56795
+MB40201210000,Encounter Bay,mesh_block,inside,,138.597758,-35.5764
+MB40201220000,Encounter Bay,mesh_block,inside,,138.59254,-35.579435
+MB40201230000,Encounter Bay,mesh_block,inside,,138.5911,-35.584087
+MB40201240000,Waitpinga,mesh_block,inside,,138.580856,-35.568294
+MB40201250000,Hayborough,mesh_block,inside,,138.647037,-35.533399
+MB40201260000,Hayborough,mesh_block,inside,,138.643707,-35.531851
+MB40201280000,McCracken,mesh_block,inside,,138.627406,-35.538462
+MB40201290000,Victor Harbor,mesh_block,inside,,138.624627,-35.546193
+MB40201301000,Victor Harbor,mesh_block,inside,,138.62382,-35.551307
+MB40201302000,Victor Harbor,mesh_block,inside,,138.622461,-35.552959
+MB40201303000,Victor Harbor,mesh_block,inside,,138.623203,-35.552902
+MB40201304000,Victor Harbor,mesh_block,inside,,138.624322,-35.553205
+MB40201305000,Victor Harbor,mesh_block,inside,,138.623794,-35.553089
+MB40201310000,Victor Harbor,mesh_block,inside,,138.616194,-35.543831
+MB40201320000,Victor Harbor,mesh_block,inside,,138.620417,-35.544983
+MB40201340000,Victor Harbor,mesh_block,inside,,138.617131,-35.553531
+MB40201361000,Encounter Bay,mesh_block,inside,,138.605679,-35.567582
+MB40201362000,Encounter Bay,mesh_block,inside,,138.605162,-35.56678
+MB40201380000,Encounter Bay,mesh_block,inside,,138.593203,-35.574844
+MB40201390000,Encounter Bay,mesh_block,inside,,138.592412,-35.582343
+MB40201400000,Encounter Bay,mesh_block,inside,,138.586084,-35.583159
+MB40201420000,McCracken,mesh_block,inside,,138.625667,-35.530821
+MB40201441000,Encounter Bay,mesh_block,inside,,138.600259,-35.558972
+MB40201442000,Victor Harbor,mesh_block,inside,,138.603168,-35.558433
+MB40201443000,Victor Harbor,mesh_block,inside,,138.60183,-35.558556
+MB40201450000,McCracken,mesh_block,inside,,138.635361,-35.538396
+MB40201460000,McCracken,mesh_block,inside,,138.627578,-35.535443
+MB40201470000,Victor Harbor,mesh_block,inside,,138.621797,-35.544325
+MB40201480000,Victor Harbor,mesh_block,inside,,138.620206,-35.548948
+MB40201490000,Victor Harbor,mesh_block,inside,,138.614438,-35.552196
+MB40201511000,Encounter Bay,mesh_block,inside,,138.602533,-35.570623
+MB40201512000,Encounter Bay,mesh_block,inside,,138.602307,-35.56948
+MB40201521000,Encounter Bay,mesh_block,inside,,138.589346,-35.571886
+MB40201522000,Encounter Bay,mesh_block,inside,,138.589564,-35.574881
+MB40201530000,Encounter Bay,mesh_block,inside,,138.589536,-35.580851
+MB40201540000,Hayborough,mesh_block,inside,,138.640256,-35.537235
+MB40201551000,McCracken,mesh_block,inside,,138.632459,-35.533066
+MB40201552000,McCracken,mesh_block,inside,,138.634784,-35.532171
+MB40201580000,Victor Harbor,mesh_block,inside,,138.620556,-35.53755
+MB40201600000,Encounter Bay,mesh_block,inside,,138.590356,-35.583157
+MB40201610000,Encounter Bay,mesh_block,inside,,138.592208,-35.57667
+MB40201630000,Victor Harbor,mesh_block,inside,,138.615665,-35.539131
+MB40201640000,Mount Jagged,mesh_block,gateway,gw_vhr,138.649008,-35.462
+MB40201650000,Victor Harbor,mesh_block,inside,,138.630535,-35.564545
+MB40201660000,Encounter Bay,mesh_block,inside,,138.607269,-35.583025
+MB40201680000,Victor Harbor,mesh_block,inside,,138.619878,-35.556543
+MB40201690000,Waitpinga,mesh_block,gateway,gw_wai,138.552,-35.583157
+MB40201710000,Waitpinga,mesh_block,inside,,138.560699,-35.596059
+MB40201720000,Encounter Bay,mesh_block,inside,,138.587855,-35.584897
+MB40201730000,Encounter Bay,mesh_block,inside,,138.58933,-35.577762
+MB40201741000,Waitpinga,mesh_block,inside,,138.589856,-35.565712
+MB40201743000,Encounter Bay,mesh_block,inside,,138.597535,-35.568863
+MB40201744000,Encounter Bay,mesh_block,inside,,138.599002,-35.570643
+MB40201745000,Encounter Bay,mesh_block,inside,,138.597068,-35.572246
+MB40201746000,Encounter Bay,mesh_block,inside,,138.59742,-35.570921
+MB40201750000,Encounter Bay,mesh_block,inside,,138.599369,-35.577489
+MB40201760000,Encounter Bay,mesh_block,inside,,138.597397,-35.582075
+MB40201770000,Encounter Bay,mesh_block,inside,,138.597692,-35.585439
+MB40201780000,Encounter Bay,mesh_block,inside,,138.60625,-35.570994
+MB40201790000,Encounter Bay,mesh_block,inside,,138.598048,-35.579706
+MB40201800000,Encounter Bay,mesh_block,inside,,138.597112,-35.583883
+MB40201810000,Encounter Bay,mesh_block,inside,,138.599526,-35.586403
+MB40201830000,Hindmarsh Tiers,mesh_block,gateway,gw_hti,138.605287,-35.462
+MB40201850000,Encounter Bay,mesh_block,inside,,138.604587,-35.57279
+MB40201860000,Encounter Bay,mesh_block,inside,,138.602031,-35.575448
+MB40201880000,Victor Harbor,mesh_block,inside,,138.608855,-35.566574
+MB40201890000,Encounter Bay,mesh_block,inside,,138.606428,-35.568095
+MB40201910000,Victor Harbor,mesh_block,inside,,138.611678,-35.564819
+MB40201920000,Encounter Bay,mesh_block,inside,,138.60832,-35.56891
+MB40201930000,Victor Harbor,mesh_block,inside,,138.610412,-35.543993
+MB40201940000,Victor Harbor,mesh_block,inside,,138.619189,-35.541325
+MB40201950000,Victor Harbor,mesh_block,inside,,138.621627,-35.542131
+MB40201962000,Victor Harbor,mesh_block,inside,,138.622892,-35.54139
+MB40201970000,Victor Harbor,mesh_block,inside,,138.629676,-35.544695
+MB40201980000,Victor Harbor,mesh_block,inside,,138.62101,-35.557263
+MB40202000000,McCracken,mesh_block,inside,,138.63532,-35.528323
+MB40202010000,Hayborough,mesh_block,inside,,138.638955,-35.531178
+MB40202021000,Hayborough,mesh_block,inside,,138.63956,-35.5353
+MB40202022000,McCracken,mesh_block,inside,,138.637282,-35.53372
+MB40202023000,Hayborough,mesh_block,inside,,138.639425,-35.532791
+MB40202024000,Hayborough,mesh_block,inside,,138.639107,-35.534006
+MB40202025000,Hayborough,mesh_block,inside,,138.641227,-35.535764
+MB40202030000,McCracken,mesh_block,inside,,138.637771,-35.535404
+MB40202060000,Victor Harbor,mesh_block,inside,,138.644339,-35.576809
+MB40202071000,Hindmarsh Valley,mesh_block,inside,,138.62307,-35.504615
+MB40202072000,Hindmarsh Valley,mesh_block,inside,,138.626658,-35.528288
+MB40202090000,Hindmarsh Valley,mesh_block,gateway,gw_hti,138.605287,-35.462
+MB40202100000,Victor Harbor,mesh_block,inside,,138.617236,-35.532227
+MB40202110000,Hindmarsh Valley,mesh_block,inside,,138.611888,-35.52003
+MB40202120000,Lower Inman Valley,mesh_block,inside,,138.602143,-35.533038
+MB40202130000,Lower Inman Valley,mesh_block,inside,,138.589711,-35.536218
+MB40202140000,Inman Valley,mesh_block,gateway,gw_ivr,138.552,-35.51431
+MB40202150000,Inman Valley,mesh_block,gateway,gw_ivr,138.552,-35.51431
+MB40202160000,Back Valley,mesh_block,inside,,138.55144,-35.547345
+MB40202170000,Back Valley,mesh_block,gateway,gw_rng,138.552,-35.573519
+MB40202180000,Encounter Bay,mesh_block,inside,,138.585843,-35.586364
+MB40202190000,Encounter Bay,mesh_block,inside,,138.605105,-35.565563
+MB40202200000,Encounter Bay,mesh_block,inside,,138.604919,-35.567814
+MB40202210000,Encounter Bay,mesh_block,inside,,138.600736,-35.569365
+MB40202220000,Encounter Bay,mesh_block,inside,,138.602062,-35.568121
+MB40202240000,Hayborough,mesh_block,inside,,138.650521,-35.538067
+MB40202250000,Encounter Bay,mesh_block,inside,,138.586795,-35.576273
+MB40214954100,Hayborough,mesh_block,inside,,138.641413,-35.525911
+MB40214954200,Encounter Bay,mesh_block,inside,,138.596568,-35.558393
+MB40215003000,Encounter Bay,mesh_block,inside,,138.599714,-35.569581
+MB40215020300,Encounter Bay,mesh_block,inside,,138.59732,-35.557188
+MB40215020400,Encounter Bay,mesh_block,inside,,138.592463,-35.555637
+MB40215025000,Encounter Bay,mesh_block,inside,,138.594493,-35.560459
+MB40215047800,Victor Harbor,mesh_block,inside,,138.609682,-35.561791
+MB40215047900,Encounter Bay,mesh_block,inside,,138.588104,-35.57683
+MB40215048200,Hindmarsh Valley,mesh_block,inside,,138.647822,-35.5231
+MB40215050300,Encounter Bay,mesh_block,inside,,138.593918,-35.558978
+MB40215050600,Victor Harbor,mesh_block,inside,,138.611728,-35.562078
+MB40215051900,Victor Harbor,mesh_block,inside,,138.614792,-35.550342
+MB40215063200,Encounter Bay,mesh_block,inside,,138.592394,-35.557819
+MB40215065800,Victor Harbor,mesh_block,inside,,138.62082,-35.551378
+MB40215065900,Victor Harbor,mesh_block,inside,,138.610429,-35.563671
+MB40215067100,Encounter Bay,mesh_block,inside,,138.585521,-35.575646
+MB40215069600,Hayborough,mesh_block,inside,,138.644436,-35.538297
+MB40215071500,Victor Harbor,mesh_block,inside,,138.61252,-35.549378
+MB40215075500,McCracken,mesh_block,inside,,138.635334,-35.54063
+MB40215081900,McCracken,mesh_block,inside,,138.635215,-35.542062
+MB40215087000,Encounter Bay,mesh_block,inside,,138.591702,-35.585449
+MB40215088600,Victor Harbor,mesh_block,inside,,138.608563,-35.560614
+MB40215089600,McCracken,mesh_block,inside,,138.638589,-35.541477
+MB40215098700,Victor Harbor,mesh_block,inside,,138.607605,-35.564076
+MB40215103500,Victor Harbor,mesh_block,inside,,138.612247,-35.55631
+MB40215105200,Encounter Bay,mesh_block,inside,,138.596674,-35.575282
+MB40215108300,Hayborough,mesh_block,inside,,138.646702,-35.534921
+MB40215112300,Encounter Bay,mesh_block,inside,,138.597541,-35.573225
+MB40215133800,Encounter Bay,mesh_block,inside,,138.594269,-35.580308
+MB40215133900,Encounter Bay,mesh_block,inside,,138.595042,-35.579667
+MB40215138700,Victor Harbor,mesh_block,inside,,138.611235,-35.559389
+MB40215147000,Hayborough,mesh_block,inside,,138.640911,-35.538718
+MB40215149100,Victor Harbor,mesh_block,inside,,138.604311,-35.560389
+MB40215149200,Victor Harbor,mesh_block,inside,,138.605082,-35.562534
+MB40215149400,Hayborough,mesh_block,inside,,138.651222,-35.535969
+MB40215149500,Hayborough,mesh_block,inside,,138.647144,-35.5287
+MB40215149600,Hayborough,mesh_block,inside,,138.643013,-35.530155
+MB40215149700,Victor Harbor,mesh_block,inside,,138.596975,-35.555273
+MB40215152100,Encounter Bay,mesh_block,inside,,138.593312,-35.572707
+MB40215154200,Hayborough,mesh_block,inside,,138.63972,-35.526516
+MB40215154300,Hayborough,mesh_block,inside,,138.636779,-35.52843
+MB40215154400,Victor Harbor,mesh_block,inside,,138.624043,-35.554786
+MB40215154500,Encounter Bay,mesh_block,inside,,138.586467,-35.579815
+MB40215154600,Hayborough,mesh_block,inside,,138.648873,-35.536384
+MB40215154700,Hayborough,mesh_block,inside,,138.647389,-35.536848
+MB40215155000,Victor Harbor,mesh_block,inside,,138.612141,-35.55424
+MB40215155100,Victor Harbor,mesh_block,inside,,138.595875,-35.544889
+MB40215155300,McCracken,mesh_block,inside,,138.624997,-35.534633
+MB40215155400,McCracken,mesh_block,inside,,138.625501,-35.536789
+MB40215161700,Victor Harbor,mesh_block,inside,,138.624481,-35.554554
+MB40215232400,Encounter Bay,mesh_block,inside,,138.590397,-35.557731
+MB40215241400,Hayborough,mesh_block,inside,,138.639431,-35.527998
+MB40215255100,Encounter Bay,mesh_block,inside,,138.59911,-35.567944
+MB40215265300,Encounter Bay,mesh_block,inside,,138.591659,-35.586686
+MB40215271700,Victor Harbor,mesh_block,inside,,138.61013,-35.565479
+MB40215272800,Encounter Bay,mesh_block,inside,,138.591724,-35.559444
+MB40215275100,Victor Harbor,mesh_block,inside,,138.622206,-35.551786
+MB40215288200,Victor Harbor,mesh_block,inside,,138.615387,-35.554485
+MB40215296700,Victor Harbor,mesh_block,inside,,138.59465,-35.554074
+MB40215296800,Hayborough,mesh_block,inside,,138.643204,-35.528148
+MB40215297500,Encounter Bay,mesh_block,inside,,138.595424,-35.570222
+MB40215299200,Encounter Bay,mesh_block,inside,,138.585988,-35.581082
+MB40215300800,Victor Harbor,mesh_block,inside,,138.60205,-35.548133
+MB40420780000,Hayborough,mesh_block,inside,,138.641875,-35.540076
+MB40420790000,Hayborough,mesh_block,inside,,138.647168,-35.538596
+MB40420800000,McCracken,mesh_block,inside,,138.627113,-35.541207
+MB40420810000,McCracken,mesh_block,inside,,138.620934,-35.539536
+MB40420820000,McCracken,mesh_block,inside,,138.624469,-35.539505
+MB40420830000,McCracken,mesh_block,inside,,138.623601,-35.53734
+MB40420840000,McCracken,mesh_block,inside,,138.626906,-35.543616
+MB40420850000,Victor Harbor,mesh_block,inside,,138.623813,-35.534899
+MB40420860000,McCracken,mesh_block,inside,,138.621165,-35.537805
+MB40420870000,McCracken,mesh_block,inside,,138.622652,-35.539699
+MB40420890000,McCracken,mesh_block,inside,,138.625542,-35.539816
+MB40420900000,Victor Harbor,mesh_block,inside,,138.620853,-35.540019
+MB40420910000,Victor Harbor,mesh_block,inside,,138.623757,-35.536708
+MB40420920000,McCracken,mesh_block,inside,,138.627762,-35.544371
+MB40420930000,McCracken,mesh_block,inside,,138.627557,-35.542679
+MB40420940000,McCracken,mesh_block,inside,,138.629721,-35.543765
+MB40420950000,McCracken,mesh_block,inside,,138.63203,-35.542741
+MB40420970000,Encounter Bay,mesh_block,inside,,138.602477,-35.565838
+MB40420980000,Victor Harbor,mesh_block,inside,,138.618535,-35.558094
+MB40420990000,Victor Harbor,mesh_block,inside,,138.614238,-35.560505
+MB40421010000,Victor Harbor,mesh_block,inside,,138.609966,-35.566941
+MB40421020000,Victor Harbor,mesh_block,inside,,138.616934,-35.559016
+MB40421030000,Victor Harbor,mesh_block,inside,,138.625359,-35.555993
+MB40421040000,Victor Harbor,mesh_block,inside,,138.624551,-35.55742
+MB40421050000,Victor Harbor,mesh_block,inside,,138.625606,-35.549504
+MB40421060000,Victor Harbor,mesh_block,inside,,138.624922,-35.553205
+MB40421070000,Victor Harbor,mesh_block,inside,,138.627406,-35.547546
+MB40421080000,Victor Harbor,mesh_block,inside,,138.624802,-35.551558
+MB40429480000,Hayborough,mesh_block,inside,,138.649939,-35.530475
+MB40429610000,Victor Harbor,mesh_block,inside,,138.613627,-35.547338

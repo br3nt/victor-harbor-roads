@@ -1,0 +1,167 @@
+#!/usr/bin/env ruby
+# Builds the decision graph (vocabulary, organisations, people, resolutions, key documents)
+# from the data below, and loads each as a note via bin/kb. Re-runnable: notes are upserted by title.
+# Every fact carries a source id from the Sources Register; see research/B-provenance.md.
+Encoding.default_external = Encoding::UTF_8
+require "active_support/core_ext/string/inflections"
+require "cgi"
+require "date"
+require "fileutils"
+require_relative "acronym_expand"
+
+ROOT = File.expand_path("..", __dir__)
+TMP = File.join(ROOT, "tmp-notes", "graph")
+FileUtils.mkdir_p(TMP)
+h = ->(s) { CGI.escapeHTML(s.to_s) }
+slug = ->(title) { title.parameterize }
+src = ->(ids) { ids.split(/,\s*(?=S-)/).map { |i| id, loc = i.split(" ", 2); %(<a href="/n/sources-register##{id}">[#{h.(id)}#{loc ? " #{h.(loc)}" : ""}]</a>) }.join(" ") }
+
+def put(title, body, tags)
+  path = File.join(TMP, "#{title.parameterize}.html")
+  File.write(path, AcronymExpand.expand(body)) # first use of each acronym spelled out per block
+  system(File.join(ROOT, "bin", "kb"), "put", title, path, "--tags", tags, out: File::NULL) or abort "kb put failed: #{title}"
+end
+
+# ---------------------------------------------------------------- vocabulary
+VOCAB = {
+  "moved-by" => "The resolution was moved by the target person.",
+  "seconded-by" => "The resolution was seconded by the target person.",
+  "chaired-by" => "The meeting that made the decision was chaired by the target person.",
+  "decided-by" => "The target was a member present and entitled to vote when the decision was made (no division was called, so individual votes are not recorded unless stated).",
+  "absent" => "The target member gave an apology or was absent for the decision, as recorded in the minutes.",
+  "authored-by" => "The report, document or officer commentary was written by the target (person or organisation).",
+  "consulted" => "The target officer is listed as consulted on, or in attendance for, the report.",
+  "affiliation" => "The person held a position in the target organisation.",
+  "commissioned" => "The organisation engaged the target consultant for the work.",
+  "evidence" => "The decision relied on, or was accompanied by, the target document.",
+}
+vocab_body = +"<h1>Vocabulary</h1>\n<p>Link types used in this knowledge base beyond the OKF base profile, so the decision graph is self-describing. Each is a <code>rel</code> on a link from the first note to the second; the target shows it as a backlink.</p>\n<dl>\n"
+VOCAB.each { |term, desc| vocab_body << %(<dt><dfn id="#{term}"><code>#{term}</code></dfn></dt><dd>#{h.(desc)}</dd>\n) }
+vocab_body << "</dl>\n<p>Base-profile terms also in use: <code>chapter</code>, <code>describedby</code>, <code>related</code>, <code>glossary</code>, <code>tag</code>, <code>external</code>.</p>\n"
+put("Vocabulary", vocab_body, "reference")
+
+# ---------------------------------------------------------------- organisations
+ORGS = {
+  "City of Victor Harbor" => ["Local council; proponent of VHITS and decision-maker on it.", "S-A01, S-B03 p.75"],
+  "SMEC" => ["Engineering consultant engaged under contract C0000243 (tender CVH058153) for VHITS; wrote the Phase 1 report, proposed the draft Communications and Engagement Plan, provides technical content for the fact sheet, and its logo appears beside the council's on every draft consultation map. Individual staff not named.", "S-B03 pp.77, 79, 87, 89-96, S-B04 p.3, S-B21"],
+  "URPS" => ["Planning and engagement consultant: prepared the VHITS fact sheet and survey (2026); sub-consultant on the 2014 Mainstreet plan and the 2017 strategy.", "S-B03 pp.81-87, S-B26, S-B22"],
+  "Tonkin Consulting" => ["Traffic consultant for the 2015–17 town-centre investigations, strategy and Torrens Street review. Staff named only by initials (PCS/PS, RB, LS, GM).", "S-B22, S-D19, S-D21"],
+  "Department for Infrastructure and Transport" => ["South Australian Government department, the Department for Infrastructure and Transport (DIT), formerly the Department of Planning, Transport and Infrastructure (DPTI). Owns Torrens St, Hindmarsh Rd, Victoria St and other State roads; approves every speed-limit change; engaged by the VHITS team in June 2026.", "S-D17, S-B36 p.115, S-B03 p.82"],
+  "HDS Australia" => ["Heavy-vehicle route consultant: 2019 South Coast Freight Corridor assessment; January 2026 presentation to the council's Agribusiness Working Group (an advisory group) on the freight corridor.", "S-B29 p.214, S-B31"],
+}
+ORGS.each do |name, (desc, ids)|
+  put(name, %(<h1>#{h.(name)}</h1>\n<p>#{h.(desc)} #{src.(ids)}</p>\n<p>People, decisions and documents linked to this organisation appear under "Linked from".</p>\n), "organisation,people")
+end
+
+# ---------------------------------------------------------------- people
+# name => [position(s), org, role summary, sources]
+PEOPLE = {
+  "Moira Jenkins" => ["Mayor (chair, 2022–2026 meetings cited); councillor in 2017", "City of Victor Harbor", "As a councillor, moved both 2017 town-centre strategy resolutions. As Mayor, chaired the meetings that adopted the UGMS, ordered the traffic investigation and approved VHITS consultation. On 26 Oct 2026 called it a 50-year strategy that is \"very aspirational\" and that the council cannot afford alone.", "S-B24, S-B25, S-B09, S-B07, S-B05, S-M05"],
+  "Angela Schiller" => ["Councillor; Deputy Mayor (2026)", "City of Victor Harbor", "Originator: moved the December 2025 Motion on Notice that started the traffic investigation; moved the June 2026 resolution to consult the Disability Access and Inclusion Advisory Committee (DAIAC) on the strategy. On 26 Oct 2026 spoke for consultation, saying a strategy lets the council act on \"trigger points\" such as intersections rather than ad hoc.", "S-B06, S-B07, S-B15, S-M05"],
+  "Marilyn Henderson" => ["Councillor", "City of Victor Harbor", "Seconded the December 2025 motion, the June 2026 DAIAC resolution and the 2024 ring-road B-double gazettal; apology on 22 Sep 2025 and 26 Oct 2026.", "S-B07, S-B15, S-B30, S-B09, S-B05"],
+  "David Kemp" => ["Councillor", "City of Victor Harbor", "Moved adoption of the UGMS (Sep 2025) and approval of VHITS consultation (Oct 2026); closed the debate, calling it a \"50-year visionary strategy\" and looking forward to priorities in the short, medium and long term.", "S-B09, S-B05, S-M05"],
+  "Brayden Mann" => ["Councillor", "City of Victor Harbor", "Seconded approval of VHITS consultation (Oct 2026); spoke first, saying the council had \"done a few workshops\" and calling it a \"visionary strategy\".", "S-B05, S-M05"],
+  "Stewart Burns" => ["Councillor", "City of Victor Harbor", "Seconded UGMS adoption (Sep 2025); moved a 2023 motion to limit paid parking (lost). On 26 Oct 2026 asked that cost estimates be included in the consultation material.", "S-B09, S-B42, S-M05"],
+  "Carol Schofield" => ["Councillor (2017 and 2022–2026)", "City of Victor Harbor", "Present for the 2017 strategy adoption and for each VHITS-related decision found. On 26 Oct 2026 said \"we can't get our hopes up\".", "S-B25, S-B05, S-B07, S-B09, S-M05"],
+  "Michael Quinton" => ["Councillor", "City of Victor Harbor", "Present for the UGMS, motion and consultation decisions.", "S-B05, S-B07, S-B09"],
+  "Nick McKenzie" => ["Councillor", "City of Victor Harbor", "Moved the 2024 ring-road B-double gazettal; apology on 26 Oct 2026.", "S-B30, S-B05"],
+  "Carlos Quaremba" => ["Councillor", "City of Victor Harbor", "Present for the December 2025 motion; leave of absence Dec 2025–Mar 2026; apology 22 Sep 2025; not listed at the June or October 2026 meetings.", "S-B07, S-B09, S-B15, S-B05"],
+  "Graham Philp" => ["Mayor (2017)", "City of Victor Harbor", "Chaired the 2017 meetings that sent the town-centre strategy to consultation and adopted it.", "S-B24, S-B25"],
+  "Tim Glazbrook" => ["Councillor (2017, 2022)", "City of Victor Harbor", "Seconded the May 2017 resolution sending the town-centre strategy to consultation.", "S-B24"],
+  "Nicholas Hayles" => ["Councillor (2017)", "City of Victor Harbor", "Seconded the October 2017 adoption of the town-centre strategy.", "S-B25"],
+  "David Read" => ["Council officer (title not given in reports)", "City of Victor Harbor", "Author of the UGMS adoption report (Sep 2025), the officer commentary on the December 2025 motion and the October 2026 VHITS report; on the 2014 Mainstreet Precinct Master Plan core team.", "S-B08, S-B06, S-B03, S-B26"],
+  "Graham Pathuis" => ["Director Planning and Regulatory Services (2017); Director Community and Development (2025–26); listed as \"Interim CEO\" in the 26 Oct 2026 report", "City of Victor Harbor", "Consulted on the December 2025 and October 2026 reports; on the 2014 Mainstreet core team. Titles differ between the report and that night's minutes.", "S-B25, S-B06, S-B03, S-B05, S-B26"],
+  "Jodi Roberts" => ["Director Environment and Infrastructure; listed as Acting Director Community and Development in the 26 Oct 2026 report", "City of Victor Harbor", "Author of the 2024 ring-road freight route report and the 2023 Armstrong Rd speed review; consulted on VHITS.", "S-B29, S-B36, S-B03, S-B05"],
+  "Chris White" => ["CEO (as listed in the 26 Oct 2026 minutes)", "City of Victor Harbor", "In attendance when VHITS consultation was approved.", "S-B05"],
+  "Victoria MacKirdy" => ["CEO (2024–2026 notices)", "City of Victor Harbor", "Issued the briefing notices for the May and July 2026 VHITS briefings.", "S-B38, S-B11, S-B12, S-B09"],
+  "Karen Rokicinski" => ["Director Corporate and Customer Service; Acting CEO (Oct 2026)", "City of Victor Harbor", "Issued the 12 Oct 2026 briefing notice that included VHITS.", "S-B13"],
+  "Mark Buckerfield" => ["Acting Director Environment and Infrastructure (Dec 2025)", "City of Victor Harbor", "Consulted on the December 2025 motion report.", "S-B06"],
+  "Scott Manning" => ["Manager Engineering and Infrastructure", "City of Victor Harbor", "Consulted on the 2024 ring-road freight route report.", "S-B29"],
+  "Chelsie Butler" => ["Governance Officer / Executive Assistant", "City of Victor Harbor", "Author of the June 2026 DAIAC item and the 2022 petition report (procedural).", "S-B14, S-B33"],
+  "John Olson" => ["Senior Consultant", "HDS Australia", "Guest speaker at the Agribusiness Working Group, an advisory group (30 Jan 2026). The notes list among areas covered an \"Intent for duplication of the ring road corridor\" (no actor named) and that \"Council aim to protect the 80km zone sections\"; HDS's preferred regional route was a Middleton bypass.", "S-B31"],
+  "Gemma Kernich" => ["Director of Planning and Technical Services", "Department for Infrastructure and Transport", "Presented at the July 2024 joint transport workshop (rideshare boundary).", "S-B38"],
+  "David Basham" => ["Member for Finniss (State Member of Parliament, 2024)", nil, "Panel member at the July 2024 joint transport workshop.", "S-B38"],
+}
+PEOPLE.each do |name, (pos, org, summary, ids)|
+  aff = org ? %(<p>Affiliation: <a rel="affiliation" href="/n/#{slug.(org)}">#{h.(org)}</a>.</p>\n) : ""
+  put(name, %(<h1>#{h.(name)}</h1>\n<p><strong>#{h.(pos)}</strong></p>\n#{aff}<p>#{h.(summary)} #{src.(ids)}</p>\n<p>The decisions and documents this person is linked to — with the role they played — are listed under "Linked from". Roles are as the records show them; see <a rel="related" href="/n/people-and-roles">People and Roles</a>.</p>\n), "person,people")
+end
+
+# ---------------------------------------------------------------- documents
+DOCS = [
+  ["SMEC VHITS Phase 1 Report", "SMEC", "S-B04", <<~HTML],
+    <p><cite>Victor Harbor Integrated Transport Strategy</cite>, SMEC with URPS, Revision 2, 21 Aug 2026 (82 pp; Rev 1 30 Jun 2026). Tabled as an attachment on 26 Oct 2026 labelled "Draft Victor Harbor Integrated Transport Strategy" <a href="/n/sources-register#S-B04">[S-B04]</a> <a href="/n/sources-register#S-B03">[S-B03 p.80]</a>.</p>
+    <ul>
+    <li>Contains <strong>no one-way loop and no 30 km/h figure</strong> (searched: "one-way", "loop" other than bus loop services, "30 km/h").</li>
+    <li>Raises, as options to consider (none tested): <q>Review of speed limits in high pedestrian areas and the possible adoption of lower speeds or shared traffic zones</q> in areas such as the CBD <a href="/n/sources-register#S-B04">[S-B04 p.70]</a>; <q>Signalisation of intersections</q> for safer pedestrian crossings <a href="/n/sources-register#S-B04">[S-B04 p.50]</a>; on Torrens St the <q>critical junctions with Seaview Road and Crozier Road</q> <a href="/n/sources-register#S-B04">[S-B04 p.52]</a>; and <q>Consideration of signalising roundabouts and the installation of traffic signals</q> as key east-west intersections reach capacity <a href="/n/sources-register#S-B04">[S-B04 p.71]</a>.</li>
+    <li>Names Armstrong Road (the existing ring road) the <q>preferred freight route</q> <a href="/n/sources-register#S-B04">[S-B04 p.50]</a>, and also says <q>An alternative scenario for the movement of freight is to provide a new freight bypass further north</q> whose benefits <q>should be explored</q> <a href="/n/sources-register#S-B04">[S-B04 pp.66, 74-75]</a>.</li>
+    <li>Model, data and limits: see <a rel="related" href="/n/due-diligence-assessment">Due Diligence Assessment</a>.</li>
+    <li>Refers to a separate "Background Investigations Report" (June 2026) that is not public <a href="/n/sources-register#S-B04">[S-B04 p.16]</a>.</li>
+    </ul>
+  HTML
+  ["VHITS Consultation Maps", "SMEC", "S-B03", <<~HTML],
+    <p>Nine draft maps (Why; Where is the growth; From the UGMS; Retaining the high-speed Ring Road; The Vision; Town Centre; Freight Route; Public Transport; Walking and Cycling) attached to the 26 Oct 2026 council report <a href="/n/sources-register#S-B03">[S-B03 pp.88-96]</a>. Every map carries the SMEC logo beside the council's. In VHITS documents, these maps are where the one-way loop and a 30 km/h town centre first appear; the "Vision" map states the town centre <q>is converted to a low-speed environment (30 km/h) and a one-way loop is implemented to improve traffic flow</q>, and shows an "Outer (Freight) Ring Road (indicative)" <a href="/n/sources-register#S-B03">[S-B03 p.92]</a>. The record does not show who originated each element. The report lists a "key staff" workshop on 30 Sep 2026 under consultation <a href="/n/sources-register#S-B03">[S-B03 p.79]</a>; <strong>inference:</strong> the maps were finalised after it. The consultation versions are on <a rel="related" href="/n/vhits-preliminary-vision">VHITS Preliminary Vision</a>.</p>
+  HTML
+]
+DOCS.each do |title, org, ids, body|
+  put(title, %(<h1>#{h.(title)}</h1>\n<p>Author: <a rel="authored-by" href="/n/#{slug.(org)}">#{h.(org)}</a>.</p>\n#{body}), "document,council")
+end
+
+# ---------------------------------------------------------------- resolutions
+# Each: title, date, meeting/item, summary, record notes, roles hash, sources
+RES = [
+  ["OC2992017 Town Centre Strategy to Consultation", "2017-05-22", "Council, item 14.1.2",
+   "Endorsed the draft Town Centre Traffic Movement Strategy (Part A) for community consultation.",
+   "Carried; no division.",
+   { "chaired-by" => ["Graham Philp"], "moved-by" => ["Moira Jenkins"], "seconded-by" => ["Tim Glazbrook"], "authored-by" => ["Tonkin Consulting"] },
+   "S-B24"],
+  ["OC6362017 Town Centre Strategy Adopted", "2017-10-23", "Council (via Strategic Planning and Development Policy Committee)",
+   "On the recommendation of the Strategic Planning and Development Policy Committee (17 Oct 2017), adopted the Town Centre Traffic Movement and Car Parking Strategy Parts A and B and the Torrens Street review \"as amended\" (Grantley Avenue left-in/left-out trial). The strategy kept the Torrens/Victoria roundabout, recommended a roundabout at Torrens/Crozier, and proposed no one-way loop and no 30 km/h.",
+   "Carried unanimously. Also recorded present: Crs P Charles, P Chigwidden, K Dutton, T Andrews (22 May and/or 23 Oct 2017).",
+   { "chaired-by" => ["Graham Philp"], "moved-by" => ["Moira Jenkins"], "seconded-by" => ["Nicholas Hayles"], "decided-by" => ["Carol Schofield"], "authored-by" => ["Tonkin Consulting"] },
+   "S-B25 pp.9-10, S-B22"],
+  ["OC3152024 Ring Road B-double Gazettal", "2024-09-23", "Council, item 12.1 Victor Harbor Ring Road Freight Route",
+   "Endorsed gazettal of Welch/Armstrong Roads (the existing ring road) for 26 m B-doubles. The officer report described this as \"protecting the integrity of the South Coast Freight Corridor\" (S-B29 p.215).",
+   "Carried. Apologies: Crs Mann, Schofield and Quaremba.",
+   { "chaired-by" => ["Moira Jenkins"], "moved-by" => ["Nick McKenzie"], "seconded-by" => ["Marilyn Henderson"], "authored-by" => ["Jodi Roberts"], "consulted" => ["Scott Manning"], "absent" => ["Brayden Mann", "Carol Schofield", "Carlos Quaremba"] },
+   "S-B29 pp.214-216, S-B30"],
+  ["OC2592025 UGMS 2050 Adopted", "2025-09-22", "Council, item 10.4 Urban Growth Management Strategy",
+   "Adopted the Urban Growth Management Strategy 2050 — the growth plan VHITS serves. Objective 3.7 protects the South Coast Freight Route (the existing ring road) and its speed limit.",
+   "Carried; no division.",
+   { "chaired-by" => ["Moira Jenkins"], "moved-by" => ["David Kemp"], "seconded-by" => ["Stewart Burns"], "decided-by" => ["Angela Schiller", "Brayden Mann", "Michael Quinton", "Carol Schofield", "Nick McKenzie"], "absent" => ["Marilyn Henderson", "Carlos Quaremba"], "authored-by" => ["David Read"], "consulted" => ["Victoria MacKirdy"] },
+   "S-B08, S-B09 p.8, S-B10 p.52"],
+  ["OC3792025 Traffic Strategy Investigation Motion", "2025-12-15", "Council, item 18.3 Motion on Notice",
+   "Directed Administration to \"commence a Traffic and Transport Investigation and Analysis Report\" in 2025/26 as phase one, with phase two costed as a 2026/27 budget bid. The carried wording goes further than the notice, which sought to \"Investigate and provide costings for the development of a comprehensive Traffic Strategy\" (S-B06 p.318); the officers' narrower alternative (cost UGMS actions first) was not adopted. The minutes do not record how the wording changed.",
+   "Carried unanimously; no division.",
+   { "chaired-by" => ["Moira Jenkins"], "moved-by" => ["Angela Schiller"], "seconded-by" => ["Marilyn Henderson"], "decided-by" => ["Brayden Mann", "Stewart Burns", "Michael Quinton", "David Kemp", "Carlos Quaremba", "Carol Schofield", "Nick McKenzie"], "authored-by" => ["David Read"], "consulted" => ["Graham Pathuis", "Mark Buckerfield"] },
+   "S-B06 pp.318-321, S-B07 pp.15-16"],
+  ["OC2252026 Disability Committee to be Consulted", "2026-06-22", "Council, item 13.4 DAIAC minutes",
+   "Agreed the Disability Access and Inclusion Advisory Committee be consulted directly on the transport strategy.",
+   "Carried. Cr Mann departed at 6:32pm; whether present for this item is not determined.",
+   { "chaired-by" => ["Moira Jenkins"], "moved-by" => ["Angela Schiller"], "seconded-by" => ["Marilyn Henderson"], "authored-by" => ["Chelsie Butler"] },
+   "S-B14 p.219, S-B15"],
+  ["OC3572026 VHITS Consultation Approved", "2026-10-26", "Council, item 10.1 Victor Harbor Integrated Transport Strategy",
+   "Approved public consultation on the preliminary Vision using the draft maps (SMEC- and council-branded) and the SMEC/URPS engagement plan; the CEO may make minor map amendments. The maps add a one-way loop and a 30 km/h town centre, which SMEC's August report does not mention. They also show signals at Torrens/Seaview and Torrens/Crozier and an outer freight ring road, which that report raised only as options to consider or explore, without testing them.",
+   "Recorded as \"CARRIED\" (some other items that night were recorded \"CARRIED UNANIMOUSLY\"); no division; the minutes' format does not record debate, but the council's YouTube recording (auto-captions) shows about five minutes of debate (1:06:50-1:12:04). Cr Mann (seconder), Cr Schiller, Cr Burns, Mayor Jenkins, Cr Schofield and Cr Kemp (mover) spoke; the Mayor then put the motion and declared it carried, with no opposition audible in the captions. Cr Burns asked that cost estimates go into the consultation material; none of the speakers mentioned the one-way loop, 30 km/h, signals, the outer ring road or modelling evidence (our reading of the captions, which may contain errors). A division was called on one other item that night (item 9.4). Councillors had three open briefings on the strategy: 11 May (60 min), 15 Jul (60 min) and 12 Oct 2026 (30 min). The agenda was issued 22 Oct; the engagement plan scheduled the fact sheet and survey to be prepared and uploaded to Your Say by 23 Oct, with the public launch on 29 Oct, after this meeting. The agenda is an \"UPDATED\" version.",
+   { "chaired-by" => ["Moira Jenkins"], "moved-by" => ["David Kemp"], "seconded-by" => ["Brayden Mann"], "decided-by" => ["Stewart Burns", "Michael Quinton", "Angela Schiller", "Carol Schofield"], "absent" => ["Marilyn Henderson", "Nick McKenzie"], "authored-by" => ["David Read"], "consulted" => ["Graham Pathuis", "Jodi Roberts", "Chris White"], "evidence" => ["SMEC VHITS Phase 1 Report", "VHITS Consultation Maps"] },
+   "S-B03 pp.75-96, S-B05 p.6, S-B05 pp.8-9, S-B11, S-B12, S-B13, S-M05 1:06:50-1:12:04"],
+]
+ROLE_LABEL = { "chaired-by" => "Chair", "moved-by" => "Moved", "seconded-by" => "Seconded", "decided-by" => "Also present and voting", "absent" => "Apology / absent", "authored-by" => "Report author", "consulted" => "Officers consulted / in attendance", "evidence" => "Documents before the meeting" }
+RES.each do |title, date, meeting, summary, record, roles, ids|
+  rows = roles.map do |rel, names|
+    links = names.map { |n| %(<a rel="#{rel}" href="/n/#{slug.(n)}">#{h.(n)}</a>) }.join(", ")
+    %(<tr><th>#{h.(ROLE_LABEL[rel])}</th><td>#{links}</td></tr>)
+  end.join("\n")
+  body = <<~HTML
+    <h1>#{h.(title)}</h1>
+    <p><time datetime="#{date}">#{Date.parse(date).strftime("%-d %b %Y") rescue date}</time> — #{h.(meeting)}. Made by the <a rel="related" href="/n/city-of-victor-harbor">City of Victor Harbor</a>.</p>
+    <p>#{h.(summary)} #{src.(ids)}</p>
+    <table><tbody>
+    #{rows}
+    </tbody></table>
+    <p><strong>Record:</strong> #{h.(record)}</p>
+    <p>Part of the <a rel="related" href="/n/decision-timeline">Decision Timeline</a>. Link types: <a rel="describedby" href="/n/vocabulary">Vocabulary</a>.</p>
+  HTML
+  put(title, body, "decision,council")
+end
+puts "built #{ORGS.size} organisations, #{PEOPLE.size} people, #{DOCS.size} documents, #{RES.size} resolutions"

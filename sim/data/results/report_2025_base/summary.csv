@@ -1,0 +1,25 @@
+condition,scenario,label,seeds,mean_trip_min,p95_trip_min,time_stopped_veh_h,stopped_change_pct,trip_change_s,teleports
+weekday_term,baseline,Today's network,3,6.29,13.07,136.63,0.0,0.0,0.0
+weekday_term,c1a,C1a 30 km/h town centre (not Torrens/Victoria),3,6.35,13.11,139.2,1.9,3.6,0.0
+weekday_term,c1b,C1b 30 km/h incl. Torrens St,3,6.35,13.12,116.8,-14.5,3.6,0.0
+weekday_term,c3,C3 one-way loop (clockwise),3,6.33,13.11,136.7,0.1,2.4,0.33
+weekday_term,c3b,C3b one-way loop (anticlockwise),3,6.37,13.15,154.37,13.0,4.8,0.0
+weekday_term,c4,C4 signals at Torrens/Seaview and Torrens/Crozier,3,6.31,13.08,167.7,22.7,1.2,0.0
+weekday_term,cp,Council package (C1a+C2+C3+C4),3,6.53,13.39,215.83,58.0,14.4,1.33
+weekday_term,b3,B3 four-lane ring road,3,6.25,12.93,130.93,-4.2,-2.4,0.0
+weekday_term,b4,B4 two-lane McCracken roundabout,3,6.29,13.07,134.63,-1.5,0.0,0.33
+weekday_term,b5,B5 roundabout slip lanes,3,6.29,13.07,137.33,0.5,0.0,0.0
+weekday_term,bp,Brent's package (B3+B4+B5),3,6.25,12.92,133.6,-2.2,-2.4,0.67
+weekday_term,n1,N1 Grantley Ave crossing closed,3,6.32,13.09,143.77,5.2,1.8,0.0
+summer_peak,baseline,Today's network,3,6.84,14.0,459.73,0.0,0.0,2.67
+summer_peak,c1a,C1a 30 km/h town centre (not Torrens/Victoria),3,6.97,14.17,497.03,8.1,7.8,7.0
+summer_peak,c1b,C1b 30 km/h incl. Torrens St,3,6.92,14.12,431.97,-6.0,4.8,3.33
+summer_peak,c3,C3 one-way loop (clockwise),3,7.14,14.76,663.2,44.3,18.0,12.67
+summer_peak,c3b,C3b one-way loop (anticlockwise),3,7.32,14.91,796.93,73.3,28.8,25.33
+summer_peak,c4,C4 signals at Torrens/Seaview and Torrens/Crozier,3,6.94,14.22,574.8,25.0,6.0,4.33
+summer_peak,cp,Council package (C1a+C2+C3+C4),3,7.31,14.86,734.43,59.8,28.2,12.0
+summer_peak,b3,B3 four-lane ring road,3,6.83,13.99,477.6,3.9,-0.6,2.33
+summer_peak,b4,B4 two-lane McCracken roundabout,3,6.87,14.09,485.33,5.6,1.8,8.67
+summer_peak,b5,B5 roundabout slip lanes,3,6.92,14.24,519.87,13.1,4.8,3.67
+summer_peak,bp,Brent's package (B3+B4+B5),3,6.84,14.01,491.53,6.9,0.0,7.67
+summer_peak,n1,N1 Grantley Ave crossing closed,3,7.05,14.49,592.67,28.9,12.6,9.33

@@ -1,0 +1,43 @@
+#!/usr/bin/env ruby
+# Builds the Sources Register note body from research/*-sources.tsv and loads it into the KB.
+#   bin/sources-register --verify   check every archived copy against its recorded sha256
+Encoding.default_external = Encoding::UTF_8
+require "cgi"
+ROOT = File.expand_path("..", __dir__)
+STREAMS = { "A" => "YourSay consultation", "B" => "Decision provenance", "C" => "Population & housing",
+            "D" => "Traffic & road data", "E" => "Road network & POIs", "F" => "Facebook", "H" => "Brent's email", "S" => "Simulation inputs", "M" => "Manually retrieved (via a person's browser)" }
+h = ->(s) { CGI.escapeHTML(s.to_s) }
+rows = (Dir[File.join(ROOT, "research", "*-sources.tsv")] + Dir[File.join(ROOT, "sim", "data", "**", "raw", "SOURCES.tsv")]).sort.flat_map do |f|
+  lines = File.readlines(f, chomp: true).reject(&:empty?)
+  head = lines.shift.split("\t")
+  lines.map { |l| head.zip(l.split("\t", -1)).to_h }
+end
+rows.sort_by! { |r| r["id"].to_s }
+dups = rows.group_by { |r| r["id"] }.select { |_, v| v.size > 1 }.keys
+abort "duplicate source ids: #{dups.join(", ")}" if dups.any?
+if ARGV.include?("--verify")
+  require "digest"
+  bad = rows.reject { |r| r["local_path"].to_s.empty? }.filter_map do |r|
+    path = File.join(ROOT, r["local_path"])
+    next "#{r["id"]}: missing #{r["local_path"]}" unless File.exist?(path)
+    next "#{r["id"]}: sha256 mismatch for #{r["local_path"]}" unless Digest::SHA256.file(path).hexdigest == r["sha256"].to_s.strip
+  end
+  puts bad.empty? ? "all #{rows.count { |r| !r["local_path"].to_s.empty? }} archived sources verified" : bad
+  exit(bad.empty? ? 0 : 1)
+end
+out = +"<h1>Sources Register</h1>\n"
+out << %(<p>Every source we rely on, generated from <code>research/*-sources.tsv</code> by <code>bin/sources-register</code>. Rules: <a rel="describedby" href="/n/research-conventions">Research Conventions</a>. Archived copies sit in the project at the path shown; the sha256 lets <code>bin/sources-register --verify</code> prove the copy is unchanged. #{rows.size} sources.</p>\n)
+rows.group_by { |r| r["id"].to_s[/\AS-([A-Z])/, 1] }.sort.each do |stream, rs|
+  out << %(<h2 id="stream-#{stream}">#{stream} — #{h.(STREAMS[stream] || stream)}</h2>\n<table><thead><tr><th>Id</th><th>Title</th><th>Publisher</th><th>Retrieved</th><th>Archived copy</th><th>sha256</th><th>Notes</th></tr></thead><tbody>\n)
+  rs.each do |r|
+    url = r["url"].to_s
+    link = url.start_with?("http") ? %(<a rel="external" href="#{h.(url)}">#{h.(r["title"])}</a>) : h.(r["title"])
+    sha = r["sha256"].to_s
+    out << %(<tr id="#{h.(r["id"])}" data-url="#{h.(url)}" data-sha256="#{h.(sha)}"><td class="src-id">#{h.(r["id"])}</td><td>#{link}</td><td>#{h.(r["publisher"])}</td><td><time datetime="#{h.(r["retrieved_at"])}">#{h.(r["retrieved_at"].to_s[0, 10])}</time></td><td><code>#{h.(r["local_path"])}</code></td><td><code title="#{h.(sha)}">#{h.(sha[0, 8])}</code></td><td>#{h.(r["notes"])}</td></tr>\n)
+  end
+  out << "</tbody></table>\n"
+end
+tmp = File.join(ROOT, "tmp-sources-register.html")
+File.write(tmp, out)
+system(File.join(ROOT, "bin", "kb"), "put", "Sources Register", tmp, "--tags", "provenance") or abort "kb put failed"
+File.delete(tmp)

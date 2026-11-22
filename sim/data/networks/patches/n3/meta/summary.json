@@ -1,0 +1,44 @@
+{
+ "added": {
+  "edges": 0,
+  "ids": []
+ },
+ "checks": {
+  "edges": 4684,
+  "ok": true,
+  "roundabout_problems": {},
+  "traffic_lights": 0,
+  "undrivable_passenger": [],
+  "undrivable_truck": []
+ },
+ "components": [
+  "n3"
+ ],
+ "edges_touched_directed_km": 0.195,
+ "junction_aliases": {},
+ "movements_extra": [],
+ "movements_missing": {},
+ "movements_removed_after_guess": [],
+ "net": "sim/data/networks/n3_bays.net.xml",
+ "new_signals": [],
+ "notes": [
+  "armstrong_crozier: Crozier Road approach 39946279 flared to 2 lanes for its last 40 m (left/straight kerb lane, right/U median lane)"
+ ],
+ "removed": {
+  "directed_km": 0.0,
+  "edges": 0,
+  "ids": []
+ },
+ "rerouted_to_new_node": {
+  "edges": 0,
+  "ids": []
+ },
+ "scenario": "n3",
+ "signal_cycles_s": {},
+ "speed_changed": {},
+ "turn_bays": 180,
+ "widened": {
+  "directed_km": 0.195,
+  "edges": 1
+ }
+}

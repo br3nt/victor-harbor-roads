@@ -1,0 +1,123 @@
+{
+ "added": {
+  "edges": 8,
+  "ids": [
+   "s6_slip_1202918968#1_1202918973",
+   "s6_slip_1202918970_1202918967#0",
+   "s6_slip_1202918972_173449376#0",
+   "s6_slip_173449331_23075173",
+   "s6_slip_184390356_576495725#0",
+   "s6_slip_23075170_173449333",
+   "s6_slip_50904910#2_1202918971",
+   "s6_slip_576495712#3_50904927"
+  ]
+ },
+ "checks": {
+  "edges": 4680,
+  "ok": true,
+  "roundabout_problems": {},
+  "traffic_lights": 0,
+  "undrivable_passenger": [],
+  "undrivable_truck": []
+ },
+ "components": [
+  "b3",
+  "b4",
+  "b5"
+ ],
+ "edges_touched_directed_km": 11.665,
+ "junction_aliases": {
+  "s6_slip_1202918968#1_1202918973": {
+   "junction_id": "torrens_crozier",
+   "kind": "left-turn slip lane",
+   "replaces": [
+    "1202918968#1",
+    "1202918973"
+   ]
+  },
+  "s6_slip_1202918970_1202918967#0": {
+   "junction_id": "torrens_crozier",
+   "kind": "left-turn slip lane",
+   "replaces": [
+    "1202918970",
+    "1202918967#0"
+   ]
+  },
+  "s6_slip_1202918972_173449376#0": {
+   "junction_id": "torrens_crozier",
+   "kind": "left-turn slip lane",
+   "replaces": [
+    "1202918972",
+    "173449376#0"
+   ]
+  },
+  "s6_slip_173449331_23075173": {
+   "junction_id": "torrens_eyre_seaview_hindmarsh",
+   "kind": "left-turn slip lane",
+   "replaces": [
+    "173449331",
+    "23075173"
+   ]
+  },
+  "s6_slip_184390356_576495725#0": {
+   "junction_id": "torrens_eyre_seaview_hindmarsh",
+   "kind": "left-turn slip lane",
+   "replaces": [
+    "184390356",
+    "576495725#0"
+   ]
+  },
+  "s6_slip_23075170_173449333": {
+   "junction_id": "torrens_eyre_seaview_hindmarsh",
+   "kind": "left-turn slip lane",
+   "replaces": [
+    "23075170",
+    "173449333"
+   ]
+  },
+  "s6_slip_50904910#2_1202918971": {
+   "junction_id": "torrens_crozier",
+   "kind": "left-turn slip lane",
+   "replaces": [
+    "50904910#2",
+    "1202918971"
+   ]
+  },
+  "s6_slip_576495712#3_50904927": {
+   "junction_id": "torrens_eyre_seaview_hindmarsh",
+   "kind": "left-turn slip lane",
+   "replaces": [
+    "576495712#3",
+    "50904927"
+   ]
+  }
+ },
+ "movements_extra": [],
+ "movements_missing": {},
+ "movements_removed_after_guess": [],
+ "net": "sim/data/networks/bp_bays.net.xml",
+ "new_signals": [],
+ "notes": [
+  "B3 four-lane ring route: 36 Welch Rd / Armstrong Rd edges (11.4 directed km) to 2 lanes",
+  "B4 two-lane McCracken roundabout: 8 ring edges and 5 entry edges (231 m on Adelaide Rd + Hindmarsh Rd) to 2 lanes",
+  "B5 torrens_eyre_seaview_hindmarsh: 4 left-turn slip lanes (s6_slip_173449331_23075173, s6_slip_184390356_576495725#0, s6_slip_23075170_173449333, s6_slip_576495712#3_50904927)",
+  "B5 torrens_crozier: 4 left-turn slip lanes (s6_slip_1202918968#1_1202918973, s6_slip_1202918970_1202918967#0, s6_slip_1202918972_173449376#0, s6_slip_50904910#2_1202918971)"
+ ],
+ "removed": {
+  "directed_km": 0.0,
+  "edges": 0,
+  "ids": []
+ },
+ "rerouted_to_new_node": {
+  "edges": 0,
+  "ids": []
+ },
+ "scenario": "bp",
+ "signal_cycles_s": {},
+ "speed_changed": {},
+ "turn_bays": 169,
+ "widened": {
+  "directed_km": 11.665,
+  "edges": 49
+ }
+}

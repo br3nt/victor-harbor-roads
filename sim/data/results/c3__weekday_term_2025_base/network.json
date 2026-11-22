@@ -1,0 +1,56 @@
+{
+ "key": "c3__weekday_term_2025_base",
+ "scenario": "c3",
+ "condition": "weekday_term",
+ "year": "2025",
+ "growth": "base",
+ "network": "c3_bays",
+ "seeds": [
+  2,
+  1,
+  3
+ ],
+ "errors": [],
+ "per_seed": [
+  {
+   "seed": 2,
+   "teleports": 0,
+   "trips": 67101,
+   "mean_trip_min": 6.32,
+   "median_trip_min": 5.65,
+   "p95_trip_min": 13.08,
+   "total_delay_veh_h": 1079.8,
+   "total_waiting_veh_h": 137.4
+  },
+  {
+   "seed": 1,
+   "teleports": 1,
+   "trips": 67096,
+   "mean_trip_min": 6.34,
+   "median_trip_min": 5.65,
+   "p95_trip_min": 13.13,
+   "total_delay_veh_h": 1089.2,
+   "total_waiting_veh_h": 137.7
+  },
+  {
+   "seed": 3,
+   "teleports": 0,
+   "trips": 67100,
+   "mean_trip_min": 6.33,
+   "median_trip_min": 5.65,
+   "p95_trip_min": 13.12,
+   "total_delay_veh_h": 1085.4,
+   "total_waiting_veh_h": 135.0
+  }
+ ],
+ "mean": {
+  "teleports": 0.33,
+  "trips": 67099.0,
+  "mean_trip_min": 6.33,
+  "median_trip_min": 5.65,
+  "p95_trip_min": 13.11,
+  "total_delay_veh_h": 1084.8,
+  "total_waiting_veh_h": 136.7
+ },
+ "viewer_export": "ok"
+}

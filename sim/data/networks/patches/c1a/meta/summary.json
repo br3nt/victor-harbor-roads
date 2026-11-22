@@ -1,0 +1,62 @@
+{
+ "added": {
+  "edges": 0,
+  "ids": []
+ },
+ "checks": {
+  "edges": 4683,
+  "ok": true,
+  "roundabout_problems": {},
+  "traffic_lights": 0,
+  "undrivable_passenger": [],
+  "undrivable_truck": []
+ },
+ "components": [
+  "c1a"
+ ],
+ "edges_touched_directed_km": 3.427,
+ "junction_aliases": {},
+ "movements_extra": [],
+ "movements_missing": {},
+ "movements_removed_after_guess": [],
+ "net": "sim/data/networks/c1a_bays.net.xml",
+ "new_signals": [],
+ "notes": [
+  "C1a 30 km/h town centre (not Torrens/Victoria St): 56 edges to 30 km/h"
+ ],
+ "removed": {
+  "directed_km": 0.0,
+  "edges": 0,
+  "ids": []
+ },
+ "rerouted_to_new_node": {
+  "edges": 0,
+  "ids": []
+ },
+ "scenario": "c1a",
+ "signal_cycles_s": {},
+ "speed_changed": {
+  "30": {
+   "directed_km": 3.427,
+   "edges": 56,
+   "streets": [
+    "Albert Place",
+    "Coral Street",
+    "Crozier Road",
+    "Esplanade",
+    "Eyre Terrace",
+    "Flinders Parade",
+    "McKinlay Street",
+    "Ocean Street",
+    "Railway Terrace",
+    "Stuart Street",
+    "Victor Harbor Boat Ramp"
+   ]
+  }
+ },
+ "turn_bays": 180,
+ "widened": {
+  "directed_km": 0.0,
+  "edges": 0
+ }
+}

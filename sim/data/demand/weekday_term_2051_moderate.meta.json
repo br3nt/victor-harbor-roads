@@ -1,0 +1,80 @@
+{
+ "condition": "weekday_term",
+ "config": "calibrated.json",
+ "external_growth_factor": 1.0,
+ "gateway_aadt": {
+  "gw_bvr": 300,
+  "gw_hti": 1200,
+  "gw_ivr": 1700,
+  "gw_per": 9500,
+  "gw_rng": 400,
+  "gw_vhr": 7700,
+  "gw_wai": 800
+ },
+ "gateway_crossings": {
+  "gw_bvr": 300,
+  "gw_hti": 1420,
+  "gw_ivr": 1842,
+  "gw_per": 10436,
+  "gw_rng": 426,
+  "gw_vhr": 8864,
+  "gw_wai": 822
+ },
+ "gateway_trucks": {
+  "gw_bvr": 14,
+  "gw_hti": 116,
+  "gw_ivr": 148,
+  "gw_per": 957,
+  "gw_rng": 30,
+  "gw_vhr": 1001,
+  "gw_wai": 26
+ },
+ "growth": "moderate",
+ "hourly_profile": "observed: hourly_profile.csv (S3; S-D19 07-18, other hours as basis column says)",
+ "occupied_households": 11525.9,
+ "overrides": [],
+ "resident_and_lodging_crossings_expected_weekday": {
+  "gw_bvr": 0.0,
+  "gw_hti": 1015.5,
+  "gw_ivr": 625.2,
+  "gw_per": 1988.1,
+  "gw_rng": 212.1,
+  "gw_vhr": 2494.8,
+  "gw_wai": 328.5
+ },
+ "resident_rate": 6.502,
+ "resident_rate_factor": 0.9936,
+ "resident_trips": 74468,
+ "resident_trips_expected": 74459.4,
+ "resident_trips_generated_before_layers": 74468,
+ "seed": 1,
+ "sources": "S-C30 mesh-block counts; S-S2-01 mesh-block polygons; S-C03 ERP 2025; S-C01 household size; S-S2-03 TfNSW trip rates; S-E03/S-E01 POIs; S-D02 AADT (via sim/data/counts/aadt.csv); S-D18 summer Victor Harbor Rd; S-B10 growth; S-C12 growth map; S-C31 NYE venue; hourly profile sim/data/profiles/hourly_profile.csv (S3)",
+ "summer_factor": 1.0,
+ "summer_scaling": "",
+ "thr_paired": {
+  "gw_bvr": 0.0,
+  "gw_hti": 18.4,
+  "gw_ivr": 107.5,
+  "gw_per": 1167.0,
+  "gw_rng": 0.0,
+  "gw_vhr": 1041.0,
+  "gw_wai": 0.0
+ },
+ "thr_target": {
+  "gw_bvr": 0.0,
+  "gw_hti": 18.4,
+  "gw_ivr": 107.5,
+  "gw_per": 1502.4,
+  "gw_rng": 0.0,
+  "gw_vhr": 1041.0,
+  "gw_wai": 0.0
+ },
+ "trips": 91526,
+ "trips_by_stratum": {
+  "ext": 16656,
+  "res": 67224,
+  "thr": 1165,
+  "vis": 6481
+ },
+ "year": 2051
+}

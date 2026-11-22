@@ -1,0 +1,80 @@
+{
+ "condition": "summer_peak",
+ "config": "calibrated.json",
+ "external_growth_factor": 1.0,
+ "gateway_aadt": {
+  "gw_bvr": 300,
+  "gw_hti": 1200,
+  "gw_ivr": 1700,
+  "gw_per": 9500,
+  "gw_rng": 400,
+  "gw_vhr": 7700,
+  "gw_wai": 800
+ },
+ "gateway_crossings": {
+  "gw_bvr": 562,
+  "gw_hti": 1479,
+  "gw_ivr": 2547,
+  "gw_per": 12364,
+  "gw_rng": 602,
+  "gw_vhr": 11273,
+  "gw_wai": 1241
+ },
+ "gateway_trucks": {
+  "gw_bvr": 22,
+  "gw_hti": 112,
+  "gw_ivr": 144,
+  "gw_per": 850,
+  "gw_rng": 10,
+  "gw_vhr": 932,
+  "gw_wai": 42
+ },
+ "growth": "moderate",
+ "hourly_profile": "observed: hourly_profile.csv (S3; S-D19 07-18, other hours as basis column says)",
+ "occupied_households": 8713.9,
+ "overrides": [],
+ "resident_and_lodging_crossings_expected_weekday": {
+  "gw_bvr": 0.0,
+  "gw_hti": 1015.5,
+  "gw_ivr": 625.2,
+  "gw_per": 1988.1,
+  "gw_rng": 212.1,
+  "gw_vhr": 2494.8,
+  "gw_wai": 328.5
+ },
+ "resident_rate": 6.502,
+ "resident_rate_factor": 0.9915,
+ "resident_trips": 56206,
+ "resident_trips_expected": 56175.8,
+ "resident_trips_generated_before_layers": 56206,
+ "seed": 1,
+ "sources": "S-C30 mesh-block counts; S-S2-01 mesh-block polygons; S-C03 ERP 2025; S-C01 household size; S-S2-03 TfNSW trip rates; S-E03/S-E01 POIs; S-D02 AADT (via sim/data/counts/aadt.csv); S-D18 summer Victor Harbor Rd; S-B10 growth; S-C12 growth map; S-C31 NYE venue; hourly profile sim/data/profiles/hourly_profile.csv (S3)",
+ "summer_factor": 3.172234745184969,
+ "summer_scaling": "day-tripper volume x3.17 (base-year factor, S-D18 target 11000)",
+ "thr_paired": {
+  "gw_bvr": 0.0,
+  "gw_hti": 18.4,
+  "gw_ivr": 107.5,
+  "gw_per": 1167.0,
+  "gw_rng": 0.0,
+  "gw_vhr": 1041.0,
+  "gw_wai": 0.0
+ },
+ "thr_target": {
+  "gw_bvr": 0.0,
+  "gw_hti": 18.4,
+  "gw_ivr": 107.5,
+  "gw_per": 1502.4,
+  "gw_rng": 0.0,
+  "gw_vhr": 1041.0,
+  "gw_wai": 0.0
+ },
+ "trips": 92263,
+ "trips_by_stratum": {
+  "ext": 14846,
+  "res": 50770,
+  "thr": 1166,
+  "vis": 25481
+ },
+ "year": 2031
+}

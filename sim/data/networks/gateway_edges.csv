@@ -1,0 +1,8 @@
+gateway,road,in_edge,out_edge,lon,lat,note
+victor_harbor_rd_north,Victor Harbor Road,-33914372,33914372,138.6459,-35.46,A13 to Adelaide
+hindmarsh_tiers_rd,Hindmarsh Tiers Road,-23075214#4,-23075214#5,138.6056,-35.46,Hindmarsh Tiers Rd (04790) to Myponga
+port_elliot_rd_east,Port Elliot Road,-601834298#3,601834298#3,138.6705,-35.5318,B37 to Port Elliot / Goolwa
+inman_valley_rd_west,Inman Valley Road,138404394#0,-138404394#0,138.5281,-35.5016,"B37 west (Inman Valley, Yankalilla)"
+waitpinga_rd_southwest,Waitpinga Road,-23211348#2,23211348#2,138.4929,-35.6124,Waitpinga / Newland Head
+greenhills_rd_north,Greenhills Road,,,138.5816,-35.46,Greenhills Rd to Hindmarsh Valley
+waterport_rd_east,Waterport Road,388250466#0,-388250466#0,138.6874,-35.5187,Waterport Rd towards Hindmarsh Valley

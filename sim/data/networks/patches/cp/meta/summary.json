@@ -1,0 +1,177 @@
+{
+ "added": {
+  "edges": 0,
+  "ids": []
+ },
+ "checks": {
+  "edges": 4645,
+  "ok": true,
+  "roundabout_problems": {},
+  "traffic_lights": 2,
+  "undrivable_passenger": [],
+  "undrivable_truck": []
+ },
+ "components": [
+  "c1a",
+  "c2",
+  "c3",
+  "c4"
+ ],
+ "edges_touched_directed_km": 4.093,
+ "junction_aliases": {
+  "s6_signal_torrens_crozier": {
+   "junction_id": "torrens_crozier",
+   "kind": "signal node",
+   "replaces": [
+    "11151408220",
+    "11151408223",
+    "11151408227",
+    "11151408231",
+    "1842610065",
+    "1842610067",
+    "1948685929",
+    "1948685950",
+    "1202918969#1",
+    "1202918969#2",
+    "1202918969#3",
+    "1202918969#4",
+    "1202918969#5",
+    "1202918969#6",
+    "1202918969#7",
+    "1202918969#8"
+   ]
+  },
+  "s6_signal_torrens_eyre_seaview_hindmarsh": {
+   "junction_id": "torrens_eyre_seaview_hindmarsh",
+   "kind": "signal node",
+   "replaces": [
+    "1842609966",
+    "1842609970",
+    "1842609982",
+    "1842609995",
+    "1842609997",
+    "1948692229",
+    "249072469",
+    "649114845",
+    "173449320#1",
+    "173449320#2",
+    "173449320#3",
+    "173449320#4",
+    "173449320#5",
+    "173449320#6",
+    "173449320#7",
+    "173449320#8"
+   ]
+  }
+ },
+ "movements_extra": [],
+ "movements_missing": {},
+ "movements_removed_after_guess": [],
+ "net": "sim/data/networks/cp_bays.net.xml",
+ "new_signals": [
+  "s6_signal_torrens_crozier",
+  "s6_signal_torrens_eyre_seaview_hindmarsh"
+ ],
+ "notes": [
+  "C1a 30 km/h town centre (not Torrens/Victoria St): 56 edges to 30 km/h",
+  "C2 20 km/h shared zones (Ocean St, Albert Pl, Railway Tce): 11 edges to 20 km/h",
+  "C3 one-way loop (clockwise): Torrens Street: 10 edges removed; Eyre Terrace: 3 edges removed; Flinders Parade: 3 edges removed; Esplanade: 2 edges removed; 3 edges left without access removed (-1204648898, 1204648898, 173449330)",
+  "C4 torrens_eyre_seaview_hindmarsh: roundabout (8 ring edges, 8 nodes) replaced by actuated signal s6_signal_torrens_eyre_seaview_hindmarsh; 4 approaches keep their movements",
+  "C4 torrens_crozier: roundabout (8 ring edges, 8 nodes) replaced by actuated signal s6_signal_torrens_crozier; 4 approaches keep their movements"
+ ],
+ "removed": {
+  "directed_km": 1.136,
+  "edges": 37,
+  "ids": [
+   "-1204648898",
+   "-173449378",
+   "-184389891#1",
+   "-184389891#2",
+   "-50904907#1",
+   "-50904907#5",
+   "1202918967#0",
+   "1202918967#1",
+   "1202918969#1",
+   "1202918969#2",
+   "1202918969#3",
+   "1202918969#4",
+   "1202918969#5",
+   "1202918969#6",
+   "1202918969#7",
+   "1202918969#8",
+   "1204648898",
+   "173449320#1",
+   "173449320#2",
+   "173449320#3",
+   "173449320#4",
+   "173449320#5",
+   "173449320#6",
+   "173449320#7",
+   "173449320#8",
+   "173449330",
+   "184390356",
+   "23075179#0",
+   "23075179#1",
+   "23075179#5",
+   "50904910#0",
+   "50904910#2",
+   "50904911",
+   "576495721#0",
+   "576495721#1",
+   "576495725#0",
+   "576495725#2"
+  ]
+ },
+ "rerouted_to_new_node": {
+  "edges": 12,
+  "ids": [
+   "1202918968#1",
+   "1202918970",
+   "1202918971",
+   "1202918972",
+   "1202918973",
+   "173449331",
+   "173449333",
+   "173449376#0",
+   "23075170",
+   "23075173",
+   "50904927",
+   "576495712#3"
+  ]
+ },
+ "scenario": "cp",
+ "signal_cycles_s": {
+  "s6_signal_torrens_crozier": 90,
+  "s6_signal_torrens_eyre_seaview_hindmarsh": 90
+ },
+ "speed_changed": {
+  "20": {
+   "directed_km": 0.938,
+   "edges": 11,
+   "streets": [
+    "Albert Place",
+    "Ocean Street",
+    "Railway Terrace"
+   ]
+  },
+  "30": {
+   "directed_km": 1.817,
+   "edges": 37,
+   "streets": [
+    "Coral Street",
+    "Crozier Road",
+    "Esplanade",
+    "Eyre Terrace",
+    "Flinders Parade",
+    "McKinlay Street",
+    "Stuart Street",
+    "Victor Harbor Boat Ramp"
+   ]
+  }
+ },
+ "turn_bays": 179,
+ "widened": {
+  "directed_km": 0.0,
+  "edges": 0
+ }
+}

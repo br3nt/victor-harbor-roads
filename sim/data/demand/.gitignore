@@ -1,0 +1,5 @@
+# Generated SUMO trip files are 7-19 MB each: rebuild with
+#   python -m vhsim.demand.build --condition all --year all --growth all
+*.trips.xml
+# Large archived PDFs (hash and URL in raw/SOURCES.tsv)
+raw/*.pdf

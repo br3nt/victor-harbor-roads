@@ -1,0 +1,11 @@
+condition,scenario,label,seeds,mean_trip_min,p95_trip_min,time_stopped_veh_h,stopped_change_pct,trip_change_s,teleports
+weekday_term,baseline,Today's network,3,6.65,13.62,607.57,0.0,0.0,4.33
+weekday_term,cp,Council package (C1a+C2+C3+C4),3,7.14,14.67,975.9,60.6,29.4,24.67
+weekday_term,bp,Brent's package (B3+B4+B5),3,6.98,14.71,964.63,58.8,19.8,19.0
+weekday_term,b3,B3 four-lane ring road,3,6.75,13.94,747.63,23.1,6.0,8.0
+weekday_term,n2,N2 roundabout at Armstrong Rd / Crozier Rd,1,6.64,13.57,559.4,-7.9,-0.6,8.0
+weekday_term,n3,N3 Crozier Rd flare at Armstrong Rd,2,6.61,13.51,570.75,-6.1,-2.4,6.5
+weekday_term,n4,N4 roundabout at Hindmarsh Rd / Grantley Ave,2,6.71,13.84,633.6,4.3,3.6,7.0
+weekday_term,n5,N5 roundabouts at Armstrong/Crozier and Armstrong/Greenhills,2,6.62,13.52,513.25,-15.5,-1.8,2.0
+weekday_term,n7,N7 combination (N5 + N4),2,6.59,13.47,464.65,-23.5,-3.6,3.0
+weekday_term,n9,N9 combination (N3 + N4),3,6.62,13.54,555.7,-8.5,-1.8,6.0

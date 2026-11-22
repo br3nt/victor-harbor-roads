@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head profile="https://br3nt.github.io/okf/">
+<meta charset="utf-8">
+<title>Plan Validation</title>
+<link rel="canonical" href="/n/plan-validation">
+<meta name="uuid" scheme="UUID" content="13ff5d5a-c3e4-492f-b40a-ac6564c85ed9">
+<meta name="created" scheme="ISO8601" content="2026-11-21T09:35:44+10:30">
+<meta name="updated" scheme="ISO8601" content="2026-11-21T13:29:07+10:30">
+<meta name="keywords" content="plan">
+<link rev="chapter" href="/n/victor-harbor-traffic-investigation">
+<link rev="describedby" href="/n/investigation-plan">
+<link rev="describedby" href="/n/investigation-plan">
+</head>
+<body>
+<h1>Plan Validation</h1>
+<p>Traceability check (<a rel="describedby" href="/n/investigation-plan#R22">R22</a>): every request Brent made on <time datetime="2026-11-21">21 Nov 2026</time>, mapped to the
+<a rel="describedby" href="/n/investigation-plan">Investigation Plan</a> requirement that covers it. A row with no requirement would be a gap; there are none.
+Re-run this check whenever Brent adds a request.</p>
+<table>
+<thead><tr><th>#</th><th>Brent asked for (paraphrased)</th><th>Covered by</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>Understand the council's current proposals</td><td>R1, R25, R27</td></tr>
+<tr><td>2</td><td>How they came to these proposals; their decision-making process; who proposed the ideas; how options changed over time</td><td>R2</td></tr>
+<tr><td>3</td><td>What evidence and validation processes they went through</td><td>R3</td></tr>
+<tr><td>4</td><td>Due diligence: traffic data collected, simulations, projections; suspicion that their data is rudimentary</td><td>R3 (with a rigor assessment), E3–E6</td></tr>
+<tr><td>5</td><td>Public meeting records of councillors' meetings</td><td>R4, E8</td></tr>
+<tr><td>6</td><td>Options already considered and rejected</td><td>R5, E10</td></tr>
+<tr><td>7</td><td>Walk the YourSay survey step by step, don't submit, collect all info, links, images, data</td><td>R10, E2 (stream A)</td></tr>
+<tr><td>8</td><td>Use the Facebook post and Brent's comments</td><td>R21, R23, S-F01–S-F03</td></tr>
+<tr><td>9</td><td>Brent's survey responses (emailed receipt)</td><td>R21, S-H01 (done)</td></tr>
+<tr><td>10</td><td>Spelunk victor.sa.gov.au and yoursay; other resources</td><td>R4, R11, streams A–B</td></tr>
+<tr><td>11</td><td>State (South Australia [SA]) and federal transport departments</td><td>R11, E18, E19</td></tr>
+<tr><td>12</td><td>How residency, population and demographics will change; development areas and priorities</td><td>R6, E12, E13</td></tr>
+<tr><td>13</td><td>Residence sizes, people per residence, vacancy rates, holiday-only vs short-term vs permanent residents</td><td>R7, E14–E16</td></tr>
+<tr><td>14</td><td>Raw traffic data: normal, off-peak, high peak, special occasions</td><td>R8, E4, E18</td></tr>
+<tr><td>15</td><td>Victor-specific holiday seasons and how each affects traffic</td><td>R9, E17</td></tr>
+<tr><td>16</td><td>Project data into the future from the council's expansion priorities</td><td>R6 + R13 (forecast-year runs)</td></tr>
+<tr><td>17</td><td>Virtual map from OpenStreetMap / Google Maps / other tools</td><td>R12, E20</td></tr>
+<tr><td>18</td><td>Simulate now vs council options vs Brent's option</td><td>R13, Options Register</td></tr>
+<tr><td>19</td><td>Identify and simulate improvements neither council nor Brent proposed</td><td>R16</td></tr>
+<tr><td>20</td><td>Per residential area, travel time to POIs (shops, restaurants, services, gyms…), over time and at peak, as statistics: distributions, median, mean, p95, p99</td><td>R14</td></tr>
+<tr><td>21</td><td>Per intersection, per from-direction → to-direction: how traffic flows, how long people wait to turn, by condition and option</td><td>R15</td></tr>
+<tr><td>22</td><td>Only road and traffic changes; ignore public transport, recreation, digital parking</td><td>R17</td></tr>
+<tr><td>23</td><td>Diligent tracking of where information comes from</td><td>R18, Sources Register, Research Conventions</td></tr>
+<tr><td>24</td><td>Pre-plan expected info to identify misses; capture unexpected discoveries and feed them back</td><td>R19, Expected Information Catalogue, Discoveries Log</td></tr>
+<tr><td>25</td><td>Track it all in OKF/HTML: hypergraph, indexes, mind map, provenance links, attributes, glossary, script-tag data, animated views</td><td>R20</td></tr>
+<tr><td>26</td><td>Validate that the plan misses nothing</td><td>R22 (this note)</td></tr>
+<tr><td>27</td><td>(Added 21 Nov 2026) Track people: decision-makers, approvers, rubber-stampers, people who did the work, supporters, blockers</td><td>R28, E23, E24, People and Roles</td></tr>
+</tbody></table>
+
+<h2>Added beyond what was asked</h2>
+<ul>
+<li><strong>R24</strong> — consultation deadline (Sunday 5pm), so a submission is ready in time.</li>
+<li><strong>R25</strong> — the council's own objectives, so options are judged against their goals too.</li>
+<li><strong>R26</strong> — calibration before trusting results; assumptions stated and stress-tested.</li>
+<li><strong>R23</strong> — specific claims from the Facebook debate turned into tests.</li>
+<li><strong>R27</strong> — Ring Road options, found in Brent's survey receipt (Discovery D1).</li>
+</ul>
+
+<h2>Caveat recorded</h2>
+<p>Item 20 mentions normal distributions. Trip times are usually right-skewed (a long tail of bad trips), so results will show the measured distribution and its percentiles rather than fit a normal curve.</p>
+</body>
+</html>

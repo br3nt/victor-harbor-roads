@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head profile="https://br3nt.github.io/okf/">
+<meta charset="utf-8">
+<title>Simulation Results</title>
+<link rel="canonical" href="/n/simulation-results">
+<meta name="uuid" scheme="UUID" content="b255e596-bc2b-4cf0-b339-1ca05610e383">
+<meta name="created" scheme="ISO8601" content="2026-11-21T16:59:46+10:30">
+<meta name="updated" scheme="ISO8601" content="2026-11-22T11:44:41+10:30">
+<meta name="keywords" content="simulation, results">
+<link rev="chapter" href="/n/victor-harbor-traffic-investigation">
+</head>
+<body>
+<h1>Simulation Results</h1>
+<p><strong>Preliminary.</strong> First results from our SUMO (Simulation of Urban MObility) model of Victor Harbor now (traffic built from 2025 data): term weekday and summer peak day, 3 runs (random seeds) each. Independently reviewed on 21 Nov 2026; wording below follows that review. Method: <a rel="related" href="/n/simulation-design">Simulation Design</a>; options: <a rel="related" href="/n/options-register">Options Register</a>; assumptions and calibration fit: <code>sim/assumptions/integration.md</code> (A-INT-01 to 04) and <code>sim/assumptions/S6-scenarios.md</code>.</p>
+<h2 id="how-to-read">How to read these results</h2>
+<ul>
+<li><strong>Differences, not forecasts.</strong> The model is partly calibrated: most main roads are within about ±25% of Department for Infrastructure and Transport (DIT) daily counts, but Victoria St carries about 50% too much and Adelaide Rd about 40% too little, and the town centre is somewhat under-loaded: at the counted intersections the model carries about 0.80 of the 2017 turning counts projected to 2025 (method and validation: <code>sim/data/counts/PROJECTION.md</code>; <a rel="related" href="/n/traffic-and-crash-data#projected-counts">projected counts</a>). Delay grows faster than traffic, so penalties in the town centre are more likely understated than overstated.</li>
+<li><strong>Noise.</strong> The 3 seeds share the same trips, so the spread shown is simulation noise only, not uncertainty about demand.</li>
+<li><strong>Metrics.</strong> "Trip time" is door-to-door driving time. "Time stopped" is total vehicle-hours stationary in queues; it does not depend on speed limits (unlike the simulator's "time loss" measure, which we do not use). Part of the extra trip time in lower-speed options is the lower limits themselves, assuming full compliance.</li>
+<li><strong>As modelled.</strong> Signals (C4) are a minimal design (one shared lane per approach, equal green split) and probably pessimistic; 20 km/h shared streets (C2) have no pedestrian delay and are probably optimistic. Brent's package here is B3+B4+B5 (time-based speed zones, B2, not included).</li>
+</ul>
+<h2 id="network">Network-wide</h2><table><thead><tr><th>Option</th><th>Condition</th><th>Average trip (min)</th><th>Change per trip (s)</th><th>Slowest 5% (min)</th><th>Time stopped (vehicle-hours/day)</th><th>Change in time stopped</th></tr></thead><tbody>
+<tr><td>Today&#x27;s network</td><td>Term weekday</td><td>6.29</td><td></td><td>13.07</td><td>137</td><td></td></tr>
+<tr><td>C1a 30 km/h town centre (not Torrens/Victoria)</td><td>Term weekday</td><td>6.35</td><td>+4</td><td>13.11</td><td>139</td><td>+2%</td></tr>
+<tr><td>C1b 30 km/h incl. Torrens St</td><td>Term weekday</td><td>6.35</td><td>+4</td><td>13.12</td><td>117</td><td>-14%</td></tr>
+<tr><td>C3 one-way loop (clockwise)</td><td>Term weekday</td><td>6.33</td><td>+2</td><td>13.11</td><td>137</td><td>+0%</td></tr>
+<tr><td>C3b one-way loop (anticlockwise)</td><td>Term weekday</td><td>6.37</td><td>+5</td><td>13.15</td><td>154</td><td>+13%</td></tr>
+<tr><td>C4 signals at Torrens/Seaview and Torrens/Crozier</td><td>Term weekday</td><td>6.31</td><td>+1</td><td>13.08</td><td>168</td><td>+23%</td></tr>
+<tr><td>Council package (C1a+C2+C3+C4)</td><td>Term weekday</td><td>6.53</td><td>+14</td><td>13.39</td><td>216</td><td>+58%</td></tr>
+<tr><td>B3 four-lane ring road</td><td>Term weekday</td><td>6.25</td><td>-2</td><td>12.93</td><td>131</td><td>-4%</td></tr>
+<tr><td>B4 two-lane McCracken roundabout</td><td>Term weekday</td><td>6.29</td><td>+0</td><td>13.07</td><td>135</td><td>-2%</td></tr>
+<tr><td>B5 roundabout slip lanes</td><td>Term weekday</td><td>6.29</td><td>+0</td><td>13.07</td><td>137</td><td>+0%</td></tr>
+<tr><td>Brent&#x27;s package (B3+B4+B5)</td><td>Term weekday</td><td>6.25</td><td>-2</td><td>12.92</td><td>134</td><td>-2%</td></tr>
+<tr><td>N1 Grantley Ave crossing closed</td><td>Term weekday</td><td>6.32</td><td>+2</td><td>13.09</td><td>144</td><td>+5%</td></tr>
+<tr><td>Today&#x27;s network</td><td>Summer peak day</td><td>6.84</td><td></td><td>14.00</td><td>460</td><td></td></tr>
+<tr><td>C1a 30 km/h town centre (not Torrens/Victoria)</td><td>Summer peak day</td><td>6.97</td><td>+8</td><td>14.17</td><td>497</td><td>+8%</td></tr>
+<tr><td>C1b 30 km/h incl. Torrens St</td><td>Summer peak day</td><td>6.92</td><td>+5</td><td>14.12</td><td>432</td><td>-6%</td></tr>
+<tr><td>C3 one-way loop (clockwise)</td><td>Summer peak day</td><td>7.14</td><td>+18</td><td>14.76</td><td>663</td><td>+44%</td></tr>
+<tr><td>C3b one-way loop (anticlockwise)</td><td>Summer peak day</td><td>7.32</td><td>+29</td><td>14.91</td><td>797</td><td>+73%</td></tr>
+<tr><td>C4 signals at Torrens/Seaview and Torrens/Crozier</td><td>Summer peak day</td><td>6.94</td><td>+6</td><td>14.22</td><td>575</td><td>+25%</td></tr>
+<tr><td>Council package (C1a+C2+C3+C4)</td><td>Summer peak day</td><td>7.31</td><td>+28</td><td>14.86</td><td>734</td><td>+60%</td></tr>
+<tr><td>B3 four-lane ring road</td><td>Summer peak day</td><td>6.83</td><td>-1</td><td>13.99</td><td>478</td><td>+4%</td></tr>
+<tr><td>B4 two-lane McCracken roundabout</td><td>Summer peak day</td><td>6.87</td><td>+2</td><td>14.09</td><td>485</td><td>+6%</td></tr>
+<tr><td>B5 roundabout slip lanes</td><td>Summer peak day</td><td>6.92</td><td>+5</td><td>14.24</td><td>520</td><td>+13%</td></tr>
+<tr><td>Brent&#x27;s package (B3+B4+B5)</td><td>Summer peak day</td><td>6.84</td><td>+0</td><td>14.01</td><td>492</td><td>+7%</td></tr>
+<tr><td>N1 Grantley Ave crossing closed</td><td>Summer peak day</td><td>7.05</td><td>+13</td><td>14.49</td><td>593</td><td>+29%</td></tr>
+</tbody></table>
+<script type="application/json" id="network-results">[{"condition": "weekday_term", "scenario": "baseline", "label": "Today's network", "seeds": 3, "mean_trip_min": 6.29, "p95_trip_min": 13.07, "time_stopped_veh_h": 136.63, "stopped_change_pct": 0.0, "trip_change_s": 0.0, "teleports": 0.0}, {"condition": "weekday_term", "scenario": "c1a", "label": "C1a 30 km/h town centre (not Torrens/Victoria)", "seeds": 3, "mean_trip_min": 6.35, "p95_trip_min": 13.11, "time_stopped_veh_h": 139.2, "stopped_change_pct": 1.9, "trip_change_s": 3.6, "teleports": 0.0}, {"condition": "weekday_term", "scenario": "c1b", "label": "C1b 30 km/h incl. Torrens St", "seeds": 3, "mean_trip_min": 6.35, "p95_trip_min": 13.12, "time_stopped_veh_h": 116.8, "stopped_change_pct": -14.5, "trip_change_s": 3.6, "teleports": 0.0}, {"condition": "weekday_term", "scenario": "c3", "label": "C3 one-way loop (clockwise)", "seeds": 3, "mean_trip_min": 6.33, "p95_trip_min": 13.11, "time_stopped_veh_h": 136.7, "stopped_change_pct": 0.1, "trip_change_s": 2.4, "teleports": 0.33}, {"condition": "weekday_term", "scenario": "c3b", "label": "C3b one-way loop (anticlockwise)", "seeds": 3, "mean_trip_min": 6.37, "p95_trip_min": 13.15, "time_stopped_veh_h": 154.37, "stopped_change_pct": 13.0, "trip_change_s": 4.8, "teleports": 0.0}, {"condition": "weekday_term", "scenario": "c4", "label": "C4 signals at Torrens/Seaview and Torrens/Crozier", "seeds": 3, "mean_trip_min": 6.31, "p95_trip_min": 13.08, "time_stopped_veh_h": 167.7, "stopped_change_pct": 22.7, "trip_change_s": 1.2, "teleports": 0.0}, {"condition": "weekday_term", "scenario": "cp", "label": "Council package (C1a+C2+C3+C4)", "seeds": 3, "mean_trip_min": 6.53, "p95_trip_min": 13.39, "time_stopped_veh_h": 215.83, "stopped_change_pct": 58.0, "trip_change_s": 14.4, "teleports": 1.33}, {"condition": "weekday_term", "scenario": "b3", "label": "B3 four-lane ring road", "seeds": 3, "mean_trip_min": 6.25, "p95_trip_min": 12.93, "time_stopped_veh_h": 130.93, "stopped_change_pct": -4.2, "trip_change_s": -2.4, "teleports": 0.0}, {"condition": "weekday_term", "scenario": "b4", "label": "B4 two-lane McCracken roundabout", "seeds": 3, "mean_trip_min": 6.29, "p95_trip_min": 13.07, "time_stopped_veh_h": 134.63, "stopped_change_pct": -1.5, "trip_change_s": 0.0, "teleports": 0.33}, {"condition": "weekday_term", "scenario": "b5", "label": "B5 roundabout slip lanes", "seeds": 3, "mean_trip_min": 6.29, "p95_trip_min": 13.07, "time_stopped_veh_h": 137.33, "stopped_change_pct": 0.5, "trip_change_s": 0.0, "teleports": 0.0}, {"condition": "weekday_term", "scenario": "bp", "label": "Brent's package (B3+B4+B5)", "seeds": 3, "mean_trip_min": 6.25, "p95_trip_min": 12.92, "time_stopped_veh_h": 133.6, "stopped_change_pct": -2.2, "trip_change_s": -2.4, "teleports": 0.67}, {"condition": "weekday_term", "scenario": "n1", "label": "N1 Grantley Ave crossing closed", "seeds": 3, "mean_trip_min": 6.32, "p95_trip_min": 13.09, "time_stopped_veh_h": 143.77, "stopped_change_pct": 5.2, "trip_change_s": 1.8, "teleports": 0.0}, {"condition": "summer_peak", "scenario": "baseline", "label": "Today's network", "seeds": 3, "mean_trip_min": 6.84, "p95_trip_min": 14.0, "time_stopped_veh_h": 459.73, "stopped_change_pct": 0.0, "trip_change_s": 0.0, "teleports": 2.67}, {"condition": "summer_peak", "scenario": "c1a", "label": "C1a 30 km/h town centre (not Torrens/Victoria)", "seeds": 3, "mean_trip_min": 6.97, "p95_trip_min": 14.17, "time_stopped_veh_h": 497.03, "stopped_change_pct": 8.1, "trip_change_s": 7.8, "teleports": 7.0}, {"condition": "summer_peak", "scenario": "c1b", "label": "C1b 30 km/h incl. Torrens St", "seeds": 3, "mean_trip_min": 6.92, "p95_trip_min": 14.12, "time_stopped_veh_h": 431.97, "stopped_change_pct": -6.0, "trip_change_s": 4.8, "teleports": 3.33}, {"condition": "summer_peak", "scenario": "c3", "label": "C3 one-way loop (clockwise)", "seeds": 3, "mean_trip_min": 7.14, "p95_trip_min": 14.76, "time_stopped_veh_h": 663.2, "stopped_change_pct": 44.3, "trip_change_s": 18.0, "teleports": 12.67}, {"condition": "summer_peak", "scenario": "c3b", "label": "C3b one-way loop (anticlockwise)", "seeds": 3, "mean_trip_min": 7.32, "p95_trip_min": 14.91, "time_stopped_veh_h": 796.93, "stopped_change_pct": 73.3, "trip_change_s": 28.8, "teleports": 25.33}, {"condition": "summer_peak", "scenario": "c4", "label": "C4 signals at Torrens/Seaview and Torrens/Crozier", "seeds": 3, "mean_trip_min": 6.94, "p95_trip_min": 14.22, "time_stopped_veh_h": 574.8, "stopped_change_pct": 25.0, "trip_change_s": 6.0, "teleports": 4.33}, {"condition": "summer_peak", "scenario": "cp", "label": "Council package (C1a+C2+C3+C4)", "seeds": 3, "mean_trip_min": 7.31, "p95_trip_min": 14.86, "time_stopped_veh_h": 734.43, "stopped_change_pct": 59.8, "trip_change_s": 28.2, "teleports": 12.0}, {"condition": "summer_peak", "scenario": "b3", "label": "B3 four-lane ring road", "seeds": 3, "mean_trip_min": 6.83, "p95_trip_min": 13.99, "time_stopped_veh_h": 477.6, "stopped_change_pct": 3.9, "trip_change_s": -0.6, "teleports": 2.33}, {"condition": "summer_peak", "scenario": "b4", "label": "B4 two-lane McCracken roundabout", "seeds": 3, "mean_trip_min": 6.87, "p95_trip_min": 14.09, "time_stopped_veh_h": 485.33, "stopped_change_pct": 5.6, "trip_change_s": 1.8, "teleports": 8.67}, {"condition": "summer_peak", "scenario": "b5", "label": "B5 roundabout slip lanes", "seeds": 3, "mean_trip_min": 6.92, "p95_trip_min": 14.24, "time_stopped_veh_h": 519.87, "stopped_change_pct": 13.1, "trip_change_s": 4.8, "teleports": 3.67}, {"condition": "summer_peak", "scenario": "bp", "label": "Brent's package (B3+B4+B5)", "seeds": 3, "mean_trip_min": 6.84, "p95_trip_min": 14.01, "time_stopped_veh_h": 491.53, "stopped_change_pct": 6.9, "trip_change_s": 0.0, "teleports": 7.67}, {"condition": "summer_peak", "scenario": "n1", "label": "N1 Grantley Ave crossing closed", "seeds": 3, "mean_trip_min": 7.05, "p95_trip_min": 14.49, "time_stopped_veh_h": 592.67, "stopped_change_pct": 28.9, "trip_change_s": 12.6, "teleports": 9.33}]</script>
+<p>Seed-to-seed spread: average trip ±0.01–0.08 min; time stopped ±5 (weekday) to ±60 (summer) vehicle-hours. Smaller differences are noise. Components don't add up exactly (C1a + C3 + C4 increments exceed the package's), and C2 was not run on its own.</p>
+<h2 id="foreshore">Foreshore (claim R23a)</h2><p>Per day. "North Flinders Pde" = the northern 128 m of Flinders Parade at Bridge Terrace (the loop's route into Coral St); "Esplanade screenline" = vehicles crossing the Esplanade near Albert Place, either direction; vehicle-km = all driving on Flinders Pde and the Esplanade.</p>
+<table><thead><tr><th>Option</th><th>Condition</th><th>Trucks via north Flinders Pde</th><th>Caravans via north Flinders Pde</th><th>Cars via north Flinders Pde</th><th>Cars across Esplanade screenline</th><th>Car vehicle-km on foreshore</th><th>Truck vehicle-km on foreshore</th></tr></thead><tbody>
+<tr><td>Today&#x27;s network</td><td>Term weekday</td><td>10</td><td>1</td><td>1194</td><td>1190</td><td>1507</td><td>4.2</td></tr>
+<tr><td>C3 one-way loop (clockwise)</td><td>Term weekday</td><td>184</td><td>8</td><td>6085</td><td>623</td><td>1587</td><td>30.8</td></tr>
+<tr><td>C3b one-way loop (anticlockwise)</td><td>Term weekday</td><td>—</td><td>—</td><td>—</td><td>724</td><td>1401</td><td>8.4</td></tr>
+<tr><td>C4 signals at Torrens/Seaview and Torrens/Crozier</td><td>Term weekday</td><td>8</td><td>1</td><td>1057</td><td>1184</td><td>1402</td><td>2.5</td></tr>
+<tr><td>Council package (C1a+C2+C3+C4)</td><td>Term weekday</td><td>78</td><td>4</td><td>3232</td><td>1465</td><td>1430</td><td>10.0</td></tr>
+<tr><td>Brent&#x27;s package (B3+B4+B5)</td><td>Term weekday</td><td>8</td><td>1</td><td>1162</td><td>1192</td><td>1498</td><td>3.8</td></tr>
+<tr><td>Today&#x27;s network</td><td>Summer peak day</td><td>14</td><td>65</td><td>2887</td><td>2813</td><td>3541</td><td>5.4</td></tr>
+<tr><td>C3 one-way loop (clockwise)</td><td>Summer peak day</td><td>177</td><td>125</td><td>8522</td><td>1936</td><td>3492</td><td>39.7</td></tr>
+<tr><td>C3b one-way loop (anticlockwise)</td><td>Summer peak day</td><td>—</td><td>—</td><td>—</td><td>1592</td><td>2933</td><td>7.3</td></tr>
+<tr><td>C4 signals at Torrens/Seaview and Torrens/Crozier</td><td>Summer peak day</td><td>11</td><td>60</td><td>2686</td><td>2825</td><td>3508</td><td>6.1</td></tr>
+<tr><td>Council package (C1a+C2+C3+C4)</td><td>Summer peak day</td><td>95</td><td>101</td><td>6085</td><td>3379</td><td>3373</td><td>16.6</td></tr>
+<tr><td>Brent&#x27;s package (B3+B4+B5)</td><td>Summer peak day</td><td>15</td><td>63</td><td>2730</td><td>2833</td><td>3554</td><td>7.4</td></tr>
+</tbody></table><p>— = that street section is closed to that direction in the option.</p>
+<h2 id="intersections">Selected intersection approaches — summer peak day</h2><p>Average wait (seconds) and traffic (vehicles/day) on each approach.</p><table><thead><tr><th>Intersection</th><th>Approach</th><th>Today: wait / vehicles</th><th>Council package</th><th>Loop only</th><th>Signals only</th><th>Brent's package</th><th>Four-lane ring road only</th></tr></thead><tbody>
+<tr><td>Crozier Rd / Acraman St / Lindsay St</td><td>Lindsay Street</td><td>14 s / 1,334</td><td>83 s / 1,436</td><td>48 s / 1,351</td><td>15 s / 1,314</td><td>13 s / 1,350</td><td>17 s / 1,363</td></tr>
+<tr><td>Crozier Rd / Acraman St / Lindsay St</td><td>Acraman Street</td><td>8 s / 1,625</td><td>20 s / 5,220</td><td>17 s / 3,524</td><td>8 s / 1,525</td><td>7 s / 1,613</td><td>8 s / 1,589</td></tr>
+<tr><td>Coral St / Ocean St</td><td>Ocean Street</td><td>6 s / 2,555</td><td>13 s / 454</td><td>18 s / 535</td><td>6 s / 2,621</td><td>6 s / 2,611</td><td>6 s / 2,597</td></tr>
+<tr><td>Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd</td><td>Hindmarsh Road</td><td>5 s / 8,225</td><td>30 s / 2,470</td><td>3 s / 1,047</td><td>10 s / 8,495</td><td>5 s / 8,004</td><td>5 s / 8,138</td></tr>
+<tr><td>Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd</td><td>Torrens Street</td><td>6 s / 6,934</td><td>6 s / 10,425</td><td>3 s / 9,015</td><td>10 s / 7,370</td><td>6 s / 6,577</td><td>6 s / 6,943</td></tr>
+<tr><td>Torrens St / Crozier Rd</td><td>Torrens Street</td><td>3 s / 5,814</td><td>10 s / 8,643</td><td>6 s / 6,365</td><td>7 s / 6,395</td><td>3 s / 5,622</td><td>3 s / 5,828</td></tr>
+<tr><td>Armstrong Rd / Crozier Rd</td><td>Crozier Road</td><td>29 s / 3,174</td><td>43 s / 3,435</td><td>46 s / 3,430</td><td>30 s / 3,128</td><td>52 s / 2,869</td><td>55 s / 2,811</td></tr>
+<tr><td>Victoria St / Oval Rd</td><td>Victoria Street</td><td>8 s / 10,866</td><td>10 s / 10,540</td><td>13 s / 10,547</td><td>9 s / 10,832</td><td>7 s / 10,835</td><td>8 s / 10,850</td></tr>
+</tbody></table><p>— = that approach no longer exists in the option (one-way streets), or was rebuilt as a different approach (signals in the council package). Route choice in the model is by travel time alone, with no reluctance to use residential streets, so diverted volumes may be on the high side.</p>
+<h2 id="accessibility">Travel time from suburbs — summer peak day</h2><p>Home-based trips. Median and slowest 5% (p95), minutes. Rows with few trips (e.g. McCracken to medical, about 126 trips a day to 3 places) are less certain, especially the p95.</p><table><thead><tr><th>From</th><th>To</th><th>Trips/day</th><th>Today median</th><th>Today p95</th><th>Council pkg median</th><th>Council pkg p95</th><th>Brent pkg median</th><th>Brent pkg p95</th></tr></thead><tbody>
+<tr><td>Encounter Bay</td><td>supermarket</td><td>1,587</td><td>7.4</td><td>12.7</td><td>8.5</td><td>14.8</td><td>7.4</td><td>13.1</td></tr>
+<tr><td>Encounter Bay</td><td>services</td><td>509</td><td>6.0</td><td>11.3</td><td>6.3</td><td>12.9</td><td>6.0</td><td>11.6</td></tr>
+<tr><td>Encounter Bay</td><td>medical</td><td>359</td><td>3.9</td><td>10.0</td><td>3.9</td><td>11.0</td><td>4.0</td><td>10.5</td></tr>
+<tr><td>Encounter Bay</td><td>beach / foreshore</td><td>1,102</td><td>5.1</td><td>10.2</td><td>5.4</td><td>13.2</td><td>5.1</td><td>10.7</td></tr>
+<tr><td>Victor Harbor</td><td>supermarket</td><td>1,326</td><td>3.3</td><td>8.5</td><td>3.9</td><td>9.6</td><td>3.3</td><td>8.4</td></tr>
+<tr><td>Victor Harbor</td><td>services</td><td>458</td><td>2.9</td><td>6.7</td><td>3.2</td><td>7.8</td><td>2.8</td><td>6.8</td></tr>
+<tr><td>Victor Harbor</td><td>medical</td><td>282</td><td>4.3</td><td>7.6</td><td>4.7</td><td>9.6</td><td>4.4</td><td>7.8</td></tr>
+<tr><td>Victor Harbor</td><td>beach / foreshore</td><td>841</td><td>3.7</td><td>11.0</td><td>4.3</td><td>11.8</td><td>3.6</td><td>11.4</td></tr>
+<tr><td>Hayborough</td><td>supermarket</td><td>619</td><td>2.8</td><td>8.4</td><td>2.8</td><td>9.8</td><td>2.8</td><td>8.1</td></tr>
+<tr><td>Hayborough</td><td>services</td><td>232</td><td>5.9</td><td>9.3</td><td>6.3</td><td>10.6</td><td>5.7</td><td>9.3</td></tr>
+<tr><td>Hayborough</td><td>medical</td><td>132</td><td>8.5</td><td>11.5</td><td>9.2</td><td>14.2</td><td>8.3</td><td>11.4</td></tr>
+<tr><td>Hayborough</td><td>beach / foreshore</td><td>381</td><td>6.2</td><td>15.4</td><td>6.6</td><td>16.9</td><td>6.0</td><td>15.1</td></tr>
+<tr><td>McCracken</td><td>supermarket</td><td>554</td><td>3.5</td><td>7.3</td><td>3.5</td><td>9.1</td><td>3.5</td><td>7.3</td></tr>
+<tr><td>McCracken</td><td>services</td><td>195</td><td>4.8</td><td>9.1</td><td>5.3</td><td>10.9</td><td>4.7</td><td>9.5</td></tr>
+<tr><td>McCracken</td><td>medical</td><td>126</td><td>7.6</td><td>10.8</td><td>8.9</td><td>14.3</td><td>7.4</td><td>10.6</td></tr>
+<tr><td>McCracken</td><td>beach / foreshore</td><td>363</td><td>5.6</td><td>14.9</td><td>6.0</td><td>16.1</td><td>5.6</td><td>14.8</td></tr>
+<tr><td>Hindmarsh Valley</td><td>supermarket</td><td>142</td><td>6.1</td><td>16.9</td><td>6.1</td><td>17.1</td><td>6.0</td><td>16.8</td></tr>
+<tr><td>Hindmarsh Valley</td><td>services</td><td>35</td><td>6.5</td><td>16.7</td><td>6.5</td><td>17.3</td><td>6.2</td><td>16.7</td></tr>
+<tr><td>Hindmarsh Valley</td><td>medical</td><td>33</td><td>7.8</td><td>18.8</td><td>7.8</td><td>18.1</td><td>7.8</td><td>17.6</td></tr>
+<tr><td>Hindmarsh Valley</td><td>beach / foreshore</td><td>62</td><td>9.5</td><td>20.1</td><td>9.9</td><td>21.5</td><td>9.3</td><td>20.1</td></tr>
+</tbody></table>
+<h2 id="better-options">Better options: aimed at where the delay actually is (R16)</h2>
+<p>We first located the delay on today's network (method, hotspot tables and assumptions:
+<code>sim/assumptions/S7-improvements.md</code>), then designed options aimed at it and ran them like the others.
+Most delay is <strong>side-street right turns onto one-lane main roads</strong> around midday (10:00–17:00 holds
+83–89% of it), not the town-centre roundabouts (most approaches average 3–8 s). The largest hotspots are Victoria St
+between Bay Rd and Torrens St (car-park and side-street turns), side streets onto Hindmarsh Rd, the Bridge Tce /
+Grantley Ave link onto Hindmarsh Rd, the Seaview/Eyre roundabout, and, as the town grows, Crozier Rd and Greenhills Rd
+joining Armstrong Rd (Crozier Rd drivers wait 53–74 s a vehicle at 2041 high growth, about 15 years from now).</p>
+<table><thead><tr><th>Option</th><th>Cost class (assumed)</th><th>Time stopped, now (2025 data), term weekday</th>
+<th>Now (2025 data), summer peak day</th><th>2041 (about 15 years from now), high growth, term weekday</th></tr></thead><tbody>
+<tr><td>Council package (C1a+C2+C3+C4)</td><td>—</td><td>+58%</td><td>+60%</td><td>+61% (3 seeds)</td></tr>
+<tr><td>Brent&#x27;s package (B3+B4+B5)</td><td>—</td><td>-2%</td><td>+7%</td><td>+59% (3 seeds)</td></tr>
+<tr><td>N9 Crozier Rd turn lanes at Armstrong Rd + Hindmarsh Rd / Grantley Ave roundabout</td><td>$$–$$$</td><td>-11%</td><td>-18%</td><td>-8% (3 seeds)</td></tr>
+<tr><td>N3 Crozier Rd turn lanes at Armstrong Rd</td><td>$</td><td>-3%</td><td>-7%</td><td>-6% (2 seeds)</td></tr>
+<tr><td>N4 Hindmarsh Rd / Grantley Ave roundabout (beside the rail crossing)</td><td>$$–$$$</td><td>-8%</td><td>-7%</td><td>+4% (2 seeds)</td></tr>
+<tr><td>N7 three roundabouts: Armstrong/Crozier, Armstrong/Greenhills, Hindmarsh/Grantley</td><td>$$$</td><td>-2%</td><td>-10%</td><td>-24% (2 seeds)</td></tr>
+<tr><td>N2 Armstrong Rd / Crozier Rd roundabout</td><td>$$</td><td>+3%</td><td>+7%</td><td>-8% (1 seed)</td></tr>
+<tr><td>N5 Armstrong/Crozier + Armstrong/Greenhills roundabouts</td><td>$$$</td><td>+5%</td><td>+10%</td><td>-16% (2 seeds)</td></tr>
+<tr><td>N6 no right turn out of Granite St, Coral St, Wattle Dr</td><td>$</td><td>+1%</td><td>+22%</td><td>not run</td></tr>
+<tr><td>N8 Victoria St left-turn lanes into Oval Rd and the IGA car park</td><td>$</td><td>+1%</td><td>+9%</td><td>not run</td></tr>
+</tbody></table>
+<p>Change in total time vehicles spend stopped, against today's network in the same year and condition (now: 3 seeds).
+Cost classes are order-of-magnitude assumptions, not estimates: $ under $0.5 M, $$ $0.5–3 M, $$$ $3–10 M.
+The new junctions are geometric approximations, not designs; N4 sits beside a level crossing and would need crossing
+protection and land.</p>
+<ul>
+<li><strong>Today's traffic:</strong> N9 (Crozier Rd turn lanes at Armstrong Rd plus a roundabout at Hindmarsh Rd /
+Grantley Ave) is the best tested: about 11% less time stopped on a term weekday and 18% less on a summer day (the summer
+range across seeds, 364–386 vehicle-hours, is clear of today's 450–472).</li>
+<li><strong>As the town grows:</strong> N7 (roundabouts at Armstrong/Crozier, Armstrong/Greenhills and
+Hindmarsh/Grantley) is the best tested at 2041 (about 15 years from now) high growth (about −24%), while both the council's package and Brent's
+are about +60%. A staged reading: N9 now, then the Armstrong Rd roundabouts as the growth areas fill.</li>
+<li><strong>Growth is still not solved:</strong> even N7 leaves 2041 weekday queueing at about 3.4 times today's, and
+no tested option fixes the Victoria St corridor or the Hindmarsh Rd side streets (about 80% of summer delay stays
+where it is under N9).</li>
+<li><strong>Didn't help:</strong> N6 (turn bans: traffic moves onto other side streets; +22% in summer) and N8
+(Victoria St left-turn lanes). The council's outer freight ring road (C5) was not built: its indicative map could not
+be placed reliably.</li>
+</ul>
+<h2 id="findings">Findings (preliminary, as modelled)</h2><ul>
+<li><strong>Council's town-centre package:</strong> about +28 s per trip and about +60% time stopped in queues on a summer peak day (+275 vehicle-hours a day); about +14 s per trip on a term weekday. Part of the extra trip time is the lower limits themselves.</li>
+<li><strong>Which part matters:</strong> on a summer peak day the one-way loop is the largest of the components modelled separately (time stopped +44%; anticlockwise worse); on a term weekday the signals are (+23%) and the loop is neutral.</li>
+<li><strong>Foreshore:</strong> the clockwise loop sends about 180 trucks a day (about 10–15 today), twice the caravans in summer, and three to five times the cars via Bridge Terrace and the north end of Flinders Parade into Coral St, while the Esplanade itself carries fewer cars (one-way). Total car driving on the foreshore changes little.</li>
+<li><strong>Side streets:</strong> under the council package Acraman St carries about three times today's traffic, and Lindsay St residents wait about 80 s instead of 15 s to get out onto Crozier Rd. Acraman St already has crash hotspots (<a rel="related" href="/n/traffic-and-crash-data#crashes">crash data</a>).</li>
+<li><strong>Everyday trips:</strong> in summer, Encounter Bay to a supermarket is about a minute longer on a typical trip and about 2 minutes on the slowest; McCracken to medical services typically 1–1.5 min longer, the slowest 2–4 min.</li>
+<li><strong>Brent's package:</strong> neutral network-wide at today's demand. The four-lane ring road as modelled leaves Crozier Rd / Armstrong Rd a give-way, and drivers from Crozier Rd then wait about 50–55 s instead of about 29 s — the junction would need upgrading with the widening.</li>
+</ul>
+<h2 id="to-check">Known issues to check</h2><ul>
+<li>Under the council package, Torrens Lane (tagged a residential street in OpenStreetMap) goes from tens to 500–700 vehicles a day. If it is really a narrow service lane, this inflates the package's penalty slightly.</li>
+<li>Growth: at 2041 (about 15 years from now) high growth (State high series) a term weekday finishes (see <a href="#better-options">better options</a>), but a summer day does not: every option jams by early afternoon, and at 2051 (about 25 years from now) high growth even a term weekday jams in every option tested (<code>sim/assumptions/integration.md</code> A-INT-05). Growth areas load onto today's roads, without their future streets and link roads. Saturday, New Year's Eve and the outer ring road options (C5/C6) are not yet run.</li>
+</ul>
+<p>Interactive maps of every run: <a rel="related" href="../maps/index.html">Victor Harbor Road Options</a> (a residents' trip checker, plus the detailed viewer with travel time to any place, congestion per lane and direction, and before/after). Source: <code>viewer/</code> in the project.</p>
+
+</body>
+</html>

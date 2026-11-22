@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head profile="https://br3nt.github.io/okf/">
+<meta charset="utf-8">
+<title>Investigation Plan</title>
+<link rel="canonical" href="/n/investigation-plan">
+<meta name="uuid" scheme="UUID" content="2c3f6d1a-00c2-4742-aa33-22c8fae455cc">
+<meta name="created" scheme="ISO8601" content="2026-11-21T09:35:43+10:30">
+<meta name="updated" scheme="ISO8601" content="2026-11-21T13:29:05+10:30">
+<meta name="keywords" content="plan">
+<link rev="chapter" href="/n/victor-harbor-traffic-investigation">
+<link rev="describedby" href="/n/discoveries-log">
+<link rev="describedby" href="/n/expected-information-catalogue">
+<link rev="describedby" href="/n/options-register">
+<link rev="describedby" href="/n/plan-validation">
+<link rev="describedby" href="/n/plan-validation">
+<link rev="describedby" href="/n/research-conventions">
+<link rev="describedby" href="/n/simulation-design">
+<link rev="related" href="/n/2017-town-centre-traffic-strategy">
+<link rev="related" href="/n/2017-town-centre-traffic-strategy">
+<link rev="related" href="/n/approvals-and-constraints">
+<link rev="related" href="/n/brents-position">
+<link rev="related" href="/n/brents-questions">
+<link rev="related" href="/n/decision-timeline">
+<link rev="related" href="/n/decision-timeline">
+<link rev="related" href="/n/due-diligence-assessment">
+<link rev="related" href="/n/housing-and-visitors">
+<link rev="related" href="/n/housing-and-visitors">
+<link rev="related" href="/n/people-and-roles">
+<link rev="related" href="/n/population-and-growth">
+<link rev="related" href="/n/questions-for-council">
+<link rev="related" href="/n/ring-road-history">
+<link rev="related" href="/n/road-network">
+<link rev="related" href="/n/seasons-and-events">
+<link rev="related" href="/n/traffic-and-crash-data">
+<link rev="related" href="/n/traffic-and-crash-data">
+<link rev="related" href="/n/vhits-preliminary-vision">
+<link rev="related" href="/n/vhits-preliminary-vision">
+<link rev="related" href="/n/vhits-preliminary-vision">
+<link rev="related" href="/n/vhits-survey">
+</head>
+<body>
+<h1>Investigation Plan</h1>
+<p>Master plan for testing Victor Harbor Council's proposed town-centre traffic changes against evidence and simulation.
+Every requirement has an id (<span class="req-id">R#</span>) and a status. Every requirement traces back to Brent's words in the
+<a rel="describedby" href="/n/plan-validation">Plan Validation</a> note, so nothing he asked for gets dropped.
+Expected findings are tracked in the <a rel="describedby" href="/n/expected-information-catalogue">Expected Information Catalogue</a>;
+anything we didn't plan for goes to the <a rel="describedby" href="/n/discoveries-log">Discoveries Log</a> and, if it changes the plan, back in here as a new requirement.</p>
+
+<p><strong>Status key:</strong> <span data-status="todo">todo</span> · <span data-status="partial">partial</span> · <span data-status="found">done</span> · <span data-status="missing">blocked / not public</span></p>
+
+<h2 id="time-critical">Time-critical</h2>
+<p id="R24" data-status="found"><span class="req-id">R24</span> Consultation feedback closes <strong>Sunday 5pm</strong> — confirmed <time datetime="2026-11-22T17:00+10:30">5:00pm Sunday 22 Nov 2026</time> <a href="/n/sources-register#S-A01">[S-A01]</a>. Brent has already done the survey; further input goes by email to localgov@victor.sa.gov.au. Anything Brent wants to submit has to be ready before then; the full simulation will not be. Plan a short evidence-based submission from whatever the research sweep finds by Sunday, and keep the deeper work going afterwards (council decisions come after consultation closes, so later findings can still go to councillors directly).</p>
+
+<h2 id="phase-1">Phase 1 — What the council is proposing and why</h2>
+<table>
+<thead><tr><th>Id</th><th>Requirement</th><th>Status</th></tr></thead>
+<tbody>
+<tr id="R1" data-status="partial"><td class="req-id">R1</td><td>Document the current proposals in full (one-way outer loop, traffic signals, lower speed limits, shared-use zones, and anything else in the road/traffic scope). Exact streets, directions, signal locations, speed values, zone boundaries.</td><td>partial — <a href="/n/vhits-preliminary-vision">Victor Harbor Integrated Transport Strategy (VHITS) Preliminary Vision</a>; loop streets undefined</td></tr>
+<tr id="R27" data-status="partial"><td class="req-id">R27</td><td>Ring Road options: Option 1 new outer ring road vs Option 2 retain current ring road — routes, costs, rationale, link to the northern growth area. Added from <a rel="related" href="/n/discoveries-log#D1">Discovery D1</a>.</td><td>partial — <a href="/n/ring-road-history">Ring Road History</a>; no route study or cost exists</td></tr>
+<tr id="R25" data-status="found"><td class="req-id">R25</td><td>Record the council's stated objectives and problem statement (what they say they are trying to fix), so options are judged against their goals as well as ours.</td><td>done — <a href="/n/vhits-preliminary-vision#objectives">objectives</a></td></tr>
+<tr id="R10" data-status="found"><td class="req-id">R10</td><td>Walk the YourSay survey step by step <strong>without submitting</strong>. Capture every question, option, explanatory text, link, image, map and data point it shows. Archive images and attachments.</td><td>done — <a href="/n/vhits-survey">Victor Harbor Integrated Transport Strategy (VHITS) Survey</a></td></tr>
+<tr id="R2" data-status="found"><td class="req-id">R2</td><td>Decision provenance: how the options were arrived at, the decision-making process, who proposed each idea (staff, consultant, councillor, community, state agency), and how options changed over time. Build a dated timeline.</td><td>done — <a href="/n/decision-timeline">Decision Timeline</a>; origin of loop/30 km/h not public</td></tr>
+<tr id="R28" data-status="found"><td class="req-id">R28</td><td>People: track decision-makers, approvers, originators, authors/workers (officers, consultants), movers/seconders, supporters, opposers/blockers, items passed without debate, abstentions and conflicts — each role tied to a dated record. Added at Brent's request, 21 Nov 2026.</td><td>done — <a href="/n/people-and-roles">People and Roles</a> + 25 person notes</td></tr>
+<tr id="R4" data-status="found"><td class="req-id">R4</td><td>Council meeting records: agendas, reports, minutes, resolutions (mover/seconder, votes), committee and workshop records that touch the strategy, back to its inception.</td><td>done — resolution notes; briefing notes not public</td></tr>
+<tr id="R5" data-status="partial"><td class="req-id">R5</td><td>Options already considered and rejected, with the stated reasons.</td><td>partial — 2017 rejections + officer alternative; no Victor Harbor Integrated Transport Strategy (VHITS) options appraisal exists</td></tr>
+</tbody></table>
+
+<h2 id="phase-2">Phase 2 — Due diligence behind the proposals</h2>
+<table>
+<thead><tr><th>Id</th><th>Requirement</th><th>Status</th></tr></thead>
+<tbody>
+<tr id="R3" data-status="found"><td class="req-id">R3</td><td>Evidence and validation: traffic data collected (what, where, when, how long, which season), modelling or simulation done (tool, scope, assumptions, model years), projections used, consultant reports, peer review. Assess how rigorous it is (Brent suspects it is rudimentary).</td><td>done — <a href="/n/due-diligence-assessment">Due Diligence Assessment</a></td></tr>
+<tr id="R11" data-status="partial"><td class="req-id">R11</td><td>State and federal sources: South Australia (SA) Department for Infrastructure and Transport (traffic volumes, crash data, speed zones, freight/caravan routes, any role in approving changes to state roads), Plan SA / Greater Adelaide Regional Plan, Australian Bureau of Statistics (ABS), BITRE, Tourism Research Australia, South Australian Tourism Commission (SATC).</td><td>partial — <a href="/n/approvals-and-constraints">Approvals and Constraints</a></td></tr>
+</tbody></table>
+
+<h2 id="phase-3">Phase 3 — Population, housing and growth</h2>
+<table>
+<thead><tr><th>Id</th><th>Requirement</th><th>Status</th></tr></thead>
+<tbody>
+<tr id="R6" data-status="found"><td class="req-id">R6</td><td>The council's own forecast (population by year) and its source; current population; demographic change (age profile — Victor is a retirement destination); designated growth areas and development priorities, with locations and dwelling yields.</td><td>done — <a href="/n/population-and-growth">Population and Growth</a>; parcel GIS pending</td></tr>
+<tr id="R7" data-status="found"><td class="req-id">R7</td><td>Dwellings: counts per area, dwelling sizes, people per dwelling, vacancy/holiday-home rates, short-term rentals vs permanent residents, cars per dwelling.</td><td>done — <a href="/n/housing-and-visitors">Housing and Visitors</a></td></tr>
+<tr id="R9" data-status="partial"><td class="req-id">R9</td><td>Holiday seasons and events specific to Victor Harbor and how each loads the network differently (summer holidays, Christmas–New Year, Easter, long weekends, school holidays, Schoolies, whale season, festivals, markets, sporting events). Peak-population estimates.</td><td>partial — <a href="/n/seasons-and-events">Seasons and Events</a>; no measured peak population</td></tr>
+</tbody></table>
+
+<h2 id="phase-4">Phase 4 — Raw data for the simulation</h2>
+<table>
+<thead><tr><th>Id</th><th>Requirement</th><th>Status</th></tr></thead>
+<tbody>
+<tr id="R8" data-status="partial"><td class="req-id">R8</td><td>Traffic as it moves today: normal weekday, off-peak, weekday peak, weekend, holiday peak, special events. Volumes by road and hour; turning movements at key intersections; heavy vehicles and caravans; pedestrian volumes where they affect crossings.</td><td>partial — <a href="/n/traffic-and-crash-data">Traffic and Crash Data</a>; no summer/hourly counts</td></tr>
+<tr id="R12" data-status="partial"><td class="req-id">R12</td><td>Virtual road network: OpenStreetMap extract (lanes, speeds, roundabouts, signals, one-ways, turn restrictions), cross-checked against aerial imagery / Google Maps; residential areas; points of interest (shops, restaurants, services, gyms, schools, medical, beach/foreshore, caravan parks).</td><td>partial — <a href="/n/road-network">Road Network</a></td></tr>
+<tr id="R26" data-status="todo"><td class="req-id">R26</td><td>Calibrate and validate the baseline model against observed counts and travel times before trusting any scenario. Where real data is missing, state the assumption and test sensitivity to it.</td><td>todo</td></tr>
+</tbody></table>
+
+<h2 id="phase-5">Phase 5 — Simulation and comparison</h2>
+<p>Design lives in <a rel="describedby" href="/n/simulation-design">Simulation Design</a>; options live in the <a rel="describedby" href="/n/options-register">Options Register</a>.</p>
+<table>
+<thead><tr><th>Id</th><th>Requirement</th><th>Status</th></tr></thead>
+<tbody>
+<tr id="R13" data-status="todo"><td class="req-id">R13</td><td>Scenarios: today's network (baseline) vs each council option vs Brent's option(s) vs new options we find — each run at today's demand and at projected demand for the council's forecast years, under each traffic condition (off-peak, peak, holiday peak, event).</td><td>todo</td></tr>
+<tr id="R14" data-status="todo"><td class="req-id">R14</td><td>Accessibility metric: from each residential area to each point-of-interest type (shops, restaurants, services, gyms, …), travel time as a distribution — median, mean, p95, p99 — by time of day / condition / scenario / forecast year.</td><td>todo</td></tr>
+<tr id="R15" data-status="todo"><td class="req-id">R15</td><td>Intersection metric: per intersection, per approach and turning movement (from-direction → to-direction): delay / wait to turn, queue length, throughput — by condition and scenario.</td><td>todo</td></tr>
+<tr id="R23" data-status="todo"><td class="req-id">R23</td><td>Test specific claims made in the debate: (a) the one-way loop forces trucks, caravans and all through traffic past the foreshore, Warland Reserve and the family recreation reserve; (b) lowering speed limits to 30 km/h increases congestion; (c) roundabout slip lanes relieve intersection congestion; (d) widening to two lanes is needed as density rises.</td><td>todo</td></tr>
+<tr id="R16" data-status="todo"><td class="req-id">R16</td><td>Find and simulate improvements neither the council nor Brent has proposed.</td><td>todo</td></tr>
+</tbody></table>
+
+<h2 id="scope">Scope</h2>
+<ul>
+<li id="R17" data-status="found"><span class="req-id">R17</span> In scope: changes to roads and traffic — circulation (one-way loop), intersections (signals, roundabouts), speed limits, lane configuration, shared-use zones (they change vehicle speeds and pedestrian priority, so they affect traffic). <strong>Out of scope:</strong> public transport options, recreational improvements, digital parking signage. Parking is only modelled where it causes traffic (cars circling for spaces).</li>
+</ul>
+
+<h2 id="method">Method requirements (apply throughout)</h2>
+<ul>
+<li id="R18" data-status="partial"><span class="req-id">R18</span> Provenance for every fact: link to the primary source, archive a copy in <code>sources/</code>, record retrieval date and hash in the <a rel="describedby" href="/n/sources-register">Sources Register</a>. Rules: <a rel="describedby" href="/n/research-conventions">Research Conventions</a>.</li>
+<li id="R19" data-status="partial"><span class="req-id">R19</span> Pre-plan what we expect to find (to spot misses) and log what we didn't expect (to widen the plan).</li>
+<li id="R20" data-status="partial"><span class="req-id">R20</span> Keep everything in this OKF/HTML knowledge base: indexes, typed links, glossary, metadata attributes, data in script tags, visualisations.</li>
+<li id="R21" data-status="todo"><span class="req-id">R21</span> Capture Brent's own ideas (Facebook comments + survey responses) in <a rel="describedby" href="/n/brents-position">Brent's Position</a> and turn them into testable options.</li>
+<li id="R22" data-status="found"><span class="req-id">R22</span> Validate this plan against everything Brent asked for — see <a rel="describedby" href="/n/plan-validation">Plan Validation</a>.</li>
+</ul>
+
+<h2 id="deliverables">Expected deliverables</h2>
+<ol>
+<li>Short evidence-based consultation submission before the deadline (<a href="#R24">R24</a>).</li>
+<li>Decision-provenance timeline and due-diligence assessment (Phases 1–2).</li>
+<li>Growth and demand picture (Phase 3).</li>
+<li>Calibrated baseline simulation, scenario runs, and results pages with distributions and intersection tables (Phases 4–5).</li>
+<li>A write-up for councillors / community that links every claim to its source.</li>
+</ol>
+</body>
+</html>

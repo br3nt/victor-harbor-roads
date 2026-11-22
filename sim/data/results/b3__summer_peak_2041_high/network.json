@@ -1,0 +1,35 @@
+{
+ "key": "b3__summer_peak_2041_high",
+ "scenario": "b3",
+ "condition": "summer_peak",
+ "year": "2041",
+ "growth": "high",
+ "network": "b3_bays",
+ "seeds": [],
+ "errors": [
+  {
+   "scenario": "b3",
+   "condition": "summer_peak",
+   "year": "2041",
+   "growth": "high",
+   "seed": 1,
+   "error": "sumo did not finish within 21600 s (stopped by hand on 21 Nov 2026 after about 6 h with the clock at 13:00-14:00 and 40-44% of trips done; likely gridlock, A-INT-05)"
+  },
+  {
+   "scenario": "b3",
+   "condition": "summer_peak",
+   "year": "2041",
+   "growth": "high",
+   "seed": 2,
+   "error": "sumo did not finish within 21600 s (stopped by hand on 21 Nov 2026 after about 6 h with the clock at 13:00-14:00 and 40-44% of trips done; likely gridlock, A-INT-05)"
+  },
+  {
+   "scenario": "b3",
+   "condition": "summer_peak",
+   "year": "2041",
+   "growth": "high",
+   "seed": 3,
+   "error": "sumo did not finish within 21600 s (stopped by hand on 21 Nov 2026 after about 6 h with the clock at 13:00-14:00 and 40-44% of trips done; likely gridlock, A-INT-05)"
+  }
+ ]
+}

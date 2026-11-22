@@ -1,0 +1,80 @@
+<title>Victor Harbor Road Options</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* One column of three doorways (residents, engineers, evidence) under a short statement. Light only, by request. */
+:root {
+  --bg: #f4f6f5;
+  --card: #ffffff;
+  --fg: #17262b;
+  --muted: #51636a;
+  --accent: #0b6b88;
+  --line: #d5dfe0;
+  --sea: #e3eff2;
+  --display: "Space Grotesk", system-ui, sans-serif;
+  --body: "Inter", system-ui, -apple-system, sans-serif;
+  color-scheme: light;
+}
+body { background: var(--bg); color: var(--fg); font: 17px/1.6 var(--body); }
+.wrap { max-width: 46rem; margin: 0 auto; padding-block: 3rem 4rem;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: grid; gap: 1.5rem; }
+.eyebrow { font: 600 0.8rem/1 var(--body); letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin: 0; }
+h1 { font: 700 clamp(1.9rem, 5vw, 2.6rem)/1.15 var(--display); margin: 0; text-wrap: balance; }
+.lead { margin: 0; color: var(--muted); max-width: 40rem; }
+.doors { display: grid; gap: 1rem; }
+a.door { display: grid; gap: 0.35rem; background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+  padding: 1.1rem 1.25rem; text-decoration: none; color: var(--fg); }
+a.door:hover { border-color: var(--accent); }
+a.door:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+a.door.primary { background: var(--sea); border-color: var(--accent); }
+.door h2 { font: 600 1.25rem/1.3 var(--display); margin: 0; color: var(--accent); }
+.door p { margin: 0; }
+.note { font-size: 0.92rem; color: var(--muted); border-top: 1px solid var(--line); padding-top: 1rem; display: grid; gap: 0.5rem; }
+.note p { margin: 0; }
+</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@600;700&display=swap">
+
+<main class="wrap">
+  <p class="eyebrow">Victor Harbor Integrated Transport Strategy</p>
+  <h1>How would the road options change your trips?</h1>
+  <p class="lead">An independent traffic simulation of Victor Harbor, built by a resident. It compares today's roads with the
+    Council's proposed town-centre changes and with alternatives, on a school-term weekday and a summer holiday day,
+    now and as the town grows (about 5 years ahead, and further out).</p>
+
+  <nav class="doors" aria-label="Choose a view">
+    <a class="door primary" href="residents/index.html">
+      <h2>Your trips</h2>
+      <p>Add the trips you make most often and see whether each option makes them faster, slower or about the same.
+        Your trips stay in your own browser.</p>
+    </a>
+    <a class="door" href="engineer.html">
+      <h2>Detailed results viewer</h2>
+      <p>Congestion lane by lane and direction by direction, travel time to any place, a timeline through the day,
+        and before/after comparisons for every simulated option.</p>
+    </a>
+    <a class="door" href="__KB_URL__" target="_blank" rel="noopener">
+      <h2>Evidence and method</h2>
+      <p>The council decisions, documents, data sources, assumptions, calibration and full results behind the
+        simulation, each linked to its source.</p>
+    </a>
+  </nav>
+
+  <script>
+    // Direct links: the artifact's address passes a plain #name to this page (#trips, #heat, #viewer).
+    // The viewer may pass it after the page has loaded, so listen for it too.
+    (function () {
+      function follow() {
+        var go = { trips: 'residents/index.html', heat: 'residents/index.html#heat', viewer: 'engineer.html' }[location.hash.slice(1)];
+        if (go) location.replace(go);
+      }
+      follow();
+      window.addEventListener('hashchange', follow);
+    })();
+  </script>
+
+  <div class="note">
+    <p>Results are preliminary and best read as differences between options on the same traffic, not exact forecasts.
+      The model is partly calibrated against Department for Infrastructure and Transport (DIT) counts.</p>
+    <p>The maps here show the simulated road network without a street-map background.</p>
+  </div>
+</main>

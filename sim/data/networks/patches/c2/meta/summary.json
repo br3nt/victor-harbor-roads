@@ -1,0 +1,54 @@
+{
+ "added": {
+  "edges": 0,
+  "ids": []
+ },
+ "checks": {
+  "edges": 4683,
+  "ok": true,
+  "roundabout_problems": {},
+  "traffic_lights": 0,
+  "undrivable_passenger": [],
+  "undrivable_truck": []
+ },
+ "components": [
+  "c2"
+ ],
+ "edges_touched_directed_km": 0.938,
+ "junction_aliases": {},
+ "movements_extra": [],
+ "movements_missing": {},
+ "movements_removed_after_guess": [],
+ "net": "sim/data/networks/c2_bays.net.xml",
+ "new_signals": [],
+ "notes": [
+  "C2 20 km/h shared zones (Ocean St, Albert Pl, Railway Tce): 11 edges to 20 km/h"
+ ],
+ "removed": {
+  "directed_km": 0.0,
+  "edges": 0,
+  "ids": []
+ },
+ "rerouted_to_new_node": {
+  "edges": 0,
+  "ids": []
+ },
+ "scenario": "c2",
+ "signal_cycles_s": {},
+ "speed_changed": {
+  "20": {
+   "directed_km": 0.938,
+   "edges": 11,
+   "streets": [
+    "Albert Place",
+    "Ocean Street",
+    "Railway Terrace"
+   ]
+  }
+ },
+ "turn_bays": 180,
+ "widened": {
+  "directed_km": 0.0,
+  "edges": 0
+ }
+}

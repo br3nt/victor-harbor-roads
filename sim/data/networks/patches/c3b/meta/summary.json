@@ -1,0 +1,68 @@
+{
+ "added": {
+  "edges": 0,
+  "ids": []
+ },
+ "checks": {
+  "edges": 4660,
+  "ok": true,
+  "roundabout_problems": {},
+  "traffic_lights": 0,
+  "undrivable_passenger": [],
+  "undrivable_truck": []
+ },
+ "components": [
+  "c3b"
+ ],
+ "edges_touched_directed_km": 1.178,
+ "junction_aliases": {},
+ "movements_extra": [],
+ "movements_missing": {},
+ "movements_removed_after_guess": [],
+ "net": "sim/data/networks/c3b_bays.net.xml",
+ "new_signals": [],
+ "notes": [
+  "C3b one-way loop (anticlockwise): Torrens Street: 12 edges removed; Eyre Terrace: 3 edges removed; Flinders Parade: 3 edges removed; Esplanade: 2 edges removed; 3 edges left without access removed (-1204058675#1, 1204058675#0, vhfix_torrens_ocean_right)"
+ ],
+ "removed": {
+  "directed_km": 1.178,
+  "edges": 23,
+  "ids": [
+   "-1204058675#1",
+   "-23075179#0",
+   "-23075179#4",
+   "-23075179#6",
+   "1202918968#0",
+   "1202918968#1",
+   "1204058675#0",
+   "173449376#0",
+   "173449376#1",
+   "173449376#2",
+   "173449376#4",
+   "173449377",
+   "173449378",
+   "184389891#0",
+   "184389891#2",
+   "23075173",
+   "50904907#1",
+   "50904907#2",
+   "576495712#0",
+   "576495712#2",
+   "576495712#3",
+   "576495716#0",
+   "vhfix_torrens_ocean_right"
+  ]
+ },
+ "rerouted_to_new_node": {
+  "edges": 0,
+  "ids": []
+ },
+ "scenario": "c3b",
+ "signal_cycles_s": {},
+ "speed_changed": {},
+ "turn_bays": 180,
+ "widened": {
+  "directed_km": 0.0,
+  "edges": 0
+ }
+}

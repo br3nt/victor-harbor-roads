@@ -1,0 +1,2 @@
+id	title	publisher	url	retrieved_at	local_path	sha256	notes
+S-S1-01	OSM extract, Victor Harbor network extended north (bbox -35.60,138.55,-35.46,138.67)	OpenStreetMap contributors via Overpass API	https://overpass-api.de/api/interpreter	2026-11-21T14:02:13+10:30	sim/data/networks/raw/S-S1-01-overpass-victor-harbor-north.osm	8064e5b0ae7697fbd1db9532bc9db3761443b960c041446a09978a833c6b7472	Query: sim/data/networks/raw/S-S1-01.overpassql (S-E01 tag filters, larger bbox). OSM data timestamp 2026-11-21T03:30:21Z. Licence ODbL.

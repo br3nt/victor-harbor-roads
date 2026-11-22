@@ -1,0 +1,80 @@
+{
+ "condition": "event_nye",
+ "config": "calibrated.json",
+ "external_growth_factor": 1.0,
+ "gateway_aadt": {
+  "gw_bvr": 300,
+  "gw_hti": 1200,
+  "gw_ivr": 1700,
+  "gw_per": 9500,
+  "gw_rng": 400,
+  "gw_vhr": 7700,
+  "gw_wai": 800
+ },
+ "gateway_crossings": {
+  "gw_bvr": 562,
+  "gw_hti": 1634,
+  "gw_ivr": 2654,
+  "gw_per": 13373,
+  "gw_rng": 614,
+  "gw_vhr": 13041,
+  "gw_wai": 1237
+ },
+ "gateway_trucks": {
+  "gw_bvr": 16,
+  "gw_hti": 113,
+  "gw_ivr": 155,
+  "gw_per": 948,
+  "gw_rng": 18,
+  "gw_vhr": 1002,
+  "gw_wai": 24
+ },
+ "growth": "moderate",
+ "hourly_profile": "observed: hourly_profile.csv (S3; S-D19 07-18, other hours as basis column says)",
+ "occupied_households": 11525.9,
+ "overrides": [],
+ "resident_and_lodging_crossings_expected_weekday": {
+  "gw_bvr": 0.0,
+  "gw_hti": 1015.5,
+  "gw_ivr": 625.2,
+  "gw_per": 1988.1,
+  "gw_rng": 212.1,
+  "gw_vhr": 2494.8,
+  "gw_wai": 328.5
+ },
+ "resident_rate": 6.502,
+ "resident_rate_factor": 0.9936,
+ "resident_trips": 76189,
+ "resident_trips_expected": 74459.4,
+ "resident_trips_generated_before_layers": 74461,
+ "seed": 1,
+ "sources": "S-C30 mesh-block counts; S-S2-01 mesh-block polygons; S-C03 ERP 2025; S-C01 household size; S-S2-03 TfNSW trip rates; S-E03/S-E01 POIs; S-D02 AADT (via sim/data/counts/aadt.csv); S-D18 summer Victor Harbor Rd; S-B10 growth; S-C12 growth map; S-C31 NYE venue; hourly profile sim/data/profiles/hourly_profile.csv (S3)",
+ "summer_factor": 3.172234745184969,
+ "summer_scaling": "day-tripper volume x3.17 (base-year factor, S-D18 target 11000)",
+ "thr_paired": {
+  "gw_bvr": 0.0,
+  "gw_hti": 18.4,
+  "gw_ivr": 107.5,
+  "gw_per": 1167.0,
+  "gw_rng": 0.0,
+  "gw_vhr": 1041.0,
+  "gw_wai": 0.0
+ },
+ "thr_target": {
+  "gw_bvr": 0.0,
+  "gw_hti": 18.4,
+  "gw_ivr": 107.5,
+  "gw_per": 1502.4,
+  "gw_rng": 0.0,
+  "gw_vhr": 1041.0,
+  "gw_wai": 0.0
+ },
+ "trips": 118464,
+ "trips_by_stratum": {
+  "ext": 16674,
+  "res": 68931,
+  "thr": 1167,
+  "vis": 31692
+ },
+ "year": 2051
+}

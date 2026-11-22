@@ -1,0 +1,44 @@
+{
+ "added": {
+  "edges": 0,
+  "ids": []
+ },
+ "checks": {
+  "edges": 4672,
+  "ok": true,
+  "roundabout_problems": {},
+  "traffic_lights": 0,
+  "undrivable_passenger": [],
+  "undrivable_truck": []
+ },
+ "components": [
+  "b3"
+ ],
+ "edges_touched_directed_km": 11.376,
+ "junction_aliases": {},
+ "movements_extra": [],
+ "movements_missing": {},
+ "movements_removed_after_guess": [],
+ "net": "sim/data/networks/b3_bays.net.xml",
+ "new_signals": [],
+ "notes": [
+  "B3 four-lane ring route: 36 Welch Rd / Armstrong Rd edges (11.4 directed km) to 2 lanes"
+ ],
+ "removed": {
+  "directed_km": 0.0,
+  "edges": 0,
+  "ids": []
+ },
+ "rerouted_to_new_node": {
+  "edges": 0,
+  "ids": []
+ },
+ "scenario": "b3",
+ "signal_cycles_s": {},
+ "speed_changed": {},
+ "turn_bays": 169,
+ "widened": {
+  "directed_km": 11.376,
+  "edges": 36
+ }
+}

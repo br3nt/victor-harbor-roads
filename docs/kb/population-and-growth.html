@@ -1,0 +1,83 @@
+<!DOCTYPE html><html lang="en"><head profile="https://br3nt.github.io/okf/">
+<meta charset="utf-8">
+<title>Population and Growth</title>
+<link rel="canonical" href="population-and-growth.html">
+<meta name="uuid" scheme="UUID" content="d03b2ab7-c8b7-4d90-8193-e51cd78331fe">
+<meta name="created" scheme="ISO8601" content="2026-11-21T10:16:21+10:30">
+<meta name="updated" scheme="ISO8601" content="2026-11-21T19:00:01+10:30">
+<meta name="keywords" content="demand, population">
+<link rev="chapter" href="victor-harbor-traffic-investigation.html">
+<link rev="related" href="discoveries-log.html">
+<link rev="related" href="simulation-design.html">
+<link rel="stylesheet" href="kb.css">
+</head>
+<body><nav class="kb-nav"><a href="victor-harbor-traffic-investigation.html">⌂ Home</a> · <a href="sitemap.html">Sitemap</a> · <a class="pn-navlink" href="private-names-review.html">Private residents</a></nav>
+<h1>Population and Growth</h1>
+<p>How many people live here now, how many the council plans for, and where they will live (<a rel="related" href="investigation-plan.html#R6">R6</a>). Full write-up: <code>research/C-population.md</code>.</p>
+
+<h2 id="now">Now</h2>
+<ul>
+<li>Census 2021: 16,139 usual residents <a href="sources-register.html#S-C01">[S-C01]</a>. Australian Bureau of Statistics (<abbr title="Australian Bureau of Statistics">ABS</abbr>) Estimated Resident Population 30 June 2025: <strong>17,457</strong> (+1.9% on 2024) <a href="sources-register.html#S-C03">[S-C03]</a>.</li>
+<li>Median age 60 (South Australia [<abbr title="South Australia">SA</abbr>] 41); about 42% aged 65 or over <a href="sources-register.html#S-C01">[S-C01]</a>. <strong>Inference:</strong> a retiree-heavy population fits the midday (not commuter) traffic peak in the 2017 counts (<a href="discoveries-log.html#D12">D12</a>).</li>
+</ul>
+
+<h2 id="scenarios">The two growth scenarios to simulate</h2>
+<p>The council's own growth strategy (Urban Growth Management Strategy [<abbr title="Urban Growth Management Strategy">UGMS</abbr>] 2050, Sep 2025) gives two scenarios over 25 years <a href="sources-register.html#S-B10">[S-B10 pp.13, 30, 41]</a>:</p>
+<script type="application/json" id="growth-scenarios">
+{"source":["S-B10","S-C03"],"base":{"year":2025,"erp":17457},
+ "scenarios":[
+  {"id":"moderate","label":"Forecast (historic trend)","people_added_by_2050":8000,"dwellings_added_by_2050":4600,"dwellings_per_year":185},
+  {"id":"high","label":"GARP high growth","people_added_by_2050":19200,"dwellings_added_by_2050":12030,"dwellings_per_year":401,
+   "garp_annual_targets":{"2021-2031":318,"2031-2041":410,"2041-2051":475}}
+ ]}
+</script>
+<table>
+<thead><tr><th>Scenario</th><th>Extra people by ~2050</th><th>Extra dwellings</th><th>Rate</th><th>Approx. population</th></tr></thead>
+<tbody>
+<tr><td>Moderate (historic trend)</td><td>≈ 8,000</td><td>≈ 4,600</td><td>up to 185 dwellings/yr</td><td>≈ 25,000–25,500</td></tr>
+<tr><td>High (State's Greater Adelaide Regional Plan, <abbr title="Greater Adelaide Regional Plan">GARP</abbr>)</td><td>&gt; 19,200</td><td>≈ 12,030</td><td>401 dwellings/yr (Greater Adelaide Regional Plan [<abbr title="Greater Adelaide Regional Plan">GARP</abbr>] targets 318 → 410 → 475 per year by decade)</td><td>≈ 36,000–37,000</td></tr>
+</tbody></table>
+<p>Actual building since 2021 has averaged 159 dwellings a year <a href="sources-register.html#S-B10">[S-B10 p.20]</a> — below even the moderate rate. The Urban Growth Management Strategy (<abbr title="Urban Growth Management Strategy">UGMS</abbr>) itself says the Greater Adelaide Regional Plan (<abbr title="Greater Adelaide Regional Plan">GARP</abbr>) targets exceed realised and forecast demand and that faster growth <q>cannot occur without an investment in structure planning and infrastructure planning and delivery</q> <a href="sources-register.html#S-B10">[S-B10 p.21]</a>.</p>
+<p><strong>Inference (reconciles the headline):</strong> 12,030 dwellings × 76% occupied × 2.1 people ≈ 19,200 people, matching the Urban Growth Management Strategy (<abbr title="Urban Growth Management Strategy">UGMS</abbr>) high figure. So the Victor Harbor Integrated Transport Strategy (<abbr title="Victor Harbor Integrated Transport Strategy">VHITS</abbr>) claim that the population will <q>approximately double</q> to about 36,000 by 2051 <a href="sources-register.html#S-A03">[S-A03]</a> is the <em>high</em> scenario; the fact sheet does not mention the moderate one. <abbr title="SMEC, an engineering consultancy (originally the Snowy Mountains Engineering Corporation)">SMEC</abbr>'s report does present both (<q>between 9 thousand (if historic trends persist) and 20 thousand</q>) and explains it models the Greater Adelaide Regional Plan (<abbr title="Greater Adelaide Regional Plan">GARP</abbr>) high case as an "ultimate" scenario without a specific year because of <q>a legislative requirement for consistent planning</q> <a href="sources-register.html#S-B04">[S-B04 pp.43, 45, 49-50]</a>.</p>
+
+<h2 id="other-forecasts">Other figures in circulation (do not all reconcile)</h2>
+<p>The State's own projections for Victor Harbor, from the South Australian Government's PlanSA population projections (January 2024 release), are in the first group of rows. They give a high and a medium series for the Local Government Area (<abbr title="Local Government Area">LGA</abbr>) and for the Statistical Area Level 2 (<abbr title="Statistical Area Level 2">SA2</abbr>) called Victor Harbor <a href="sources-register.html#S-M02">[S-M02]</a>.</p>
+<table>
+<thead><tr><th>Year</th><th>Figure</th><th>Source</th></tr></thead>
+<tbody>
+<tr><td>2021</td><td>16,428 (Local Government Area [<abbr title="Local Government Area">LGA</abbr>], both series; the projection base)</td><td>State projections <a href="sources-register.html#S-M02">[S-M02]</a></td></tr>
+<tr><td>2026</td><td>Local Government Area (<abbr title="Local Government Area">LGA</abbr>): medium 18,408; high 18,685</td><td>State projections <a href="sources-register.html#S-M02">[S-M02]</a></td></tr>
+<tr><td>2031</td><td>Local Government Area (<abbr title="Local Government Area">LGA</abbr>): medium 20,719; high 21,393</td><td>State projections <a href="sources-register.html#S-M02">[S-M02]</a></td></tr>
+<tr><td>2036</td><td>Local Government Area (<abbr title="Local Government Area">LGA</abbr>): medium 22,825; high 24,005</td><td>State projections <a href="sources-register.html#S-M02">[S-M02]</a></td></tr>
+<tr><td>2041</td><td>Local Government Area (<abbr title="Local Government Area">LGA</abbr>): medium 23,641; <strong>high 25,292</strong>. Statistical Area Level 2 (<abbr title="Statistical Area Level 2">SA2</abbr>): medium 23,858; high 25,530</td><td>State projections <a href="sources-register.html#S-M02">[S-M02]</a>. The Statistical Area Level 2 (<abbr title="Statistical Area Level 2">SA2</abbr>) medium figure matches the 23,858 in an earlier search summary of the same release <a href="sources-register.html#S-C36">[S-C36]</a>, which was not archived</td></tr>
+<tr><td>2031</td><td>18,776–19,095</td><td>Council consultant model <a href="sources-register.html#S-C14">[S-C14 Table 4.4]</a></td></tr>
+<tr><td>2036</td><td>20,094–20,574</td><td>Same <a href="sources-register.html#S-C14">[S-C14]</a></td></tr>
+<tr><td>2041</td><td>25,292 "including an additional 13,500 dwellings"</td><td>Council, quoting the Greater Adelaide Regional Plan (<abbr title="Greater Adelaide Regional Plan">GARP</abbr>) <a href="sources-register.html#S-C25">[S-C25]</a></td></tr>
+<tr><td>2051</td><td>25,000–36,000</td><td>Future Ready paper <a href="sources-register.html#S-C10">[S-C10 p.07]</a></td></tr>
+</tbody></table>
+
+<h3 id="puzzle-25292">The 25,292 puzzle</h3>
+<ul>
+<li>The council's 2041 figure of 25,292 equals the State's <strong>high</strong> series for the Local Government Area (<abbr title="Local Government Area">LGA</abbr>), 25,291.5 <a href="sources-register.html#S-M02">[S-M02]</a> <a href="sources-register.html#S-C25">[S-C25]</a>. The State's medium series for 2041 is 23,641, about 1,650 lower <a href="sources-register.html#S-M02">[S-M02]</a>.</li>
+<li>The "additional 13,500 dwellings" attached to that figure in the council's text <a href="sources-register.html#S-C25">[S-C25]</a> does not appear in the State's population files <a href="sources-register.html#S-M02">[S-M02]</a>, so the pairing is not confirmed. <strong>Inference:</strong> from the 2021 base of 16,428 to 25,292 is about 8,860 more people; 13,500 dwellings at 76% occupied and 2.1 people each (the factors used above) would house about 21,500. The two numbers do not describe the same growth, so 13,500 is probably a land-supply or capacity figure rather than the dwellings implied by the projection. Land-supply detail from the Greater Adelaide Regional Plan (<abbr title="Greater Adelaide Regional Plan">GARP</abbr>) is still needed to check this.</li>
+</ul>
+
+<h3 id="tracking">Is the population tracking the State series?</h3>
+<p><strong>Inference</strong> (our arithmetic, not a forecast). The Australian Bureau of Statistics (<abbr title="Australian Bureau of Statistics">ABS</abbr>) Estimated Resident Population (<abbr title="Estimated Resident Population">ERP</abbr>) for 30 June 2025 was 17,457 and has grown about 1.95% a year (compound, 2018 to 2025: 15,248 to 17,457) <a href="sources-register.html#S-C03">[S-C03]</a>. One more year at that rate gives 17,457 × 1.0195 ≈ 17,797 for 2026. The State's medium series for 2026 is 18,408 and its high series 18,685 <a href="sources-register.html#S-M02">[S-M02]</a>, so the Estimated Resident Population (<abbr title="Estimated Resident Population">ERP</abbr>) trend is about 610 people (3%) below medium and about 890 (5%) below high. Population is therefore tracking below even the State's medium series for 2026. The medium series implies about 2.3% a year from 2021 to 2026 (16,428 to 18,408), faster than the recent 1.95%. If 1.95% a year simply continued to 2041, the result would be about 23,800 (17,457 × 1.0195<sup>16</sup>), close to the State's medium figure of 23,641 for that year, far below the 25,292 the council quotes. That extrapolation ignores any acceleration from new housing.</p>
+
+<h2 id="where">Where growth goes</h2>
+<figure><p class="kb-map-link"><a rel="external" href="https://yoursay.victor.sa.gov.au/download_file/498/615#page=2">Open the council's map</a> (not copied here): <abbr title="Victor Harbor Integrated Transport Strategy">VHITS</abbr> growth map: residential growth areas 1–3 north of the town along the Hindmarsh River, Waggon Road and Greenhills Road; GARP-only residential land along Inman Valley Road and near Tabernacle Road; employment land near Waterport Road.</p><figcaption>Growth areas from the Victor Harbor Integrated Transport Strategy (<abbr title="Victor Harbor Integrated Transport Strategy">VHITS</abbr>) fact sheet <a href="sources-register.html#S-C38">[S-C38]</a>.</figcaption></figure>
+<table>
+<thead><tr><th>Land</th><th>Capacity</th><th>Years of supply</th><th>Source</th></tr></thead>
+<tbody>
+<tr><td>Existing residential zoned areas (infill, vacant lots, approved subdivisions)</td><td>up to 4,100 allotments</td><td>10–22</td><td><a href="sources-register.html#S-B10">S-B10 p.31</a></td></tr>
+<tr><td>Deferred Urban Zone (north, east of Armstrong Rd to Waggon Rd; needs rezoning and a structure plan)</td><td>up to 2,400 allotments</td><td>6–13</td><td><a href="sources-register.html#S-B10">S-B10 p.31</a>, <a href="sources-register.html#S-C14">S-C14 s.5.1</a></td></tr>
+<tr><td>Future Greenfield (Greater Adelaide Regional Plan [<abbr title="Greater Adelaide Regional Plan">GARP</abbr>])</td><td>≈ 3,600 allotments</td><td>9–19</td><td><a href="sources-register.html#S-B10">S-B10 p.31</a></td></tr>
+<tr><td>Retirement and lifestyle villages</td><td>≈ 750 dwellings now, 580+ approved</td><td>—</td><td><a href="sources-register.html#S-C10">S-C10 p.07</a></td></tr>
+<tr><td>Employment land</td><td>42 ha identified (26 ha short-term rezoning)</td><td>—</td><td><a href="sources-register.html#S-B10">S-B10</a></td></tr>
+</tbody></table>
+<p><strong>Inference:</strong> the numbered northern areas 1–3 on the map correspond to the Deferred Urban Zone and Future Greenfield land; nearly all new households in the high scenario would live <em>north of the existing ring road</em> and travel south through it to the town centre, shops (Victor Central, McCracken) and the coast. That is where the simulation's future demand must be placed. Exact parcel boundaries need the Urban Growth Management Strategy (<abbr title="Urban Growth Management Strategy">UGMS</abbr>)/Greater Adelaide Regional Plan (<abbr title="Greater Adelaide Regional Plan">GARP</abbr>) GIS layers.</p>
+<aside class="kb-backlinks"><h2>Linked from</h2><ul><li><span class="rel">chapter</span> ← <a href="victor-harbor-traffic-investigation.html">Victor Harbor Traffic Investigation</a></li><li><span class="rel">related</span> ← <a href="discoveries-log.html">Discoveries Log</a>, <a href="simulation-design.html">Simulation Design</a></li></ul></aside>
+
+
+</body></html>

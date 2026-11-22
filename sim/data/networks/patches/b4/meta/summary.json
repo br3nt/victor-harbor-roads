@@ -1,0 +1,44 @@
+{
+ "added": {
+  "edges": 0,
+  "ids": []
+ },
+ "checks": {
+  "edges": 4683,
+  "ok": true,
+  "roundabout_problems": {},
+  "traffic_lights": 0,
+  "undrivable_passenger": [],
+  "undrivable_truck": []
+ },
+ "components": [
+  "b4"
+ ],
+ "edges_touched_directed_km": 0.288,
+ "junction_aliases": {},
+ "movements_extra": [],
+ "movements_missing": {},
+ "movements_removed_after_guess": [],
+ "net": "sim/data/networks/b4_bays.net.xml",
+ "new_signals": [],
+ "notes": [
+  "B4 two-lane McCracken roundabout: 8 ring edges and 5 entry edges (231 m on Adelaide Rd + Hindmarsh Rd) to 2 lanes"
+ ],
+ "removed": {
+  "directed_km": 0.0,
+  "edges": 0,
+  "ids": []
+ },
+ "rerouted_to_new_node": {
+  "edges": 0,
+  "ids": []
+ },
+ "scenario": "b4",
+ "signal_cycles_s": {},
+ "speed_changed": {},
+ "turn_bays": 180,
+ "widened": {
+  "directed_km": 0.288,
+  "edges": 13
+ }
+}

@@ -1,0 +1,1461 @@
+{
+ "parameters": {
+  "population.erp_2025": {
+   "value": 17457,
+   "unit": "persons",
+   "basis": "S-C03",
+   "note": "ABS Estimated Resident Population, LGA 48050, 30 June 2025; 2021 mesh-block counts (S-C30) are scaled to it."
+  },
+  "population.persons_per_household": {
+   "value": 2.1,
+   "unit": "persons/occupied dwelling",
+   "basis": "S-C01",
+   "note": "Census 2021 average household size; occupied households per zone = persons / this (capped by dwellings)."
+  },
+  "population.cars_per_household": {
+   "value": 1.7,
+   "unit": "vehicles/occupied dwelling",
+   "basis": "S-C01",
+   "note": "Census 2021; reported per zone and used for vehicle-km per car in validation (trip rates already imply car use)."
+  },
+  "population.share_65_plus": {
+   "value": 0.42,
+   "unit": "fraction of persons",
+   "basis": "S-C01",
+   "note": "6,813 of 16,139 usual residents aged 65+."
+  },
+  "population.occupied_share_new_dwellings": {
+   "value": 0.76,
+   "unit": "fraction",
+   "basis": "S-C01; S-B10",
+   "note": "Share of new dwellings occupied by residents (76.2% in 2021); the rest are holiday homes. UGMS uses the same to turn dwellings into people."
+  },
+  "rates.low_density": {
+   "value": {
+    "weekday": 7.53,
+    "weekend": 4.88
+   },
+   "unit": "vehicle trips/dwelling/day",
+   "basis": "S-S2-03",
+   "note": "TfNSW Guide to Transport Impact Assessment Tables 5.3/5.4, low density residential, regional sites (2022 surveys). Excludes trips internal to a subdivision."
+  },
+  "rates.seniors": {
+   "value": {
+    "weekday": 2.39,
+    "weekend": 1.31
+   },
+   "unit": "vehicle trips/dwelling/day",
+   "basis": "S-S2-03",
+   "note": "TfNSW Tables 5.16/5.17, housing for seniors, regional sites (2009 surveys, 10am-8pm)."
+  },
+  "rates.senior_weight": {
+   "value": 0.2,
+   "unit": "fraction",
+   "basis": "calibration (vhsim.integration.calibrate grid, variant rr_sw0.2_b0.5)",
+   "sensitivity": "high",
+   "note": "Calibrated against DIT daily volumes (S-D01/S-D02) on internal arterials; default 0.42 = share aged 65+ (S-C01) under-loaded Hindmarsh Rd/Torrens St."
+  },
+  "rates.day_type": {
+   "value": {
+    "weekday_term": "weekday",
+    "saturday": "weekend",
+    "summer_peak": "weekday",
+    "event_nye": "weekday"
+   },
+   "unit": "rate column",
+   "basis": "assumption",
+   "sensitivity": "medium",
+   "note": "Which TfNSW column each condition uses; Saturday takes the weekend rate."
+  },
+  "rates.condition_factor": {
+   "value": {
+    "weekday_term": 1.0,
+    "saturday": 1.0,
+    "summer_peak": 1.0,
+    "event_nye": 1.0
+   },
+   "unit": "multiplier",
+   "basis": "assumption",
+   "sensitivity": "medium",
+   "note": "Extra multiplier on resident trip rates by condition (1.0 = rate as published)."
+  },
+  "rates.external_share": {
+   "value": 0.1,
+   "unit": "fraction of resident trips",
+   "basis": "assumption",
+   "sensitivity": "medium",
+   "note": "Resident trips with one end outside the study area (Port Elliot, Goolwa, Adelaide); emitted as stratum ext with the home zone as origin."
+  },
+  "rates.external_gateway_split": {
+   "value": {
+    "gw_vhr": 0.47,
+    "gw_per": 0.4,
+    "gw_ivr": 0.05,
+    "gw_hti": 0.08
+   },
+   "unit": "fraction",
+   "basis": "assumption",
+   "sensitivity": "medium",
+   "note": "Gateway used by residents' external trips: Adelaide via Victor Harbor Rd, Mount Compass / Strathalbyn via Hindmarsh Tiers Rd, Port Elliot/Goolwa via Port Elliot Rd."
+  },
+  "rates.rural_inbound_share": {
+   "value": 0.8,
+   "unit": "fraction",
+   "basis": "assumption",
+   "sensitivity": "low",
+   "note": "Share of trips by residents of zones outside the study area that come into it (the rest stay rural or go elsewhere)."
+  },
+  "rates.nhb_share": {
+   "value": 0.15,
+   "unit": "fraction of resident trips",
+   "basis": "assumption",
+   "sensitivity": "low",
+   "note": "Non-home-based (destination to destination) trips; origin is drawn by gravity from home, destination by gravity from that origin."
+  },
+  "purpose.shares": {
+   "value": {
+    "weekday_term": {
+     "work": 0.16,
+     "school": 0.05,
+     "supermarket": 0.19,
+     "shops": 0.12,
+     "dining": 0.07,
+     "services": 0.08,
+     "medical": 0.06,
+     "gym": 0.03,
+     "recreation": 0.07,
+     "beach_foreshore": 0.05,
+     "residential": 0.12
+    },
+    "saturday": {
+     "work": 0.05,
+     "school": 0.0,
+     "supermarket": 0.22,
+     "shops": 0.17,
+     "dining": 0.1,
+     "services": 0.03,
+     "medical": 0.02,
+     "gym": 0.03,
+     "recreation": 0.14,
+     "beach_foreshore": 0.08,
+     "residential": 0.16
+    },
+    "summer_peak": {
+     "work": 0.13,
+     "school": 0.0,
+     "supermarket": 0.2,
+     "shops": 0.13,
+     "dining": 0.09,
+     "services": 0.07,
+     "medical": 0.05,
+     "gym": 0.03,
+     "recreation": 0.09,
+     "beach_foreshore": 0.08,
+     "residential": 0.13
+    },
+    "event_nye": {
+     "work": 0.13,
+     "school": 0.0,
+     "supermarket": 0.2,
+     "shops": 0.13,
+     "dining": 0.09,
+     "services": 0.07,
+     "medical": 0.05,
+     "gym": 0.03,
+     "recreation": 0.09,
+     "beach_foreshore": 0.08,
+     "residential": 0.13
+    }
+   },
+   "unit": "fraction of home-based resident trips",
+   "basis": "assumption; S-C01",
+   "sensitivity": "high",
+   "note": "Resident purpose mix. Work 0.16 on a term weekday = 3,379 car-driver commuters x 2 trips (S-C01) / ~42,000 resident trips; the rest reflects a retiree-heavy town (no travel survey for Victor Harbor). School = escort trips."
+  },
+  "time.target_profile": {
+   "value": "observed",
+   "unit": "observed | placeholder",
+   "basis": "S-D19; S-S3-01",
+   "note": "Hourly profile the resident tours are fitted to: 'observed' = sim/data/profiles/hourly_profile.csv from S3 (07-18 from the 2017 counts, night hours assumed there); 'placeholder' = time.placeholder_profile."
+  },
+  "time.placeholder_profile": {
+   "value": [
+    0.5,
+    0.3,
+    0.2,
+    0.2,
+    0.3,
+    0.8,
+    2.0,
+    4.0,
+    6.0,
+    7.0,
+    8.0,
+    9.0,
+    9.5,
+    9.0,
+    8.0,
+    7.5,
+    7.0,
+    6.0,
+    4.5,
+    3.0,
+    2.5,
+    1.8,
+    1.2,
+    0.7
+   ],
+   "unit": "relative weight by hour 0-23",
+   "basis": "assumption",
+   "sensitivity": "medium",
+   "note": "PLACEHOLDER used only when the S3 profile is missing: midday peak per the 2017 finding that town-centre peaks are 11:15-14:15 (S-D19)."
+  },
+  "time.purpose_profiles": {
+   "value": {
+    "work": [
+     0,
+     0,
+     0,
+     0,
+     0.5,
+     2,
+     6,
+     10,
+     8,
+     4,
+     2,
+     2,
+     2,
+     2,
+     2,
+     1.5,
+     1,
+     0.5,
+     0.3,
+     0.2,
+     0.2,
+     0.1,
+     0.1,
+     0
+    ],
+    "school": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     3,
+     10,
+     1,
+     0,
+     0,
+     0,
+     0,
+     2,
+     8,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "supermarket": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0.3,
+     1,
+     3,
+     5,
+     6,
+     6,
+     5,
+     4,
+     4,
+     4,
+     4,
+     3,
+     1.5,
+     0.5,
+     0.2,
+     0,
+     0,
+     0
+    ],
+    "shops": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0.5,
+     2,
+     5,
+     6,
+     6,
+     5,
+     5,
+     4,
+     3,
+     2,
+     1,
+     0.5,
+     0.2,
+     0,
+     0,
+     0,
+     0
+    ],
+    "dining": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0.5,
+     1.5,
+     2,
+     2,
+     2,
+     5,
+     6,
+     3,
+     1,
+     1,
+     1,
+     3,
+     5,
+     4,
+     2,
+     1,
+     0.3,
+     0
+    ],
+    "services": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0.5,
+     3,
+     6,
+     6,
+     5,
+     4,
+     4,
+     4,
+     3,
+     1,
+     0.5,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "medical": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1,
+     4,
+     6,
+     6,
+     4,
+     3,
+     4,
+     4,
+     3,
+     1,
+     0.3,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "gym": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     2,
+     5,
+     4,
+     3,
+     3,
+     2,
+     1,
+     1,
+     1,
+     1,
+     2,
+     3,
+     4,
+     3,
+     1,
+     0.5,
+     0,
+     0,
+     0
+    ],
+    "recreation": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0.3,
+     1,
+     2,
+     3,
+     4,
+     4,
+     3,
+     3,
+     3,
+     3,
+     3,
+     3,
+     2,
+     1.5,
+     1,
+     0.5,
+     0.2,
+     0,
+     0
+    ],
+    "beach_foreshore": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0.5,
+     1.5,
+     2,
+     3,
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     3,
+     3,
+     3,
+     2,
+     1.5,
+     0.5,
+     0,
+     0,
+     0
+    ],
+    "residential": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0.3,
+     0.5,
+     1,
+     2,
+     3,
+     3,
+     3,
+     3,
+     3,
+     3,
+     3,
+     3,
+     3,
+     3,
+     2,
+     1,
+     0.3,
+     0
+    ],
+    "external": [
+     0,
+     0,
+     0,
+     0,
+     0.3,
+     1,
+     3,
+     5,
+     6,
+     6,
+     5,
+     4,
+     3,
+     3,
+     2,
+     2,
+     1.5,
+     1,
+     0.5,
+     0.3,
+     0.2,
+     0.1,
+     0,
+     0
+    ],
+    "visitor_local": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0.3,
+     1,
+     2,
+     3,
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     3,
+     3,
+     3,
+     3,
+     2.5,
+     1.5,
+     0.5,
+     0.2,
+     0
+    ],
+    "visitor_arrival": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0.5,
+     1.5,
+     4,
+     7,
+     8,
+     7,
+     5,
+     3,
+     2,
+     1,
+     0.5,
+     0.3,
+     0.2,
+     0.1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "lodging_arrival": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0.5,
+     1,
+     2,
+     3,
+     4,
+     5,
+     5,
+     5,
+     4,
+     3,
+     2,
+     1,
+     0.5,
+     0.2,
+     0,
+     0,
+     0
+    ],
+    "lodging_departure": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0.5,
+     2,
+     4,
+     6,
+     6,
+     4,
+     3,
+     2,
+     2,
+     2,
+     1.5,
+     1,
+     0.5,
+     0.2,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "unit": "relative weight by hour 0-23 (outbound departure)",
+   "basis": "assumption",
+   "sensitivity": "medium",
+   "note": "Shape priors for the outbound leg of each purpose. Resident priors are then fitted (time.fit_iterations) so that all resident trips together follow the target profile; visitor/lodging profiles are used as given."
+  },
+  "time.fit_iterations": {
+   "value": 40,
+   "unit": "iterations",
+   "basis": "assumption",
+   "sensitivity": "low",
+   "note": "Iterations of the multiplicative fit of resident outbound profiles to the target profile (0 = no fit)."
+  },
+  "time.dwell_minutes": {
+   "value": {
+    "work": 480,
+    "school": 10,
+    "supermarket": 40,
+    "shops": 60,
+    "dining": 75,
+    "services": 40,
+    "medical": 60,
+    "gym": 75,
+    "recreation": 120,
+    "beach_foreshore": 120,
+    "residential": 120,
+    "external": 300,
+    "visitor_local": 120,
+    "day_trip": 300,
+    "ext_visit": 120,
+    "truck": 45
+   },
+   "unit": "minutes (mean; drawn uniformly 0.5-1.5 x mean)",
+   "basis": "assumption",
+   "sensitivity": "low",
+   "note": "Time spent at the destination before the return trip. Trucks: a delivery stop (not a working day)."
+  },
+  "time.speed_kmh": {
+   "value": 35,
+   "unit": "km/h",
+   "basis": "assumption",
+   "sensitivity": "low",
+   "note": "Average speed used only to estimate when a return leg starts (network-distance / speed)."
+  },
+  "time.max_depart_s": {
+   "value": 93599,
+   "unit": "seconds after midnight",
+   "basis": "assumption",
+   "sensitivity": "low",
+   "note": "Latest departure written (26 h) so NYE departures after midnight survive; S4 runs need end >= this."
+  },
+  "gravity.beta": {
+   "value": {
+    "default": 0.6,
+    "work": 0.4,
+    "school": 0.75,
+    "supermarket": 0.75,
+    "shops": 0.6,
+    "dining": 0.5,
+    "services": 0.6,
+    "medical": 0.5,
+    "gym": 0.75,
+    "recreation": 0.65,
+    "beach_foreshore": 0.5,
+    "residential": 0.75,
+    "caravan_park": 0.5,
+    "accommodation": 0.5
+   },
+   "unit": "exponent on distance (weight / d^beta)",
+   "basis": "calibration (beta x0.5 of default; vhsim.integration.calibrate)",
+   "sensitivity": "high",
+   "note": "Halved distance decay: longer trips needed to reproduce counted cross-town flows."
+  },
+  "gravity.detour_factor": {
+   "value": 1.3,
+   "unit": "network km / straight-line km",
+   "basis": "assumption",
+   "sensitivity": "low",
+   "note": "Typical urban circuity; only scales distance (and so the return-leg timing and validation km)."
+  },
+  "gravity.min_distance_km": {
+   "value": 0.4,
+   "unit": "km",
+   "basis": "assumption",
+   "sensitivity": "low",
+   "note": "Floor on distance in the gravity term so a POI next door does not take all trips."
+  },
+  "gravity.same_point_km": {
+   "value": 0.05,
+   "unit": "km",
+   "basis": "assumption",
+   "sensitivity": "low",
+   "note": "Destinations closer than this to the origin are excluded (no zero-length trips)."
+  },
+  "poi.category_map": {
+   "value": {
+    "supermarket_food_retail": "supermarket",
+    "shop_other": "shops",
+    "food_drink": "dining",
+    "health:hospital": "medical",
+    "health:pharmacy": "medical",
+    "health:veterinary": "services",
+    "services:library": "services",
+    "services:post_office": "services",
+    "services:bank": "services",
+    "services:courthouse": "services",
+    "services:police": "services",
+    "services:townhall": "services",
+    "services:community_centre": "services",
+    "services:social_facility": "services",
+    "fuel": "services",
+    "gym_fitness": "gym",
+    "education:school": "school",
+    "education:kindergarten": "school",
+    "beach": "beach_foreshore",
+    "tourism:viewpoint": "beach_foreshore",
+    "tourism:attraction": "beach_foreshore",
+    "tourism:museum": "recreation",
+    "sports_ground:golf_course": "recreation",
+    "sports_ground:track": "recreation",
+    "sports_ground:pitch": "recreation",
+    "accommodation:caravan_site": "caravan_park",
+    "accommodation:camp_site": "caravan_park",
+    "accommodation:hotel": "accommodation",
+    "accommodation:motel": "accommodation"
+   },
+   "unit": "S-E03 category -> model category",
+   "basis": "assumption; S-E03",
+   "sensitivity": "low",
+   "note": "Mapping of the S-E03 heuristic labels to the DESIGN categories. Parking, transport and fire stations are dropped; private swimming pools tagged as gyms are dropped (A: pools are private houses, not gyms)."
+  },
+  "poi.category_override": {
+   "value": {
+    "Victor Central Shopping Centre": "shops",
+    "The Centre": "shops"
+   },
+   "unit": "POI name -> model category",
+   "basis": "assumption; S-E03",
+   "sensitivity": "low",
+   "note": "Shopping malls are tagged as food retail in S-E03; Woolworths inside Victor Central is its own POI, so the malls count as shops (avoids double-counting the supermarket pull)."
+  },
+  "poi.drop_private_pools": {
+   "value": true,
+   "unit": "flag",
+   "basis": "assumption; S-E03",
+   "sensitivity": "low",
+   "note": "Drop leisure=swimming_pool features (30 of the 35 'gym_fitness' POIs are pools, mostly access=private)."
+  },
+  "poi.default_weight": {
+   "value": {
+    "supermarket": 0.3,
+    "shops": 1.0,
+    "dining": 1.0,
+    "services": 1.0,
+    "medical": 1.0,
+    "gym": 1.0,
+    "school": 2.0,
+    "beach_foreshore": 1.0,
+    "recreation": 1.0,
+    "caravan_park": 120,
+    "accommodation": 30,
+    "work": 1.0
+   },
+   "unit": "relative attraction (caravan_park: sites; accommodation: rooms)",
+   "basis": "assumption",
+   "sensitivity": "medium",
+   "note": "Weight for a POI with no named weight. Small supermarket-category outlets (bakeries, convenience) get 0.3 against ~1-4 for full supermarkets."
+  },
+  "poi.named_weight": {
+   "value": {
+    "Woolworths": 3.8,
+    "Coles": 3.5,
+    "Aldi": 1.7,
+    "Drakes": 1.8,
+    "IGA": 0.8,
+    "Victor Central Shopping Centre": 5.0,
+    "The Centre": 1.5,
+    "Big W": 3.0,
+    "Bunnings Warehouse": 3.0,
+    "Mitre 10": 1.5,
+    "The Reject Shop": 1.0,
+    "South Coast District Hospital": 6.0,
+    "Victor Harbor High School": 4.0,
+    "Victor Harbor R-7 School": 3.0,
+    "Anytime Fitness": 2.0,
+    "McDonald's": 2.0,
+    "KFC": 1.5,
+    "Warland Reserve": 6.0,
+    "Granite Island causeway": 5.0,
+    "Kent Reserve": 2.0,
+    "Encounter Bay foreshore": 3.0,
+    "Victor Harbor Golf Club": 2.0,
+    "McCracken Country Club": 2.0,
+    "Victor Harbor Oval": 2.0,
+    "Victor Harbor Holiday Park": 200,
+    "Victor Harbour Beachfront Holiday Park": 150,
+    "Adare Camp and Caravan Park": 250,
+    "Unpowered": 30,
+    "Anchorage Seafront": 40,
+    "Grosvenor Hotel": 20,
+    "Victor Harbor City Inn": 30,
+    "Pan Co. Victor Harbor": 20
+   },
+   "unit": "relative attraction (supermarkets ~ thousands of m2 floor area; parks/accommodation: sites or rooms)",
+   "basis": "assumption",
+   "sensitivity": "high",
+   "note": "Supermarket weights are floor-area proxies (full-line Woolworths and Coles ~3,500-3,800 m2, Drakes ~1,800, Aldi ~1,700, IGA ~800) - not measured; caravan sites and rooms are rough capacities, not from operators."
+  },
+  "poi.extra": {
+   "value": [
+    {
+     "name": "Warland Reserve",
+     "category": "beach_foreshore",
+     "lon": 138.6238,
+     "lat": -35.5563,
+     "source": "S-E01 way 124862539"
+    },
+    {
+     "name": "Granite Island causeway",
+     "category": "beach_foreshore",
+     "lon": 138.6255,
+     "lat": -35.5578,
+     "source": "assumption (foreshore end of the causeway, S-E01)"
+    },
+    {
+     "name": "Kent Reserve",
+     "category": "recreation",
+     "lon": 138.6115,
+     "lat": -35.5641,
+     "source": "S-E01 node 316602167"
+    },
+    {
+     "name": "Encounter Bay foreshore",
+     "category": "beach_foreshore",
+     "lon": 138.6015,
+     "lat": -35.5714,
+     "source": "S-E01 way 439835772 (park on the Esplanade, Encounter Bay)"
+    },
+    {
+     "name": "Victor Harbor Oval",
+     "category": "recreation",
+     "lon": 138.6135,
+     "lat": -35.5562,
+     "source": "S-E01 way 443028100"
+    },
+    {
+     "name": "Grosvenor Gardens",
+     "category": "recreation",
+     "lon": 138.6217,
+     "lat": -35.5536,
+     "source": "S-E01 way 116482758"
+    },
+    {
+     "name": "John Simmons Park",
+     "category": "recreation",
+     "lon": 138.6064,
+     "lat": -35.5632,
+     "source": "S-E01 way 1201089560"
+    },
+    {
+     "name": "Encounter Bay Recreation Reserve",
+     "category": "recreation",
+     "lon": 138.5975,
+     "lat": -35.5749,
+     "source": "S-E01 (The Yilki Common way 1208756169)"
+    }
+   ],
+   "unit": "list of POIs",
+   "basis": "S-E01",
+   "note": "Named places from the OSM extract missing from S-E03 (parks/reserves); coordinates are way centroids."
+  },
+  "poi.mb_categories": {
+   "value": {
+    "Education": "school",
+    "Hospital/Medical": "medical"
+   },
+   "unit": "ABS mesh-block category -> POI category",
+   "basis": "S-C30; S-S2-01",
+   "note": "ABS mesh blocks of these categories become extra POIs (OSM has only 2 schools); weight = poi.default_weight of the category."
+  },
+  "poi.mb_dedupe_km": {
+   "value": 0.25,
+   "unit": "km",
+   "basis": "assumption",
+   "sensitivity": "low",
+   "note": "A mesh-block POI within this distance of an OSM POI of the same category is dropped as a duplicate."
+  },
+  "work.jobs_per_ha": {
+   "value": {
+    "Commercial": 40,
+    "Industrial": 15,
+    "Hospital/Medical": 40,
+    "Education": 15,
+    "Other": 5,
+    "Transport": 5
+   },
+   "unit": "jobs per hectare of mesh block",
+   "basis": "assumption",
+   "sensitivity": "medium",
+   "note": "Work destinations = non-residential mesh blocks (S-C30 categories) weighted by area x job density; Commercial covers the town centre and McCracken."
+  },
+  "work.town_centre_weight": {
+   "value": 400,
+   "unit": "jobs-equivalent",
+   "basis": "assumption",
+   "sensitivity": "medium",
+   "note": "Extra work weight at Victor Central (retail and service jobs in the centre on top of its mesh blocks)."
+  },
+  "work.town_centre_location": {
+   "value": [
+    138.6203,
+    -35.5529
+   ],
+   "unit": "lon, lat",
+   "basis": "S-E03",
+   "note": "Victor Central Shopping Centre (S-E03 way 491901394) as the location of the town-centre work weight."
+  },
+  "work.jobs_per_new_dwelling": {
+   "value": 0.3,
+   "unit": "jobs per added dwelling",
+   "basis": "assumption",
+   "sensitivity": "low",
+   "note": "Work weight added at the employment growth areas (Waterport Rd) in growth years."
+  },
+  "gateways.aadt_assumed": {
+   "value": {
+    "gw_grn": 1500,
+    "gw_wel": 800,
+    "gw_wai": 800,
+    "gw_rng": 400,
+    "gw_bvr": 300
+   },
+   "unit": "vehicles/day, two-way",
+   "basis": "assumption",
+   "sensitivity": "low",
+   "note": "Council roads without a DIT count. gw_grn (Greenhills Rd) and gw_wel (Welch Rd) are used only with the S-E01 fallback extract; with S-S1-01 both roads lie inside the network."
+  },
+  "gateways.cv_pct_assumed": {
+   "value": 5.0,
+   "unit": "% commercial vehicles",
+   "basis": "assumption",
+   "sensitivity": "low",
+   "note": "CV share on council-road gateways."
+  },
+  "gateways.split": {
+   "value": {
+    "gw_vhr": {
+     "thr": 0.2,
+     "ext": 0.55,
+     "vis": 0.25
+    },
+    "gw_per": {
+     "thr": 0.2,
+     "ext": 0.65,
+     "vis": 0.15
+    },
+    "gw_ivr": {
+     "thr": 0.1,
+     "ext": 0.6,
+     "vis": 0.3
+    },
+    "default": {
+     "thr": 0.0,
+     "ext": 0.6,
+     "vis": 0.4
+    },
+    "gw_hti": {
+     "thr": 0.1,
+     "ext": 0.6,
+     "vis": 0.3
+    }
+   },
+   "unit": "fraction of the gateway's non-resident volume",
+   "basis": "assumption",
+   "sensitivity": "high",
+   "note": "Of AADT minus the residents' own crossings: through traffic (both ends outside, mostly Port Elliot/Goolwa <-> Adelaide via the McCracken roundabout), external with a local end (workers, shoppers, trades from outside), and visitors (base, non-summer day-trippers)."
+  },
+  "gateways.day_factor": {
+   "value": {
+    "weekday_term": 1.0,
+    "saturday": 0.85,
+    "summer_peak": 1.0,
+    "event_nye": 1.0
+   },
+   "unit": "multiplier on thr+ext",
+   "basis": "assumption",
+   "sensitivity": "medium",
+   "note": "Weekday term volumes taken as AADT; Saturday through/commuter traffic lower."
+  },
+  "gateways.truck_cv_factor": {
+   "value": 1.0,
+   "unit": "multiplier",
+   "basis": "S-D02",
+   "note": "Trucks per gateway = CV% x AADT x this, drawn from thr and ext vehicles. DIT CV includes light rigid trucks/buses (class 3-5)."
+  },
+  "gateways.growth_per_year": {
+   "value": 0.0,
+   "unit": "fraction per year after the base year",
+   "basis": "assumption",
+   "sensitivity": "medium",
+   "note": "Growth of non-resident gateway traffic (through, external, day-trippers) in future years. 0 = held at base-year volumes; residents of new dwellings add their own trips. Hindmarsh Rd grew ~2.2%/yr 2009-2024 (S-D02), but that includes local growth; set e.g. 0.01 for a sensitivity run."
+  },
+  "caravans.share_of_vis": {
+   "value": {
+    "weekday_term": 0.02,
+    "saturday": 0.03,
+    "summer_peak": 0.06,
+    "event_nye": 0.06
+   },
+   "unit": "fraction of visitor gateway trips",
+   "basis": "assumption",
+   "sensitivity": "medium",
+   "note": "Day-tripper and holiday-home arrivals towing a caravan/camper."
+  },
+  "caravans.share_of_park_arrivals": {
+   "value": 0.6,
+   "unit": "fraction",
+   "basis": "assumption",
+   "sensitivity": "medium",
+   "note": "Arrivals/departures of caravan-park parties that tow a caravan or drive a motorhome (the rest use cabins). Local trips from the park are cars."
+  },
+  "visitors.holiday_home_occupancy": {
+   "value": {
+    "weekday_term": 0.1,
+    "saturday": 0.25,
+    "summer_peak": 0.85,
+    "event_nye": 0.9
+   },
+   "unit": "fraction of unoccupied dwellings in use",
+   "basis": "assumption; S-C14",
+   "sensitivity": "high",
+   "note": "S-C14: 'over the summer holiday season most of the dwellings are occupied'."
+  },
+  "visitors.lodging_occupancy": {
+   "value": {
+    "weekday_term": 0.35,
+    "saturday": 0.6,
+    "summer_peak": 0.95,
+    "event_nye": 0.98
+   },
+   "unit": "fraction of sites/rooms",
+   "basis": "assumption",
+   "sensitivity": "medium",
+   "note": "Caravan parks and accommodation."
+  },
+  "visitors.trips_per_party": {
+   "value": 4.0,
+   "unit": "vehicle trips/day per staying party",
+   "basis": "assumption",
+   "sensitivity": "high",
+   "note": "Local trips by staying visitors (2 tours a day)."
+  },
+  "visitors.turnover_per_day": {
+   "value": 0.14,
+   "unit": "arrivals (and departures) per party per day",
+   "basis": "assumption",
+   "sensitivity": "medium",
+   "note": "~1/7: a one-week average stay. Each arrival and departure crosses a gateway."
+  },
+  "visitors.arrival_gateway_split": {
+   "value": {
+    "gw_vhr": 0.65,
+    "gw_hti": 0.05,
+    "gw_per": 0.25,
+    "gw_ivr": 0.05
+   },
+   "unit": "fraction",
+   "basis": "assumption",
+   "sensitivity": "medium",
+   "note": "Where staying visitors come from (Adelaide via Victor Harbor Rd)."
+  },
+  "visitors.purpose_shares": {
+   "value": {
+    "beach_foreshore": 0.3,
+    "dining": 0.2,
+    "shops": 0.15,
+    "supermarket": 0.15,
+    "recreation": 0.15,
+    "services": 0.05
+   },
+   "unit": "fraction",
+   "basis": "assumption",
+   "sensitivity": "medium",
+   "note": "Visitor destinations: foreshore, dining and the centre."
+  },
+  "visitors.summer_vhr_target": {
+   "value": 11000,
+   "unit": "vehicles/day two-way at gw_vhr",
+   "basis": "S-D18",
+   "note": "DIT: more than 11,000 vehicles/day on Victor Harbor Rd near Hindmarsh Tiers Rd / Virgin Rd and Brookman Rd in the summer peak (S-D18). With S-S1-01 gw_vhr sits on that stretch (DIT 28.26-43.21, AADT 7,700), so the target applies there directly. Day-tripper volume in summer_peak is scaled until gw_vhr reaches it."
+  },
+  "visitors.summer_scale_all_gateways": {
+   "value": true,
+   "unit": "flag",
+   "basis": "assumption",
+   "sensitivity": "medium",
+   "note": "Apply the Victor Harbor Rd summer day-tripper factor to the other gateways' visitor volume too."
+  },
+  "visitors.vis_day_factor": {
+   "value": {
+    "weekday_term": 1.0,
+    "saturday": 1.5,
+    "summer_peak": 1.0,
+    "event_nye": 1.0
+   },
+   "unit": "multiplier on base visitor gateway volume",
+   "basis": "assumption",
+   "sensitivity": "medium",
+   "note": "More day-trippers on Saturdays; summer handled by the target above."
+  },
+  "visitors.second_stop_share": {
+   "value": 0.3,
+   "unit": "fraction of day-trip tours",
+   "basis": "assumption",
+   "sensitivity": "low",
+   "note": "Day-trippers that visit a second destination before leaving."
+  },
+  "ext.purpose_shares": {
+   "value": {
+    "work": 0.4,
+    "supermarket": 0.12,
+    "shops": 0.14,
+    "services": 0.1,
+    "medical": 0.1,
+    "dining": 0.05,
+    "school": 0.04,
+    "recreation": 0.05
+   },
+   "unit": "fraction",
+   "basis": "assumption",
+   "sensitivity": "medium",
+   "note": "Destinations of non-residents coming in through a gateway (car trips); trucks go to work (commercial/industrial) destinations."
+  },
+  "event.venue": {
+   "value": "Warland Reserve",
+   "unit": "POI name",
+   "basis": "S-C31",
+   "note": "New Year's Eve celebration venue (council events calendar)."
+  },
+  "event.attendees": {
+   "value": 8000,
+   "unit": "persons",
+   "basis": "S-M03",
+   "sensitivity": "high",
+   "note": "Council Event Calendar 2026/27 expected attendance (PAX) for New Year's Eve Celebrations at Warland Reserve (was an assumption of 5,000)."
+  },
+  "event.car_share": {
+   "value": 0.6,
+   "unit": "fraction of attendees arriving by car",
+   "basis": "assumption",
+   "sensitivity": "medium",
+   "note": "Others walk from nearby homes and holiday parks."
+  },
+  "event.persons_per_car": {
+   "value": 2.5,
+   "unit": "persons/car",
+   "basis": "assumption",
+   "sensitivity": "medium",
+   "note": "Family/group occupancy."
+  },
+  "event.origin_split": {
+   "value": {
+    "res": 0.45,
+    "vis_local": 0.3,
+    "vis_gateway": 0.25
+   },
+   "unit": "fraction of event cars",
+   "basis": "assumption",
+   "sensitivity": "medium",
+   "note": "Residents, staying visitors (holiday homes, parks) and people driving in from Port Elliot/Goolwa/Adelaide."
+  },
+  "event.arrival_window_h": {
+   "value": [
+    18.0,
+    22.0
+   ],
+   "unit": "hours after midnight",
+   "basis": "assumption",
+   "sensitivity": "medium",
+   "note": "Arrivals spread uniformly, evening build-up before the 9pm family fireworks and midnight."
+  },
+  "event.departure_window_h": {
+   "value": [
+    24.1,
+    25.5
+   ],
+   "unit": "hours after midnight (24 = midnight)",
+   "basis": "assumption",
+   "sensitivity": "high",
+   "note": "Surge after the midnight fireworks."
+  },
+  "event.early_leaver_share": {
+   "value": 0.3,
+   "unit": "fraction",
+   "basis": "assumption",
+   "sensitivity": "medium",
+   "note": "Families leaving after the 9pm fireworks (21:15-22:30)."
+  },
+  "event.early_departure_window_h": {
+   "value": [
+    21.25,
+    22.5
+   ],
+   "unit": "hours after midnight",
+   "basis": "assumption",
+   "sensitivity": "medium",
+   "note": "Departure window of early leavers (after the 9pm family fireworks)."
+  },
+  "event.min_stay_s": {
+   "value": 1800,
+   "unit": "seconds",
+   "basis": "assumption",
+   "sensitivity": "low",
+   "note": "Minimum time at the event for early leavers who arrive late."
+  },
+  "growth.rates": {
+   "value": {
+    "moderate": [
+     [
+      2025,
+      2051,
+      185
+     ]
+    ],
+    "high": [
+     [
+      2021,
+      2031,
+      318
+     ],
+     [
+      2031,
+      2041,
+      410
+     ],
+     [
+      2041,
+      2051,
+      475
+     ]
+    ]
+   },
+   "unit": "dwellings/year over [from, to)",
+   "basis": "S-B10",
+   "note": "UGMS 2050 scenarios: moderate (historic trend) 185/yr; high = GARP targets by decade."
+  },
+  "growth.base_year": {
+   "value": 2025,
+   "unit": "year",
+   "basis": "assumption; S-C03",
+   "sensitivity": "medium",
+   "note": "Dwellings are added from the 2025 base (ERP 2025 already contains 2021-25 building, ~159/yr per S-B10 p.20)."
+  },
+  "growth.capacity": {
+   "value": {
+    "infill": 4100,
+    "GA1": 2400,
+    "GA2": 2030,
+    "GA3": 1570,
+    "GARP_IV": null,
+    "GARP_SW": null
+   },
+   "unit": "dwellings",
+   "basis": "assumption; S-B10",
+   "sensitivity": "medium",
+   "note": "S-B10 p.31: zoned infill up to 4,100; Deferred Urban Zone up to 2,400 (= growth area 1); Future Greenfield ~3,600 split between areas 2 (255 ha drawn) and 3 (197 ha) by drawn area; GARP-only parcels: null = area x growth.garp_only_density_per_ha."
+  },
+  "growth.order": {
+   "value": [
+    "GA1",
+    "GA2",
+    "GA3",
+    "GARP_IV",
+    "GARP_SW"
+   ],
+   "unit": "fill order",
+   "basis": "assumption; S-C12",
+   "sensitivity": "medium",
+   "note": "Greenfield areas fill in council priority order (map numbering), then the GARP-only parcels."
+  },
+  "growth.infill_share": {
+   "value": 0.4,
+   "unit": "fraction of new dwellings",
+   "basis": "assumption; S-C14",
+   "sensitivity": "medium",
+   "note": "Infill share while infill capacity lasts (2011-21 was 85% infill, S-C14 s.4.5, but greenfield opens up)."
+  },
+  "growth.infill_weighting": {
+   "value": "dwellings",
+   "unit": "dwellings | area",
+   "basis": "assumption",
+   "sensitivity": "low",
+   "note": "Infill is spread over residential mesh blocks inside the study area in proportion to their existing dwellings."
+  },
+  "growth.garp_only_density_per_ha": {
+   "value": 10.0,
+   "unit": "dwellings/ha",
+   "basis": "assumption; S-C14",
+   "sensitivity": "low",
+   "note": "Yield of GARP-only parcels (S-C14 benchmarks 7.5-10.5/ha)."
+  },
+  "growth.cell_deg": {
+   "value": 0.004,
+   "unit": "degrees",
+   "basis": "assumption",
+   "sensitivity": "low",
+   "note": "Growth areas are cut into grid cells (~360 x 440 m) that become zones; dwellings split by cell area."
+  },
+  "vtypes": {
+   "value": {
+    "car": {
+     "vClass": "passenger",
+     "length": 4.6,
+     "minGap": 2.5,
+     "accel": 2.6,
+     "decel": 4.5,
+     "maxSpeed": 44.44,
+     "speedFactor": "normc(1.0,0.1,0.2,2.0)"
+    },
+    "truck": {
+     "vClass": "truck",
+     "length": 12.0,
+     "minGap": 3.0,
+     "accel": 1.0,
+     "decel": 4.0,
+     "maxSpeed": 27.78,
+     "speedFactor": "normc(0.95,0.05,0.2,2.0)",
+     "guiShape": "truck"
+    },
+    "caravan": {
+     "vClass": "passenger",
+     "length": 11.5,
+     "minGap": 3.0,
+     "accel": 1.1,
+     "decel": 3.5,
+     "maxSpeed": 27.78,
+     "speedFactor": "normc(0.92,0.05,0.2,2.0)",
+     "guiShape": "passenger/van"
+    }
+   },
+   "unit": "SUMO vType attributes (m, m/s, m/s2)",
+   "basis": "assumption",
+   "sensitivity": "low",
+   "note": "Car: SUMO passenger defaults. Truck: rigid truck (DIT CV are mostly class 3-5). Caravan: car plus ~6 m van, slower acceleration, capped at 100 km/h; vClass passenger so caravans may use any car road."
+  },
+  "validation.trip_length_km": {
+   "value": {
+    "supermarket": [
+     1.5,
+     5.0
+    ],
+    "shops": [
+     1.5,
+     5.5
+    ],
+    "dining": [
+     1.5,
+     6.0
+    ],
+    "services": [
+     1.5,
+     6.0
+    ],
+    "medical": [
+     1.5,
+     6.0
+    ],
+    "school": [
+     1.0,
+     5.0
+    ],
+    "work": [
+     2.0,
+     8.0
+    ],
+    "recreation": [
+     1.0,
+     6.0
+    ],
+    "beach_foreshore": [
+     1.5,
+     6.0
+    ],
+    "gym": [
+     1.0,
+     6.0
+    ],
+    "residential": [
+     1.5,
+     6.0
+    ]
+   },
+   "unit": "km (network: straight line x detour), plausible mean range",
+   "basis": "assumption",
+   "sensitivity": "low",
+   "note": "No archived trip-length norm for a town of this size: ranges reflect the urban area (~8 km from Encounter Bay to McCracken, ~4 km deep) with shops concentrated in the centre and McCracken. Replace with a travel-survey figure if one is archived."
+  },
+  "validation.town_centre_cordon": {
+   "value": [
+    138.6165,
+    -35.559,
+    138.6265,
+    -35.55
+   ],
+   "unit": "lon_min, lat_min, lon_max, lat_max",
+   "basis": "assumption; S-D19",
+   "sensitivity": "low",
+   "note": "Box around the town-centre streets served from Torrens St (Victoria St to Bridge Tce, Torrens St to the foreshore) used to compare with the 2017 'vehicles entering the town centre' figure."
+  },
+  "validation.town_centre_entries_12h": {
+   "value": 7600,
+   "unit": "vehicles entering the town centre, 07:00-19:00",
+   "basis": "S-D19",
+   "note": "Tonkin 2017 Torrens Street review: almost 7,600 vehicles entered the town centre in 12 h (Wed 26 Apr 2017, school holidays). Compared with trips whose destination is inside the cordon and origin outside it."
+  },
+  "validation.vkt_reference_km_per_car_day": {
+   "value": 30,
+   "unit": "km per passenger vehicle per day",
+   "basis": "assumption",
+   "sensitivity": "low",
+   "note": "Order of magnitude of Australian average passenger-vehicle use (~11,000 km/yr, ABS Survey of Motor Vehicle Use; not archived here). In-area driving should be well below it because trips outside the study area are cut at the gateways."
+  },
+  "validation.max_share_to_weight_ratio": {
+   "value": 3.0,
+   "unit": "ratio",
+   "basis": "assumption",
+   "sensitivity": "low",
+   "note": "A supermarket is flagged when its share of supermarket trips differs from its weight share by more than this factor either way (gravity legitimately favours central stores)."
+  }
+ }
+}

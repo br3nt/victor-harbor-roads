@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Connections for the baseline fixes in baseline.edg.xml (lanes must be given on a loaded net).
+     F1: Torrens St north-east-bound (576495712#2, ends at OSM node 11174609027) turns right onto the
+         median link, which carries only the right turn into Ocean St (no U-turn onto the other carriageway). -->
+<connections>
+    <connection from="576495712#2" to="vhfix_torrens_ocean_right" fromLane="0" toLane="0"/>
+    <delete from="vhfix_torrens_ocean_right" to="576495725#2"/>
+</connections>

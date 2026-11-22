@@ -1,0 +1,723 @@
+#!/usr/bin/env python3
+"""Build the public, privacy-clean copy of this project (a fresh tree with no git history).
+
+    bin/build-public [--out DIR] [--viewer-data DIR] [--ref REF] [--no-site]
+
+OUT (default publish/public-repo, git-ignored) gets:
+  - the committed files of REF (default HEAD) under sim/ viewer/ game/ bin/ research/ kb/ results/, minus the
+    exclusions in EXCLUDE (third-party archives, council map images, raw extracts, the draft submission, anything
+    git-ignored), with every private resident's name replaced by a pseudonym in file contents and file names;
+  - bin/private-names.tsv rewritten to name only the pseudonyms;
+  - README.md, LICENSE, .gitignore and a placeholder submission/README.md;
+  - docs/, the GitHub Pages site (served from /docs): a landing page, the knowledge base exported with bin/kb from
+    the pseudonymised notes, the trip checker and engineer viewer (data from --viewer-data, default
+    sim/data/viewer or $VIEWER_DATA_DIR), the game, placeholders for onboarding/ and deck/, and .nojekyll.
+Then it scans the whole tree (contents, file names, gzip payloads) and fails if a private name, a forbidden term,
+a phone number or a personal email address is left, if a file is 100 MB or more, or if docs/ relies on claude.ai.
+
+The private lists: bin/private-names.tsv (patterns of kind "private") names the private residents, and
+bin/pseudonyms.tsv (never copied to the public tree) gives each pattern its pseudonym ("replace" rows), plus terms
+the public tree must not contain ("forbid": case-insensitive substrings, e.g. an email address; "word": whole
+words, e.g. a first name on its own; "rewrite": other private text to replace everywhere, e.g. a sentence that
+hints at who a resident is; each rewrite must match somewhere, so a reworded source fails the build). In the public copy there are no private patterns left, so the script also
+runs there without bin/pseudonyms.tsv.
+"""
+from __future__ import annotations
+
+import argparse
+import csv
+import gzip
+import html
+import io
+import json
+import os
+import re
+import shutil
+import subprocess
+import sys
+import tarfile
+from dataclasses import dataclass, field
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+REPO_URL = "https://github.com/br3nt/victor-harbor-roads"
+PAGES_URL = "https://br3nt.github.io/victor-harbor-roads/"
+MARKER = ".public-build"
+MAX_BYTES = 100 * 1024 * 1024  # GitHub refuses files of 100 MB or more
+
+INCLUDE_DIRS = ("sim/", "viewer/", "game/", "bin/", "research/", "kb/", "results/")
+KEEP = {"game/data/raw/SOURCES.md", "game/data/raw/G-01-victor-harbor-all.overpassql"}
+# (prefix or exact path, reason); first match wins. Paths outside INCLUDE_DIRS are left out as "not published".
+EXCLUDE = [
+    ("bin/pseudonyms.tsv", "the real names behind the pseudonyms (private repository only)"),
+    ("game/data/raw/", "raw OpenStreetMap extract (its SOURCES.md and query are kept)"),
+    ("sim/data/demand/raw/S-S2-03a-tfnsw-tia-guide-pdf-pp54-55-62-text.txt",
+     "text extract of a third-party document (Transport for NSW); URL and sha256 in SOURCES.tsv"),
+]
+TOP_LEVEL_REASONS = {
+    "sources/": "third-party archives (PDFs, images, screenshots, the survey receipt); URLs and sha256 are in research/*-sources.tsv",
+    "kb-assets/": "council map images (the exported KB links to the council's originals)",
+    "site/": "local KB export (git-ignored)",
+    "submission/": "the draft submission (placeholder README until it is final)",
+    ".claude/": "local tool settings",
+    ".playwright-mcp/": "browser-tool scratch output (git-ignored)",
+    "publish/": "staged copies (git-ignored)",
+    "tmp-notes/": "scratch notes (git-ignored)",
+    ".venv/": "Python environment",
+}
+NOT_PUBLISHED_ANYWHERE = ("node_modules/", "__pycache__/", ".DS_Store")
+
+PUBLIC_PHONES = {"0885510500": "City of Victor Harbor switchboard"}
+OSM_CONTACT_TAG = re.compile(r'k="(?:contact:)?(?:phone|mobile|fax|email)"')
+PHONE_RE = re.compile(
+    r"(?<![\w.+])(?:\+61[ -]?\(?0?\)?[ -]?[2-478]|\(0[2-478]\)|0[2-478])(?:[ -]?\d){8}(?![\w.]?\d)"
+    r"|(?<![\w.])1[38]00[ -]?\d{3}[ -]?\d{3}(?![\w.]?\d)")
+EMAIL_RE = re.compile(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,}")
+RESERVED_EMAIL_DOMAINS = ("example.com", "example.net", "example.org", "example", "test", "invalid", "localhost")  # RFC 2606
+
+
+class BuildError(Exception):
+    pass
+
+
+# --- private lists ----------------------------------------------------------------------------------------------
+
+@dataclass
+class Private:
+    replacements: list[tuple[str, str]] = field(default_factory=list)  # (real, pseudonym), longest first
+    notes: dict[str, str] = field(default_factory=dict)                # pseudonym -> public description
+    forbidden: list[str] = field(default_factory=list)
+    words: list[str] = field(default_factory=list)
+    rewrites: list[tuple[str, str]] = field(default_factory=list)       # (private text, public text)
+
+    @property
+    def scan_terms(self) -> list[str]:
+        return [r for r, _ in self.replacements] + self.forbidden
+
+
+def _tsv_rows(path: Path) -> list[list[str]]:
+    if not path.exists():
+        return []
+    lines = path.read_text(encoding="utf-8").splitlines()[1:]
+    return [line.split("\t") for line in lines if line.strip()]
+
+
+def load_private(root: Path) -> Private:
+    names = [r for r in _tsv_rows(root / "bin" / "private-names.tsv")
+             if len(r) >= 2 and r[1] == "private" and not r[0].startswith("page:")]
+    rows = _tsv_rows(root / "bin" / "pseudonyms.tsv")
+    p = Private()
+    pseudo = {}
+    for r in rows:
+        r = r + [""] * (4 - len(r))
+        kind, pattern, repl, note = r[:4]
+        if kind == "replace":
+            pseudo[pattern] = repl
+            if note.strip():
+                p.notes.setdefault(repl, note.strip())
+        elif kind == "forbid":
+            p.forbidden.append(pattern)
+        elif kind == "word":
+            p.words.append(pattern)
+        elif kind == "rewrite":
+            p.rewrites.append((pattern, repl))
+    missing = [n[0] for n in names if n[0] not in pseudo]
+    if missing:
+        raise BuildError(f"no pseudonym in bin/pseudonyms.tsv for: {', '.join(missing)}")
+    p.replacements = sorted(pseudo.items(), key=lambda kv: -len(kv[0]))
+    return p
+
+
+def pseudonymise(text: str, private: Private, applied: set | None = None) -> str:
+    """Names to pseudonyms, then the private rewrites (their indexes are added to APPLIED when they match)."""
+    for real, alias in private.replacements:
+        text = text.replace(real, alias)
+    for i, (old, new) in enumerate(private.rewrites):
+        if old in text:
+            text = text.replace(old, new)
+            if applied is not None:
+                applied.add(i)
+    return text
+
+
+def pseudonymise_path(path: str, private: Private) -> str:
+    return pseudonymise(path, private)
+
+
+def public_private_names_tsv(private: Private) -> str:
+    rows = ["pattern\tkind\twho"]
+    for alias, note in private.notes.items():
+        if "pseudonym" not in note.lower():
+            note += " The real name is replaced by this pseudonym in the public copy."
+        rows.append(f"{alias}\tpseudonym\t{note}")
+    return "\n".join(rows) + "\n"
+
+
+def is_text(data: bytes) -> bool:
+    if b"\x00" in data[:65536]:
+        return False
+    try:
+        data.decode("utf-8")
+    except UnicodeDecodeError:
+        return False
+    return True
+
+
+# --- choosing files ---------------------------------------------------------------------------------------------
+
+def exclusion_reason(path: str) -> str | None:
+    if path in KEEP:
+        return None
+    parts = path.split("/")
+    if any(p + "/" in NOT_PUBLISHED_ANYWHERE or p in NOT_PUBLISHED_ANYWHERE for p in parts):
+        return "build output or local environment"
+    for prefix, reason in EXCLUDE:
+        if path == prefix or (prefix.endswith("/") and path.startswith(prefix)):
+            return reason
+    if not path.startswith(INCLUDE_DIRS):
+        for prefix, reason in TOP_LEVEL_REASONS.items():
+            if path.startswith(prefix):
+                return reason
+        return "not published (outside the published folders)"
+    if path.lower().endswith(".pdf"):
+        return "third-party document (PDF); URL and sha256 in its SOURCES file"
+    return None
+
+
+def _git(root: Path, *args: str) -> bytes:
+    return subprocess.run(["git", *args], cwd=root, check=True, capture_output=True).stdout
+
+
+def tracked_members(root: Path, ref: str = "HEAD"):
+    """Yield (path, TarInfo, bytes|None) for every file committed at REF (symlinks have data None)."""
+    tar = tarfile.open(fileobj=io.BytesIO(_git(root, "archive", "--format=tar", ref)))
+    for m in tar.getmembers():
+        if m.isfile():
+            yield m.name, m, tar.extractfile(m).read()
+        elif m.issym():
+            yield m.name, m, None
+
+
+def ignored_but_tracked(root: Path) -> set[str]:
+    out = _git(root, "ls-files", "-z", "-c", "-i", "--exclude-standard").decode()
+    return {p for p in out.split("\0") if p}
+
+
+def prepare_out(out: Path) -> None:
+    if out.exists() and any(out.iterdir()):
+        if not (out / MARKER).exists():
+            raise BuildError(f"refusing to clear {out}: it was not made by bin/build-public (no {MARKER} marker)")
+        shutil.rmtree(out)
+    out.mkdir(parents=True, exist_ok=True)
+    (out / MARKER).write_text("Made by bin/build-public; safe to delete and rebuild. Not part of the public repository.\n")
+
+
+def build_tree(root: Path, out: Path, ref: str = "HEAD") -> dict[str, list[str]]:
+    """Copy the published files of REF into OUT, pseudonymised. Returns {reason: [paths left out]}."""
+    private = load_private(root)
+    research = root / "research"
+    prepare_out(out)
+    ignored = ignored_but_tracked(root)
+    excluded: dict[str, list[str]] = {}
+    maps = None
+    applied: set[int] = set()
+    for path, member, data in tracked_members(root, ref):
+        reason = "git-ignored" if path in ignored else exclusion_reason(path)
+        if reason:
+            excluded.setdefault(reason, []).append(path)
+            continue
+        dest = out / pseudonymise_path(path, private)
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        if data is None:
+            os.symlink(pseudonymise_path(member.linkname, private), dest)
+            continue
+        if is_text(data):
+            text = pseudonymise(data.decode("utf-8"), private, applied)
+            if path.startswith("kb/") and 'src="assets/' in text:
+                maps = maps if maps is not None else map_originals(research)
+                text = replace_map_figures(text, maps)
+            text = public_rewrites(path, text)
+            data = text.encode("utf-8")
+        dest.write_bytes(data)
+        os.chmod(dest, member.mode & 0o777 or 0o644)
+    check_rewrites_applied(private, applied)
+    (out / "bin").mkdir(exist_ok=True)
+    (out / "bin" / "private-names.tsv").write_text(public_private_names_tsv(private))
+    (out / "submission").mkdir(exist_ok=True)
+    (out / "submission" / "README.md").write_text(SUBMISSION_README)
+    (out / "README.md").write_text(README)
+    (out / "LICENSE").write_text(LICENSE)
+    (out / ".gitignore").write_text(GITIGNORE)
+    return excluded
+
+
+ARTIFACT_LINK = re.compile(r"https://claude\.ai/artifact/[A-Za-z0-9_-]+")
+
+
+def public_rewrites(path: str, text: str) -> str:
+    """Changes that only make sense in the public copy (private rewrites are in bin/pseudonyms.tsv)."""
+    if path.startswith("kb/") or path == "sim/vhsim/integration/kb_results.py":
+        # the interactive maps are published next to the KB on GitHub Pages (docs/maps/, docs/kb/)
+        text = ARTIFACT_LINK.sub("../maps/index.html", text)
+    return text
+
+
+def check_rewrites_applied(private: Private, applied: set) -> None:
+    missing = [old for i, (old, _) in enumerate(private.rewrites) if i not in applied]
+    if missing:
+        raise BuildError(f"{len(missing)} rewrite(s) in bin/pseudonyms.tsv matched nothing (the source changed?); "
+                         "the first starts " + repr(missing[0].strip()[:12] + "..."))
+
+
+# --- KB map images ----------------------------------------------------------------------------------------------
+
+MAP_SOURCES = {  # image in kb-assets/maps -> (Sources Register id, fragment)
+    "vhits-town-centre.jpg": ("S-A04c", ""),
+    "vhits-ring-road.jpg": ("S-A04b", ""),
+    "vhits-public-transport.jpg": ("S-A04d", ""),
+    "vhits-walking-cycling.jpg": ("S-A04a", ""),
+    "vhits-growth-areas.png": ("S-A03", "#page=2"),
+}
+
+
+def map_originals(research: Path) -> dict[str, str]:
+    urls = {}
+    for tsv in research.glob("*-sources.tsv"):
+        with open(tsv, encoding="utf-8", newline="") as f:
+            for row in csv.DictReader(f, delimiter="\t"):
+                if row.get("id") and row.get("url", "").startswith("http"):
+                    urls[row["id"]] = row["url"]
+    return {img: urls[sid] + frag for img, (sid, frag) in MAP_SOURCES.items() if sid in urls}
+
+
+IMG_RE = re.compile(r'<img\s+src="assets/maps/([^"]+)"([^>]*)>')
+
+
+def replace_map_figures(text: str, originals: dict[str, str]) -> str:
+    def repl(m: re.Match) -> str:
+        name = m.group(1)
+        if name not in originals:
+            raise BuildError(f"no link to the council's original for KB image assets/maps/{name}")
+        alt = re.search(r'alt="([^"]*)"', m.group(2))
+        alt = alt.group(1) if alt else "council map"
+        return (f'<p class="kb-map-link"><a rel="external" href="{originals[name]}">Open the council\'s map</a> '
+                f'(not copied here): {alt}.</p>')
+    out = IMG_RE.sub(repl, text)
+    if 'src="assets/' in out:
+        raise BuildError("an image from kb-assets is still embedded after replacing the map figures")
+    return out
+
+
+# --- scans and checks -------------------------------------------------------------------------------------------
+
+def _files(top: Path):
+    for dirpath, dirnames, filenames in os.walk(top):
+        for name in dirnames + filenames:
+            p = Path(dirpath) / name
+            yield p, p.is_file() and not p.is_symlink()
+
+
+def _phone_allowed(number: str, line: str, path: str) -> bool:
+    digits = re.sub(r"\D", "", number)
+    if digits.startswith("61"):
+        digits = "0" + digits[2:].lstrip("0")
+    if digits in PUBLIC_PHONES:
+        return True
+    return path.endswith(".osm") and bool(OSM_CONTACT_TAG.search(line))
+
+
+def _email_allowed(email: str, line: str, path: str) -> bool:
+    domain = email.rsplit("@", 1)[1].lower()
+    if domain.endswith(".gov.au") or any(domain == d or domain.endswith("." + d) for d in RESERVED_EMAIL_DOMAINS):
+        return True
+    return path.endswith(".osm") and bool(OSM_CONTACT_TAG.search(line))
+
+
+def _line_at(text: str, pos: int) -> str:
+    start = text.rfind("\n", 0, pos) + 1
+    end = text.find("\n", pos)
+    return text[start:end if end >= 0 else len(text)]
+
+
+def scan_tree(top: Path, private: Private) -> list[str]:
+    """Everything private left in TOP: file names, contents (also binary and gzip payloads), phones, emails."""
+    terms = [(t, t.lower().encode("utf-8")) for t in private.scan_terms]
+    words = [(w, re.compile(rf"(?<![\w-]){re.escape(w)}(?![\w-])", re.I)) for w in private.words]
+    found = []
+    for p, is_file in _files(top):
+        rel = str(p.relative_to(top))
+        low = rel.lower()
+        for t, tb in terms:
+            if t.lower() in low:
+                found.append(f"{rel}: file name contains {t!r}")
+        for w, rx in words:
+            if rx.search(rel):
+                found.append(f"{rel}: file name contains the word {w!r}")
+        if not is_file:
+            continue
+        data = p.read_bytes()
+        payloads = [(rel, data)]
+        if rel.endswith(".gz"):
+            try:
+                payloads.append((rel + " (unzipped)", gzip.decompress(data)))
+            except OSError:
+                pass
+        for where, blob in payloads:
+            low = blob.lower()
+            for t, tb in terms:
+                if tb in low:
+                    found.append(f"{where}: contains {t!r}")
+            if is_text(blob):
+                found += _text_findings(where, rel.removesuffix(".gz"), blob.decode("utf-8"), words)
+    return found
+
+
+def _text_findings(where: str, name: str, text: str, words) -> list[str]:
+    found = []
+    for w, rx in words:
+        if rx.search(text):
+            found.append(f"{where}: contains the word {w!r}")
+    for m in PHONE_RE.finditer(text):
+        if not _phone_allowed(m.group(), _line_at(text, m.start()), name):
+            found.append(f"{where}: phone number {m.group()!r}")
+    for m in EMAIL_RE.finditer(text):
+        if not _email_allowed(m.group(), _line_at(text, m.start()), name):
+            found.append(f"{where}: email address {m.group()!r}")
+    return found
+
+
+def check_sizes(top: Path) -> tuple[int, list[str]]:
+    total, big = 0, []
+    for p, is_file in _files(top):
+        if is_file:
+            n = p.stat().st_size
+            total += n
+            if n >= MAX_BYTES:
+                big.append(str(p.relative_to(top)))
+    return total, big
+
+
+def check_no_claude(top: Path) -> list[str]:
+    bad = []
+    for p, is_file in _files(top):
+        if is_file:
+            data = p.read_bytes()
+            if b"claude.ai" in data or b'name="claude:' in data:
+                bad.append(str(p.relative_to(top)))
+    return bad
+
+
+LOCAL_PATH = re.compile(rb"/Users/[^/\s\"']+|/home/[^/\s\"']+|[A-Z]:\\\\Users\\\\")
+
+
+def check_local_paths(top: Path) -> list[str]:
+    """Files that mention a home folder (a local user name and folder layout)."""
+    return [str(p.relative_to(top)) for p, is_file in _files(top) if is_file and LOCAL_PATH.search(p.read_bytes())]
+
+
+LINK_RE = re.compile(r'(?:href|src)="([^"#?]+)[^"]*"')
+
+
+def check_links(top: Path) -> list[str]:
+    """Relative links in the site's HTML pages that point at nothing."""
+    broken = []
+    for p in top.rglob("*.html"):
+        for target in LINK_RE.findall(p.read_text(encoding="utf-8", errors="replace")):
+            if re.match(r"^[a-z][a-z0-9+.-]*:", target) or target.startswith(("/", "${")):
+                continue
+            if not (p.parent / html.unescape(target)).resolve().exists():
+                broken.append(f"{p.relative_to(top)} -> {target}")
+    return sorted(set(broken))
+
+
+# --- the site ---------------------------------------------------------------------------------------------------
+
+def _replace(text: str, old: str, new: str, where: str) -> str:
+    if old not in text:
+        raise BuildError(f"{where}: expected text not found (the source changed?): {old[:80]!r}")
+    return text.replace(old, new)
+
+
+def stage_kb(out: Path) -> None:
+    env = dict(os.environ)
+    subprocess.run(["ruby", str(out / "bin" / "kb"), "export", str(out / "docs" / "kb")], cwd=out, env=env,
+                   check=True, capture_output=True)
+    (out / "docs" / "kb" / ".kb-export").unlink(missing_ok=True)
+
+
+def stage_maps(out: Path, viewer_data: Path) -> int:
+    """The trip checker and engineer viewer for a normal web host (like bin/stage-maps, minus the artifact limits)."""
+    v, m = out / "viewer", out / "docs" / "maps"
+    m.mkdir(parents=True)
+    kb = "../kb/simulation-results.html"
+    landing = (v / "publish-landing.html").read_text()
+    landing = re.sub(r'<meta name="claude:[^>]*>\n?', "", landing)
+    landing = _replace(landing, "__KB_URL__", kb, "publish-landing.html")
+    landing = _replace(
+        landing, "<p>The maps here show the simulated road network without a street-map background.</p>",
+        '<p>Base map © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>; terrain from '
+        'Terrain Tiles (Geoscience Australia, USGS, NOAA); addresses from G-NAF © Geoscape Australia. '
+        '<a href="../index.html#credits">All credits and licences</a>.</p>\n'
+        '    <p><a href="../index.html">← Back to the project home</a></p>', "publish-landing.html")
+    head, body = landing.split("<main", 1)
+    (m / "index.html").write_text(
+        '<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n'
+        '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'
+        f"{head.strip()}\n</head>\n<body>\n<main{body.rstrip()}\n</body>\n</html>\n")
+    shutil.copytree(v / "js", m / "js")
+    shutil.copytree(v / "css", m / "css")
+    eng = (v / "index.html").read_text()
+    eng = _replace(eng, " map tiles from the internet (local development only)", " street-map tiles from the internet",
+                   "viewer/index.html")
+    (m / "engineer.html").write_text(eng)
+    app = (m / "js" / "app.js").read_text()
+    app = _replace(app, "$('#osm-row').hidden = !/^(localhost|127\\.0\\.0\\.1|\\[::1\\])$/.test(location.hostname);",
+                   "$('#osm-row').hidden = false;  // public web host: OpenStreetMap tiles are allowed", "viewer/js/app.js")
+    (m / "js" / "app.js").write_text(app)
+
+    r = m / "residents"
+    (r / "js").mkdir(parents=True)
+    shutil.copy(v / "residents" / "residents.css", r)
+    for f in (v / "residents" / "js").glob("*.js"):
+        shutil.copy(f, r / "js")
+    shutil.copytree(v / "residents" / "data", r / "data")
+    res = (v / "residents" / "index.html").read_text()
+    (r / "index.html").write_text(_replace(res, 'href="../index.html"', 'href="../engineer.html"', "residents/index.html"))
+    rapp = (r / "js" / "app.js").read_text()
+    rapp, n = re.subn(r"^const METHODS_URL = .*$", f"const METHODS_URL = '../../{kb[3:]}';", rapp, flags=re.M)
+    if n != 1:
+        raise BuildError("residents/js/app.js: METHODS_URL not found")
+    (r / "js" / "app.js").write_text(rapp)
+
+    shutil.copytree(v / "basemap", m / "basemap")
+
+    d = m / "data"
+    d.mkdir()
+    index = json.loads((viewer_data / "index.json").read_text())
+    shutil.copy(viewer_data / "index.json", d)
+    n = 1
+    for rel in index["networks"].values():
+        for f in (rel, rel.replace(".json", ".lite.json")):
+            if (viewer_data / f).exists():
+                (d / f).parent.mkdir(parents=True, exist_ok=True)
+                shutil.copy(viewer_data / f, d / f)
+                n += 1
+    for run in index["runs"]:
+        meta_rel = Path(run["path"])
+        meta = json.loads((viewer_data / meta_rel).read_text())
+        (d / meta_rel.parent).mkdir(parents=True, exist_ok=True)
+        (d / meta_rel).write_text(json.dumps(public_meta(meta), indent=1))
+        n += 1
+        for f in meta["files"].values():
+            shutil.copy(viewer_data / meta_rel.parent / f["path"], d / meta_rel.parent / f["path"])
+            n += 1
+    return n
+
+
+def public_meta(meta: dict) -> dict:
+    """A run's meta.json without local folders: its `sources` (the SUMO run folders) become repository paths."""
+    out = dict(meta)
+    if "sources" in out:
+        out["sources"] = [re.sub(r"^.*?/(sim/data/)", r"\1", s) if s.startswith("/") else s for s in out["sources"]]
+    return out
+
+
+def stage_game(out: Path) -> None:
+    g, dst = out / "game", out / "docs" / "game"
+    dst.mkdir(parents=True)
+    shutil.copy(g / "index.html", dst)
+    shutil.copytree(g / "css", dst / "css")
+    shutil.copytree(g / "js", dst / "js")
+    (dst / "data").mkdir()
+    for f in (g / "data").iterdir():
+        if f.is_file():
+            shutil.copy(f, dst / "data")
+
+
+def build_site(out: Path, viewer_data: Path) -> dict:
+    docs = out / "docs"
+    docs.mkdir()
+    (docs / ".nojekyll").write_text("")
+    (docs / "index.html").write_text(LANDING)
+    for name, (title, text) in PLACEHOLDERS.items():
+        (docs / name).mkdir()
+        (docs / name / "index.html").write_text(placeholder_page(title, text))
+    stage_kb(out)
+    n_maps = stage_maps(out, viewer_data)
+    stage_game(out)
+    return {"map_data_files": n_maps}
+
+
+def build(root: Path, out: Path, viewer_data: Path | None = None, ref: str = "HEAD", site: bool = True) -> dict:
+    excluded = build_tree(root, out, ref)
+    report: dict = {"excluded": excluded}
+    if site:
+        if viewer_data is None or not (viewer_data / "index.json").exists():
+            raise BuildError(f"no viewer data at {viewer_data} (export it, or pass --viewer-data / VIEWER_DATA_DIR)")
+        report.update(build_site(out, viewer_data))
+        report["claude"] = check_no_claude(out / "docs")
+        report["local_paths"] = check_local_paths(out / "docs")
+        report["broken_links"] = check_links(out / "docs")
+    report["scan"] = scan_tree(out, load_private(root))
+    report["total_bytes"], report["too_big"] = check_sizes(out)
+    if site:
+        report["docs_bytes"] = check_sizes(out / "docs")[0]
+    return report
+
+
+def main(argv=None) -> int:
+    ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
+    ap.add_argument("--out", type=Path, default=ROOT / "publish" / "public-repo")
+    ap.add_argument("--viewer-data", type=Path,
+                    default=Path(os.environ.get("VIEWER_DATA_DIR", ROOT / "sim" / "data" / "viewer")))
+    ap.add_argument("--ref", default="HEAD", help="commit to publish (default HEAD; uncommitted changes are ignored)")
+    ap.add_argument("--no-site", action="store_true", help="skip docs/ (no Ruby or viewer data needed)")
+    a = ap.parse_args(argv)
+    try:
+        rep = build(ROOT, a.out.resolve(), a.viewer_data.resolve(), a.ref, site=not a.no_site)
+    except (BuildError, subprocess.CalledProcessError) as e:
+        msg = e.stderr.decode() if isinstance(e, subprocess.CalledProcessError) and e.stderr else str(e)
+        print(f"build-public: {msg}", file=sys.stderr)
+        return 1
+    print(f"public tree: {a.out}")
+    print("left out:")
+    for reason, paths in sorted(rep["excluded"].items(), key=lambda kv: -len(kv[1])):
+        print(f"  {len(paths):4d}  {reason}")
+    if "map_data_files" in rep:
+        print(f"maps: {rep['map_data_files']} data files staged")
+        for b in rep["broken_links"]:
+            print(f"  warning: broken link {b}")
+    mb = lambda n: f"{n / 1024 / 1024:.1f} MB"
+    print(f"size: {mb(rep['total_bytes'])} in all" + (f", docs/ {mb(rep['docs_bytes'])}" if "docs_bytes" in rep else ""))
+    failed = False
+    for f in rep["too_big"]:
+        print(f"FAIL file of 100 MB or more: {f}")
+        failed = True
+    for f in rep.get("claude", []):
+        print(f"FAIL docs/ relies on claude.ai: {f}")
+        failed = True
+    for f in rep.get("local_paths", []):
+        print(f"FAIL docs/ names a local home folder: {f}")
+        failed = True
+    for f in rep["scan"]:
+        print(f"FAIL privacy scan: {f}")
+        failed = True
+    if not rep["scan"]:
+        print("privacy scan: clean (private names, forbidden terms, phone numbers, email addresses; contents, "
+              "file names and gzip payloads)")
+    return 1 if failed else 0
+
+
+# --- generated public files -------------------------------------------------------------------------------------
+
+SUBMISSION_README = """# Submission
+
+The author's submission to the City of Victor Harbor on the Victor Harbor Integrated Transport Strategy will be
+added here once it is final.
+"""
+
+GITIGNORE = f""".DS_Store
+{MARKER}
+__pycache__/
+*.egg-info/
+.venv/
+node_modules/
+# local KB export (bin/kb export) and staged copies
+site/
+publish/
+# bulky regenerable simulation outputs (rebuild: python -m vhsim.integration.batch / report)
+sim/data/networks/*.net.xml
+sim/data/networks/*.work/
+sim/data/runs/
+sim/data/results/*/movements.csv
+sim/data/results/*/accessibility.csv
+sim/data/results/*.log
+sim/data/viewer/runs/
+sim/data/viewer/networks/
+sim/data/viewer/index.json
+sim/data/terrain-raw/
+# raw OpenStreetMap extract for the game (hash in game/data/raw/SOURCES.md)
+game/data/raw/*.osm
+"""
+
+LICENSE = """This repository holds two kinds of original work, under two licences, plus third-party data under its own terms.
+
+1. Code (the program files in sim/, viewer/, game/, bin/ and the code in docs/): MIT License, below. Data files
+   (sim/data/, viewer/basemap/, viewer/residents/data/, game/data/, docs/maps/data/) are not covered by the MIT
+   License: see the table in README.md, "Data files".
+2. Notes and writing (kb/, research/, the *.md files, the exported knowledge base in docs/kb/, results and
+   screenshots): Creative Commons Attribution 4.0 International (CC BY 4.0),
+   https://creativecommons.org/licenses/by/4.0/legalcode
+   Credit: "Brent Jacobs, Victor Harbor roads (https://github.com/br3nt/victor-harbor-roads)".
+
+Third-party data keeps its own licence and is not covered by either: OpenStreetMap data and the databases derived
+from it (ODbL 1.0), G-NAF addresses (Open G-NAF End User Licence Agreement), ABS, DIT and PlanSA data (CC BY 4.0),
+terrain tiles (see viewer/basemap/SOURCES.md), traffic counts taken from council and consultant reports (credited
+to their source), and MapLibre GL JS (BSD 3-Clause, viewer/vendor/MAPLIBRE-LICENSE.txt). See README.md,
+"Licences and attributions".
+
+------------------------------------------------------------------------------------------------------------------
+
+MIT License
+
+Copyright (c) 2026 Brent Jacobs
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+"""
+
+README_PATH = Path(__file__).resolve().parent / "public-readme.md"
+README = README_PATH.read_text(encoding="utf-8") if README_PATH.exists() else "# Victor Harbor roads\n"
+LANDING_PATH = Path(__file__).resolve().parent / "public-landing.html"
+LANDING = LANDING_PATH.read_text(encoding="utf-8") if LANDING_PATH.exists() else "<!doctype html><title>Victor Harbor roads</title>"
+
+PLACEHOLDERS = {
+    "onboarding": ("Getting started", "A short guided introduction to the simulation and the evidence is coming here."),
+    "deck": ("Presentation", "The presentation slides are coming here."),
+}
+
+
+def placeholder_page(title: str, text: str) -> str:
+    t = html.escape(title)
+    return f"""<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{t} · Victor Harbor roads</title>
+<style>
+:root {{ --bg: #f4f6f5; --fg: #17262b; --muted: #51636a; --accent: #0b6b88; color-scheme: light dark; }}
+@media (prefers-color-scheme: dark) {{ :root {{ --bg: #111a1d; --fg: #e6eef0; --muted: #9fb2b8; --accent: #6cc4de; }} }}
+body {{ background: var(--bg); color: var(--fg); font: 17px/1.6 system-ui, -apple-system, sans-serif; margin: 0; }}
+main {{ max-width: 40rem; margin: 0 auto; padding: 3rem 16px; }}
+a {{ color: var(--accent); }} p {{ color: var(--muted); }}
+</style>
+</head>
+<body>
+<main>
+<h1>{t}</h1>
+<p>{html.escape(text)}</p>
+<p><a href="../index.html">← Back to the project home</a></p>
+</main>
+</body>
+</html>
+"""
+
+
+if __name__ == "__main__":
+    sys.exit(main())

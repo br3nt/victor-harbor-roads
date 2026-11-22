@@ -1,0 +1,141 @@
+# Stream D: traffic data, crashes, road ownership and approvals (Victor Harbor)
+
+Retrieved 21 Nov 2026. Source ids refer to `research/D-traffic-sources.tsv`. Data extracts are in `sources/D/` (files prefixed `D-`). Road-running-distance (RRD) is kilometres along the DIT road from its start; I join DIT data by road number and RRD because the AADT layer has no road names.
+
+## 1. Summary
+
+- Victor Harbor's through road is DIT road 04760: Victor Harbor Rd, then Adelaide Rd (RRD 46.45-47.66), Hindmarsh Rd (47.66-50.00), Torrens St (50.00-50.56) [S-D05]. It ends at the Torrens St / Victoria St roundabout. The roads layer shows route numbers A13-B37 on Hindmarsh Rd and Torrens St [S-D12].
+- Latest DIT AADT (2026 release, count year 2024) on the town stretch: Hindmarsh Rd 19,300 (RRD 47.66-49.10) and 17,300 (49.10-50.00); Torrens St 15,500 (50.00-50.38) and 12,900 (50.38-50.56) [S-D01, S-D02]. Commercial vehicles are listed as only 2% on these sections, with no class breakdown (all class fields 0) [S-D02]. **Inference:** the 2% looks like an assumed value, not a classified count; the 2017 turning counts give about 1.4% heavy, so the order is consistent [S-D19].
+- Approaches: Adelaide Rd 7,200 (count 2025, 11% CV); Port Elliot Rd 9,500 at its Victor Harbor end (2025, 9% CV); Victoria St / Inman Valley Rd road (04793) 12,000 at Victoria St end (count 2021, 8.5% CV), 4,000 on George Main Rd, 1,000-1,700 further out [S-D02].
+- The most detailed local data are 12-hour (7am-7pm) turning counts at 7 Torrens St / Hindmarsh Rd intersections on Wednesday 26 April 2017 (school holidays), 15-minute bins, light/heavy/cycle split [S-D19]. About 7,600 vehicles entered and 6,700 left the town centre in those 12 hours [S-D19 s2.3-2.4].
+- Crashes (DIT, 2021-2025): 97 in the town box (lon 138.60-138.64, lat -35.56 to -35.545): 65 property damage only, 24 minor injury, 7 serious injury, 1 fatal (a pedestrian, Jan 2023); 40 casualties. 354 in the wider approach box [S-D13, S-D16].
+- Ownership: council lists 9 roads as DIT-owned; all speed-limit changes need DIT approval even on council roads, and DIT freight routes are treated as unsuitable for lowered pedestrian-activity limits [S-D17, S-D22 (secondary)]. Hindmarsh Rd / Torrens St are both "Freight Routes - Primary" and "Strategic Routes" [S-D08]. That is a major constraint on the proposed 30 km/h and signal ideas for Torrens St.
+- No traffic signals exist in the DIT signal layer anywhere in the Victor Harbor area; the town uses roundabouts at Torrens/Victoria, Torrens/Seaview/Eyre and Torrens/Crozier (see 3.1) [S-D10, S-D21].
+- Not found: permanent counters, hourly or seasonal profiles, any Victor Harbor DIT turning counts, summer-peak traffic counts for the town centre. The only summer figure is DIT's ">11,000 vehicles/day" on parts of Victor Harbor Rd (north of town) in the summer peak [S-D18].
+
+## 2. Findings by expected item
+
+### E18 State-road traffic volumes
+
+**Source and definitions.** DIT "Traffic Volumes" layer, released yearly (I read 2016-2026). AADT is "sum of traffic travelling in both directions ... divided by the number of days in the year"; `TESECN_BASE_YEAR` is the count year, `TESECN_PROJECTED_YEAR` the year it was last updated; `CV_PERCENT` is the percentage of AADT that are commercial vehicles [S-D03]. Licence CC BY. Geometry is projected (SA Lambert), so use the RRD join.
+
+**2026 release, selected sections** (road, RRD km, AADT both directions, count year, CV%, number CVs) [S-D02]:
+
+| Road (DIT no.) | RRD | AADT | Count year | CV% | CVs |
+|---|---|---|---|---|---|
+| Victor Harbor Rd (04760) | 28.26-43.21 | 7,700 | 2025 | 12.5 | 950 |
+| Victor Harbor Rd | 43.21-45.60 | 8,400 | 2025 | 16.5 | 1,400 |
+| Adelaide Rd | 45.60-47.66 | 7,200 | 2025 | 11 | 800 |
+| Hindmarsh Rd | 47.66-49.10 | 19,300 | 2024 | 2 | 430 |
+| Hindmarsh Rd | 49.10-50.00 | 17,300 | 2024 | 2 | 320 |
+| Torrens St | 50.00-50.38 | 15,500 | 2024 | 2 | 290 |
+| Torrens St | 50.38-50.56 | 12,900 | 2024 | 2 | 250 |
+| Port Elliot Rd (04688) | 0-3.90 | 9,500 | 2025 | 9 | 850 |
+| Port Elliot Rd | 3.90-5.61 | 7,200 | 2025 | 9.5 | 700 |
+| Port Elliot Rd | 5.61-8.18 | 12,800 | 2025 | 10 | 1,300 |
+| Victoria St / George Main Rd / Inman Valley Rd (04793) | 31.50-32.36 | 12,000 | 2021 | 8.5 | 1,000 |
+| George Main Rd | 30.41-31.50 | 4,000 | 2021 | 6.5 | 260 |
+| Inman Valley Rd | 21.38-30.41 | 1,700 | 2021 | 8 | 140 |
+| Hindmarsh Tiers Rd (04790) | 0-20.86 | 1,200 | 2025 | 12.5 | 150 |
+
+Notes:
+- Road 04688 (Port Elliot Rd) begins at the Adelaide Rd / Hindmarsh Rd junction (about 138.639E, 35.5365S), i.e. RRD 0 sits where 04760 passes RRD 47.66 [S-D05]. **Inference:** the jump from 7,200 (Adelaide Rd) to 19,300 (Hindmarsh Rd) is consistent with Port Elliot Rd (9,500) and local traffic joining there; it is not stated by DIT.
+- Trend: Hindmarsh Rd 47.66-49.10 was 14,000 (count year 2009, carried unchanged in releases 2016-2021), then 18,400 (count 2021, releases 2022-24), then 19,300 (count 2024, releases 2025-26) [S-D02]. Torrens St 50.00-50.38 went 15,600 (count 2010) -> 15,100 (2021) -> 15,500 (2024); 50.38-50.56 went 13,200 -> 12,300 -> 12,900 [S-D02]. Every release is in `D-tv-selected-roads-by-release.csv`.
+- Class counts (`CLASS3TO5`, `CLASS6TO9`, `CLASS10`, `CLASS11`) exist for rural sections (e.g. Victor Harbor Rd 28.26-43.21: 800 / 150 / 14 / 3) but are 0 for the urban sections 47.66-50.56 [S-D02].
+- Only AADT is published. No hourly, seasonal, directional or turning data in the DIT layer [S-D03].
+- DIT quotes ">11,000 vehicles ... each day during the peak holiday period in summer" for the Victor Harbor Rd sections at Hindmarsh Tiers Rd / Virgin Rd and Brookman Rd [S-D18]. A search summary of a related DIT page quoted about 8,500 vehicles/day (1,000 heavy) at the Hindmarsh Tiers Rd / Virgin Rd intersection, which would imply a summer uplift of about 30%; I did not archive that page, so treat as an unverified lead.
+- Search results quote 15,600 vehicles/day for Torrens St in a real-estate listing; that equals DIT's older (count 2010) value for RRD 50.00-50.38 [S-D02], so it is not independent. (Listing not archived.)
+- Council roads (Ocean St, Albert Pl, Coral St, Crozier Rd, Bay Rd, Waterport Rd, Esplanade, Flinders Pde) have no DIT AADT.
+
+**Local counts that do exist (council consultant, not DIT):**
+- 12-hour turning counts, Wed 26 April 2017, 7am-7pm, seven intersections: Torrens/Victoria, Torrens/Crozier, Torrens/Coral, Torrens/Stuart, Torrens/Ocean, Torrens/Seaview/Eyre, Hindmarsh/Grantley/Bridge Tce [S-D19 s2.1 and Appendix A]. Taken during school holidays soon after Anzac Day, "considered reasonably typical of daily conditions" [S-D19].
+- Sum of all movements over the 12 hours, per intersection (my sum of the appendix totals row): Coral 12,195; Crozier 13,055; Stuart 13,175; Victoria 12,557; Seaview/Eyre 17,550; Ocean 15,468; Grantley/Bridge 15,469 [S-D19 App. A]. The Ocean and Grantley totals differ by one vehicle; **check against the PDF** before relying on either.
+- Busiest hour at each (my parse of the 60-minute rolling "Peak Hour Volume" column, all movements): Coral 1,281 (13:15-14:15); Crozier 1,431 (11:45-12:45); Grantley/Bridge 1,624 (11:15-12:15); Ocean 1,606 (11:45-12:45); Seaview/Eyre 1,823 (11:45-12:45); Stuart 1,367 (11:45-12:45); Victoria 1,410 (12:00-13:00). Peaks fall mid-morning to mid-afternoon, not at commuter times [S-D19 s2.2 text: "typically occurred between mid-morning and mid-afternoon"].
+- Entering the town centre: almost 7,600 vehicles in 12 h; 36% via Ocean St (27% left from the north, 9% right from the south), 16% Victoria St, 15% Coral St, 10% Crozier Rd, 9% Stuart St, 8% Grantley Ave/Bridge Tce, 6% Eyre Tce. Leaving: almost 6,700; 35% Victoria St, 30% Eyre Tce, 18% Coral St, 9% Crozier Rd, 7% Bridge Tce/Grantley Ave; traffic cannot exit via Ocean St or Stuart St [S-D19 s2.3-2.4].
+- Right turn from Torrens St into Ocean St: "around 700 vehicles per day"; Stuart St: about 530 left turns and 180 right turns in the 12 hours [S-D19 s3, s4].
+- Heavy vehicle share in the appendix tables is small: for example Torrens St through movements at Ocean St 79 heavy of 5,265 (1.5%) and 87 of 6,316 (1.4%) [S-D19 App. A, Ocean St totals].
+- Daily counts on council streets: Burke St 1,500-1,650 vehicles/day, 85th percentile 40-45 km/h; Acraman St about 1,500 vpd, 85th percentile 46-49 km/h [S-D21 s13.3.3, s13.3.17]. Counting dates not given in the extract I read.
+- Summer parking occupancy surveys: Wed 2 Dec 2015, Wed 30 Dec 2015 (peak summer) and Sat 13 Feb 2016, at 9:30, 11:30, 13:30 and 15:30; core CBD more than 80% occupied on both weekdays, and all CBD streets "at or near capacity for much of the day" on 30 Dec [S-D21 s7.1-7.2]. Full tables were given to council as Excel files, not in the PDF (lead).
+- Report states the Hindmarsh Rd / Seaview / Eyre roundabout would reach capacity in summer peaks if the Grantley Ave crossing is not closed: "this intersection would reach capacity during the summer peak periods" [S-D21 s13.3.15].
+
+### E7 Road crash data
+
+Source: DIT Road Crash Data 2021-2025 (as at 9 Oct 2026), CSV Crash table with Suburb, LGA, Year, Month, Time, area speed, traffic control, crash type, severity, coordinates [S-D13]. Crash table has no road names. I converted the Lambert X/Y to lon/lat with the standard Lambert conformal conic inverse (GDA94 SA Lambert parameters). **Inference:** conversion verified only by crashes tagged Hindmarsh Valley falling at plausible lon/lat. Street names below are the nearest road centreline in the roads layer within a few metres, so at intersections the label is arbitrary between the two roads.
+
+**Town box (lon 138.60-138.64, lat -35.56 to -35.545): 97 crashes**, all coded suburb Victor Harbor [S-D16].
+- Severity: 65 PDO, 24 minor injury, 7 serious injury, 1 fatal. Casualties 40 (1 killed, 9 seriously injured, 30 minor).
+- Year: 2021: 22; 2022: 21; 2023: 12; 2024: 24; 2025: 18.
+- Type: right angle 40; hit fixed object 17; side swipe 9; hit parked vehicle 8; hit pedestrian 7; roll over 5; rear end 5; right turn 3; hit animal 2; other 1.
+- Traffic control: none 63; give way 24; roundabout 10; no crash coded to traffic signals or stop signs.
+- Area speed at crash: 50 km/h 59; 60 km/h 30; 100 km/h 4; 80 km/h, 30, 25 and 10 km/h one each. Daylight 81, night 16.
+- Pedestrians: 7 crashes (4 in 2021 minor injury; one 2023 fatal, 2:15 pm January, 10 km/h area speed, at about 138.6235E 35.5553S near Torrens St / Stuart St; one 2023 minor; one 2024 PDO). Fatal location in the 10 km/h zone matches a pedestrian-priority street area; **inference** only.
+- Busiest hours: 4 pm 11, 8 am 10, 2 pm 10.
+- Hotspots by identical location (5 years): Torrens St / Eyre Tce roundabout 6 (5 right-angle); Acraman St / Hill St 6 (5 right-angle, give way); Acraman St / Seaview Rd 5 (4 right-angle, 1 pedestrian, 1 serious); Armstrong Rd / Crozier Rd 4; Crozier Rd / Lindsay St 3; Crozier Rd / Stuart St 3 [S-D16 `D-crash-hotspots-town.json`].
+- By nearest street: Victoria St 14, Hindmarsh Rd 13 (3 serious), Acraman St 11, Torrens St 10 (9 PDO, 1 MI), Armstrong Rd 8, Crozier Rd 5.
+- Serious-injury crashes (7): 2021 Jun roll over; 2022 Apr side swipe on Hindmarsh Rd; 2023 Oct right angle Acraman St / Seaview Rd (1:35 am); 2024 Mar hit fixed object; 2024 Jul right angle Armstrong/Crozier; 2025 Jan right angle; 2025 Sep roll over Hindmarsh Rd.
+
+**Wide box (lon 138.50-138.72, lat -35.60 to -35.48): 354 crashes**: 228 PDO, 85 MI, 36 SI, 5 fatal; 184 casualties; years 2021: 73, 2022: 66, 2023: 62, 2024: 82, 2025: 71. Suburbs: Victor Harbor 130, Port Elliot 58, Hindmarsh Valley 43, Hayborough 28, Middleton 24, McCracken 22, Encounter Bay 17, Waitpinga 17. Right angle 103, hit fixed object 74, rear end 40 [S-D13, S-D16].
+
+DIT states 7 crashes in 2019-2023 at each of the Victor Harbor Rd / Hindmarsh Tiers Rd / Virgin Rd intersection (one fatal) and the Brookman Rd junction (one serious injury) [S-D18]. Separately, the 2015-16 council study reported "no crashes" at the Torrens Lane intersections in 5 years [S-D21 s13.3.2].
+
+Files: `sources/D/D-crashes-2021-2025-vh-town.csv`, `D-crashes-2021-2025-vh-wide.csv`, `D-crash-hotspots-town.json`. Caveats: 2025 count may be incomplete as crash data lags; police-reported crashes only; PDO under-reported.
+
+### E19 Ownership, speed zones, freight, approvals
+
+**State vs council (town centre and approaches).**
+- DIT-owned and managed, per council: Adelaide Rd, George Main Rd, Hindmarsh Rd, Hindmarsh Tiers Rd, Inman Valley Rd, Port Elliot Rd, "Torrent" [sic] Street, Victor Harbor Rd, Victoria St [S-D17]. This matches the DIT State Maintained Roads layer (road numbers 04760, 04688, 04793, 04790) [S-D05]. Goolwa Rd and North Tce (Port Elliot) are also in the layer [S-D05].
+- Torrens St is "part of the State Government's road network" per the 2017 review; the review area runs from Grantley Ave / Bridge Tce to Victoria St [S-D20]. The 2015-16 report says Torrens/Victoria "Both roads are under the control of DPTI and intersection improvements are not the responsibility of Council" [S-D21 s13.3.11].
+- Layer detail (speed limit per DIT approval documents, which "may not coincide with the posted speed limit signage") [S-D05, S-D06]: Victor Harbor Rd 100 km/h to RRD 45.14, 80 to 46.00, 60 to 46.45; Adelaide Rd 60; Hindmarsh Rd 60 (47.66-49.45), 50 from about 49.55; Torrens St 50 [S-D05]. Victoria St 50; George Main Rd 60 then 50; Inman Valley Rd 100/80/60; Port Elliot Rd 60 then 80 rural, 50 in Port Elliot (North Tce) [S-D05]. The layer's `road_class` is RA for 04760 and RC for the others; I could not find the code definition (not in metadata) [S-D06].
+- Council roads (everything not above): e.g. Ocean St, Albert Pl, Coral St, Stuart St, Crozier Rd, Bay Rd, Esplanade, Flinders Pde, Acraman St, Armstrong Rd, Burke St, Eyre Tce, Seaview Rd, Waterport Rd. **Inference:** by exclusion from the DIT list and the DIT layer. The roads layer tags some with CRRS numbers (e.g. Ocean St 47612, Crozier Rd 47620, Seaview Rd 47621, Bay Rd 47613, Waitpinga Rd 47615) and Albert Pl with 04793; a CRRS number alone does not imply state maintenance [S-D12]. The council public roads register (Dec 2021) would confirm; it was blocked to my fetcher (lead).
+- Speed signs in the town-centre extract: 60 km/h 20 (R4-1B/C), 50 km/h 8, 80 km/h 4, 100 km/h 1; roundabout signs 18; give way 20; stop 5 [S-D11 extract]. No 30 km/h signs.
+- A 30 km/h limit has been proposed for The Esplanade / Flinders Pde between Albert Pl and Coral St; the council supports it (Victor Harbor Times, 9 Feb 2025, paywalled after first sentence; secondary) [headline only, URL https://victorharbortimes.com.au/news/2025/02/09/speed-drop-in-tourist-hot-spot/, not archived].
+
+**Heavy-vehicle and freight status.**
+- DIT Functional Hierarchy "Major Traffic and Freight" layer: Victor Harbor Rd (RRD 25.27-45.69), Adelaide Rd (45.69-47.66), Hindmarsh Rd (47.66-50.00) and Torrens St (50.00-50.56) are both "Freight Routes - Primary" and "Strategic Routes" [S-D08]. All also "Direct Tourist Route" [S-D08]. Port Elliot Rd / Goolwa Rd / North Tce are "Scenic Tourist Route" and, with Victor Harbor Rd, "Cycling Sport/Training Route" [S-D08]. PublicTransport, PeakHour and Pedestrian hierarchy layers have no features in the area [S-D07, S-D08].
+- NHVR/SA gazetted B-double, road-train or PBS network status for these roads: **not verified**. A search summary said the NHVR National Class 2 B-double Operator's Guide (March 2020) lists the City of Victor Harbor among councils where general 19 m B-double access is not allowed without an NHVR permit; I downloaded the PDF but its text layer was empty, so I could not confirm and did not archive it. Treat as a lead.
+- No caravan/RV route guidance found in the time available. Tourist-route status above is the only related layer.
+- Bus routes: DIT "Regional Bus Routes" dataset has only a map-viewer link and metadata, no downloadable layer [data.sa.gov.au package `regional-bus-routes`]. The 2017 review notes a bus stop in Stuart St used by buses arriving from Encounter Bay and Goolwa/Adelaide, with buses turning right out of Coral St [S-D19 s4].
+
+**Approval requirements.**
+- DIT's Speed Limit Guideline for South Australia (Version 3, issued 13 Oct 2023) is the governing document; I could not retrieve it (DIT site blocks curl; browser offered a download which I declined). Secondary summary from a council agenda: "all speed limit changes require DIT approval, even on those roads under the care and control of Council" [S-D22 p.125]. The Guideline allows 40 km/h in pedestrian activity areas (shopping precincts, town centres), and roads in DIT's Functional Hierarchy as Freight Routes "are deemed unsuitable for high pedestrian activity centre speed limits" [S-D22 p.125]. The same document says area limits need the mean speed of relevant streets to be less than 10 km/h above the proposed limit, and that public consultation must be submitted to DIT with the application [S-D22 p.126]. Crash statistics for 5 years and traffic counts were assembled for that council's submission [S-D22 pp.126-127]. **Inference:** a Victor Harbor application would need similar speed surveys, counts and consultation; 30 km/h is below the 40 km/h figure quoted, so the Guideline's treatment of 30 km/h (section 5.7 per a search summary) and shared zones (fixed 10 km/h sign) must be read in the primary text.
+- Traffic control devices: the Minister's Instrument of General Approval and Delegation to Council (22 Aug 2013) lets councils install, alter, operate or remove traffic control devices (Road Traffic Act 1961 s17(1),(2)) on roads in their care, control and management, except those listed in Clause A.8 [S-D23 para 2.1]. Speed limit signs are not covered by that clause; temporary work-zone speeds are covered separately under s20(2) [S-D23 para 3]. **Inference:** since Torrens St and Hindmarsh Rd are DIT roads, signals there are a DIT matter (council cannot approve them under the delegation); one-way and no-entry devices on council streets might be within council authority but the Instrument's exceptions (A.8) were not read. The current Instrument and the Commissioner's "Manual of Legal Responsibilities and Technical Requirements for Traffic Control Devices" need to be read in full. No traffic impact assessment requirement text was found.
+
+## 3. Discoveries
+
+### 3.1 Town-centre control layout and history
+- The 2015-16 investigations report states that for Torrens/Victoria "the roundabout performs well for most times of the day and peak seasons", recommended retaining it rather than signals, because signals "will most likely increase delays" [S-D21 s13.3.11]. Torrens/Seaview/Eyre is also a roundabout; signals were judged "may be warranted in the long term" but would need three lanes per approach and land acquisition [S-D21 s13.3.14]. A roundabout at Torrens/Crozier was proposed [S-D21 s13.3.2-13.3.3]. These show signals have been considered and rejected before and bear directly on the proposal being tested.
+- Existing one-way elements: Hill St east leg (exit only), Torrens Lane west side, McKinlay St (south to north into the car park), Ocean St and Stuart St entries from Torrens St (exit by other streets) [S-D21; S-D19 s2.4].
+- The 2017 Torrens Street Traffic Management Review recommended retaining the Ocean St right turn, banning the right turn into Stuart St, a half-closure of Grantley Ave, a raised median Crozier Rd to Seaview Rd, and 1.4 m bike lanes [S-D19 s3-6]. Public consultation ran 10 Aug-1 Sep 2017 [S-D20]. Outcome unknown.
+- The Grantley Ave / Bridge Tce level crossing: queues over the rail line, "at least one collision ... involving a car and train" [S-D19 s5].
+- Strathalbyn (Alexandrina Council) is a close precedent for a town-centre speed-reduction application, including that DIT would "not support" lower limits on its freight-route roads [S-D22].
+- Wattle Drive / Hindmarsh Rd intersection upgrade by council completed 2025 (found in search results, page blocked, not archived). DIT is also installing pedestrian refuges on Victoria St near Oval Rd [S-D18].
+
+### 3.2 Data portal items not used but potentially relevant
+Traffic volume releases for 2012-2026, top-40 road section and intersection datasets (Victor Harbor not expected), Bluetooth detection sites and origin/destination samples (metro Adelaide), roadworks/incidents real-time feed, tourism visitor statistics (SA Tourism Commission) listed on data.sa.gov.au. Not downloaded.
+
+## 4. Expected items status
+
+| E-id | Status | Sources | Notes |
+|---|---|---|---|
+| E18 AADT for state roads | Found (AADT, CV%, count year); partial for hourly/seasonal/turning | S-D01, S-D02, S-D03, S-D18, S-D19 | DIT gives AADT only. Town sections 47.66-50.56 have CV 2% and no class split; count year 2024. No permanent-counter, hourly, seasonal or turning data found on data.sa.gov.au (searched: traffic count, hourly, permanent counter, weigh in motion, turning movement). Turning counts exist only in the 2017 council consultant report (S-D19). Location SA Map Viewer and DIT ArcGIS REST not reachable: location.sa.gov.au/arcgis and dpti.sa.gov.au return 404 / Cloudflare challenge. |
+| E7 Crash data | Found | S-D13, S-D14, S-D15, S-D16 | 2021-2025; 97 town box, 354 wide. Metadata PDF archived, not read in full. |
+| E19 State vs council roads | Found (from council list plus DIT layer) | S-D04, S-D05, S-D17, S-D20, S-D21 | Council public roads register Dec 2021 (https://www.victor.sa.gov.au/__data/assets/pdf_file/0027/1077750/CVH-Public-Road-Register-as-at-3-December-2021.pdf) blocked (403); not read. |
+| E19 Speed-zone layer | Partial | S-D05, S-D11 | Legal limits by section in State Maintained Roads (state roads only). Council-road limits and the posted-sign layer are not in a clean dataset; sign extract covers state-maintained roads only. |
+| E19 Heavy-vehicle routes | Partial | S-D07, S-D08 | DIT freight/strategic classification found. NHVR/SA gazetted B-double/PBS/road-train access not confirmed. |
+| E19 Caravan/RV guidance | Not found | none | Searched web for caravan/RV route guidance; only tourist-route layer (S-D08). |
+| E19 Bus routes | Partial | S-D19, S-D21 | Regional bus network layer has no download link in data.sa.gov.au; only map viewer. Local bus stop information from council reports. |
+| E19 Approval process | Partial | S-D22 (secondary), S-D23 | Primary Speed Limit Guideline PDF and the current Minister's Instrument not retrieved (DIT site blocks curl). |
+| Other traffic data | Found (partial) | S-D19, S-D21, S-D18 | 2017 turning counts, 2015-16 parking and some street volumes. No council count program page found. No TomTom/Google index or holiday congestion reports found (a web search returned none specific). |
+
+## 5. Open questions and leads
+
+1. Retrieve the primary DIT Speed Limit Guideline (Version 3, Oct 2023): https://dit.sa.gov.au/__data/assets/pdf_file/0007/338713/Speed_Limit_Guideline_for_South_Australia.pdf (section 4.2 request/approval, 5.7 for 30/40 km/h and shared zones; check treatment of freight routes). Needs a normal browser download by the user.
+2. Retrieve the Minister's current Instrument of General Approval and Delegation to Council and the Commissioner's Traffic Control Device manuals (dit.sa.gov.au standards/tass) to see whether signals, one-way streets and shared zones on council vs DIT roads need separate approval and what supporting assessment is required.
+3. Request from DIT (DIT.GISOffice@sa.gov.au is the metadata contact) any classified, hourly, seasonal or summer counts for Hindmarsh Rd / Torrens St / Victor Harbor Rd and the underlying count dates; ask whether the 2% CV is measured. Possible Freedom of Information request if refused.
+4. Ask council for: traffic count program results since 2017 (Ocean St, Albert Pl, Coral St, Flinders Pde, Esplanade), the Excel parking and Appendix files from the 2015-16 strategy, the final Torrens Street review outcome, and the road register. Council site blocked automated download of the Public Road Register.
+5. Check the PDF of the 2017 Torrens Street review for the figure diagrams (turning counts per movement and peak-hour flows) that pdftotext does not capture; the appendix tables are in the text file for direct use. Verify Ocean (15,468) vs Grantley (15,469) totals.
+6. NHVR route map check (B-double/PBS/road train for Hindmarsh Rd, Torrens St, Victor Harbor Rd, Port Elliot Rd) and SA Restricted Access Vehicle gazette.
+7. Obtain the Regional Bus Network (Location SA dataset 2785) via the map viewer or a request; confirm buses on Torrens St, Stuart St, Coral St.
+8. Verify the Esplanade / Flinders Pde 30 km/h proposal (Albert Pl to Coral St) from council minutes (other stream) and whether DIT has approved it.
+9. Summer/Easter congestion: media or DIT sources for Victor Harbor Rd and the town centre in January and Easter; DIT figure ">11,000 vehicles/day" is the only one found.
+10. The crash tables' road-name labels are my snap to centrelines; for intersection-level work, check against the Units table (also archived) and the DIT crash map.

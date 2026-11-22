@@ -1,0 +1,85 @@
+{
+  "sources": {
+    "S-S1-01": "S-S1-01-overpass-victor-harbor-north.osm",
+    "S-D05": "D-state-maintained-roads-vh-area.geojson"
+  },
+  "extract_bbox": [
+    -35.6,
+    138.55,
+    -35.46,
+    138.67
+  ],
+  "stats": {
+    "edges": 4503,
+    "junctions": 1867,
+    "roundabouts": 32,
+    "lane_km": 739.4,
+    "directed_edge_km": 739.3,
+    "road_km_centreline": 373.4,
+    "traffic_lights": 0
+  },
+  "osm_ways_dropped": {
+    "service access=no": 1,
+    "service access=private": 68,
+    "service=driveway": 85,
+    "service=parking_aisle": 38
+  },
+  "edges_removed_outside_car_scc": 1,
+  "boundary_uturns_added": [],
+  "osm_restrictions_mapped": 16,
+  "osm_restrictions_unresolved": [],
+  "osm_restrictions_reapplied": [
+    "17070777: 1242247850 -> 1242247846",
+    "17070778: 1242247846 -> 1242247850",
+    "17070779: 1242247854#1 -> 1242247852",
+    "17070780: 1242247852 -> 1242247854#0",
+    "8181749: 576495721#1 -> 576495716#0"
+  ],
+  "edges_removed_by_street": {
+    "(unnamed)": 1
+  },
+  "speed_source_counts": {
+    "OSM": 2069,
+    "S-D05": 247,
+    "default": 2039,
+    "roundabout": 147
+  },
+  "lanes_source_counts": {
+    "OSM": 309,
+    "default": 4193
+  },
+  "named_junctions": 37,
+  "named_junctions_not_found": [],
+  "gateways_unresolved": [
+    "greenhills_rd_north"
+  ],
+  "netconvert_warnings_pass1": {
+    "Ambiguity in turnarounds computation at junction": 13,
+    "Converting invalid rail_crossing to priority junction": 2,
+    "Discarding unknown compound % in type": 3,
+    "Discarding unusable type % (first occurrence": 3,
+    "Found sharp turn with radius %": 33,
+    "Ignoring restriction relation %.": 1,
+    "Intersecting left turns at junction %": 24,
+    "Not joining junctions % (%).": 38,
+    "Not joining junctions %,% (parallel incoming": 3,
+    "Not joining junctions %,% (parallel outgoing": 1,
+    "Not joining junctions %,%,%,% (parallel outgoing": 1,
+    "Reducing junction cluster % (%).": 21,
+    "Reducing junction cluster %,%,% (parallel incoming": 4,
+    "Reducing junction cluster %,%,%,%,%,% (parallel outgoing": 1,
+    "Removed a road without junctions: %.": 2,
+    "Removed a road without junctions: -%.": 2,
+    "Replacing loaded roundabout % with %.": 23,
+    "Speed of % connection % reduced": 44,
+    "Speed of straight connection % reduced": 5,
+    "direction of restriction relation could not": 1
+  },
+  "netconvert_warnings_pass2": {
+    "Ambiguity in turnarounds computation at junction": 13,
+    "Found sharp turn with radius %": 33,
+    "Intersecting left turns at junction %": 24,
+    "Speed of % connection % reduced": 45,
+    "Speed of straight connection % reduced": 5
+  }
+}

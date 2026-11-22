@@ -1,0 +1,1497 @@
+condition,scenario,junction_id,junction,approach_edge,approach,veh_per_day,mean_delay_s,worst_movement_p95_s
+weekday_term,baseline,torrens_victoria_wills,Torrens St / Victoria St / Wills St,1211144532#2,Victoria Street (1211144532#2),2119,4.9,16.4
+weekday_term,baseline,torrens_victoria_wills,Torrens St / Victoria St / Wills St,1242247845,Victoria Street (1242247845),6279,3.6,6.7
+weekday_term,baseline,torrens_victoria_wills,Torrens St / Victoria St / Wills St,23075177#1,Wills Street (23075177#1),696,6.7,23.8
+weekday_term,baseline,torrens_victoria_wills,Torrens St / Victoria St / Wills St,50904911,Torrens Street (50904911),3728,2.4,6.1
+weekday_term,baseline,torrens_crozier,Torrens St / Crozier Rd,1202918968#1,Torrens Street (1202918968#1),5839,2.7,6.7
+weekday_term,baseline,torrens_crozier,Torrens St / Crozier Rd,1202918970,Crozier Road (1202918970),997,2.8,11.8
+weekday_term,baseline,torrens_crozier,Torrens St / Crozier Rd,1202918972,Crozier Road (1202918972),1001,5.2,20.3
+weekday_term,baseline,torrens_crozier,Torrens St / Crozier Rd,50904910#2,Torrens Street (50904910#2),4051,2.8,5.3
+weekday_term,baseline,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,173449331,Hindmarsh Road (173449331),7358,4.9,10.5
+weekday_term,baseline,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,184390356,Eyre Terrace (184390356),1373,13.3,46.2
+weekday_term,baseline,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,23075170,Seaview Road (23075170),784,8.3,28.3
+weekday_term,baseline,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,576495712#3,Torrens Street (576495712#3),6603,4.0,11.0
+weekday_term,baseline,torrens_coral,Torrens St / Coral St,173449376#1,Torrens Street (173449376#1),6842,1.9,5.0
+weekday_term,baseline,torrens_coral,Torrens St / Coral St,50904910#0,Torrens Street (50904910#0),4250,3.4,28.5
+weekday_term,baseline,torrens_coral,Torrens St / Coral St,60269602#2,Coral Street (60269602#2),1063,17.9,54.6
+weekday_term,baseline,torrens_ocean,Torrens St / Ocean St,576495725#0,Torrens Street (576495725#0),7880,2.3,2.7
+weekday_term,baseline,torrens_ocean,Torrens St / Ocean St,vhfix_torrens_ocean_right,nan (vhfix_torrens_ocean_right),269,6.6,31.7
+weekday_term,baseline,torrens_stuart,Torrens St / Stuart St,173449376#4,Torrens Street (173449376#4),6711,1.9,4.3
+weekday_term,baseline,torrens_stuart,Torrens St / Stuart St,576495721#1,Torrens Street (576495721#1),5834,1.4,2.5
+weekday_term,baseline,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-217056482#2,Bridge Terrace (-217056482#2),60,6.5,25.6
+weekday_term,baseline,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-42530401#0,Grantley Avenue (-42530401#0),18,8.3,36.6
+weekday_term,baseline,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-50904904#7,Hindmarsh Road (-50904904#7),7031,2.2,2.2
+weekday_term,baseline,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,217056482#0,Bridge Terrace (217056482#0),1121,10.6,47.5
+weekday_term,baseline,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,50904904#6,Hindmarsh Road (50904904#6),8378,3.4,3.1
+weekday_term,baseline,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449324,Bay Road (173449324),6952,4.1,12.3
+weekday_term,baseline,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449327,George Main Road (173449327),2028,4.1,16.5
+weekday_term,baseline,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449382,Victoria Street (173449382),8453,1.5,2.2
+weekday_term,baseline,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706687#1,Port Elliot Road (53706687#1),5730,5.8,18.0
+weekday_term,baseline,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706691#1,Adelaide Road (53706691#1),3571,5.2,18.0
+weekday_term,baseline,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706695,Hindmarsh Road (53706695),8007,2.9,8.7
+weekday_term,baseline,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),714958370#0,nan (714958370#0),503,9.4,31.1
+weekday_term,baseline,victoria_burke,Victoria St / Burke St,-1242247847#0,Burke Street (-1242247847#0),1466,5.8,31.5
+weekday_term,baseline,victoria_burke,Victoria St / Burke St,-42644219#0,Victoria Street (-42644219#0),23,12.1,66.5
+weekday_term,baseline,victoria_burke,Victoria St / Burke St,1242247850,Victoria Street (1242247850),7511,2.4,4.5
+weekday_term,baseline,victoria_burke,Victoria St / Burke St,173449385#1,Victoria Street (173449385#1),6395,2.0,2.4
+weekday_term,baseline,victoria_oval,Victoria St / Oval Rd,1242247851#0,Victoria Street (1242247851#0),8634,5.0,20.2
+weekday_term,baseline,victoria_oval,Victoria St / Oval Rd,173449383#0,Victoria Street (173449383#0),9024,2.5,7.7
+weekday_term,baseline,victoria_oval,Victoria St / Oval Rd,39879848#8,Oval Road (39879848#8),421,9.3,30.2
+weekday_term,baseline,esplanade_king,Esplanade / King St,1242247849,King Street (1242247849),532,7.6,20.3
+weekday_term,baseline,esplanade_king,Esplanade / King St,23075178#2,Esplanade (23075178#2),68,3.1,5.8
+weekday_term,baseline,esplanade_king,Esplanade / King St,287201787#1,Esplanade (287201787#1),62,2.3,5.2
+weekday_term,baseline,coral_ocean,Coral St / Ocean St,-60269602#1,Coral Street (-60269602#1),1443,2.9,5.5
+weekday_term,baseline,coral_ocean,Coral St / Ocean St,23075181#5,Coral Street (23075181#5),624,3.5,6.2
+weekday_term,baseline,coral_ocean,Coral St / Ocean St,60269598#2,Ocean Street (60269598#2),1915,3.2,10.1
+weekday_term,baseline,albert_esplanade,Albert Pl / Esplanade,-184389885,Albert Place (-184389885),294,1.8,3.4
+weekday_term,baseline,albert_esplanade,Albert Pl / Esplanade,-184389891#3,Esplanade (-184389891#3),514,2.3,5.2
+weekday_term,baseline,albert_esplanade,Albert Pl / Esplanade,184389891#2,Esplanade (184389891#2),446,2.8,4.8
+weekday_term,baseline,eyre_flinders_bridge,Eyre Tce / Flinders Pde / Bridge Tce,-217056482#1,Bridge Terrace (-217056482#1),746,4.3,10.0
+weekday_term,baseline,eyre_flinders_bridge,Eyre Tce / Flinders Pde / Bridge Tce,23075179#5,Flinders Parade (23075179#5),1516,2.7,5.0
+weekday_term,baseline,eyre_flinders_bridge,Eyre Tce / Flinders Pde / Bridge Tce,50904907#2,Eyre Terrace (50904907#2),229,3.4,10.0
+weekday_term,baseline,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,-23075180#5,Crozier Road (-23075180#5),1630,1.9,4.7
+weekday_term,baseline,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,23075180#4,Crozier Road (23075180#4),1622,1.6,5.3
+weekday_term,baseline,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,42530541#5,Acraman Street (42530541#5),1388,4.0,16.4
+weekday_term,baseline,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,42530557#1,Lindsay Street (42530557#1),669,4.7,19.8
+weekday_term,baseline,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,-23075171#7,Seaview Road (-23075171#7),1105,1.6,3.7
+weekday_term,baseline,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,-42530541#0,Acraman Street (-42530541#0),999,3.9,13.9
+weekday_term,baseline,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,23075171#6,Seaview Road (23075171#6),712,1.4,3.4
+weekday_term,baseline,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,42530540#4,Carlyle Street (42530540#4),1214,4.1,14.6
+weekday_term,baseline,armstrong_crozier,Armstrong Rd / Crozier Rd,-29282260#1,Armstrong Road (-29282260#1),2854,3.7,9.1
+weekday_term,baseline,armstrong_crozier,Armstrong Rd / Crozier Rd,39946279,Crozier Road (39946279),2361,9.6,36.0
+weekday_term,baseline,armstrong_crozier,Armstrong Rd / Crozier Rd,97536780,Armstrong Road (97536780),3021,4.6,9.9
+weekday_term,baseline,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,-42648429#0,Waggon Road (-42648429#0),193,8.3,34.1
+weekday_term,baseline,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,-427209587#1,Welch Road (-427209587#1),3247,3.2,3.0
+weekday_term,baseline,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,29282267,Armstrong Road (29282267),3191,7.1,3.0
+weekday_term,c1a,torrens_victoria_wills,Torrens St / Victoria St / Wills St,1211144532#2,Victoria Street (1211144532#2),1358,5.6,18.4
+weekday_term,c1a,torrens_victoria_wills,Torrens St / Victoria St / Wills St,1242247845,Victoria Street (1242247845),6075,3.7,7.7
+weekday_term,c1a,torrens_victoria_wills,Torrens St / Victoria St / Wills St,23075177#1,Wills Street (23075177#1),906,7.1,23.8
+weekday_term,c1a,torrens_victoria_wills,Torrens St / Victoria St / Wills St,50904911,Torrens Street (50904911),4468,2.3,5.1
+weekday_term,c1a,torrens_crozier,Torrens St / Crozier Rd,1202918968#1,Torrens Street (1202918968#1),6154,4.0,12.7
+weekday_term,c1a,torrens_crozier,Torrens St / Crozier Rd,1202918970,Crozier Road (1202918970),1839,5.1,21.0
+weekday_term,c1a,torrens_crozier,Torrens St / Crozier Rd,1202918972,Crozier Road (1202918972),1079,6.7,26.3
+weekday_term,c1a,torrens_crozier,Torrens St / Crozier Rd,50904910#2,Torrens Street (50904910#2),5783,3.0,6.3
+weekday_term,c1a,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,173449331,Hindmarsh Road (173449331),7298,5.2,11.5
+weekday_term,c1a,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,184390356,Eyre Terrace (184390356),864,12.3,37.0
+weekday_term,c1a,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,23075170,Seaview Road (23075170),823,8.7,30.3
+weekday_term,c1a,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,576495712#3,Torrens Street (576495712#3),7531,3.4,8.0
+weekday_term,c1a,torrens_coral,Torrens St / Coral St,173449376#1,Torrens Street (173449376#1),7854,2.2,9.0
+weekday_term,c1a,torrens_coral,Torrens St / Coral St,50904910#0,Torrens Street (50904910#0),5800,2.0,5.5
+weekday_term,c1a,torrens_coral,Torrens St / Coral St,60269602#2,Coral Street (60269602#2),176,13.7,51.1
+weekday_term,c1a,torrens_ocean,Torrens St / Ocean St,576495725#0,Torrens Street (576495725#0),8099,2.3,2.7
+weekday_term,c1a,torrens_ocean,Torrens St / Ocean St,vhfix_torrens_ocean_right,nan (vhfix_torrens_ocean_right),253,8.0,35.0
+weekday_term,c1a,torrens_stuart,Torrens St / Stuart St,173449376#4,Torrens Street (173449376#4),7655,1.8,4.5
+weekday_term,c1a,torrens_stuart,Torrens St / Stuart St,576495721#1,Torrens Street (576495721#1),6216,1.2,2.5
+weekday_term,c1a,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-217056482#2,Bridge Terrace (-217056482#2),60,5.6,17.9
+weekday_term,c1a,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-42530401#0,Grantley Avenue (-42530401#0),23,9.2,33.6
+weekday_term,c1a,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-50904904#7,Hindmarsh Road (-50904904#7),7093,2.2,2.2
+weekday_term,c1a,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,217056482#0,Bridge Terrace (217056482#0),947,9.4,39.5
+weekday_term,c1a,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,50904904#6,Hindmarsh Road (50904904#6),8294,3.3,3.1
+weekday_term,c1a,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449324,Bay Road (173449324),6917,4.2,13.3
+weekday_term,c1a,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449327,George Main Road (173449327),1975,4.1,16.5
+weekday_term,c1a,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449382,Victoria Street (173449382),8452,1.5,2.2
+weekday_term,c1a,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706687#1,Port Elliot Road (53706687#1),5739,5.6,18.0
+weekday_term,c1a,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706691#1,Adelaide Road (53706691#1),3524,5.1,18.0
+weekday_term,c1a,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706695,Hindmarsh Road (53706695),7916,2.9,8.7
+weekday_term,c1a,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),714958370#0,nan (714958370#0),503,9.2,30.1
+weekday_term,c1a,victoria_burke,Victoria St / Burke St,-1242247847#0,Burke Street (-1242247847#0),1502,5.2,33.8
+weekday_term,c1a,victoria_burke,Victoria St / Burke St,-42644219#0,Victoria Street (-42644219#0),25,11.9,72.6
+weekday_term,c1a,victoria_burke,Victoria St / Burke St,1242247850,Victoria Street (1242247850),7361,2.4,5.5
+weekday_term,c1a,victoria_burke,Victoria St / Burke St,173449385#1,Victoria Street (173449385#1),6372,2.1,2.4
+weekday_term,c1a,victoria_oval,Victoria St / Oval Rd,1242247851#0,Victoria Street (1242247851#0),8648,4.7,19.2
+weekday_term,c1a,victoria_oval,Victoria St / Oval Rd,173449383#0,Victoria Street (173449383#0),8940,2.5,6.7
+weekday_term,c1a,victoria_oval,Victoria St / Oval Rd,39879848#8,Oval Road (39879848#8),420,9.0,28.2
+weekday_term,c1a,esplanade_king,Esplanade / King St,1242247849,King Street (1242247849),578,7.6,20.3
+weekday_term,c1a,esplanade_king,Esplanade / King St,23075178#2,Esplanade (23075178#2),60,3.0,5.8
+weekday_term,c1a,esplanade_king,Esplanade / King St,287201787#1,Esplanade (287201787#1),53,1.7,4.2
+weekday_term,c1a,coral_ocean,Coral St / Ocean St,-60269602#1,Coral Street (-60269602#1),1498,2.8,5.8
+weekday_term,c1a,coral_ocean,Coral St / Ocean St,23075181#5,Coral Street (23075181#5),299,4.0,6.3
+weekday_term,c1a,coral_ocean,Coral St / Ocean St,60269598#2,Ocean Street (60269598#2),1737,3.2,9.2
+weekday_term,c1a,albert_esplanade,Albert Pl / Esplanade,-184389885,Albert Place (-184389885),288,2.3,4.7
+weekday_term,c1a,albert_esplanade,Albert Pl / Esplanade,-184389891#3,Esplanade (-184389891#3),533,2.2,5.2
+weekday_term,c1a,albert_esplanade,Albert Pl / Esplanade,184389891#2,Esplanade (184389891#2),451,3.5,6.5
+weekday_term,c1a,eyre_flinders_bridge,Eyre Tce / Flinders Pde / Bridge Tce,-217056482#1,Bridge Terrace (-217056482#1),712,4.5,9.6
+weekday_term,c1a,eyre_flinders_bridge,Eyre Tce / Flinders Pde / Bridge Tce,23075179#5,Flinders Parade (23075179#5),1024,3.5,7.0
+weekday_term,c1a,eyre_flinders_bridge,Eyre Tce / Flinders Pde / Bridge Tce,50904907#2,Eyre Terrace (50904907#2),435,3.5,10.2
+weekday_term,c1a,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,-23075180#5,Crozier Road (-23075180#5),1681,1.9,4.7
+weekday_term,c1a,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,23075180#4,Crozier Road (23075180#4),1730,1.6,5.9
+weekday_term,c1a,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,42530541#5,Acraman Street (42530541#5),1445,4.3,16.6
+weekday_term,c1a,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,42530557#1,Lindsay Street (42530557#1),713,4.7,27.4
+weekday_term,c1a,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,-23075171#7,Seaview Road (-23075171#7),1154,1.6,3.0
+weekday_term,c1a,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,-42530541#0,Acraman Street (-42530541#0),1044,3.9,12.2
+weekday_term,c1a,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,23075171#6,Seaview Road (23075171#6),668,1.4,2.4
+weekday_term,c1a,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,42530540#4,Carlyle Street (42530540#4),1265,4.1,11.6
+weekday_term,c1a,armstrong_crozier,Armstrong Rd / Crozier Rd,-29282260#1,Armstrong Road (-29282260#1),2897,3.7,9.1
+weekday_term,c1a,armstrong_crozier,Armstrong Rd / Crozier Rd,39946279,Crozier Road (39946279),2461,10.2,38.0
+weekday_term,c1a,armstrong_crozier,Armstrong Rd / Crozier Rd,97536780,Armstrong Road (97536780),3099,4.8,11.9
+weekday_term,c1a,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,-42648429#0,Waggon Road (-42648429#0),193,7.7,30.2
+weekday_term,c1a,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,-427209587#1,Welch Road (-427209587#1),3286,3.3,3.0
+weekday_term,c1a,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,29282267,Armstrong Road (29282267),3284,7.2,3.0
+weekday_term,c1b,torrens_victoria_wills,Torrens St / Victoria St / Wills St,1211144532#2,Victoria Street (1211144532#2),1612,3.8,11.4
+weekday_term,c1b,torrens_victoria_wills,Torrens St / Victoria St / Wills St,1242247845,Victoria Street (1242247845),4659,3.3,6.7
+weekday_term,c1b,torrens_victoria_wills,Torrens St / Victoria St / Wills St,23075177#1,Wills Street (23075177#1),908,5.0,16.8
+weekday_term,c1b,torrens_victoria_wills,Torrens St / Victoria St / Wills St,50904911,Torrens Street (50904911),2485,2.1,4.1
+weekday_term,c1b,torrens_crozier,Torrens St / Crozier Rd,1202918968#1,Torrens Street (1202918968#1),4709,2.8,7.7
+weekday_term,c1b,torrens_crozier,Torrens St / Crozier Rd,1202918970,Crozier Road (1202918970),1139,2.0,10.0
+weekday_term,c1b,torrens_crozier,Torrens St / Crozier Rd,1202918972,Crozier Road (1202918972),698,3.3,14.3
+weekday_term,c1b,torrens_crozier,Torrens St / Crozier Rd,50904910#2,Torrens Street (50904910#2),2948,3.4,5.9
+weekday_term,c1b,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,173449331,Hindmarsh Road (173449331),5205,4.2,8.5
+weekday_term,c1b,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,184390356,Eyre Terrace (184390356),968,8.1,27.0
+weekday_term,c1b,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,23075170,Seaview Road (23075170),1776,4.9,17.3
+weekday_term,c1b,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,576495712#3,Torrens Street (576495712#3),4376,3.5,8.7
+weekday_term,c1b,torrens_coral,Torrens St / Coral St,173449376#1,Torrens Street (173449376#1),5217,2.8,7.3
+weekday_term,c1b,torrens_coral,Torrens St / Coral St,50904910#0,Torrens Street (50904910#0),2879,3.1,7.1
+weekday_term,c1b,torrens_coral,Torrens St / Coral St,60269602#2,Coral Street (60269602#2),228,9.1,32.5
+weekday_term,c1b,torrens_ocean,Torrens St / Ocean St,576495725#0,Torrens Street (576495725#0),5238,1.7,3.2
+weekday_term,c1b,torrens_ocean,Torrens St / Ocean St,vhfix_torrens_ocean_right,nan (vhfix_torrens_ocean_right),214,3.0,6.7
+weekday_term,c1b,torrens_stuart,Torrens St / Stuart St,173449376#4,Torrens Street (173449376#4),4758,2.6,4.3
+weekday_term,c1b,torrens_stuart,Torrens St / Stuart St,576495721#1,Torrens Street (576495721#1),3276,1.9,3.1
+weekday_term,c1b,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-217056482#2,Bridge Terrace (-217056482#2),60,5.9,16.6
+weekday_term,c1b,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-42530401#0,Grantley Avenue (-42530401#0),25,8.7,28.5
+weekday_term,c1b,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-50904904#7,Hindmarsh Road (-50904904#7),6057,2.2,2.2
+weekday_term,c1b,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,217056482#0,Bridge Terrace (217056482#0),1330,9.4,33.5
+weekday_term,c1b,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,50904904#6,Hindmarsh Road (50904904#6),6681,3.0,3.1
+weekday_term,c1b,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449324,Bay Road (173449324),6484,3.6,10.3
+weekday_term,c1b,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449327,George Main Road (173449327),1764,3.9,15.5
+weekday_term,c1b,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449382,Victoria Street (173449382),7817,1.4,2.2
+weekday_term,c1b,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706687#1,Port Elliot Road (53706687#1),5720,5.3,16.0
+weekday_term,c1b,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706691#1,Adelaide Road (53706691#1),3310,5.0,18.0
+weekday_term,c1b,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706695,Hindmarsh Road (53706695),7844,2.7,7.7
+weekday_term,c1b,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),714958370#0,nan (714958370#0),503,8.5,28.1
+weekday_term,c1b,victoria_burke,Victoria St / Burke St,-1242247847#0,Burke Street (-1242247847#0),1687,3.8,19.0
+weekday_term,c1b,victoria_burke,Victoria St / Burke St,-42644219#0,Victoria Street (-42644219#0),7,9.5,34.1
+weekday_term,c1b,victoria_burke,Victoria St / Burke St,1242247850,Victoria Street (1242247850),5983,2.3,4.5
+weekday_term,c1b,victoria_burke,Victoria St / Burke St,173449385#1,Victoria Street (173449385#1),4667,2.0,2.4
+weekday_term,c1b,victoria_oval,Victoria St / Oval Rd,1242247851#0,Victoria Street (1242247851#0),7877,3.9,16.2
+weekday_term,c1b,victoria_oval,Victoria St / Oval Rd,173449383#0,Victoria Street (173449383#0),8287,2.1,5.7
+weekday_term,c1b,victoria_oval,Victoria St / Oval Rd,39879848#8,Oval Road (39879848#8),587,7.4,25.2
+weekday_term,c1b,esplanade_king,Esplanade / King St,1242247849,King Street (1242247849),578,6.6,17.3
+weekday_term,c1b,esplanade_king,Esplanade / King St,23075178#2,Esplanade (23075178#2),58,3.1,5.8
+weekday_term,c1b,esplanade_king,Esplanade / King St,287201787#1,Esplanade (287201787#1),32,2.0,4.2
+weekday_term,c1b,coral_ocean,Coral St / Ocean St,-60269602#1,Coral Street (-60269602#1),1632,2.9,5.8
+weekday_term,c1b,coral_ocean,Coral St / Ocean St,23075181#5,Coral Street (23075181#5),510,4.3,7.3
+weekday_term,c1b,coral_ocean,Coral St / Ocean St,60269598#2,Ocean Street (60269598#2),1888,3.5,10.2
+weekday_term,c1b,albert_esplanade,Albert Pl / Esplanade,-184389885,Albert Place (-184389885),288,2.3,4.7
+weekday_term,c1b,albert_esplanade,Albert Pl / Esplanade,-184389891#3,Esplanade (-184389891#3),537,2.3,5.2
+weekday_term,c1b,albert_esplanade,Albert Pl / Esplanade,184389891#2,Esplanade (184389891#2),436,3.5,7.4
+weekday_term,c1b,eyre_flinders_bridge,Eyre Tce / Flinders Pde / Bridge Tce,-217056482#1,Bridge Terrace (-217056482#1),656,4.5,9.6
+weekday_term,c1b,eyre_flinders_bridge,Eyre Tce / Flinders Pde / Bridge Tce,23075179#5,Flinders Parade (23075179#5),1569,3.7,8.0
+weekday_term,c1b,eyre_flinders_bridge,Eyre Tce / Flinders Pde / Bridge Tce,50904907#2,Eyre Terrace (50904907#2),289,3.6,10.7
+weekday_term,c1b,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,-23075180#5,Crozier Road (-23075180#5),1490,1.9,4.7
+weekday_term,c1b,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,23075180#4,Crozier Road (23075180#4),1921,1.7,5.8
+weekday_term,c1b,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,42530541#5,Acraman Street (42530541#5),3214,5.0,23.4
+weekday_term,c1b,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,42530557#1,Lindsay Street (42530557#1),1527,5.2,37.8
+weekday_term,c1b,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,-23075171#7,Seaview Road (-23075171#7),1936,1.7,3.7
+weekday_term,c1b,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,-42530541#0,Acraman Street (-42530541#0),2137,6.5,34.9
+weekday_term,c1b,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,23075171#6,Seaview Road (23075171#6),1180,1.7,3.4
+weekday_term,c1b,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,42530540#4,Carlyle Street (42530540#4),2779,5.7,19.6
+weekday_term,c1b,armstrong_crozier,Armstrong Rd / Crozier Rd,-29282260#1,Armstrong Road (-29282260#1),3158,3.8,10.1
+weekday_term,c1b,armstrong_crozier,Armstrong Rd / Crozier Rd,39946279,Crozier Road (39946279),2858,11.5,43.0
+weekday_term,c1b,armstrong_crozier,Armstrong Rd / Crozier Rd,97536780,Armstrong Road (97536780),3711,5.6,11.9
+weekday_term,c1b,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,-42648429#0,Waggon Road (-42648429#0),194,7.4,31.1
+weekday_term,c1b,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,-427209587#1,Welch Road (-427209587#1),3524,3.3,3.0
+weekday_term,c1b,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,29282267,Armstrong Road (29282267),3360,7.2,3.0
+weekday_term,c3,torrens_victoria_wills,Torrens St / Victoria St / Wills St,1211144532#2,Victoria Street (1211144532#2),3896,2.4,4.4
+weekday_term,c3,torrens_victoria_wills,Torrens St / Victoria St / Wills St,1242247845,Victoria Street (1242247845),6783,3.8,7.7
+weekday_term,c3,torrens_victoria_wills,Torrens St / Victoria St / Wills St,23075177#1,Wills Street (23075177#1),606,4.0,11.8
+weekday_term,c3,torrens_crozier,Torrens St / Crozier Rd,1202918968#1,Torrens Street (1202918968#1),6353,3.4,9.7
+weekday_term,c3,torrens_crozier,Torrens St / Crozier Rd,1202918970,Crozier Road (1202918970),2089,0.7,0.8
+weekday_term,c3,torrens_crozier,Torrens St / Crozier Rd,1202918972,Crozier Road (1202918972),1387,8.0,31.3
+weekday_term,c3,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,173449331,Hindmarsh Road (173449331),692,3.0,5.5
+weekday_term,c3,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,23075170,Seaview Road (23075170),615,7.5,25.3
+weekday_term,c3,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,576495712#3,Torrens Street (576495712#3),7409,2.8,6.0
+weekday_term,c3,torrens_coral,Torrens St / Coral St,173449376#1,Torrens Street (173449376#1),8505,1.4,3.0
+weekday_term,c3,torrens_coral,Torrens St / Coral St,60269602#2,Coral Street (60269602#2),1502,17.7,62.1
+weekday_term,c3,torrens_ocean,Torrens St / Ocean St,vhfix_torrens_ocean_right,nan (vhfix_torrens_ocean_right),645,2.8,3.7
+weekday_term,c3,torrens_stuart,Torrens St / Stuart St,173449376#4,Torrens Street (173449376#4),8410,1.7,4.2
+weekday_term,c3,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-217056482#2,Bridge Terrace (-217056482#2),60,8.4,30.6
+weekday_term,c3,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-42530401#0,Grantley Avenue (-42530401#0),18,9.0,29.4
+weekday_term,c3,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-50904904#7,Hindmarsh Road (-50904904#7),6909,2.2,2.2
+weekday_term,c3,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,217056482#0,Bridge Terrace (217056482#0),1163,8.6,32.8
+weekday_term,c3,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,50904904#6,Hindmarsh Road (50904904#6),6707,4.3,4.1
+weekday_term,c3,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449324,Bay Road (173449324),6958,4.1,12.3
+weekday_term,c3,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449327,George Main Road (173449327),2012,4.2,16.5
+weekday_term,c3,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449382,Victoria Street (173449382),7819,1.4,2.2
+weekday_term,c3,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706687#1,Port Elliot Road (53706687#1),5724,5.3,16.0
+weekday_term,c3,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706691#1,Adelaide Road (53706691#1),3195,5.0,18.0
+weekday_term,c3,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706695,Hindmarsh Road (53706695),7856,2.9,8.7
+weekday_term,c3,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),714958370#0,nan (714958370#0),503,9.0,27.1
+weekday_term,c3,victoria_burke,Victoria St / Burke St,-1242247847#0,Burke Street (-1242247847#0),1745,6.1,34.0
+weekday_term,c3,victoria_burke,Victoria St / Burke St,-42644219#0,Victoria Street (-42644219#0),42,18.2,51.2
+weekday_term,c3,victoria_burke,Victoria St / Burke St,1242247850,Victoria Street (1242247850),7983,2.4,5.5
+weekday_term,c3,victoria_burke,Victoria St / Burke St,173449385#1,Victoria Street (173449385#1),4296,2.1,2.4
+weekday_term,c3,victoria_oval,Victoria St / Oval Rd,1242247851#0,Victoria Street (1242247851#0),7883,4.4,19.2
+weekday_term,c3,victoria_oval,Victoria St / Oval Rd,173449383#0,Victoria Street (173449383#0),9012,2.7,7.7
+weekday_term,c3,victoria_oval,Victoria St / Oval Rd,39879848#8,Oval Road (39879848#8),591,9.3,30.2
+weekday_term,c3,esplanade_king,Esplanade / King St,1242247849,King Street (1242247849),50,4.9,11.8
+weekday_term,c3,esplanade_king,Esplanade / King St,23075178#2,Esplanade (23075178#2),50,2.9,5.8
+weekday_term,c3,esplanade_king,Esplanade / King St,287201787#1,Esplanade (287201787#1),97,2.0,4.2
+weekday_term,c3,coral_ocean,Coral St / Ocean St,-60269602#1,Coral Street (-60269602#1),1725,4.3,16.5
+weekday_term,c3,coral_ocean,Coral St / Ocean St,23075181#5,Coral Street (23075181#5),5673,3.9,6.2
+weekday_term,c3,coral_ocean,Coral St / Ocean St,60269598#2,Ocean Street (60269598#2),464,6.6,32.1
+weekday_term,c3,albert_esplanade,Albert Pl / Esplanade,-184389885,Albert Place (-184389885),29,1.5,2.4
+weekday_term,c3,albert_esplanade,Albert Pl / Esplanade,-184389891#3,Esplanade (-184389891#3),29,1.8,5.2
+weekday_term,c3,albert_esplanade,Albert Pl / Esplanade,184389891#2,Esplanade (184389891#2),1125,2.7,3.8
+weekday_term,c3,eyre_flinders_bridge,Eyre Tce / Flinders Pde / Bridge Tce,-217056482#1,Bridge Terrace (-217056482#1),5235,6.0,10.6
+weekday_term,c3,eyre_flinders_bridge,Eyre Tce / Flinders Pde / Bridge Tce,50904907#2,Eyre Terrace (50904907#2),2157,3.5,20.0
+weekday_term,c3,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,-23075180#5,Crozier Road (-23075180#5),1909,1.9,4.7
+weekday_term,c3,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,23075180#4,Crozier Road (23075180#4),1740,1.6,4.8
+weekday_term,c3,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,42530541#5,Acraman Street (42530541#5),3096,4.9,17.5
+weekday_term,c3,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,42530557#1,Lindsay Street (42530557#1),642,5.1,35.6
+weekday_term,c3,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,-23075171#7,Seaview Road (-23075171#7),1035,1.7,3.7
+weekday_term,c3,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,-42530541#0,Acraman Street (-42530541#0),932,4.1,23.9
+weekday_term,c3,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,23075171#6,Seaview Road (23075171#6),1153,1.7,3.4
+weekday_term,c3,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,42530540#4,Carlyle Street (42530540#4),2693,4.6,12.6
+weekday_term,c3,armstrong_crozier,Armstrong Rd / Crozier Rd,-29282260#1,Armstrong Road (-29282260#1),3299,4.0,10.1
+weekday_term,c3,armstrong_crozier,Armstrong Rd / Crozier Rd,39946279,Crozier Road (39946279),2948,10.3,38.0
+weekday_term,c3,armstrong_crozier,Armstrong Rd / Crozier Rd,97536780,Armstrong Road (97536780),3034,4.9,14.9
+weekday_term,c3,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,-42648429#0,Waggon Road (-42648429#0),194,8.2,33.1
+weekday_term,c3,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,-427209587#1,Welch Road (-427209587#1),3642,3.3,3.0
+weekday_term,c3,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,29282267,Armstrong Road (29282267),3342,7.3,3.0
+weekday_term,c3b,torrens_victoria_wills,Torrens St / Victoria St / Wills St,1211144532#2,Victoria Street (1211144532#2),2174,4.9,16.4
+weekday_term,c3b,torrens_victoria_wills,Torrens St / Victoria St / Wills St,1242247845,Victoria Street (1242247845),3297,2.9,5.7
+weekday_term,c3b,torrens_victoria_wills,Torrens St / Victoria St / Wills St,23075177#1,Wills Street (23075177#1),234,6.6,21.8
+weekday_term,c3b,torrens_victoria_wills,Torrens St / Victoria St / Wills St,50904911,Torrens Street (50904911),3896,4.6,15.1
+weekday_term,c3b,torrens_crozier,Torrens St / Crozier Rd,1202918970,Crozier Road (1202918970),666,4.0,16.8
+weekday_term,c3b,torrens_crozier,Torrens St / Crozier Rd,1202918972,Crozier Road (1202918972),706,0.7,1.3
+weekday_term,c3b,torrens_crozier,Torrens St / Crozier Rd,50904910#2,Torrens Street (50904910#2),5476,3.1,7.3
+weekday_term,c3b,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,173449331,Hindmarsh Road (173449331),8012,5.0,9.5
+weekday_term,c3b,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,184390356,Eyre Terrace (184390356),2902,18.2,66.2
+weekday_term,c3b,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,23075170,Seaview Road (23075170),3656,2.9,8.3
+weekday_term,c3b,torrens_coral,Torrens St / Coral St,50904910#0,Torrens Street (50904910#0),5180,1.6,3.5
+weekday_term,c3b,torrens_coral,Torrens St / Coral St,60269602#2,Coral Street (60269602#2),219,6.5,23.6
+weekday_term,c3b,torrens_ocean,Torrens St / Ocean St,576495725#0,Torrens Street (576495725#0),9025,2.5,3.4
+weekday_term,c3b,torrens_stuart,Torrens St / Stuart St,576495721#1,Torrens Street (576495721#1),5989,1.3,2.5
+weekday_term,c3b,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-217056482#2,Bridge Terrace (-217056482#2),60,6.9,25.8
+weekday_term,c3b,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-42530401#0,Grantley Avenue (-42530401#0),44,11.8,36.5
+weekday_term,c3b,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-50904904#7,Hindmarsh Road (-50904904#7),4991,2.1,1.8
+weekday_term,c3b,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,217056482#0,Bridge Terrace (217056482#0),1896,18.7,85.1
+weekday_term,c3b,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,50904904#6,Hindmarsh Road (50904904#6),8357,3.3,3.1
+weekday_term,c3b,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449324,Bay Road (173449324),6229,3.8,11.3
+weekday_term,c3b,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449327,George Main Road (173449327),1716,3.7,14.5
+weekday_term,c3b,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449382,Victoria Street (173449382),8467,1.4,2.2
+weekday_term,c3b,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706687#1,Port Elliot Road (53706687#1),5737,5.6,17.0
+weekday_term,c3b,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706691#1,Adelaide Road (53706691#1),3517,5.0,17.5
+weekday_term,c3b,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706695,Hindmarsh Road (53706695),7912,2.7,7.7
+weekday_term,c3b,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),714958370#0,nan (714958370#0),503,9.2,29.6
+weekday_term,c3b,victoria_burke,Victoria St / Burke St,-1242247847#0,Burke Street (-1242247847#0),1562,3.3,14.0
+weekday_term,c3b,victoria_burke,Victoria St / Burke St,-42644219#0,Victoria Street (-42644219#0),126,13.3,62.1
+weekday_term,c3b,victoria_burke,Victoria St / Burke St,1242247850,Victoria Street (1242247850),4790,2.3,4.5
+weekday_term,c3b,victoria_burke,Victoria St / Burke St,173449385#1,Victoria Street (173449385#1),6178,2.1,2.4
+weekday_term,c3b,victoria_oval,Victoria St / Oval Rd,1242247851#0,Victoria Street (1242247851#0),8671,4.2,17.2
+weekday_term,c3b,victoria_oval,Victoria St / Oval Rd,173449383#0,Victoria Street (173449383#0),7990,2.1,5.7
+weekday_term,c3b,victoria_oval,Victoria St / Oval Rd,39879848#8,Oval Road (39879848#8),423,6.9,23.2
+weekday_term,c3b,esplanade_king,Esplanade / King St,1242247849,King Street (1242247849),530,7.6,21.3
+weekday_term,c3b,esplanade_king,Esplanade / King St,23075178#2,Esplanade (23075178#2),71,3.1,5.8
+weekday_term,c3b,esplanade_king,Esplanade / King St,287201787#1,Esplanade (287201787#1),20,2.3,5.2
+weekday_term,c3b,coral_ocean,Coral St / Ocean St,-60269602#1,Coral Street (-60269602#1),143,2.5,4.5
+weekday_term,c3b,coral_ocean,Coral St / Ocean St,23075181#5,Coral Street (23075181#5),2292,3.8,5.2
+weekday_term,c3b,coral_ocean,Coral St / Ocean St,60269598#2,Ocean Street (60269598#2),2641,3.7,13.1
+weekday_term,c3b,albert_esplanade,Albert Pl / Esplanade,-184389885,Albert Place (-184389885),1024,2.0,3.4
+weekday_term,c3b,albert_esplanade,Albert Pl / Esplanade,-184389891#3,Esplanade (-184389891#3),535,2.6,6.2
+weekday_term,c3b,eyre_flinders_bridge,Eyre Tce / Flinders Pde / Bridge Tce,-217056482#1,Bridge Terrace (-217056482#1),67,5.3,10.2
+weekday_term,c3b,eyre_flinders_bridge,Eyre Tce / Flinders Pde / Bridge Tce,23075179#5,Flinders Parade (23075179#5),2387,3.4,5.9
+weekday_term,c3b,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,-23075180#5,Crozier Road (-23075180#5),1369,2.0,4.7
+weekday_term,c3b,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,23075180#4,Crozier Road (23075180#4),3131,2.0,4.8
+weekday_term,c3b,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,42530541#5,Acraman Street (42530541#5),1687,6.0,34.0
+weekday_term,c3b,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,42530557#1,Lindsay Street (42530557#1),2434,8.2,39.1
+weekday_term,c3b,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,-23075171#7,Seaview Road (-23075171#7),2317,1.6,3.7
+weekday_term,c3b,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,-42530541#0,Acraman Street (-42530541#0),4338,7.4,27.9
+weekday_term,c3b,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,23075171#6,Seaview Road (23075171#6),971,1.6,3.4
+weekday_term,c3b,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,42530540#4,Carlyle Street (42530540#4),1185,5.4,21.6
+weekday_term,c3b,armstrong_crozier,Armstrong Rd / Crozier Rd,-29282260#1,Armstrong Road (-29282260#1),2868,3.7,9.1
+weekday_term,c3b,armstrong_crozier,Armstrong Rd / Crozier Rd,39946279,Crozier Road (39946279),2339,11.4,45.0
+weekday_term,c3b,armstrong_crozier,Armstrong Rd / Crozier Rd,97536780,Armstrong Road (97536780),3989,5.7,11.9
+weekday_term,c3b,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,-42648429#0,Waggon Road (-42648429#0),192,7.1,31.3
+weekday_term,c3b,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,-427209587#1,Welch Road (-427209587#1),3294,3.2,3.0
+weekday_term,c3b,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,29282267,Armstrong Road (29282267),3295,7.1,3.0
+weekday_term,c4,torrens_victoria_wills,Torrens St / Victoria St / Wills St,1211144532#2,Victoria Street (1211144532#2),2075,5.1,17.4
+weekday_term,c4,torrens_victoria_wills,Torrens St / Victoria St / Wills St,1242247845,Victoria Street (1242247845),6537,3.7,7.7
+weekday_term,c4,torrens_victoria_wills,Torrens St / Victoria St / Wills St,23075177#1,Wills Street (23075177#1),690,6.9,23.8
+weekday_term,c4,torrens_victoria_wills,Torrens St / Victoria St / Wills St,50904911,Torrens Street (50904911),4045,2.6,6.1
+weekday_term,c4,torrens_crozier,Torrens St / Crozier Rd,1202918968#1,Torrens Street (1202918968#1),6431,5.6,18.3
+weekday_term,c4,torrens_crozier,Torrens St / Crozier Rd,1202918970,Crozier Road (1202918970),1042,9.9,37.5
+weekday_term,c4,torrens_crozier,Torrens St / Crozier Rd,1202918972,Crozier Road (1202918972),1059,10.0,38.9
+weekday_term,c4,torrens_crozier,Torrens St / Crozier Rd,50904910#2,Torrens Street (50904910#2),5701,9.6,32.9
+weekday_term,c4,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,173449331,Hindmarsh Road (173449331),7898,7.7,21.3
+weekday_term,c4,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,184390356,Eyre Terrace (184390356),1877,17.9,65.0
+weekday_term,c4,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,23075170,Seaview Road (23075170),980,13.0,40.1
+weekday_term,c4,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,576495712#3,Torrens Street (576495712#3),7191,7.8,27.7
+weekday_term,c4,torrens_coral,Torrens St / Coral St,173449376#1,Torrens Street (173449376#1),7421,2.4,9.0
+weekday_term,c4,torrens_coral,Torrens St / Coral St,50904910#0,Torrens Street (50904910#0),5565,2.3,25.9
+weekday_term,c4,torrens_coral,Torrens St / Coral St,60269602#2,Coral Street (60269602#2),265,13.5,45.6
+weekday_term,c4,torrens_ocean,Torrens St / Ocean St,576495725#0,Torrens Street (576495725#0),8590,3.6,6.5
+weekday_term,c4,torrens_ocean,Torrens St / Ocean St,vhfix_torrens_ocean_right,nan (vhfix_torrens_ocean_right),249,4.7,18.7
+weekday_term,c4,torrens_stuart,Torrens St / Stuart St,173449376#4,Torrens Street (173449376#4),7203,1.9,7.2
+weekday_term,c4,torrens_stuart,Torrens St / Stuart St,576495721#1,Torrens Street (576495721#1),6438,1.4,3.5
+weekday_term,c4,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-217056482#2,Bridge Terrace (-217056482#2),60,6.3,22.1
+weekday_term,c4,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-42530401#0,Grantley Avenue (-42530401#0),18,10.0,32.8
+weekday_term,c4,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-50904904#7,Hindmarsh Road (-50904904#7),7775,2.3,2.2
+weekday_term,c4,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,217056482#0,Bridge Terrace (217056482#0),690,9.6,44.5
+weekday_term,c4,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,50904904#6,Hindmarsh Road (50904904#6),8919,3.6,3.1
+weekday_term,c4,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449324,Bay Road (173449324),6987,4.4,13.3
+weekday_term,c4,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449327,George Main Road (173449327),2134,4.2,17.5
+weekday_term,c4,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449382,Victoria Street (173449382),8616,1.5,2.2
+weekday_term,c4,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706687#1,Port Elliot Road (53706687#1),5744,5.8,18.0
+weekday_term,c4,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706691#1,Adelaide Road (53706691#1),3596,5.2,18.0
+weekday_term,c4,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706695,Hindmarsh Road (53706695),8032,2.9,8.7
+weekday_term,c4,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),714958370#0,nan (714958370#0),503,9.5,30.6
+weekday_term,c4,victoria_burke,Victoria St / Burke St,-1242247847#0,Burke Street (-1242247847#0),1457,6.1,36.9
+weekday_term,c4,victoria_burke,Victoria St / Burke St,-42644219#0,Victoria Street (-42644219#0),20,13.8,48.1
+weekday_term,c4,victoria_burke,Victoria St / Burke St,1242247850,Victoria Street (1242247850),7748,2.4,4.5
+weekday_term,c4,victoria_burke,Victoria St / Burke St,173449385#1,Victoria Street (173449385#1),6668,2.0,2.4
+weekday_term,c4,victoria_oval,Victoria St / Oval Rd,1242247851#0,Victoria Street (1242247851#0),8798,5.0,22.2
+weekday_term,c4,victoria_oval,Victoria St / Oval Rd,173449383#0,Victoria Street (173449383#0),9169,2.7,9.7
+weekday_term,c4,victoria_oval,Victoria St / Oval Rd,39879848#8,Oval Road (39879848#8),421,9.6,30.2
+weekday_term,c4,esplanade_king,Esplanade / King St,1242247849,King Street (1242247849),532,7.9,23.3
+weekday_term,c4,esplanade_king,Esplanade / King St,23075178#2,Esplanade (23075178#2),66,3.1,5.8
+weekday_term,c4,esplanade_king,Esplanade / King St,287201787#1,Esplanade (287201787#1),66,2.0,4.4
+weekday_term,c4,coral_ocean,Coral St / Ocean St,-60269602#1,Coral Street (-60269602#1),1520,2.8,4.5
+weekday_term,c4,coral_ocean,Coral St / Ocean St,23075181#5,Coral Street (23075181#5),497,3.4,5.2
+weekday_term,c4,coral_ocean,Coral St / Ocean St,60269598#2,Ocean Street (60269598#2),1948,3.3,10.1
+weekday_term,c4,albert_esplanade,Albert Pl / Esplanade,-184389885,Albert Place (-184389885),304,1.8,3.4
+weekday_term,c4,albert_esplanade,Albert Pl / Esplanade,-184389891#3,Esplanade (-184389891#3),509,2.3,5.2
+weekday_term,c4,albert_esplanade,Albert Pl / Esplanade,184389891#2,Esplanade (184389891#2),442,2.8,4.7
+weekday_term,c4,eyre_flinders_bridge,Eyre Tce / Flinders Pde / Bridge Tce,-217056482#1,Bridge Terrace (-217056482#1),694,4.2,10.5
+weekday_term,c4,eyre_flinders_bridge,Eyre Tce / Flinders Pde / Bridge Tce,23075179#5,Flinders Parade (23075179#5),917,2.1,5.0
+weekday_term,c4,eyre_flinders_bridge,Eyre Tce / Flinders Pde / Bridge Tce,50904907#2,Eyre Terrace (50904907#2),382,2.9,6.0
+weekday_term,c4,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,-23075180#5,Crozier Road (-23075180#5),1678,1.9,4.7
+weekday_term,c4,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,23075180#4,Crozier Road (23075180#4),1715,1.6,5.1
+weekday_term,c4,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,42530541#5,Acraman Street (42530541#5),1129,4.1,17.6
+weekday_term,c4,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,42530557#1,Lindsay Street (42530557#1),580,4.6,17.5
+weekday_term,c4,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,-23075171#7,Seaview Road (-23075171#7),1029,1.6,3.7
+weekday_term,c4,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,-42530541#0,Acraman Street (-42530541#0),883,3.9,11.9
+weekday_term,c4,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,23075171#6,Seaview Road (23075171#6),754,1.4,3.4
+weekday_term,c4,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,42530540#4,Carlyle Street (42530540#4),762,4.0,19.8
+weekday_term,c4,armstrong_crozier,Armstrong Rd / Crozier Rd,-29282260#1,Armstrong Road (-29282260#1),2809,3.7,9.1
+weekday_term,c4,armstrong_crozier,Armstrong Rd / Crozier Rd,39946279,Crozier Road (39946279),2271,9.8,38.0
+weekday_term,c4,armstrong_crozier,Armstrong Rd / Crozier Rd,97536780,Armstrong Road (97536780),2949,4.7,10.9
+weekday_term,c4,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,-42648429#0,Waggon Road (-42648429#0),193,7.7,33.2
+weekday_term,c4,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,-427209587#1,Welch Road (-427209587#1),3205,3.2,3.0
+weekday_term,c4,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,29282267,Armstrong Road (29282267),3168,7.1,3.0
+weekday_term,cp,torrens_victoria_wills,Torrens St / Victoria St / Wills St,1211144532#2,Victoria Street (1211144532#2),1996,2.2,3.4
+weekday_term,cp,torrens_victoria_wills,Torrens St / Victoria St / Wills St,1242247845,Victoria Street (1242247845),6285,5.1,12.7
+weekday_term,cp,torrens_victoria_wills,Torrens St / Victoria St / Wills St,23075177#1,Wills Street (23075177#1),1389,3.1,7.8
+weekday_term,cp,torrens_crozier,Torrens St / Crozier Rd,1202918968#1,Torrens Street (1202918968#1),7033,8.7,27.3
+weekday_term,cp,torrens_crozier,Torrens St / Crozier Rd,1202918970,Crozier Road (1202918970),2247,10.1,46.9
+weekday_term,cp,torrens_crozier,Torrens St / Crozier Rd,1202918972,Crozier Road (1202918972),2199,7.2,24.9
+weekday_term,cp,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,173449331,Hindmarsh Road (173449331),2573,27.5,76.3
+weekday_term,cp,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,23075170,Seaview Road (23075170),732,8.4,24.0
+weekday_term,cp,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,576495712#3,Torrens Street (576495712#3),8643,6.1,13.7
+weekday_term,cp,torrens_coral,Torrens St / Coral St,173449376#1,Torrens Street (173449376#1),9931,1.6,3.0
+weekday_term,cp,torrens_coral,Torrens St / Coral St,60269602#2,Coral Street (60269602#2),699,12.5,41.8
+weekday_term,cp,torrens_ocean,Torrens St / Ocean St,vhfix_torrens_ocean_right,nan (vhfix_torrens_ocean_right),560,2.8,3.7
+weekday_term,cp,torrens_stuart,Torrens St / Stuart St,173449376#4,Torrens Street (173449376#4),9592,1.7,4.2
+weekday_term,cp,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-217056482#2,Bridge Terrace (-217056482#2),60,4.9,13.5
+weekday_term,cp,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-42530401#0,Grantley Avenue (-42530401#0),22,10.5,31.4
+weekday_term,cp,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-50904904#7,Hindmarsh Road (-50904904#7),8102,2.3,2.2
+weekday_term,cp,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,217056482#0,Bridge Terrace (217056482#0),269,6.1,11.5
+weekday_term,cp,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,50904904#6,Hindmarsh Road (50904904#6),6374,3.6,3.1
+weekday_term,cp,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449324,Bay Road (173449324),6900,4.0,12.3
+weekday_term,cp,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449327,George Main Road (173449327),2037,4.1,16.5
+weekday_term,cp,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449382,Victoria Street (173449382),7507,1.4,2.2
+weekday_term,cp,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706687#1,Port Elliot Road (53706687#1),5703,5.1,15.0
+weekday_term,cp,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706691#1,Adelaide Road (53706691#1),3123,4.9,18.0
+weekday_term,cp,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706695,Hindmarsh Road (53706695),7907,2.8,7.7
+weekday_term,cp,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),714958370#0,nan (714958370#0),503,9.2,30.1
+weekday_term,cp,victoria_burke,Victoria St / Burke St,-1242247847#0,Burke Street (-1242247847#0),2290,5.5,31.5
+weekday_term,cp,victoria_burke,Victoria St / Burke St,-42644219#0,Victoria Street (-42644219#0),43,16.0,51.0
+weekday_term,cp,victoria_burke,Victoria St / Burke St,1242247850,Victoria Street (1242247850),7725,2.6,6.5
+weekday_term,cp,victoria_burke,Victoria St / Burke St,173449385#1,Victoria Street (173449385#1),2524,2.0,2.4
+weekday_term,cp,victoria_oval,Victoria St / Oval Rd,1242247851#0,Victoria Street (1242247851#0),7539,4.7,20.7
+weekday_term,cp,victoria_oval,Victoria St / Oval Rd,173449383#0,Victoria Street (173449383#0),8970,3.3,30.7
+weekday_term,cp,victoria_oval,Victoria St / Oval Rd,39879848#8,Oval Road (39879848#8),661,10.6,213.9
+weekday_term,cp,esplanade_king,Esplanade / King St,1242247849,King Street (1242247849),240,5.5,14.3
+weekday_term,cp,esplanade_king,Esplanade / King St,23075178#2,Esplanade (23075178#2),45,2.8,5.8
+weekday_term,cp,esplanade_king,Esplanade / King St,287201787#1,Esplanade (287201787#1),28,2.4,5.2
+weekday_term,cp,coral_ocean,Coral St / Ocean St,-60269602#1,Coral Street (-60269602#1),1981,3.2,6.8
+weekday_term,cp,coral_ocean,Coral St / Ocean St,23075181#5,Coral Street (23075181#5),2530,4.7,7.3
+weekday_term,cp,coral_ocean,Coral St / Ocean St,60269598#2,Ocean Street (60269598#2),379,5.6,18.8
+weekday_term,cp,albert_esplanade,Albert Pl / Esplanade,-184389885,Albert Place (-184389885),14,3.9,8.1
+weekday_term,cp,albert_esplanade,Albert Pl / Esplanade,-184389891#3,Esplanade (-184389891#3),161,1.7,4.2
+weekday_term,cp,albert_esplanade,Albert Pl / Esplanade,184389891#2,Esplanade (184389891#2),1201,3.6,6.6
+weekday_term,cp,eyre_flinders_bridge,Eyre Tce / Flinders Pde / Bridge Tce,-217056482#1,Bridge Terrace (-217056482#1),2455,5.1,10.6
+weekday_term,cp,eyre_flinders_bridge,Eyre Tce / Flinders Pde / Bridge Tce,50904907#2,Eyre Terrace (50904907#2),1135,3.2,16.6
+weekday_term,cp,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,-23075180#5,Crozier Road (-23075180#5),2209,1.9,4.7
+weekday_term,cp,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,23075180#4,Crozier Road (23075180#4),1647,1.7,5.8
+weekday_term,cp,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,42530541#5,Acraman Street (42530541#5),5647,8.3,31.2
+weekday_term,cp,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,42530557#1,Lindsay Street (42530557#1),730,14.9,144.8
+weekday_term,cp,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,-23075171#7,Seaview Road (-23075171#7),991,2.0,3.7
+weekday_term,cp,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,-42530541#0,Acraman Street (-42530541#0),882,6.0,35.9
+weekday_term,cp,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,23075171#6,Seaview Road (23075171#6),3655,2.0,3.4
+weekday_term,cp,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,42530540#4,Carlyle Street (42530540#4),3041,10.3,38.2
+weekday_term,cp,armstrong_crozier,Armstrong Rd / Crozier Rd,-29282260#1,Armstrong Road (-29282260#1),3410,4.1,10.1
+weekday_term,cp,armstrong_crozier,Armstrong Rd / Crozier Rd,39946279,Crozier Road (39946279),3125,12.2,47.0
+weekday_term,cp,armstrong_crozier,Armstrong Rd / Crozier Rd,97536780,Armstrong Road (97536780),3133,5.5,16.9
+weekday_term,cp,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,-42648429#0,Waggon Road (-42648429#0),196,8.3,33.2
+weekday_term,cp,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,-427209587#1,Welch Road (-427209587#1),3733,3.4,3.0
+weekday_term,cp,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,29282267,Armstrong Road (29282267),3293,7.3,3.0
+weekday_term,b3,torrens_victoria_wills,Torrens St / Victoria St / Wills St,1211144532#2,Victoria Street (1211144532#2),2099,4.8,15.4
+weekday_term,b3,torrens_victoria_wills,Torrens St / Victoria St / Wills St,1242247845,Victoria Street (1242247845),6254,3.6,6.7
+weekday_term,b3,torrens_victoria_wills,Torrens St / Victoria St / Wills St,23075177#1,Wills Street (23075177#1),697,6.8,24.8
+weekday_term,b3,torrens_victoria_wills,Torrens St / Victoria St / Wills St,50904911,Torrens Street (50904911),3669,2.4,6.1
+weekday_term,b3,torrens_crozier,Torrens St / Crozier Rd,1202918968#1,Torrens Street (1202918968#1),5812,2.7,6.7
+weekday_term,b3,torrens_crozier,Torrens St / Crozier Rd,1202918970,Crozier Road (1202918970),1021,2.9,12.8
+weekday_term,b3,torrens_crozier,Torrens St / Crozier Rd,1202918972,Crozier Road (1202918972),1024,5.1,21.3
+weekday_term,b3,torrens_crozier,Torrens St / Crozier Rd,50904910#2,Torrens Street (50904910#2),3989,2.8,5.3
+weekday_term,b3,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,173449331,Hindmarsh Road (173449331),7273,4.9,10.5
+weekday_term,b3,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,184390356,Eyre Terrace (184390356),1355,12.7,42.2
+weekday_term,b3,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,23075170,Seaview Road (23075170),790,8.2,28.3
+weekday_term,b3,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,576495712#3,Torrens Street (576495712#3),6565,4.0,11.0
+weekday_term,b3,torrens_coral,Torrens St / Coral St,173449376#1,Torrens Street (173449376#1),6804,1.9,5.0
+weekday_term,b3,torrens_coral,Torrens St / Coral St,50904910#0,Torrens Street (50904910#0),4191,3.4,29.5
+weekday_term,b3,torrens_coral,Torrens St / Coral St,60269602#2,Coral Street (60269602#2),1051,19.1,62.1
+weekday_term,b3,torrens_ocean,Torrens St / Ocean St,576495725#0,Torrens Street (576495725#0),7797,2.3,2.7
+weekday_term,b3,torrens_ocean,Torrens St / Ocean St,vhfix_torrens_ocean_right,nan (vhfix_torrens_ocean_right),269,7.2,33.7
+weekday_term,b3,torrens_stuart,Torrens St / Stuart St,173449376#4,Torrens Street (173449376#4),6666,1.8,4.2
+weekday_term,b3,torrens_stuart,Torrens St / Stuart St,576495721#1,Torrens Street (576495721#1),5745,1.4,2.5
+weekday_term,b3,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-217056482#2,Bridge Terrace (-217056482#2),60,6.4,21.7
+weekday_term,b3,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-42530401#0,Grantley Avenue (-42530401#0),18,8.9,39.2
+weekday_term,b3,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-50904904#7,Hindmarsh Road (-50904904#7),6977,2.2,2.2
+weekday_term,b3,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,217056482#0,Bridge Terrace (217056482#0),1114,9.4,38.5
+weekday_term,b3,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,50904904#6,Hindmarsh Road (50904904#6),8267,3.3,3.1
+weekday_term,b3,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449324,Bay Road (173449324),6921,4.1,12.3
+weekday_term,b3,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449327,George Main Road (173449327),1955,4.1,16.5
+weekday_term,b3,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449382,Victoria Street (173449382),8304,1.5,2.2
+weekday_term,b3,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706687#1,Port Elliot Road (53706687#1),5710,5.5,17.0
+weekday_term,b3,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706691#1,Adelaide Road (53706691#1),3451,5.0,18.0
+weekday_term,b3,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706695,Hindmarsh Road (53706695),7931,2.9,8.7
+weekday_term,b3,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),714958370#0,nan (714958370#0),503,9.2,30.1
+weekday_term,b3,victoria_burke,Victoria St / Burke St,-1242247847#0,Burke Street (-1242247847#0),1424,5.2,27.0
+weekday_term,b3,victoria_burke,Victoria St / Burke St,-42644219#0,Victoria Street (-42644219#0),23,11.6,57.8
+weekday_term,b3,victoria_burke,Victoria St / Burke St,1242247850,Victoria Street (1242247850),7451,2.4,4.5
+weekday_term,b3,victoria_burke,Victoria St / Burke St,173449385#1,Victoria Street (173449385#1),6318,2.0,2.4
+weekday_term,b3,victoria_oval,Victoria St / Oval Rd,1242247851#0,Victoria Street (1242247851#0),8502,4.9,22.7
+weekday_term,b3,victoria_oval,Victoria St / Oval Rd,173449383#0,Victoria Street (173449383#0),8917,2.3,5.7
+weekday_term,b3,victoria_oval,Victoria St / Oval Rd,39879848#8,Oval Road (39879848#8),410,8.8,28.2
+weekday_term,b3,esplanade_king,Esplanade / King St,1242247849,King Street (1242247849),528,7.5,20.3
+weekday_term,b3,esplanade_king,Esplanade / King St,23075178#2,Esplanade (23075178#2),69,3.1,5.8
+weekday_term,b3,esplanade_king,Esplanade / King St,287201787#1,Esplanade (287201787#1),58,1.8,4.2
+weekday_term,b3,coral_ocean,Coral St / Ocean St,-60269602#1,Coral Street (-60269602#1),1437,2.9,5.5
+weekday_term,b3,coral_ocean,Coral St / Ocean St,23075181#5,Coral Street (23075181#5),601,3.5,6.2
+weekday_term,b3,coral_ocean,Coral St / Ocean St,60269598#2,Ocean Street (60269598#2),1918,3.2,9.1
+weekday_term,b3,albert_esplanade,Albert Pl / Esplanade,-184389885,Albert Place (-184389885),293,1.8,3.4
+weekday_term,b3,albert_esplanade,Albert Pl / Esplanade,-184389891#3,Esplanade (-184389891#3),515,2.3,5.2
+weekday_term,b3,albert_esplanade,Albert Pl / Esplanade,184389891#2,Esplanade (184389891#2),444,2.8,4.7
+weekday_term,b3,eyre_flinders_bridge,Eyre Tce / Flinders Pde / Bridge Tce,-217056482#1,Bridge Terrace (-217056482#1),724,4.3,9.6
+weekday_term,b3,eyre_flinders_bridge,Eyre Tce / Flinders Pde / Bridge Tce,23075179#5,Flinders Parade (23075179#5),1500,2.7,5.0
+weekday_term,b3,eyre_flinders_bridge,Eyre Tce / Flinders Pde / Bridge Tce,50904907#2,Eyre Terrace (50904907#2),228,3.4,9.0
+weekday_term,b3,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,-23075180#5,Crozier Road (-23075180#5),1714,1.8,4.7
+weekday_term,b3,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,23075180#4,Crozier Road (23075180#4),1703,1.6,5.3
+weekday_term,b3,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,42530541#5,Acraman Street (42530541#5),1367,4.1,16.2
+weekday_term,b3,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,42530557#1,Lindsay Street (42530557#1),653,4.3,19.1
+weekday_term,b3,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,-23075171#7,Seaview Road (-23075171#7),1137,1.6,3.7
+weekday_term,b3,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,-42530541#0,Acraman Street (-42530541#0),981,3.8,12.9
+weekday_term,b3,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,23075171#6,Seaview Road (23075171#6),731,1.4,3.4
+weekday_term,b3,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,42530540#4,Carlyle Street (42530540#4),1203,4.1,14.6
+weekday_term,b3,armstrong_crozier,Armstrong Rd / Crozier Rd,-29282260#1,Armstrong Road (-29282260#1),2988,2.0,8.1
+weekday_term,b3,armstrong_crozier,Armstrong Rd / Crozier Rd,39946279,Crozier Road (39946279),2448,11.8,46.2
+weekday_term,b3,armstrong_crozier,Armstrong Rd / Crozier Rd,97536780,Armstrong Road (97536780),3126,4.1,18.4
+weekday_term,b3,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,-42648429#0,Waggon Road (-42648429#0),193,8.8,34.4
+weekday_term,b3,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,-427209587#1,Welch Road (-427209587#1),3396,1.9,5.2
+weekday_term,b3,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,29282267,Armstrong Road (29282267),3250,3.4,17.9
+weekday_term,b4,torrens_victoria_wills,Torrens St / Victoria St / Wills St,1211144532#2,Victoria Street (1211144532#2),2142,4.9,16.4
+weekday_term,b4,torrens_victoria_wills,Torrens St / Victoria St / Wills St,1242247845,Victoria Street (1242247845),6283,3.6,7.7
+weekday_term,b4,torrens_victoria_wills,Torrens St / Victoria St / Wills St,23075177#1,Wills Street (23075177#1),698,6.7,23.8
+weekday_term,b4,torrens_victoria_wills,Torrens St / Victoria St / Wills St,50904911,Torrens Street (50904911),3712,2.5,6.1
+weekday_term,b4,torrens_crozier,Torrens St / Crozier Rd,1202918968#1,Torrens Street (1202918968#1),5842,2.7,6.7
+weekday_term,b4,torrens_crozier,Torrens St / Crozier Rd,1202918970,Crozier Road (1202918970),994,3.0,13.8
+weekday_term,b4,torrens_crozier,Torrens St / Crozier Rd,1202918972,Crozier Road (1202918972),997,5.2,21.3
+weekday_term,b4,torrens_crozier,Torrens St / Crozier Rd,50904910#2,Torrens Street (50904910#2),4028,2.8,5.3
+weekday_term,b4,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,173449331,Hindmarsh Road (173449331),7333,4.9,10.5
+weekday_term,b4,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,184390356,Eyre Terrace (184390356),1368,13.2,46.2
+weekday_term,b4,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,23075170,Seaview Road (23075170),789,8.6,30.3
+weekday_term,b4,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,576495712#3,Torrens Street (576495712#3),6601,4.0,11.0
+weekday_term,b4,torrens_coral,Torrens St / Coral St,173449376#1,Torrens Street (173449376#1),6836,1.9,6.0
+weekday_term,b4,torrens_coral,Torrens St / Coral St,50904910#0,Torrens Street (50904910#0),4232,3.7,36.5
+weekday_term,b4,torrens_coral,Torrens St / Coral St,60269602#2,Coral Street (60269602#2),1059,19.0,58.6
+weekday_term,b4,torrens_ocean,Torrens St / Ocean St,576495725#0,Torrens Street (576495725#0),7866,2.3,2.7
+weekday_term,b4,torrens_ocean,Torrens St / Ocean St,vhfix_torrens_ocean_right,nan (vhfix_torrens_ocean_right),268,7.0,31.8
+weekday_term,b4,torrens_stuart,Torrens St / Stuart St,173449376#4,Torrens Street (173449376#4),6709,1.9,4.2
+weekday_term,b4,torrens_stuart,Torrens St / Stuart St,576495721#1,Torrens Street (576495721#1),5838,1.4,2.5
+weekday_term,b4,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-217056482#2,Bridge Terrace (-217056482#2),60,6.8,24.0
+weekday_term,b4,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-42530401#0,Grantley Avenue (-42530401#0),19,11.6,34.3
+weekday_term,b4,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-50904904#7,Hindmarsh Road (-50904904#7),7030,2.2,2.2
+weekday_term,b4,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,217056482#0,Bridge Terrace (217056482#0),1132,10.1,41.5
+weekday_term,b4,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,50904904#6,Hindmarsh Road (50904904#6),8374,3.4,3.1
+weekday_term,b4,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449324,Bay Road (173449324),6971,4.2,13.3
+weekday_term,b4,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449327,George Main Road (173449327),2017,4.2,17.5
+weekday_term,b4,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449382,Victoria Street (173449382),8465,1.4,2.2
+weekday_term,b4,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706687#1,Port Elliot Road (53706687#1),5740,4.6,13.1
+weekday_term,b4,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706691#1,Adelaide Road (53706691#1),3568,3.9,13.2
+weekday_term,b4,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706695,Hindmarsh Road (53706695),8012,1.7,2.9
+weekday_term,b4,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),714958370#0,nan (714958370#0),504,6.1,18.4
+weekday_term,b4,victoria_burke,Victoria St / Burke St,-1242247847#0,Burke Street (-1242247847#0),1482,5.3,29.0
+weekday_term,b4,victoria_burke,Victoria St / Burke St,-42644219#0,Victoria Street (-42644219#0),23,12.1,96.7
+weekday_term,b4,victoria_burke,Victoria St / Burke St,1242247850,Victoria Street (1242247850),7518,2.4,4.5
+weekday_term,b4,victoria_burke,Victoria St / Burke St,173449385#1,Victoria Street (173449385#1),6405,2.0,2.4
+weekday_term,b4,victoria_oval,Victoria St / Oval Rd,1242247851#0,Victoria Street (1242247851#0),8655,4.9,19.2
+weekday_term,b4,victoria_oval,Victoria St / Oval Rd,173449383#0,Victoria Street (173449383#0),9033,2.5,8.3
+weekday_term,b4,victoria_oval,Victoria St / Oval Rd,39879848#8,Oval Road (39879848#8),420,9.5,28.2
+weekday_term,b4,esplanade_king,Esplanade / King St,1242247849,King Street (1242247849),527,7.5,20.3
+weekday_term,b4,esplanade_king,Esplanade / King St,23075178#2,Esplanade (23075178#2),69,3.1,5.8
+weekday_term,b4,esplanade_king,Esplanade / King St,287201787#1,Esplanade (287201787#1),61,1.9,4.2
+weekday_term,b4,coral_ocean,Coral St / Ocean St,-60269602#1,Coral Street (-60269602#1),1443,3.0,5.5
+weekday_term,b4,coral_ocean,Coral St / Ocean St,23075181#5,Coral Street (23075181#5),646,3.5,6.2
+weekday_term,b4,coral_ocean,Coral St / Ocean St,60269598#2,Ocean Street (60269598#2),1896,3.3,10.1
+weekday_term,b4,albert_esplanade,Albert Pl / Esplanade,-184389885,Albert Place (-184389885),295,1.8,3.4
+weekday_term,b4,albert_esplanade,Albert Pl / Esplanade,-184389891#3,Esplanade (-184389891#3),514,2.3,5.2
+weekday_term,b4,albert_esplanade,Albert Pl / Esplanade,184389891#2,Esplanade (184389891#2),446,2.8,4.7
+weekday_term,b4,eyre_flinders_bridge,Eyre Tce / Flinders Pde / Bridge Tce,-217056482#1,Bridge Terrace (-217056482#1),773,4.2,9.8
+weekday_term,b4,eyre_flinders_bridge,Eyre Tce / Flinders Pde / Bridge Tce,23075179#5,Flinders Parade (23075179#5),1514,2.7,5.0
+weekday_term,b4,eyre_flinders_bridge,Eyre Tce / Flinders Pde / Bridge Tce,50904907#2,Eyre Terrace (50904907#2),227,3.1,8.9
+weekday_term,b4,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,-23075180#5,Crozier Road (-23075180#5),1613,1.9,4.7
+weekday_term,b4,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,23075180#4,Crozier Road (23075180#4),1610,1.6,4.8
+weekday_term,b4,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,42530541#5,Acraman Street (42530541#5),1387,3.9,13.2
+weekday_term,b4,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,42530557#1,Lindsay Street (42530557#1),663,4.6,29.3
+weekday_term,b4,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,-23075171#7,Seaview Road (-23075171#7),1109,1.6,3.7
+weekday_term,b4,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,-42530541#0,Acraman Street (-42530541#0),995,3.9,12.2
+weekday_term,b4,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,23075171#6,Seaview Road (23075171#6),714,1.4,3.3
+weekday_term,b4,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,42530540#4,Carlyle Street (42530540#4),1223,4.1,12.6
+weekday_term,b4,armstrong_crozier,Armstrong Rd / Crozier Rd,-29282260#1,Armstrong Road (-29282260#1),2843,3.7,9.1
+weekday_term,b4,armstrong_crozier,Armstrong Rd / Crozier Rd,39946279,Crozier Road (39946279),2349,9.4,36.0
+weekday_term,b4,armstrong_crozier,Armstrong Rd / Crozier Rd,97536780,Armstrong Road (97536780),3011,4.7,9.9
+weekday_term,b4,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,-42648429#0,Waggon Road (-42648429#0),193,8.3,34.2
+weekday_term,b4,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,-427209587#1,Welch Road (-427209587#1),3240,3.2,3.0
+weekday_term,b4,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,29282267,Armstrong Road (29282267),3190,7.2,3.0
+weekday_term,b5,torrens_victoria_wills,Torrens St / Victoria St / Wills St,1211144532#2,Victoria Street (1211144532#2),2132,4.9,16.4
+weekday_term,b5,torrens_victoria_wills,Torrens St / Victoria St / Wills St,1242247845,Victoria Street (1242247845),6229,3.6,7.7
+weekday_term,b5,torrens_victoria_wills,Torrens St / Victoria St / Wills St,23075177#1,Wills Street (23075177#1),695,7.1,24.8
+weekday_term,b5,torrens_victoria_wills,Torrens St / Victoria St / Wills St,50904911,Torrens Street (50904911),3702,2.5,6.1
+weekday_term,b5,torrens_crozier,Torrens St / Crozier Rd,1202918968#1,Torrens Street (1202918968#1),5693,2.7,6.7
+weekday_term,b5,torrens_crozier,Torrens St / Crozier Rd,1202918970,Crozier Road (1202918970),993,3.2,12.2
+weekday_term,b5,torrens_crozier,Torrens St / Crozier Rd,1202918972,Crozier Road (1202918972),413,5.4,19.7
+weekday_term,b5,torrens_crozier,Torrens St / Crozier Rd,50904910#2,Torrens Street (50904910#2),3929,2.8,6.3
+weekday_term,b5,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,173449331,Hindmarsh Road (173449331),7288,5.0,10.5
+weekday_term,b5,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,184390356,Eyre Terrace (184390356),1227,12.8,42.2
+weekday_term,b5,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,23075170,Seaview Road (23075170),422,7.9,26.4
+weekday_term,b5,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,576495712#3,Torrens Street (576495712#3),6295,3.9,11.0
+weekday_term,b5,torrens_coral,Torrens St / Coral St,173449376#1,Torrens Street (173449376#1),6829,2.7,6.9
+weekday_term,b5,torrens_coral,Torrens St / Coral St,50904910#0,Torrens Street (50904910#0),4241,3.6,30.4
+weekday_term,b5,torrens_coral,Torrens St / Coral St,60269602#2,Coral Street (60269602#2),1039,18.7,58.6
+weekday_term,b5,torrens_ocean,Torrens St / Ocean St,576495725#0,Torrens Street (576495725#0),7719,2.3,2.7
+weekday_term,b5,torrens_ocean,Torrens St / Ocean St,vhfix_torrens_ocean_right,nan (vhfix_torrens_ocean_right),270,6.8,29.5
+weekday_term,b5,torrens_stuart,Torrens St / Stuart St,173449376#4,Torrens Street (173449376#4),6688,1.9,4.2
+weekday_term,b5,torrens_stuart,Torrens St / Stuart St,576495721#1,Torrens Street (576495721#1),5842,1.4,2.5
+weekday_term,b5,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-217056482#2,Bridge Terrace (-217056482#2),60,5.8,16.6
+weekday_term,b5,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-42530401#0,Grantley Avenue (-42530401#0),19,9.7,39.6
+weekday_term,b5,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-50904904#7,Hindmarsh Road (-50904904#7),7206,2.2,2.2
+weekday_term,b5,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,217056482#0,Bridge Terrace (217056482#0),1111,9.3,38.7
+weekday_term,b5,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,50904904#6,Hindmarsh Road (50904904#6),8379,3.4,3.1
+weekday_term,b5,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449324,Bay Road (173449324),6941,4.2,13.3
+weekday_term,b5,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449327,George Main Road (173449327),2005,4.1,16.5
+weekday_term,b5,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449382,Victoria Street (173449382),8452,1.5,2.2
+weekday_term,b5,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706687#1,Port Elliot Road (53706687#1),5732,5.6,18.0
+weekday_term,b5,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706691#1,Adelaide Road (53706691#1),3571,5.0,18.0
+weekday_term,b5,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706695,Hindmarsh Road (53706695),8006,2.9,8.7
+weekday_term,b5,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),714958370#0,nan (714958370#0),503,9.3,31.1
+weekday_term,b5,victoria_burke,Victoria St / Burke St,-1242247847#0,Burke Street (-1242247847#0),1465,5.6,34.7
+weekday_term,b5,victoria_burke,Victoria St / Burke St,-42644219#0,Victoria Street (-42644219#0),22,12.0,66.1
+weekday_term,b5,victoria_burke,Victoria St / Burke St,1242247850,Victoria Street (1242247850),7464,2.4,4.5
+weekday_term,b5,victoria_burke,Victoria St / Burke St,173449385#1,Victoria Street (173449385#1),6384,2.0,2.4
+weekday_term,b5,victoria_oval,Victoria St / Oval Rd,1242247851#0,Victoria Street (1242247851#0),8638,4.9,20.6
+weekday_term,b5,victoria_oval,Victoria St / Oval Rd,173449383#0,Victoria Street (173449383#0),8992,2.7,8.7
+weekday_term,b5,victoria_oval,Victoria St / Oval Rd,39879848#8,Oval Road (39879848#8),420,10.1,30.2
+weekday_term,b5,esplanade_king,Esplanade / King St,1242247849,King Street (1242247849),528,7.6,21.1
+weekday_term,b5,esplanade_king,Esplanade / King St,23075178#2,Esplanade (23075178#2),69,3.2,5.8
+weekday_term,b5,esplanade_king,Esplanade / King St,287201787#1,Esplanade (287201787#1),67,2.0,5.2
+weekday_term,b5,coral_ocean,Coral St / Ocean St,-60269602#1,Coral Street (-60269602#1),1446,3.0,5.5
+weekday_term,b5,coral_ocean,Coral St / Ocean St,23075181#5,Coral Street (23075181#5),599,3.5,6.2
+weekday_term,b5,coral_ocean,Coral St / Ocean St,60269598#2,Ocean Street (60269598#2),1916,3.2,9.1
+weekday_term,b5,albert_esplanade,Albert Pl / Esplanade,-184389885,Albert Place (-184389885),297,1.8,3.4
+weekday_term,b5,albert_esplanade,Albert Pl / Esplanade,-184389891#3,Esplanade (-184389891#3),515,2.3,5.2
+weekday_term,b5,albert_esplanade,Albert Pl / Esplanade,184389891#2,Esplanade (184389891#2),447,2.8,3.7
+weekday_term,b5,eyre_flinders_bridge,Eyre Tce / Flinders Pde / Bridge Tce,-217056482#1,Bridge Terrace (-217056482#1),731,4.2,10.1
+weekday_term,b5,eyre_flinders_bridge,Eyre Tce / Flinders Pde / Bridge Tce,23075179#5,Flinders Parade (23075179#5),1499,2.7,5.0
+weekday_term,b5,eyre_flinders_bridge,Eyre Tce / Flinders Pde / Bridge Tce,50904907#2,Eyre Terrace (50904907#2),223,3.5,12.0
+weekday_term,b5,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,-23075180#5,Crozier Road (-23075180#5),1636,1.9,4.7
+weekday_term,b5,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,23075180#4,Crozier Road (23075180#4),1618,1.6,4.8
+weekday_term,b5,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,42530541#5,Acraman Street (42530541#5),1396,4.1,17.2
+weekday_term,b5,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,42530557#1,Lindsay Street (42530557#1),661,4.5,33.1
+weekday_term,b5,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,-23075171#7,Seaview Road (-23075171#7),1132,1.6,3.7
+weekday_term,b5,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,-42530541#0,Acraman Street (-42530541#0),985,4.0,13.9
+weekday_term,b5,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,23075171#6,Seaview Road (23075171#6),721,1.4,2.4
+weekday_term,b5,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,42530540#4,Carlyle Street (42530540#4),1218,4.1,11.6
+weekday_term,b5,armstrong_crozier,Armstrong Rd / Crozier Rd,-29282260#1,Armstrong Road (-29282260#1),2855,3.7,9.1
+weekday_term,b5,armstrong_crozier,Armstrong Rd / Crozier Rd,39946279,Crozier Road (39946279),2360,9.6,36.0
+weekday_term,b5,armstrong_crozier,Armstrong Rd / Crozier Rd,97536780,Armstrong Road (97536780),3053,4.7,10.9
+weekday_term,b5,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,-42648429#0,Waggon Road (-42648429#0),194,7.4,30.2
+weekday_term,b5,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,-427209587#1,Welch Road (-427209587#1),3243,3.2,3.0
+weekday_term,b5,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,29282267,Armstrong Road (29282267),3189,7.2,3.0
+weekday_term,bp,torrens_victoria_wills,Torrens St / Victoria St / Wills St,1211144532#2,Victoria Street (1211144532#2),2117,4.9,16.4
+weekday_term,bp,torrens_victoria_wills,Torrens St / Victoria St / Wills St,1242247845,Victoria Street (1242247845),6215,3.6,7.7
+weekday_term,bp,torrens_victoria_wills,Torrens St / Victoria St / Wills St,23075177#1,Wills Street (23075177#1),700,6.5,22.8
+weekday_term,bp,torrens_victoria_wills,Torrens St / Victoria St / Wills St,50904911,Torrens Street (50904911),3632,2.4,6.1
+weekday_term,bp,torrens_crozier,Torrens St / Crozier Rd,1202918968#1,Torrens Street (1202918968#1),5669,2.7,6.7
+weekday_term,bp,torrens_crozier,Torrens St / Crozier Rd,1202918970,Crozier Road (1202918970),1023,3.2,12.2
+weekday_term,bp,torrens_crozier,Torrens St / Crozier Rd,1202918972,Crozier Road (1202918972),439,5.7,21.7
+weekday_term,bp,torrens_crozier,Torrens St / Crozier Rd,50904910#2,Torrens Street (50904910#2),3871,2.8,5.3
+weekday_term,bp,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,173449331,Hindmarsh Road (173449331),7189,4.9,9.5
+weekday_term,bp,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,184390356,Eyre Terrace (184390356),1206,13.0,44.2
+weekday_term,bp,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,23075170,Seaview Road (23075170),421,7.6,25.4
+weekday_term,bp,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,576495712#3,Torrens Street (576495712#3),6256,3.9,11.0
+weekday_term,bp,torrens_coral,Torrens St / Coral St,173449376#1,Torrens Street (173449376#1),6806,2.7,6.9
+weekday_term,bp,torrens_coral,Torrens St / Coral St,50904910#0,Torrens Street (50904910#0),4181,3.7,37.5
+weekday_term,bp,torrens_coral,Torrens St / Coral St,60269602#2,Coral Street (60269602#2),1032,18.5,56.8
+weekday_term,bp,torrens_ocean,Torrens St / Ocean St,576495725#0,Torrens Street (576495725#0),7623,2.3,2.7
+weekday_term,bp,torrens_ocean,Torrens St / Ocean St,vhfix_torrens_ocean_right,nan (vhfix_torrens_ocean_right),271,6.6,31.0
+weekday_term,bp,torrens_stuart,Torrens St / Stuart St,173449376#4,Torrens Street (173449376#4),6661,1.8,6.6
+weekday_term,bp,torrens_stuart,Torrens St / Stuart St,576495721#1,Torrens Street (576495721#1),5749,1.4,2.5
+weekday_term,bp,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-217056482#2,Bridge Terrace (-217056482#2),60,5.7,17.5
+weekday_term,bp,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-42530401#0,Grantley Avenue (-42530401#0),17,9.1,25.8
+weekday_term,bp,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-50904904#7,Hindmarsh Road (-50904904#7),7159,2.2,2.2
+weekday_term,bp,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,217056482#0,Bridge Terrace (217056482#0),1100,10.0,143.0
+weekday_term,bp,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,50904904#6,Hindmarsh Road (50904904#6),8274,3.3,3.1
+weekday_term,bp,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449324,Bay Road (173449324),6906,4.1,12.3
+weekday_term,bp,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449327,George Main Road (173449327),1937,4.0,16.5
+weekday_term,bp,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449382,Victoria Street (173449382),8310,1.4,2.2
+weekday_term,bp,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706687#1,Port Elliot Road (53706687#1),5704,4.5,12.1
+weekday_term,bp,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706691#1,Adelaide Road (53706691#1),3456,3.9,13.2
+weekday_term,bp,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706695,Hindmarsh Road (53706695),7944,1.7,2.9
+weekday_term,bp,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),714958370#0,nan (714958370#0),506,5.8,16.9
+weekday_term,bp,victoria_burke,Victoria St / Burke St,-1242247847#0,Burke Street (-1242247847#0),1430,5.0,27.6
+weekday_term,bp,victoria_burke,Victoria St / Burke St,-42644219#0,Victoria Street (-42644219#0),26,12.8,58.9
+weekday_term,bp,victoria_burke,Victoria St / Burke St,1242247850,Victoria Street (1242247850),7413,2.4,4.5
+weekday_term,bp,victoria_burke,Victoria St / Burke St,173449385#1,Victoria Street (173449385#1),6305,2.1,2.4
+weekday_term,bp,victoria_oval,Victoria St / Oval Rd,1242247851#0,Victoria Street (1242247851#0),8501,4.8,19.2
+weekday_term,bp,victoria_oval,Victoria St / Oval Rd,173449383#0,Victoria Street (173449383#0),8880,2.4,5.9
+weekday_term,bp,victoria_oval,Victoria St / Oval Rd,39879848#8,Oval Road (39879848#8),419,8.6,26.2
+weekday_term,bp,esplanade_king,Esplanade / King St,1242247849,King Street (1242247849),528,7.6,22.3
+weekday_term,bp,esplanade_king,Esplanade / King St,23075178#2,Esplanade (23075178#2),68,3.1,5.8
+weekday_term,bp,esplanade_king,Esplanade / King St,287201787#1,Esplanade (287201787#1),59,1.9,5.2
+weekday_term,bp,coral_ocean,Coral St / Ocean St,-60269602#1,Coral Street (-60269602#1),1441,2.9,5.5
+weekday_term,bp,coral_ocean,Coral St / Ocean St,23075181#5,Coral Street (23075181#5),599,3.5,6.2
+weekday_term,bp,coral_ocean,Coral St / Ocean St,60269598#2,Ocean Street (60269598#2),1904,3.2,10.1
+weekday_term,bp,albert_esplanade,Albert Pl / Esplanade,-184389885,Albert Place (-184389885),297,1.8,3.4
+weekday_term,bp,albert_esplanade,Albert Pl / Esplanade,-184389891#3,Esplanade (-184389891#3),515,2.3,5.2
+weekday_term,bp,albert_esplanade,Albert Pl / Esplanade,184389891#2,Esplanade (184389891#2),446,2.8,4.7
+weekday_term,bp,eyre_flinders_bridge,Eyre Tce / Flinders Pde / Bridge Tce,-217056482#1,Bridge Terrace (-217056482#1),728,4.2,15.4
+weekday_term,bp,eyre_flinders_bridge,Eyre Tce / Flinders Pde / Bridge Tce,23075179#5,Flinders Parade (23075179#5),1485,2.7,5.0
+weekday_term,bp,eyre_flinders_bridge,Eyre Tce / Flinders Pde / Bridge Tce,50904907#2,Eyre Terrace (50904907#2),220,3.5,10.7
+weekday_term,bp,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,-23075180#5,Crozier Road (-23075180#5),1733,1.8,4.7
+weekday_term,bp,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,23075180#4,Crozier Road (23075180#4),1698,1.6,4.8
+weekday_term,bp,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,42530541#5,Acraman Street (42530541#5),1383,4.2,16.2
+weekday_term,bp,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,42530557#1,Lindsay Street (42530557#1),648,4.4,20.1
+weekday_term,bp,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,-23075171#7,Seaview Road (-23075171#7),1158,1.6,3.7
+weekday_term,bp,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,-42530541#0,Acraman Street (-42530541#0),971,4.0,12.9
+weekday_term,bp,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,23075171#6,Seaview Road (23075171#6),731,1.4,3.4
+weekday_term,bp,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,42530540#4,Carlyle Street (42530540#4),1202,4.0,11.6
+weekday_term,bp,armstrong_crozier,Armstrong Rd / Crozier Rd,-29282260#1,Armstrong Road (-29282260#1),2994,2.0,8.1
+weekday_term,bp,armstrong_crozier,Armstrong Rd / Crozier Rd,39946279,Crozier Road (39946279),2431,12.7,46.2
+weekday_term,bp,armstrong_crozier,Armstrong Rd / Crozier Rd,97536780,Armstrong Road (97536780),3163,4.0,15.4
+weekday_term,bp,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,-42648429#0,Waggon Road (-42648429#0),192,9.3,37.7
+weekday_term,bp,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,-427209587#1,Welch Road (-427209587#1),3396,1.9,6.2
+weekday_term,bp,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,29282267,Armstrong Road (29282267),3239,3.4,17.9
+weekday_term,n1,torrens_victoria_wills,Torrens St / Victoria St / Wills St,1211144532#2,Victoria Street (1211144532#2),2168,4.6,15.2
+weekday_term,n1,torrens_victoria_wills,Torrens St / Victoria St / Wills St,1242247845,Victoria Street (1242247845),6194,3.6,6.7
+weekday_term,n1,torrens_victoria_wills,Torrens St / Victoria St / Wills St,23075177#1,Wills Street (23075177#1),697,6.5,22.8
+weekday_term,n1,torrens_victoria_wills,Torrens St / Victoria St / Wills St,50904911,Torrens Street (50904911),3583,2.4,6.1
+weekday_term,n1,torrens_crozier,Torrens St / Crozier Rd,1202918968#1,Torrens Street (1202918968#1),5733,2.7,6.7
+weekday_term,n1,torrens_crozier,Torrens St / Crozier Rd,1202918970,Crozier Road (1202918970),1086,2.9,12.8
+weekday_term,n1,torrens_crozier,Torrens St / Crozier Rd,1202918972,Crozier Road (1202918972),1015,5.1,21.3
+weekday_term,n1,torrens_crozier,Torrens St / Crozier Rd,50904910#2,Torrens Street (50904910#2),3890,2.8,5.3
+weekday_term,n1,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,173449331,Hindmarsh Road (173449331),8176,5.1,10.5
+weekday_term,n1,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,184390356,Eyre Terrace (184390356),2689,14.9,51.2
+weekday_term,n1,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,23075170,Seaview Road (23075170),825,11.2,36.3
+weekday_term,n1,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,576495712#3,Torrens Street (576495712#3),6543,5.4,16.0
+weekday_term,n1,torrens_coral,Torrens St / Coral St,173449376#1,Torrens Street (173449376#1),6783,1.8,5.0
+weekday_term,n1,torrens_coral,Torrens St / Coral St,50904910#0,Torrens Street (50904910#0),4093,3.6,37.5
+weekday_term,n1,torrens_coral,Torrens St / Coral St,60269602#2,Coral Street (60269602#2),1077,17.9,54.6
+weekday_term,n1,torrens_ocean,Torrens St / Ocean St,576495725#0,Torrens Street (576495725#0),7906,2.3,2.7
+weekday_term,n1,torrens_ocean,Torrens St / Ocean St,vhfix_torrens_ocean_right,nan (vhfix_torrens_ocean_right),269,6.9,29.0
+weekday_term,n1,torrens_stuart,Torrens St / Stuart St,173449376#4,Torrens Street (173449376#4),6670,1.9,4.2
+weekday_term,n1,torrens_stuart,Torrens St / Stuart St,576495721#1,Torrens Street (576495721#1),5688,1.4,2.5
+weekday_term,n1,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-217056482#2,Bridge Terrace (-217056482#2),60,2.0,4.6
+weekday_term,n1,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-42530401#0,Grantley Avenue (-42530401#0),12,11.8,31.7
+weekday_term,n1,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-50904904#7,Hindmarsh Road (-50904904#7),8270,1.5,3.0
+weekday_term,n1,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,217056482#0,Bridge Terrace (217056482#0),97,3.6,9.0
+weekday_term,n1,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,50904904#6,Hindmarsh Road (50904904#6),8204,3.3,6.8
+weekday_term,n1,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449324,Bay Road (173449324),6939,4.2,12.3
+weekday_term,n1,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449327,George Main Road (173449327),2008,4.2,16.5
+weekday_term,n1,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449382,Victoria Street (173449382),8453,1.4,2.2
+weekday_term,n1,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706687#1,Port Elliot Road (53706687#1),5740,5.7,18.0
+weekday_term,n1,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706691#1,Adelaide Road (53706691#1),3535,5.1,18.0
+weekday_term,n1,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706695,Hindmarsh Road (53706695),7976,2.9,8.7
+weekday_term,n1,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),714958370#0,nan (714958370#0),503,9.1,31.1
+weekday_term,n1,victoria_burke,Victoria St / Burke St,-1242247847#0,Burke Street (-1242247847#0),1498,5.6,29.0
+weekday_term,n1,victoria_burke,Victoria St / Burke St,-42644219#0,Victoria Street (-42644219#0),21,9.5,45.9
+weekday_term,n1,victoria_burke,Victoria St / Burke St,1242247850,Victoria Street (1242247850),7429,2.4,5.5
+weekday_term,n1,victoria_burke,Victoria St / Burke St,173449385#1,Victoria Street (173449385#1),6301,2.0,2.4
+weekday_term,n1,victoria_oval,Victoria St / Oval Rd,1242247851#0,Victoria Street (1242247851#0),8630,4.7,19.2
+weekday_term,n1,victoria_oval,Victoria St / Oval Rd,173449383#0,Victoria Street (173449383#0),8986,2.6,7.7
+weekday_term,n1,victoria_oval,Victoria St / Oval Rd,39879848#8,Oval Road (39879848#8),436,9.1,28.2
+weekday_term,n1,esplanade_king,Esplanade / King St,1242247849,King Street (1242247849),532,7.6,20.3
+weekday_term,n1,esplanade_king,Esplanade / King St,23075178#2,Esplanade (23075178#2),69,3.1,5.8
+weekday_term,n1,esplanade_king,Esplanade / King St,287201787#1,Esplanade (287201787#1),59,2.0,5.2
+weekday_term,n1,coral_ocean,Coral St / Ocean St,-60269602#1,Coral Street (-60269602#1),1448,3.0,5.5
+weekday_term,n1,coral_ocean,Coral St / Ocean St,23075181#5,Coral Street (23075181#5),623,3.4,5.8
+weekday_term,n1,coral_ocean,Coral St / Ocean St,60269598#2,Ocean Street (60269598#2),2101,3.4,10.1
+weekday_term,n1,albert_esplanade,Albert Pl / Esplanade,-184389885,Albert Place (-184389885),452,1.9,3.4
+weekday_term,n1,albert_esplanade,Albert Pl / Esplanade,-184389891#3,Esplanade (-184389891#3),513,2.3,5.2
+weekday_term,n1,albert_esplanade,Albert Pl / Esplanade,184389891#2,Esplanade (184389891#2),435,2.8,5.7
+weekday_term,n1,eyre_flinders_bridge,Eyre Tce / Flinders Pde / Bridge Tce,-217056482#1,Bridge Terrace (-217056482#1),99,2.9,7.8
+weekday_term,n1,eyre_flinders_bridge,Eyre Tce / Flinders Pde / Bridge Tce,23075179#5,Flinders Parade (23075179#5),944,2.2,5.0
+weekday_term,n1,eyre_flinders_bridge,Eyre Tce / Flinders Pde / Bridge Tce,50904907#2,Eyre Terrace (50904907#2),1054,2.9,6.0
+weekday_term,n1,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,-23075180#5,Crozier Road (-23075180#5),1643,1.9,4.7
+weekday_term,n1,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,23075180#4,Crozier Road (23075180#4),1649,1.6,4.8
+weekday_term,n1,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,42530541#5,Acraman Street (42530541#5),1491,4.2,15.7
+weekday_term,n1,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,42530557#1,Lindsay Street (42530557#1),720,4.8,30.0
+weekday_term,n1,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,-23075171#7,Seaview Road (-23075171#7),1169,1.6,3.7
+weekday_term,n1,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,-42530541#0,Acraman Street (-42530541#0),1080,4.0,13.9
+weekday_term,n1,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,23075171#6,Seaview Road (23075171#6),710,1.4,2.5
+weekday_term,n1,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,42530540#4,Carlyle Street (42530540#4),1348,4.1,14.6
+weekday_term,n1,armstrong_crozier,Armstrong Rd / Crozier Rd,-29282260#1,Armstrong Road (-29282260#1),2878,3.7,9.1
+weekday_term,n1,armstrong_crozier,Armstrong Rd / Crozier Rd,39946279,Crozier Road (39946279),2378,9.9,37.0
+weekday_term,n1,armstrong_crozier,Armstrong Rd / Crozier Rd,97536780,Armstrong Road (97536780),3061,4.8,11.9
+weekday_term,n1,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,-42648429#0,Waggon Road (-42648429#0),193,7.6,30.2
+weekday_term,n1,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,-427209587#1,Welch Road (-427209587#1),3275,3.2,3.0
+weekday_term,n1,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,29282267,Armstrong Road (29282267),3218,7.1,3.0
+summer_peak,baseline,torrens_victoria_wills,Torrens St / Victoria St / Wills St,1211144532#2,Victoria Street (1211144532#2),3230,5.5,19.4
+summer_peak,baseline,torrens_victoria_wills,Torrens St / Victoria St / Wills St,1242247845,Victoria Street (1242247845),6588,3.7,7.7
+summer_peak,baseline,torrens_victoria_wills,Torrens St / Victoria St / Wills St,23075177#1,Wills Street (23075177#1),1262,9.9,33.8
+summer_peak,baseline,torrens_victoria_wills,Torrens St / Victoria St / Wills St,50904911,Torrens Street (50904911),3719,2.7,7.1
+summer_peak,baseline,torrens_crozier,Torrens St / Crozier Rd,1202918968#1,Torrens Street (1202918968#1),5814,3.4,9.7
+summer_peak,baseline,torrens_crozier,Torrens St / Crozier Rd,1202918970,Crozier Road (1202918970),1729,3.5,15.6
+summer_peak,baseline,torrens_crozier,Torrens St / Crozier Rd,1202918972,Crozier Road (1202918972),2086,7.9,31.3
+summer_peak,baseline,torrens_crozier,Torrens St / Crozier Rd,50904910#2,Torrens Street (50904910#2),4138,3.1,6.3
+summer_peak,baseline,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,173449331,Hindmarsh Road (173449331),8225,5.4,11.5
+summer_peak,baseline,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,184390356,Eyre Terrace (184390356),2616,20.4,68.2
+summer_peak,baseline,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,23075170,Seaview Road (23075170),1454,13.4,47.3
+summer_peak,baseline,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,576495712#3,Torrens Street (576495712#3),6934,6.0,19.0
+summer_peak,baseline,torrens_coral,Torrens St / Coral St,173449376#1,Torrens Street (173449376#1),7842,2.3,43.0
+summer_peak,baseline,torrens_coral,Torrens St / Coral St,50904910#0,Torrens Street (50904910#0),4376,6.9,75.2
+summer_peak,baseline,torrens_coral,Torrens St / Coral St,60269602#2,Coral Street (60269602#2),1178,26.7,174.1
+summer_peak,baseline,torrens_ocean,Torrens St / Ocean St,576495725#0,Torrens Street (576495725#0),8925,2.3,3.7
+summer_peak,baseline,torrens_ocean,Torrens St / Ocean St,vhfix_torrens_ocean_right,nan (vhfix_torrens_ocean_right),326,10.0,37.0
+summer_peak,baseline,torrens_stuart,Torrens St / Stuart St,173449376#4,Torrens Street (173449376#4),7116,2.3,26.9
+summer_peak,baseline,torrens_stuart,Torrens St / Stuart St,576495721#1,Torrens Street (576495721#1),6164,1.5,2.5
+summer_peak,baseline,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-217056482#2,Bridge Terrace (-217056482#2),87,12.0,48.8
+summer_peak,baseline,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-42530401#0,Grantley Avenue (-42530401#0),49,23.3,60.1
+summer_peak,baseline,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-50904904#7,Hindmarsh Road (-50904904#7),8742,2.3,2.2
+summer_peak,baseline,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,217056482#0,Bridge Terrace (217056482#0),1572,50.7,244.5
+summer_peak,baseline,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,50904904#6,Hindmarsh Road (50904904#6),10808,4.6,5.7
+summer_peak,baseline,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449324,Bay Road (173449324),8615,6.7,23.3
+summer_peak,baseline,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449327,George Main Road (173449327),2208,5.9,24.5
+summer_peak,baseline,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449382,Victoria Street (173449382),10579,1.5,2.2
+summer_peak,baseline,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706687#1,Port Elliot Road (53706687#1),6829,8.2,26.0
+summer_peak,baseline,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706691#1,Adelaide Road (53706691#1),4715,6.9,24.0
+summer_peak,baseline,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706695,Hindmarsh Road (53706695),10017,3.7,10.7
+summer_peak,baseline,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),714958370#0,nan (714958370#0),442,13.9,45.1
+summer_peak,baseline,victoria_burke,Victoria St / Burke St,-1242247847#0,Burke Street (-1242247847#0),1725,10.0,99.0
+summer_peak,baseline,victoria_burke,Victoria St / Burke St,-42644219#0,Victoria Street (-42644219#0),34,14.5,91.1
+summer_peak,baseline,victoria_burke,Victoria St / Burke St,1242247850,Victoria Street (1242247850),7529,2.3,5.5
+summer_peak,baseline,victoria_burke,Victoria St / Burke St,173449385#1,Victoria Street (173449385#1),8025,2.2,2.4
+summer_peak,baseline,victoria_oval,Victoria St / Oval Rd,1242247851#0,Victoria Street (1242247851#0),10630,7.3,29.2
+summer_peak,baseline,victoria_oval,Victoria St / Oval Rd,173449383#0,Victoria Street (173449383#0),10866,7.5,92.7
+summer_peak,baseline,victoria_oval,Victoria St / Oval Rd,39879848#8,Oval Road (39879848#8),521,16.1,197.8
+summer_peak,baseline,esplanade_king,Esplanade / King St,1242247849,King Street (1242247849),1239,9.1,27.3
+summer_peak,baseline,esplanade_king,Esplanade / King St,23075178#2,Esplanade (23075178#2),167,3.4,6.8
+summer_peak,baseline,esplanade_king,Esplanade / King St,287201787#1,Esplanade (287201787#1),406,5.4,28.2
+summer_peak,baseline,coral_ocean,Coral St / Ocean St,-60269602#1,Coral Street (-60269602#1),2250,3.6,8.5
+summer_peak,baseline,coral_ocean,Coral St / Ocean St,23075181#5,Coral Street (23075181#5),1471,3.9,46.7
+summer_peak,baseline,coral_ocean,Coral St / Ocean St,60269598#2,Ocean Street (60269598#2),2555,6.0,28.5
+summer_peak,baseline,albert_esplanade,Albert Pl / Esplanade,-184389885,Albert Place (-184389885),681,1.9,3.4
+summer_peak,baseline,albert_esplanade,Albert Pl / Esplanade,-184389891#3,Esplanade (-184389891#3),1173,2.8,6.2
+summer_peak,baseline,albert_esplanade,Albert Pl / Esplanade,184389891#2,Esplanade (184389891#2),1199,3.2,9.7
+summer_peak,baseline,eyre_flinders_bridge,Eyre Tce / Flinders Pde / Bridge Tce,-217056482#1,Bridge Terrace (-217056482#1),2138,4.8,18.8
+summer_peak,baseline,eyre_flinders_bridge,Eyre Tce / Flinders Pde / Bridge Tce,23075179#5,Flinders Parade (23075179#5),2667,2.6,5.0
+summer_peak,baseline,eyre_flinders_bridge,Eyre Tce / Flinders Pde / Bridge Tce,50904907#2,Eyre Terrace (50904907#2),498,6.8,52.3
+summer_peak,baseline,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,-23075180#5,Crozier Road (-23075180#5),2543,2.5,5.7
+summer_peak,baseline,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,23075180#4,Crozier Road (23075180#4),2440,1.8,6.1
+summer_peak,baseline,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,42530541#5,Acraman Street (42530541#5),1625,7.5,39.4
+summer_peak,baseline,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,42530557#1,Lindsay Street (42530557#1),1334,14.5,206.2
+summer_peak,baseline,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,-23075171#7,Seaview Road (-23075171#7),1700,1.6,3.7
+summer_peak,baseline,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,-42530541#0,Acraman Street (-42530541#0),1747,6.4,29.9
+summer_peak,baseline,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,23075171#6,Seaview Road (23075171#6),1018,1.4,3.4
+summer_peak,baseline,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,42530540#4,Carlyle Street (42530540#4),1612,5.3,20.6
+summer_peak,baseline,armstrong_crozier,Armstrong Rd / Crozier Rd,-29282260#1,Armstrong Road (-29282260#1),3880,4.2,10.1
+summer_peak,baseline,armstrong_crozier,Armstrong Rd / Crozier Rd,39946279,Crozier Road (39946279),3174,28.6,118.0
+summer_peak,baseline,armstrong_crozier,Armstrong Rd / Crozier Rd,97536780,Armstrong Road (97536780),4585,8.4,28.9
+summer_peak,baseline,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,-42648429#0,Waggon Road (-42648429#0),209,9.2,37.9
+summer_peak,baseline,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,-427209587#1,Welch Road (-427209587#1),4294,3.5,3.0
+summer_peak,baseline,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,29282267,Armstrong Road (29282267),4285,8.0,3.0
+summer_peak,c1a,torrens_victoria_wills,Torrens St / Victoria St / Wills St,1211144532#2,Victoria Street (1211144532#2),2097,6.5,21.4
+summer_peak,c1a,torrens_victoria_wills,Torrens St / Victoria St / Wills St,1242247845,Victoria Street (1242247845),6077,4.6,10.7
+summer_peak,c1a,torrens_victoria_wills,Torrens St / Victoria St / Wills St,23075177#1,Wills Street (23075177#1),1675,11.1,38.8
+summer_peak,c1a,torrens_victoria_wills,Torrens St / Victoria St / Wills St,50904911,Torrens Street (50904911),4811,2.4,5.1
+summer_peak,c1a,torrens_crozier,Torrens St / Crozier Rd,1202918968#1,Torrens Street (1202918968#1),6360,5.2,16.7
+summer_peak,c1a,torrens_crozier,Torrens St / Crozier Rd,1202918970,Crozier Road (1202918970),2682,6.4,25.0
+summer_peak,c1a,torrens_crozier,Torrens St / Crozier Rd,1202918972,Crozier Road (1202918972),2141,11.6,46.3
+summer_peak,c1a,torrens_crozier,Torrens St / Crozier Rd,50904910#2,Torrens Street (50904910#2),6249,3.3,7.3
+summer_peak,c1a,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,173449331,Hindmarsh Road (173449331),8125,5.6,12.5
+summer_peak,c1a,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,184390356,Eyre Terrace (184390356),1803,20.1,61.0
+summer_peak,c1a,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,23075170,Seaview Road (23075170),1620,13.9,45.3
+summer_peak,c1a,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,576495712#3,Torrens Street (576495712#3),8159,4.7,13.0
+summer_peak,c1a,torrens_coral,Torrens St / Coral St,173449376#1,Torrens Street (173449376#1),9181,2.8,13.0
+summer_peak,c1a,torrens_coral,Torrens St / Coral St,50904910#0,Torrens Street (50904910#0),6212,2.2,5.5
+summer_peak,c1a,torrens_coral,Torrens St / Coral St,60269602#2,Coral Street (60269602#2),274,19.3,73.8
+summer_peak,c1a,torrens_ocean,Torrens St / Ocean St,576495725#0,Torrens Street (576495725#0),9295,2.3,3.7
+summer_peak,c1a,torrens_ocean,Torrens St / Ocean St,vhfix_torrens_ocean_right,nan (vhfix_torrens_ocean_right),306,10.0,38.2
+summer_peak,c1a,torrens_stuart,Torrens St / Stuart St,173449376#4,Torrens Street (173449376#4),8361,2.2,7.3
+summer_peak,c1a,torrens_stuart,Torrens St / Stuart St,576495721#1,Torrens Street (576495721#1),6770,1.2,2.5
+summer_peak,c1a,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-217056482#2,Bridge Terrace (-217056482#2),87,12.8,51.1
+summer_peak,c1a,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-42530401#0,Grantley Avenue (-42530401#0),55,19.4,52.8
+summer_peak,c1a,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-50904904#7,Hindmarsh Road (-50904904#7),8689,2.3,2.2
+summer_peak,c1a,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,1042090394,nan (1042090394),1,36.9,57.2
+summer_peak,c1a,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,217056482#0,Bridge Terrace (217056482#0),1404,38.5,373.1
+summer_peak,c1a,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,50904904#6,Hindmarsh Road (50904904#6),10539,4.9,9.1
+summer_peak,c1a,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449324,Bay Road (173449324),8550,6.7,20.3
+summer_peak,c1a,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449327,George Main Road (173449327),2205,5.8,23.5
+summer_peak,c1a,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449382,Victoria Street (173449382),10541,1.5,2.2
+summer_peak,c1a,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706687#1,Port Elliot Road (53706687#1),6847,7.8,25.0
+summer_peak,c1a,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706691#1,Adelaide Road (53706691#1),4657,6.9,24.0
+summer_peak,c1a,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706695,Hindmarsh Road (53706695),9898,3.7,10.7
+summer_peak,c1a,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),714958370#0,nan (714958370#0),439,14.2,43.1
+summer_peak,c1a,victoria_burke,Victoria St / Burke St,-1242247847#0,Burke Street (-1242247847#0),1800,9.7,45.0
+summer_peak,c1a,victoria_burke,Victoria St / Burke St,-42644219#0,Victoria Street (-42644219#0),51,17.2,75.1
+summer_peak,c1a,victoria_burke,Victoria St / Burke St,1242247850,Victoria Street (1242247850),7246,2.4,5.5
+summer_peak,c1a,victoria_burke,Victoria St / Burke St,173449385#1,Victoria Street (173449385#1),7901,2.3,2.4
+summer_peak,c1a,victoria_oval,Victoria St / Oval Rd,1242247851#0,Victoria Street (1242247851#0),10534,7.7,29.2
+summer_peak,c1a,victoria_oval,Victoria St / Oval Rd,173449383#0,Victoria Street (173449383#0),10754,7.5,95.7
+summer_peak,c1a,victoria_oval,Victoria St / Oval Rd,39879848#8,Oval Road (39879848#8),532,18.3,233.9
+summer_peak,c1a,esplanade_king,Esplanade / King St,1242247849,King Street (1242247849),1439,9.4,29.3
+summer_peak,c1a,esplanade_king,Esplanade / King St,23075178#2,Esplanade (23075178#2),171,3.2,5.8
+summer_peak,c1a,esplanade_king,Esplanade / King St,287201787#1,Esplanade (287201787#1),388,7.1,39.0
+summer_peak,c1a,coral_ocean,Coral St / Ocean St,-60269602#1,Coral Street (-60269602#1),2256,3.0,5.8
+summer_peak,c1a,coral_ocean,Coral St / Ocean St,23075181#5,Coral Street (23075181#5),770,4.4,6.3
+summer_peak,c1a,coral_ocean,Coral St / Ocean St,60269598#2,Ocean Street (60269598#2),2291,4.7,16.2
+summer_peak,c1a,albert_esplanade,Albert Pl / Esplanade,-184389885,Albert Place (-184389885),633,2.4,5.7
+summer_peak,c1a,albert_esplanade,Albert Pl / Esplanade,-184389891#3,Esplanade (-184389891#3),1238,2.7,6.2
+summer_peak,c1a,albert_esplanade,Albert Pl / Esplanade,184389891#2,Esplanade (184389891#2),1160,3.8,12.8
+summer_peak,c1a,eyre_flinders_bridge,Eyre Tce / Flinders Pde / Bridge Tce,-217056482#1,Bridge Terrace (-217056482#1),1899,5.0,10.6
+summer_peak,c1a,eyre_flinders_bridge,Eyre Tce / Flinders Pde / Bridge Tce,23075179#5,Flinders Parade (23075179#5),1859,3.8,8.0
+summer_peak,c1a,eyre_flinders_bridge,Eyre Tce / Flinders Pde / Bridge Tce,50904907#2,Eyre Terrace (50904907#2),779,4.6,22.9
+summer_peak,c1a,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,-23075180#5,Crozier Road (-23075180#5),2643,2.3,5.7
+summer_peak,c1a,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,23075180#4,Crozier Road (23075180#4),2612,1.9,28.8
+summer_peak,c1a,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,42530541#5,Acraman Street (42530541#5),1812,9.0,53.2
+summer_peak,c1a,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,42530557#1,Lindsay Street (42530557#1),1588,20.3,139.1
+summer_peak,c1a,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,-23075171#7,Seaview Road (-23075171#7),1776,1.7,3.7
+summer_peak,c1a,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,-42530541#0,Acraman Street (-42530541#0),2004,6.6,26.9
+summer_peak,c1a,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,23075171#6,Seaview Road (23075171#6),952,1.4,3.4
+summer_peak,c1a,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,42530540#4,Carlyle Street (42530540#4),1783,5.4,22.6
+summer_peak,c1a,armstrong_crozier,Armstrong Rd / Crozier Rd,-29282260#1,Armstrong Road (-29282260#1),4036,4.3,10.1
+summer_peak,c1a,armstrong_crozier,Armstrong Rd / Crozier Rd,39946279,Crozier Road (39946279),3237,36.9,170.0
+summer_peak,c1a,armstrong_crozier,Armstrong Rd / Crozier Rd,97536780,Armstrong Road (97536780),4672,10.9,33.9
+summer_peak,c1a,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,-42648429#0,Waggon Road (-42648429#0),210,10.2,39.2
+summer_peak,c1a,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,-427209587#1,Welch Road (-427209587#1),4389,3.5,3.0
+summer_peak,c1a,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,29282267,Armstrong Road (29282267),4416,8.0,3.0
+summer_peak,c1b,torrens_victoria_wills,Torrens St / Victoria St / Wills St,1211144532#2,Victoria Street (1211144532#2),2481,4.5,14.4
+summer_peak,c1b,torrens_victoria_wills,Torrens St / Victoria St / Wills St,1242247845,Victoria Street (1242247845),5108,3.6,7.7
+summer_peak,c1b,torrens_victoria_wills,Torrens St / Victoria St / Wills St,23075177#1,Wills Street (23075177#1),1733,7.8,27.8
+summer_peak,c1b,torrens_victoria_wills,Torrens St / Victoria St / Wills St,50904911,Torrens Street (50904911),2837,2.3,5.1
+summer_peak,c1b,torrens_crozier,Torrens St / Crozier Rd,1202918968#1,Torrens Street (1202918968#1),5274,3.4,9.7
+summer_peak,c1b,torrens_crozier,Torrens St / Crozier Rd,1202918970,Crozier Road (1202918970),1680,2.8,13.0
+summer_peak,c1b,torrens_crozier,Torrens St / Crozier Rd,1202918972,Crozier Road (1202918972),1593,5.2,21.3
+summer_peak,c1b,torrens_crozier,Torrens St / Crozier Rd,50904910#2,Torrens Street (50904910#2),3448,3.8,7.9
+summer_peak,c1b,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,173449331,Hindmarsh Road (173449331),6467,5.0,10.5
+summer_peak,c1b,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,184390356,Eyre Terrace (184390356),2131,14.1,47.0
+summer_peak,c1b,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,23075170,Seaview Road (23075170),2511,8.1,29.3
+summer_peak,c1b,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,576495712#3,Torrens Street (576495712#3),4622,5.0,15.7
+summer_peak,c1b,torrens_coral,Torrens St / Coral St,173449376#1,Torrens Street (173449376#1),6190,3.3,10.3
+summer_peak,c1b,torrens_coral,Torrens St / Coral St,50904910#0,Torrens Street (50904910#0),3336,3.3,7.1
+summer_peak,c1b,torrens_coral,Torrens St / Coral St,60269602#2,Coral Street (60269602#2),293,10.5,39.6
+summer_peak,c1b,torrens_ocean,Torrens St / Ocean St,576495725#0,Torrens Street (576495725#0),6621,1.7,3.2
+summer_peak,c1b,torrens_ocean,Torrens St / Ocean St,vhfix_torrens_ocean_right,nan (vhfix_torrens_ocean_right),267,4.6,22.0
+summer_peak,c1b,torrens_stuart,Torrens St / Stuart St,173449376#4,Torrens Street (173449376#4),5035,2.6,4.3
+summer_peak,c1b,torrens_stuart,Torrens St / Stuart St,576495721#1,Torrens Street (576495721#1),3798,2.0,3.1
+summer_peak,c1b,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-217056482#2,Bridge Terrace (-217056482#2),87,11.0,40.1
+summer_peak,c1b,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-42530401#0,Grantley Avenue (-42530401#0),52,19.6,51.1
+summer_peak,c1b,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-50904904#7,Hindmarsh Road (-50904904#7),7718,2.3,2.2
+summer_peak,c1b,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,217056482#0,Bridge Terrace (217056482#0),1780,32.1,223.0
+summer_peak,c1b,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,50904904#6,Hindmarsh Road (50904904#6),9146,4.1,14.1
+summer_peak,c1b,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449324,Bay Road (173449324),8168,6.8,22.3
+summer_peak,c1b,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449327,George Main Road (173449327),2028,5.7,23.5
+summer_peak,c1b,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449382,Victoria Street (173449382),10137,1.5,2.2
+summer_peak,c1b,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706687#1,Port Elliot Road (53706687#1),6852,7.7,24.0
+summer_peak,c1b,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706691#1,Adelaide Road (53706691#1),4476,6.7,23.0
+summer_peak,c1b,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706695,Hindmarsh Road (53706695),9803,3.6,10.7
+summer_peak,c1b,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),714958370#0,nan (714958370#0),437,13.3,43.1
+summer_peak,c1b,victoria_burke,Victoria St / Burke St,-1242247847#0,Burke Street (-1242247847#0),2125,8.3,154.2
+summer_peak,c1b,victoria_burke,Victoria St / Burke St,-42644219#0,Victoria Street (-42644219#0),23,21.2,124.3
+summer_peak,c1b,victoria_burke,Victoria St / Burke St,1242247850,Victoria Street (1242247850),6138,2.2,4.5
+summer_peak,c1b,victoria_burke,Victoria St / Burke St,173449385#1,Victoria Street (173449385#1),6445,2.2,2.4
+summer_peak,c1b,victoria_oval,Victoria St / Oval Rd,1242247851#0,Victoria Street (1242247851#0),10056,7.0,35.2
+summer_peak,c1b,victoria_oval,Victoria St / Oval Rd,173449383#0,Victoria Street (173449383#0),10190,8.0,97.7
+summer_peak,c1b,victoria_oval,Victoria St / Oval Rd,39879848#8,Oval Road (39879848#8),694,15.9,186.2
+summer_peak,c1b,esplanade_king,Esplanade / King St,1242247849,King Street (1242247849),1443,8.6,25.3
+summer_peak,c1b,esplanade_king,Esplanade / King St,23075178#2,Esplanade (23075178#2),156,3.1,5.8
+summer_peak,c1b,esplanade_king,Esplanade / King St,287201787#1,Esplanade (287201787#1),301,8.3,52.0
+summer_peak,c1b,coral_ocean,Coral St / Ocean St,-60269602#1,Coral Street (-60269602#1),2466,3.1,5.8
+summer_peak,c1b,coral_ocean,Coral St / Ocean St,23075181#5,Coral Street (23075181#5),922,4.4,7.3
+summer_peak,c1b,coral_ocean,Coral St / Ocean St,60269598#2,Ocean Street (60269598#2),2690,5.5,21.2
+summer_peak,c1b,albert_esplanade,Albert Pl / Esplanade,-184389885,Albert Place (-184389885),644,2.4,4.7
+summer_peak,c1b,albert_esplanade,Albert Pl / Esplanade,-184389891#3,Esplanade (-184389891#3),1229,2.7,6.2
+summer_peak,c1b,albert_esplanade,Albert Pl / Esplanade,184389891#2,Esplanade (184389891#2),1131,3.7,8.5
+summer_peak,c1b,eyre_flinders_bridge,Eyre Tce / Flinders Pde / Bridge Tce,-217056482#1,Bridge Terrace (-217056482#1),1689,4.9,10.6
+summer_peak,c1b,eyre_flinders_bridge,Eyre Tce / Flinders Pde / Bridge Tce,23075179#5,Flinders Parade (23075179#5),2474,3.9,8.0
+summer_peak,c1b,eyre_flinders_bridge,Eyre Tce / Flinders Pde / Bridge Tce,50904907#2,Eyre Terrace (50904907#2),552,4.7,21.9
+summer_peak,c1b,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,-23075180#5,Crozier Road (-23075180#5),2525,2.2,5.7
+summer_peak,c1b,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,23075180#4,Crozier Road (23075180#4),2880,1.9,5.8
+summer_peak,c1b,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,42530541#5,Acraman Street (42530541#5),3521,10.4,64.0
+summer_peak,c1b,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,42530557#1,Lindsay Street (42530557#1),2243,19.2,171.1
+summer_peak,c1b,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,-23075171#7,Seaview Road (-23075171#7),2428,1.7,3.7
+summer_peak,c1b,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,-42530541#0,Acraman Street (-42530541#0),3045,10.6,56.5
+summer_peak,c1b,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,23075171#6,Seaview Road (23075171#6),1457,1.7,3.4
+summer_peak,c1b,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,42530540#4,Carlyle Street (42530540#4),3101,6.8,32.2
+summer_peak,c1b,armstrong_crozier,Armstrong Rd / Crozier Rd,-29282260#1,Armstrong Road (-29282260#1),4333,4.4,10.1
+summer_peak,c1b,armstrong_crozier,Armstrong Rd / Crozier Rd,39946279,Crozier Road (39946279),3391,37.4,169.0
+summer_peak,c1b,armstrong_crozier,Armstrong Rd / Crozier Rd,97536780,Armstrong Road (97536780),5203,11.7,33.9
+summer_peak,c1b,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,-42648429#0,Waggon Road (-42648429#0),211,9.4,36.2
+summer_peak,c1b,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,-427209587#1,Welch Road (-427209587#1),4604,3.5,3.0
+summer_peak,c1b,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,29282267,Armstrong Road (29282267),4527,8.2,3.0
+summer_peak,c3,torrens_victoria_wills,Torrens St / Victoria St / Wills St,1211144532#2,Victoria Street (1211144532#2),4702,2.5,4.4
+summer_peak,c3,torrens_victoria_wills,Torrens St / Victoria St / Wills St,1242247845,Victoria Street (1242247845),7429,5.0,11.7
+summer_peak,c3,torrens_victoria_wills,Torrens St / Victoria St / Wills St,23075177#1,Wills Street (23075177#1),1355,5.1,14.8
+summer_peak,c3,torrens_crozier,Torrens St / Crozier Rd,1202918968#1,Torrens Street (1202918968#1),6365,5.5,17.7
+summer_peak,c3,torrens_crozier,Torrens St / Crozier Rd,1202918970,Crozier Road (1202918970),4245,1.0,1.8
+summer_peak,c3,torrens_crozier,Torrens St / Crozier Rd,1202918972,Crozier Road (1202918972),2566,15.8,55.3
+summer_peak,c3,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,173449331,Hindmarsh Road (173449331),1047,3.4,7.5
+summer_peak,c3,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,23075170,Seaview Road (23075170),1447,13.1,40.3
+summer_peak,c3,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,576495712#3,Torrens Street (576495712#3),9015,3.3,8.0
+summer_peak,c3,torrens_coral,Torrens St / Coral St,173449376#1,Torrens Street (173449376#1),10945,1.6,3.0
+summer_peak,c3,torrens_coral,Torrens St / Coral St,60269602#2,Coral Street (60269602#2),1445,41.8,210.7
+summer_peak,c3,torrens_ocean,Torrens St / Ocean St,vhfix_torrens_ocean_right,nan (vhfix_torrens_ocean_right),808,2.8,3.7
+summer_peak,c3,torrens_stuart,Torrens St / Stuart St,173449376#4,Torrens Street (173449376#4),10229,1.7,4.2
+summer_peak,c3,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-217056482#2,Bridge Terrace (-217056482#2),87,16.5,60.3
+summer_peak,c3,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-42530401#0,Grantley Avenue (-42530401#0),59,28.1,86.0
+summer_peak,c3,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-50904904#7,Hindmarsh Road (-50904904#7),8772,2.3,2.2
+summer_peak,c3,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,217056482#0,Bridge Terrace (217056482#0),1441,19.4,114.5
+summer_peak,c3,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,50904904#6,Hindmarsh Road (50904904#6),8888,5.1,4.1
+summer_peak,c3,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449324,Bay Road (173449324),8319,8.6,30.3
+summer_peak,c3,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449327,George Main Road (173449327),2295,6.1,24.5
+summer_peak,c3,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449382,Victoria Street (173449382),10006,1.5,2.2
+summer_peak,c3,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706687#1,Port Elliot Road (53706687#1),6856,7.4,23.0
+summer_peak,c3,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706691#1,Adelaide Road (53706691#1),4314,6.8,24.0
+summer_peak,c3,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706695,Hindmarsh Road (53706695),9780,3.6,10.7
+summer_peak,c3,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),714958370#0,nan (714958370#0),435,13.5,43.9
+summer_peak,c3,victoria_burke,Victoria St / Burke St,-1242247847#0,Burke Street (-1242247847#0),2272,10.6,170.6
+summer_peak,c3,victoria_burke,Victoria St / Burke St,-42644219#0,Victoria Street (-42644219#0),90,42.2,160.7
+summer_peak,c3,victoria_burke,Victoria St / Burke St,1242247850,Victoria Street (1242247850),8220,2.6,6.5
+summer_peak,c3,victoria_burke,Victoria St / Burke St,173449385#1,Victoria Street (173449385#1),5803,2.5,2.4
+summer_peak,c3,victoria_oval,Victoria St / Oval Rd,1242247851#0,Victoria Street (1242247851#0),9604,9.1,50.2
+summer_peak,c3,victoria_oval,Victoria St / Oval Rd,173449383#0,Victoria Street (173449383#0),10547,12.7,149.7
+summer_peak,c3,victoria_oval,Victoria St / Oval Rd,39879848#8,Oval Road (39879848#8),766,28.1,330.6
+summer_peak,c3,esplanade_king,Esplanade / King St,1242247849,King Street (1242247849),322,7.3,17.3
+summer_peak,c3,esplanade_king,Esplanade / King St,23075178#2,Esplanade (23075178#2),201,10.7,44.7
+summer_peak,c3,esplanade_king,Esplanade / King St,287201787#1,Esplanade (287201787#1),567,20.2,89.2
+summer_peak,c3,coral_ocean,Coral St / Ocean St,-60269602#1,Coral Street (-60269602#1),2431,11.2,193.0
+summer_peak,c3,coral_ocean,Coral St / Ocean St,23075181#5,Coral Street (23075181#5),7107,4.4,30.2
+summer_peak,c3,coral_ocean,Coral St / Ocean St,60269598#2,Ocean Street (60269598#2),535,18.5,101.1
+summer_peak,c3,albert_esplanade,Albert Pl / Esplanade,-184389885,Albert Place (-184389885),166,2.0,3.4
+summer_peak,c3,albert_esplanade,Albert Pl / Esplanade,-184389891#3,Esplanade (-184389891#3),104,1.6,4.2
+summer_peak,c3,albert_esplanade,Albert Pl / Esplanade,184389891#2,Esplanade (184389891#2),3129,3.5,6.8
+summer_peak,c3,eyre_flinders_bridge,Eyre Tce / Flinders Pde / Bridge Tce,-217056482#1,Bridge Terrace (-217056482#1),6949,6.6,11.6
+summer_peak,c3,eyre_flinders_bridge,Eyre Tce / Flinders Pde / Bridge Tce,50904907#2,Eyre Terrace (50904907#2),3222,8.4,54.7
+summer_peak,c3,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,-23075180#5,Crozier Road (-23075180#5),3080,5.6,74.7
+summer_peak,c3,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,23075180#4,Crozier Road (23075180#4),2634,1.9,15.6
+summer_peak,c3,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,42530541#5,Acraman Street (42530541#5),3524,17.0,279.2
+summer_peak,c3,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,42530557#1,Lindsay Street (42530557#1),1351,47.7,446.4
+summer_peak,c3,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,-23075171#7,Seaview Road (-23075171#7),1755,1.8,3.7
+summer_peak,c3,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,-42530541#0,Acraman Street (-42530541#0),1621,8.4,49.9
+summer_peak,c3,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,23075171#6,Seaview Road (23075171#6),1572,1.7,3.4
+summer_peak,c3,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,42530540#4,Carlyle Street (42530540#4),3120,6.5,23.1
+summer_peak,c3,armstrong_crozier,Armstrong Rd / Crozier Rd,-29282260#1,Armstrong Road (-29282260#1),4700,4.7,11.1
+summer_peak,c3,armstrong_crozier,Armstrong Rd / Crozier Rd,39946279,Crozier Road (39946279),3430,45.5,248.0
+summer_peak,c3,armstrong_crozier,Armstrong Rd / Crozier Rd,97536780,Armstrong Road (97536780),4822,19.2,42.9
+summer_peak,c3,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,-42648429#0,Waggon Road (-42648429#0),211,9.9,38.2
+summer_peak,c3,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,-427209587#1,Welch Road (-427209587#1),4819,3.6,3.0
+summer_peak,c3,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,29282267,Armstrong Road (29282267),4505,8.2,3.0
+summer_peak,c3b,torrens_victoria_wills,Torrens St / Victoria St / Wills St,1211144532#2,Victoria Street (1211144532#2),3341,7.0,23.4
+summer_peak,c3b,torrens_victoria_wills,Torrens St / Victoria St / Wills St,1242247845,Victoria Street (1242247845),3985,3.1,5.7
+summer_peak,c3b,torrens_victoria_wills,Torrens St / Victoria St / Wills St,23075177#1,Wills Street (23075177#1),307,10.8,37.8
+summer_peak,c3b,torrens_victoria_wills,Torrens St / Victoria St / Wills St,50904911,Torrens Street (50904911),4180,5.7,20.1
+summer_peak,c3b,torrens_crozier,Torrens St / Crozier Rd,1202918970,Crozier Road (1202918970),1640,10.9,43.8
+summer_peak,c3b,torrens_crozier,Torrens St / Crozier Rd,1202918972,Crozier Road (1202918972),1386,0.8,1.3
+summer_peak,c3b,torrens_crozier,Torrens St / Crozier Rd,50904910#2,Torrens Street (50904910#2),6765,5.0,15.3
+summer_peak,c3b,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,173449331,Hindmarsh Road (173449331),8700,6.5,14.5
+summer_peak,c3b,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,184390356,Eyre Terrace (184390356),3459,28.9,96.2
+summer_peak,c3b,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,23075170,Seaview Road (23075170),5669,3.9,10.3
+summer_peak,c3b,torrens_coral,Torrens St / Coral St,50904910#0,Torrens Street (50904910#0),5574,2.0,34.5
+summer_peak,c3b,torrens_coral,Torrens St / Coral St,60269602#2,Coral Street (60269602#2),1119,18.2,133.1
+summer_peak,c3b,torrens_ocean,Torrens St / Ocean St,576495725#0,Torrens Street (576495725#0),11053,2.7,3.4
+summer_peak,c3b,torrens_stuart,Torrens St / Stuart St,576495721#1,Torrens Street (576495721#1),7478,1.4,2.5
+summer_peak,c3b,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-217056482#2,Bridge Terrace (-217056482#2),87,18.0,68.2
+summer_peak,c3b,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-42530401#0,Grantley Avenue (-42530401#0),172,62.3,371.0
+summer_peak,c3b,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-50904904#7,Hindmarsh Road (-50904904#7),6736,2.3,2.2
+summer_peak,c3b,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,217056482#0,Bridge Terrace (217056482#0),2307,104.2,647.6
+summer_peak,c3b,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,50904904#6,Hindmarsh Road (50904904#6),9328,8.0,35.8
+summer_peak,c3b,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449324,Bay Road (173449324),8037,5.1,16.3
+summer_peak,c3b,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449327,George Main Road (173449327),1983,5.4,21.5
+summer_peak,c3b,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449382,Victoria Street (173449382),10529,1.5,2.2
+summer_peak,c3b,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706687#1,Port Elliot Road (53706687#1),7012,6.9,20.0
+summer_peak,c3b,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706691#1,Adelaide Road (53706691#1),4217,6.7,24.0
+summer_peak,c3b,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706695,Hindmarsh Road (53706695),9795,3.5,10.7
+summer_peak,c3b,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),714958370#0,nan (714958370#0),432,12.9,41.1
+summer_peak,c3b,victoria_burke,Victoria St / Burke St,-1242247847#0,Burke Street (-1242247847#0),2066,7.3,168.8
+summer_peak,c3b,victoria_burke,Victoria St / Burke St,-42644219#0,Victoria Street (-42644219#0),294,52.1,205.1
+summer_peak,c3b,victoria_burke,Victoria St / Burke St,1242247850,Victoria Street (1242247850),5293,2.3,5.5
+summer_peak,c3b,victoria_burke,Victoria St / Burke St,173449385#1,Victoria Street (173449385#1),7632,2.2,6.4
+summer_peak,c3b,victoria_oval,Victoria St / Oval Rd,1242247851#0,Victoria Street (1242247851#0),10735,6.0,24.2
+summer_peak,c3b,victoria_oval,Victoria St / Oval Rd,173449383#0,Victoria Street (173449383#0),10070,4.9,38.7
+summer_peak,c3b,victoria_oval,Victoria St / Oval Rd,39879848#8,Oval Road (39879848#8),563,11.6,287.6
+summer_peak,c3b,esplanade_king,Esplanade / King St,1242247849,King Street (1242247849),1313,9.6,29.3
+summer_peak,c3b,esplanade_king,Esplanade / King St,23075178#2,Esplanade (23075178#2),148,3.0,5.8
+summer_peak,c3b,esplanade_king,Esplanade / King St,287201787#1,Esplanade (287201787#1),62,5.5,21.6
+summer_peak,c3b,coral_ocean,Coral St / Ocean St,-60269602#1,Coral Street (-60269602#1),545,33.0,259.2
+summer_peak,c3b,coral_ocean,Coral St / Ocean St,23075181#5,Coral Street (23075181#5),4405,7.5,73.2
+summer_peak,c3b,coral_ocean,Coral St / Ocean St,60269598#2,Ocean Street (60269598#2),3082,14.2,102.9
+summer_peak,c3b,albert_esplanade,Albert Pl / Esplanade,-184389885,Albert Place (-184389885),2449,2.0,3.4
+summer_peak,c3b,albert_esplanade,Albert Pl / Esplanade,-184389891#3,Esplanade (-184389891#3),1247,4.6,19.2
+summer_peak,c3b,eyre_flinders_bridge,Eyre Tce / Flinders Pde / Bridge Tce,-217056482#1,Bridge Terrace (-217056482#1),98,17.7,218.2
+summer_peak,c3b,eyre_flinders_bridge,Eyre Tce / Flinders Pde / Bridge Tce,23075179#5,Flinders Parade (23075179#5),3190,11.5,147.3
+summer_peak,c3b,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,-23075180#5,Crozier Road (-23075180#5),2958,4.2,20.7
+summer_peak,c3b,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,23075180#4,Crozier Road (23075180#4),5178,5.5,60.7
+summer_peak,c3b,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,42530541#5,Acraman Street (42530541#5),2061,35.2,202.6
+summer_peak,c3b,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,42530557#1,Lindsay Street (42530557#1),2375,44.2,236.9
+summer_peak,c3b,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,-23075171#7,Seaview Road (-23075171#7),3538,2.1,157.9
+summer_peak,c3b,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,-42530541#0,Acraman Street (-42530541#0),5232,19.2,192.9
+summer_peak,c3b,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,23075171#6,Seaview Road (23075171#6),1035,1.6,17.1
+summer_peak,c3b,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,42530540#4,Carlyle Street (42530540#4),2235,12.2,157.6
+summer_peak,c3b,armstrong_crozier,Armstrong Rd / Crozier Rd,-29282260#1,Armstrong Road (-29282260#1),4363,4.5,11.1
+summer_peak,c3b,armstrong_crozier,Armstrong Rd / Crozier Rd,39946279,Crozier Road (39946279),3058,37.0,160.8
+summer_peak,c3b,armstrong_crozier,Armstrong Rd / Crozier Rd,97536780,Armstrong Road (97536780),5330,10.0,35.9
+summer_peak,c3b,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,-42648429#0,Waggon Road (-42648429#0),210,10.3,38.8
+summer_peak,c3b,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,-427209587#1,Welch Road (-427209587#1),4883,3.6,3.0
+summer_peak,c3b,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,29282267,Armstrong Road (29282267),4534,8.2,3.0
+summer_peak,c4,torrens_victoria_wills,Torrens St / Victoria St / Wills St,1211144532#2,Victoria Street (1211144532#2),3195,5.6,19.4
+summer_peak,c4,torrens_victoria_wills,Torrens St / Victoria St / Wills St,1242247845,Victoria Street (1242247845),6694,4.0,8.7
+summer_peak,c4,torrens_victoria_wills,Torrens St / Victoria St / Wills St,23075177#1,Wills Street (23075177#1),1276,10.0,36.8
+summer_peak,c4,torrens_victoria_wills,Torrens St / Victoria St / Wills St,50904911,Torrens Street (50904911),3868,2.8,6.1
+summer_peak,c4,torrens_crozier,Torrens St / Crozier Rd,1202918968#1,Torrens Street (1202918968#1),6395,6.8,51.3
+summer_peak,c4,torrens_crozier,Torrens St / Crozier Rd,1202918970,Crozier Road (1202918970),1792,14.4,95.0
+summer_peak,c4,torrens_crozier,Torrens St / Crozier Rd,1202918972,Crozier Road (1202918972),2194,12.2,41.9
+summer_peak,c4,torrens_crozier,Torrens St / Crozier Rd,50904910#2,Torrens Street (50904910#2),5595,12.8,62.1
+summer_peak,c4,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,173449331,Hindmarsh Road (173449331),8495,9.7,40.3
+summer_peak,c4,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,184390356,Eyre Terrace (184390356),2938,26.3,82.0
+summer_peak,c4,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,23075170,Seaview Road (23075170),1797,15.5,48.1
+summer_peak,c4,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,576495712#3,Torrens Street (576495712#3),7370,10.5,50.7
+summer_peak,c4,torrens_coral,Torrens St / Coral St,173449376#1,Torrens Street (173449376#1),8426,2.7,19.0
+summer_peak,c4,torrens_coral,Torrens St / Coral St,50904910#0,Torrens Street (50904910#0),5354,3.7,110.2
+summer_peak,c4,torrens_coral,Torrens St / Coral St,60269602#2,Coral Street (60269602#2),478,21.5,91.5
+summer_peak,c4,torrens_ocean,Torrens St / Ocean St,576495725#0,Torrens Street (576495725#0),9438,4.0,7.5
+summer_peak,c4,torrens_ocean,Torrens St / Ocean St,vhfix_torrens_ocean_right,nan (vhfix_torrens_ocean_right),301,5.7,23.0
+summer_peak,c4,torrens_stuart,Torrens St / Stuart St,173449376#4,Torrens Street (173449376#4),7560,2.7,40.4
+summer_peak,c4,torrens_stuart,Torrens St / Stuart St,576495721#1,Torrens Street (576495721#1),6558,1.4,3.5
+summer_peak,c4,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-217056482#2,Bridge Terrace (-217056482#2),87,12.3,49.0
+summer_peak,c4,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-42530401#0,Grantley Avenue (-42530401#0),46,19.2,54.2
+summer_peak,c4,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-50904904#7,Hindmarsh Road (-50904904#7),9187,2.4,2.2
+summer_peak,c4,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,217056482#0,Bridge Terrace (217056482#0),1351,58.3,255.5
+summer_peak,c4,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,50904904#6,Hindmarsh Road (50904904#6),11042,5.6,19.1
+summer_peak,c4,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449324,Bay Road (173449324),8511,7.8,27.3
+summer_peak,c4,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449327,George Main Road (173449327),2330,5.8,23.5
+summer_peak,c4,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449382,Victoria Street (173449382),10631,1.5,2.2
+summer_peak,c4,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706687#1,Port Elliot Road (53706687#1),6849,7.9,25.0
+summer_peak,c4,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706691#1,Adelaide Road (53706691#1),4713,6.8,24.0
+summer_peak,c4,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706695,Hindmarsh Road (53706695),10007,3.7,10.7
+summer_peak,c4,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),714958370#0,nan (714958370#0),442,13.5,42.1
+summer_peak,c4,victoria_burke,Victoria St / Burke St,-1242247847#0,Burke Street (-1242247847#0),1725,10.2,48.0
+summer_peak,c4,victoria_burke,Victoria St / Burke St,-42644219#0,Victoria Street (-42644219#0),29,17.8,72.6
+summer_peak,c4,victoria_burke,Victoria St / Burke St,1242247850,Victoria Street (1242247850),7610,2.3,5.5
+summer_peak,c4,victoria_burke,Victoria St / Burke St,173449385#1,Victoria Street (173449385#1),8125,2.4,3.3
+summer_peak,c4,victoria_oval,Victoria St / Oval Rd,1242247851#0,Victoria Street (1242247851#0),10588,7.8,31.2
+summer_peak,c4,victoria_oval,Victoria St / Oval Rd,173449383#0,Victoria Street (173449383#0),10832,9.3,115.7
+summer_peak,c4,victoria_oval,Victoria St / Oval Rd,39879848#8,Oval Road (39879848#8),526,18.1,238.0
+summer_peak,c4,esplanade_king,Esplanade / King St,1242247849,King Street (1242247849),1295,9.9,30.2
+summer_peak,c4,esplanade_king,Esplanade / King St,23075178#2,Esplanade (23075178#2),186,7.8,15.2
+summer_peak,c4,esplanade_king,Esplanade / King St,287201787#1,Esplanade (287201787#1),442,11.8,71.2
+summer_peak,c4,coral_ocean,Coral St / Ocean St,-60269602#1,Coral Street (-60269602#1),2406,3.5,28.4
+summer_peak,c4,coral_ocean,Coral St / Ocean St,23075181#5,Coral Street (23075181#5),1272,3.7,6.2
+summer_peak,c4,coral_ocean,Coral St / Ocean St,60269598#2,Ocean Street (60269598#2),2621,6.0,27.1
+summer_peak,c4,albert_esplanade,Albert Pl / Esplanade,-184389885,Albert Place (-184389885),757,1.9,3.4
+summer_peak,c4,albert_esplanade,Albert Pl / Esplanade,-184389891#3,Esplanade (-184389891#3),1148,2.7,6.2
+summer_peak,c4,albert_esplanade,Albert Pl / Esplanade,184389891#2,Esplanade (184389891#2),1192,3.7,25.7
+summer_peak,c4,eyre_flinders_bridge,Eyre Tce / Flinders Pde / Bridge Tce,-217056482#1,Bridge Terrace (-217056482#1),2016,4.8,9.6
+summer_peak,c4,eyre_flinders_bridge,Eyre Tce / Flinders Pde / Bridge Tce,23075179#5,Flinders Parade (23075179#5),2269,2.4,5.0
+summer_peak,c4,eyre_flinders_bridge,Eyre Tce / Flinders Pde / Bridge Tce,50904907#2,Eyre Terrace (50904907#2),701,5.5,24.0
+summer_peak,c4,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,-23075180#5,Crozier Road (-23075180#5),2731,2.2,5.7
+summer_peak,c4,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,23075180#4,Crozier Road (23075180#4),2558,1.9,12.5
+summer_peak,c4,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,42530541#5,Acraman Street (42530541#5),1525,8.2,43.6
+summer_peak,c4,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,42530557#1,Lindsay Street (42530557#1),1314,15.2,91.3
+summer_peak,c4,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,-23075171#7,Seaview Road (-23075171#7),1679,1.6,3.7
+summer_peak,c4,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,-42530541#0,Acraman Street (-42530541#0),1750,6.2,28.9
+summer_peak,c4,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,23075171#6,Seaview Road (23075171#6),1055,1.4,3.4
+summer_peak,c4,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,42530540#4,Carlyle Street (42530540#4),1385,5.7,22.3
+summer_peak,c4,armstrong_crozier,Armstrong Rd / Crozier Rd,-29282260#1,Armstrong Road (-29282260#1),3900,4.2,10.1
+summer_peak,c4,armstrong_crozier,Armstrong Rd / Crozier Rd,39946279,Crozier Road (39946279),3128,29.8,131.7
+summer_peak,c4,armstrong_crozier,Armstrong Rd / Crozier Rd,97536780,Armstrong Road (97536780),4642,10.1,30.9
+summer_peak,c4,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,-42648429#0,Waggon Road (-42648429#0),209,9.7,35.9
+summer_peak,c4,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,-427209587#1,Welch Road (-427209587#1),4304,3.5,3.0
+summer_peak,c4,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,29282267,Armstrong Road (29282267),4248,7.8,3.0
+summer_peak,cp,torrens_victoria_wills,Torrens St / Victoria St / Wills St,1211144532#2,Victoria Street (1211144532#2),4234,4.1,13.4
+summer_peak,cp,torrens_victoria_wills,Torrens St / Victoria St / Wills St,1242247845,Victoria Street (1242247845),5793,13.8,65.7
+summer_peak,cp,torrens_victoria_wills,Torrens St / Victoria St / Wills St,23075177#1,Wills Street (23075177#1),2672,8.7,34.8
+summer_peak,cp,torrens_crozier,Torrens St / Crozier Rd,1202918968#1,Torrens Street (1202918968#1),8643,10.1,35.3
+summer_peak,cp,torrens_crozier,Torrens St / Crozier Rd,1202918970,Crozier Road (1202918970),2874,22.3,96.9
+summer_peak,cp,torrens_crozier,Torrens St / Crozier Rd,1202918972,Crozier Road (1202918972),3817,10.5,40.9
+summer_peak,cp,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,173449331,Hindmarsh Road (173449331),2470,30.3,89.3
+summer_peak,cp,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,23075170,Seaview Road (23075170),1586,12.3,40.5
+summer_peak,cp,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,576495712#3,Torrens Street (576495712#3),10425,6.5,14.7
+summer_peak,cp,torrens_coral,Torrens St / Coral St,173449376#1,Torrens Street (173449376#1),13084,1.7,3.0
+summer_peak,cp,torrens_coral,Torrens St / Coral St,60269602#2,Coral Street (60269602#2),936,32.4,115.5
+summer_peak,cp,torrens_ocean,Torrens St / Ocean St,vhfix_torrens_ocean_right,nan (vhfix_torrens_ocean_right),727,2.8,3.7
+summer_peak,cp,torrens_stuart,Torrens St / Stuart St,173449376#4,Torrens Street (173449376#4),11640,1.8,4.2
+summer_peak,cp,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-217056482#2,Bridge Terrace (-217056482#2),87,11.3,35.6
+summer_peak,cp,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-42530401#0,Grantley Avenue (-42530401#0),53,24.6,71.8
+summer_peak,cp,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-50904904#7,Hindmarsh Road (-50904904#7),10088,2.4,2.2
+summer_peak,cp,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,217056482#0,Bridge Terrace (217056482#0),403,10.3,131.8
+summer_peak,cp,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,50904904#6,Hindmarsh Road (50904904#6),8643,4.9,9.9
+summer_peak,cp,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449324,Bay Road (173449324),8402,6.7,22.3
+summer_peak,cp,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449327,George Main Road (173449327),2141,5.8,24.5
+summer_peak,cp,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449382,Victoria Street (173449382),9752,1.5,2.2
+summer_peak,cp,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706687#1,Port Elliot Road (53706687#1),6900,7.1,22.0
+summer_peak,cp,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706691#1,Adelaide Road (53706691#1),4165,6.7,24.0
+summer_peak,cp,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706695,Hindmarsh Road (53706695),9826,3.7,10.7
+summer_peak,cp,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),714958370#0,nan (714958370#0),429,13.5,44.1
+summer_peak,cp,victoria_burke,Victoria St / Burke St,-1242247847#0,Burke Street (-1242247847#0),2874,7.6,131.0
+summer_peak,cp,victoria_burke,Victoria St / Burke St,-42644219#0,Victoria Street (-42644219#0),132,35.3,154.9
+summer_peak,cp,victoria_burke,Victoria St / Burke St,1242247850,Victoria Street (1242247850),7375,5.2,52.5
+summer_peak,cp,victoria_burke,Victoria St / Burke St,173449385#1,Victoria Street (173449385#1),4510,2.6,14.4
+summer_peak,cp,victoria_oval,Victoria St / Oval Rd,1242247851#0,Victoria Street (1242247851#0),9530,7.9,39.0
+summer_peak,cp,victoria_oval,Victoria St / Oval Rd,173449383#0,Victoria Street (173449383#0),10540,9.6,112.6
+summer_peak,cp,victoria_oval,Victoria St / Oval Rd,39879848#8,Oval Road (39879848#8),801,28.0,297.7
+summer_peak,cp,esplanade_king,Esplanade / King St,1242247849,King Street (1242247849),732,7.4,20.3
+summer_peak,cp,esplanade_king,Esplanade / King St,23075178#2,Esplanade (23075178#2),170,11.0,69.8
+summer_peak,cp,esplanade_king,Esplanade / King St,287201787#1,Esplanade (287201787#1),497,10.4,67.2
+summer_peak,cp,coral_ocean,Coral St / Ocean St,-60269602#1,Coral Street (-60269602#1),3212,7.3,30.8
+summer_peak,cp,coral_ocean,Coral St / Ocean St,23075181#5,Coral Street (23075181#5),4342,5.2,7.3
+summer_peak,cp,coral_ocean,Coral St / Ocean St,60269598#2,Ocean Street (60269598#2),454,13.3,80.4
+summer_peak,cp,albert_esplanade,Albert Pl / Esplanade,-184389885,Albert Place (-184389885),73,4.4,18.4
+summer_peak,cp,albert_esplanade,Albert Pl / Esplanade,-184389891#3,Esplanade (-184389891#3),385,1.8,4.2
+summer_peak,cp,albert_esplanade,Albert Pl / Esplanade,184389891#2,Esplanade (184389891#2),2999,4.3,9.6
+summer_peak,cp,eyre_flinders_bridge,Eyre Tce / Flinders Pde / Bridge Tce,-217056482#1,Bridge Terrace (-217056482#1),4723,6.0,14.5
+summer_peak,cp,eyre_flinders_bridge,Eyre Tce / Flinders Pde / Bridge Tce,50904907#2,Eyre Terrace (50904907#2),1961,8.0,42.8
+summer_peak,cp,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,-23075180#5,Crozier Road (-23075180#5),3962,3.2,15.4
+summer_peak,cp,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,23075180#4,Crozier Road (23075180#4),2365,2.1,11.8
+summer_peak,cp,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,42530541#5,Acraman Street (42530541#5),5220,20.4,93.5
+summer_peak,cp,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,42530557#1,Lindsay Street (42530557#1),1436,82.8,339.8
+summer_peak,cp,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,-23075171#7,Seaview Road (-23075171#7),1652,1.8,4.4
+summer_peak,cp,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,-42530541#0,Acraman Street (-42530541#0),1575,11.1,58.9
+summer_peak,cp,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,23075171#6,Seaview Road (23075171#6),3665,1.9,3.4
+summer_peak,cp,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,42530540#4,Carlyle Street (42530540#4),3143,11.7,40.1
+summer_peak,cp,armstrong_crozier,Armstrong Rd / Crozier Rd,-29282260#1,Armstrong Road (-29282260#1),4978,4.8,12.1
+summer_peak,cp,armstrong_crozier,Armstrong Rd / Crozier Rd,39946279,Crozier Road (39946279),3435,43.3,207.2
+summer_peak,cp,armstrong_crozier,Armstrong Rd / Crozier Rd,97536780,Armstrong Road (97536780),4885,17.4,45.9
+summer_peak,cp,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,-42648429#0,Waggon Road (-42648429#0),212,9.9,38.9
+summer_peak,cp,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,-427209587#1,Welch Road (-427209587#1),5010,3.6,3.0
+summer_peak,cp,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,29282267,Armstrong Road (29282267),4429,8.1,4.0
+summer_peak,b3,torrens_victoria_wills,Torrens St / Victoria St / Wills St,1211144532#2,Victoria Street (1211144532#2),3136,5.5,19.4
+summer_peak,b3,torrens_victoria_wills,Torrens St / Victoria St / Wills St,1242247845,Victoria Street (1242247845),6528,3.9,7.7
+summer_peak,b3,torrens_victoria_wills,Torrens St / Victoria St / Wills St,23075177#1,Wills Street (23075177#1),1245,9.8,36.8
+summer_peak,b3,torrens_victoria_wills,Torrens St / Victoria St / Wills St,50904911,Torrens Street (50904911),3617,2.6,6.1
+summer_peak,b3,torrens_crozier,Torrens St / Crozier Rd,1202918968#1,Torrens Street (1202918968#1),5828,3.3,8.7
+summer_peak,b3,torrens_crozier,Torrens St / Crozier Rd,1202918970,Crozier Road (1202918970),1736,3.3,13.8
+summer_peak,b3,torrens_crozier,Torrens St / Crozier Rd,1202918972,Crozier Road (1202918972),2196,7.4,29.3
+summer_peak,b3,torrens_crozier,Torrens St / Crozier Rd,50904910#2,Torrens Street (50904910#2),4057,3.1,7.3
+summer_peak,b3,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,173449331,Hindmarsh Road (173449331),8138,5.3,11.5
+summer_peak,b3,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,184390356,Eyre Terrace (184390356),2607,19.8,65.2
+summer_peak,b3,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,23075170,Seaview Road (23075170),1426,13.6,45.3
+summer_peak,b3,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,576495712#3,Torrens Street (576495712#3),6943,5.9,19.0
+summer_peak,b3,torrens_coral,Torrens St / Coral St,173449376#1,Torrens Street (173449376#1),7923,2.3,9.0
+summer_peak,b3,torrens_coral,Torrens St / Coral St,50904910#0,Torrens Street (50904910#0),4294,6.8,193.9
+summer_peak,b3,torrens_coral,Torrens St / Coral St,60269602#2,Coral Street (60269602#2),1176,26.7,246.4
+summer_peak,b3,torrens_ocean,Torrens St / Ocean St,576495725#0,Torrens Street (576495725#0),8842,2.3,3.7
+summer_peak,b3,torrens_ocean,Torrens St / Ocean St,vhfix_torrens_ocean_right,nan (vhfix_torrens_ocean_right),320,9.4,37.0
+summer_peak,b3,torrens_stuart,Torrens St / Stuart St,173449376#4,Torrens Street (173449376#4),7132,2.3,33.2
+summer_peak,b3,torrens_stuart,Torrens St / Stuart St,576495721#1,Torrens Street (576495721#1),6035,1.5,2.5
+summer_peak,b3,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-217056482#2,Bridge Terrace (-217056482#2),87,12.7,50.2
+summer_peak,b3,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-42530401#0,Grantley Avenue (-42530401#0),45,18.3,49.0
+summer_peak,b3,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-50904904#7,Hindmarsh Road (-50904904#7),8586,2.3,2.2
+summer_peak,b3,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,217056482#0,Bridge Terrace (217056482#0),1578,52.5,305.0
+summer_peak,b3,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,50904904#6,Hindmarsh Road (50904904#6),10595,4.3,4.1
+summer_peak,b3,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449324,Bay Road (173449324),8641,6.8,23.3
+summer_peak,b3,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449327,George Main Road (173449327),2197,6.0,23.5
+summer_peak,b3,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449382,Victoria Street (173449382),10405,1.5,2.2
+summer_peak,b3,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706687#1,Port Elliot Road (53706687#1),6852,7.6,24.0
+summer_peak,b3,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706691#1,Adelaide Road (53706691#1),4516,6.8,24.0
+summer_peak,b3,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706695,Hindmarsh Road (53706695),9871,3.7,10.7
+summer_peak,b3,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),714958370#0,nan (714958370#0),437,12.6,40.1
+summer_peak,b3,victoria_burke,Victoria St / Burke St,-1242247847#0,Burke Street (-1242247847#0),1713,9.5,44.0
+summer_peak,b3,victoria_burke,Victoria St / Burke St,-42644219#0,Victoria Street (-42644219#0),40,15.7,72.3
+summer_peak,b3,victoria_burke,Victoria St / Burke St,1242247850,Victoria Street (1242247850),7490,2.3,5.5
+summer_peak,b3,victoria_burke,Victoria St / Burke St,173449385#1,Victoria Street (173449385#1),7814,2.2,2.4
+summer_peak,b3,victoria_oval,Victoria St / Oval Rd,1242247851#0,Victoria Street (1242247851#0),10380,7.9,33.2
+summer_peak,b3,victoria_oval,Victoria St / Oval Rd,173449383#0,Victoria Street (173449383#0),10850,8.1,87.7
+summer_peak,b3,victoria_oval,Victoria St / Oval Rd,39879848#8,Oval Road (39879848#8),511,17.8,353.6
+summer_peak,b3,esplanade_king,Esplanade / King St,1242247849,King Street (1242247849),1314,9.2,27.3
+summer_peak,b3,esplanade_king,Esplanade / King St,23075178#2,Esplanade (23075178#2),191,6.5,14.8
+summer_peak,b3,esplanade_king,Esplanade / King St,287201787#1,Esplanade (287201787#1),427,10.8,60.2
+summer_peak,b3,coral_ocean,Coral St / Ocean St,-60269602#1,Coral Street (-60269602#1),2292,3.3,6.5
+summer_peak,b3,coral_ocean,Coral St / Ocean St,23075181#5,Coral Street (23075181#5),1331,3.8,6.2
+summer_peak,b3,coral_ocean,Coral St / Ocean St,60269598#2,Ocean Street (60269598#2),2597,5.7,25.0
+summer_peak,b3,albert_esplanade,Albert Pl / Esplanade,-184389885,Albert Place (-184389885),706,1.9,3.4
+summer_peak,b3,albert_esplanade,Albert Pl / Esplanade,-184389891#3,Esplanade (-184389891#3),1187,2.8,6.2
+summer_peak,b3,albert_esplanade,Albert Pl / Esplanade,184389891#2,Esplanade (184389891#2),1189,3.2,30.7
+summer_peak,b3,eyre_flinders_bridge,Eyre Tce / Flinders Pde / Bridge Tce,-217056482#1,Bridge Terrace (-217056482#1),2006,4.8,15.2
+summer_peak,b3,eyre_flinders_bridge,Eyre Tce / Flinders Pde / Bridge Tce,23075179#5,Flinders Parade (23075179#5),2654,2.6,67.0
+summer_peak,b3,eyre_flinders_bridge,Eyre Tce / Flinders Pde / Bridge Tce,50904907#2,Eyre Terrace (50904907#2),509,5.6,26.0
+summer_peak,b3,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,-23075180#5,Crozier Road (-23075180#5),2677,2.0,4.7
+summer_peak,b3,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,23075180#4,Crozier Road (23075180#4),2466,1.8,5.8
+summer_peak,b3,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,42530541#5,Acraman Street (42530541#5),1589,7.6,42.2
+summer_peak,b3,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,42530557#1,Lindsay Street (42530557#1),1363,16.7,100.2
+summer_peak,b3,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,-23075171#7,Seaview Road (-23075171#7),1716,1.7,3.7
+summer_peak,b3,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,-42530541#0,Acraman Street (-42530541#0),1837,6.1,26.9
+summer_peak,b3,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,23075171#6,Seaview Road (23075171#6),1120,1.4,3.4
+summer_peak,b3,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,42530540#4,Carlyle Street (42530540#4),1512,5.2,22.6
+summer_peak,b3,armstrong_crozier,Armstrong Rd / Crozier Rd,-29282260#1,Armstrong Road (-29282260#1),4375,2.1,9.1
+summer_peak,b3,armstrong_crozier,Armstrong Rd / Crozier Rd,39946279,Crozier Road (39946279),2811,55.1,255.2
+summer_peak,b3,armstrong_crozier,Armstrong Rd / Crozier Rd,97536780,Armstrong Road (97536780),4577,13.2,100.4
+summer_peak,b3,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,-42648429#0,Waggon Road (-42648429#0),215,12.4,45.1
+summer_peak,b3,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,-427209587#1,Welch Road (-427209587#1),4644,1.9,5.2
+summer_peak,b3,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,29282267,Armstrong Road (29282267),4371,3.4,20.9
+summer_peak,b4,torrens_victoria_wills,Torrens St / Victoria St / Wills St,1211144532#2,Victoria Street (1211144532#2),3257,5.6,19.4
+summer_peak,b4,torrens_victoria_wills,Torrens St / Victoria St / Wills St,1242247845,Victoria Street (1242247845),6492,3.7,7.7
+summer_peak,b4,torrens_victoria_wills,Torrens St / Victoria St / Wills St,23075177#1,Wills Street (23075177#1),1272,9.9,35.8
+summer_peak,b4,torrens_victoria_wills,Torrens St / Victoria St / Wills St,50904911,Torrens Street (50904911),3650,2.7,7.1
+summer_peak,b4,torrens_crozier,Torrens St / Crozier Rd,1202918968#1,Torrens Street (1202918968#1),5753,3.3,9.7
+summer_peak,b4,torrens_crozier,Torrens St / Crozier Rd,1202918970,Crozier Road (1202918970),1723,3.4,14.8
+summer_peak,b4,torrens_crozier,Torrens St / Crozier Rd,1202918972,Crozier Road (1202918972),2117,7.1,27.3
+summer_peak,b4,torrens_crozier,Torrens St / Crozier Rd,50904910#2,Torrens Street (50904910#2),4084,3.1,7.3
+summer_peak,b4,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,173449331,Hindmarsh Road (173449331),8237,5.3,11.5
+summer_peak,b4,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,184390356,Eyre Terrace (184390356),2603,20.2,69.2
+summer_peak,b4,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,23075170,Seaview Road (23075170),1479,13.7,47.3
+summer_peak,b4,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,576495712#3,Torrens Street (576495712#3),6894,6.1,20.0
+summer_peak,b4,torrens_coral,Torrens St / Coral St,173449376#1,Torrens Street (173449376#1),7860,2.2,7.0
+summer_peak,b4,torrens_coral,Torrens St / Coral St,50904910#0,Torrens Street (50904910#0),4345,7.3,135.2
+summer_peak,b4,torrens_coral,Torrens St / Coral St,60269602#2,Coral Street (60269602#2),1173,26.8,204.4
+summer_peak,b4,torrens_ocean,Torrens St / Ocean St,576495725#0,Torrens Street (576495725#0),8915,2.3,3.7
+summer_peak,b4,torrens_ocean,Torrens St / Ocean St,vhfix_torrens_ocean_right,nan (vhfix_torrens_ocean_right),332,9.5,38.0
+summer_peak,b4,torrens_stuart,Torrens St / Stuart St,173449376#4,Torrens Street (173449376#4),7096,2.5,35.0
+summer_peak,b4,torrens_stuart,Torrens St / Stuart St,576495721#1,Torrens Street (576495721#1),6153,1.5,3.5
+summer_peak,b4,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-217056482#2,Bridge Terrace (-217056482#2),87,14.1,51.3
+summer_peak,b4,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-42530401#0,Grantley Avenue (-42530401#0),49,18.5,94.8
+summer_peak,b4,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-50904904#7,Hindmarsh Road (-50904904#7),8736,2.3,2.2
+summer_peak,b4,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,217056482#0,Bridge Terrace (217056482#0),1579,56.2,299.3
+summer_peak,b4,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,50904904#6,Hindmarsh Road (50904904#6),10823,4.7,4.1
+summer_peak,b4,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449324,Bay Road (173449324),8611,6.4,22.3
+summer_peak,b4,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449327,George Main Road (173449327),2217,5.9,23.5
+summer_peak,b4,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449382,Victoria Street (173449382),10594,1.5,2.2
+summer_peak,b4,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706687#1,Port Elliot Road (53706687#1),6923,6.6,20.1
+summer_peak,b4,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706691#1,Adelaide Road (53706691#1),4728,6.5,22.2
+summer_peak,b4,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706695,Hindmarsh Road (53706695),9925,2.7,4.9
+summer_peak,b4,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),714958370#0,nan (714958370#0),461,8.7,31.8
+summer_peak,b4,victoria_burke,Victoria St / Burke St,-1242247847#0,Burke Street (-1242247847#0),1721,10.2,103.8
+summer_peak,b4,victoria_burke,Victoria St / Burke St,-42644219#0,Victoria Street (-42644219#0),32,12.0,67.1
+summer_peak,b4,victoria_burke,Victoria St / Burke St,1242247850,Victoria Street (1242247850),7445,2.3,5.5
+summer_peak,b4,victoria_burke,Victoria St / Burke St,173449385#1,Victoria Street (173449385#1),7999,2.3,2.4
+summer_peak,b4,victoria_oval,Victoria St / Oval Rd,1242247851#0,Victoria Street (1242247851#0),10615,7.7,30.2
+summer_peak,b4,victoria_oval,Victoria St / Oval Rd,173449383#0,Victoria Street (173449383#0),10872,7.9,85.7
+summer_peak,b4,victoria_oval,Victoria St / Oval Rd,39879848#8,Oval Road (39879848#8),517,15.8,212.6
+summer_peak,b4,esplanade_king,Esplanade / King St,1242247849,King Street (1242247849),1281,9.5,29.3
+summer_peak,b4,esplanade_king,Esplanade / King St,23075178#2,Esplanade (23075178#2),188,3.9,6.8
+summer_peak,b4,esplanade_king,Esplanade / King St,287201787#1,Esplanade (287201787#1),432,10.8,63.2
+summer_peak,b4,coral_ocean,Coral St / Ocean St,-60269602#1,Coral Street (-60269602#1),2298,3.5,6.5
+summer_peak,b4,coral_ocean,Coral St / Ocean St,23075181#5,Coral Street (23075181#5),1458,3.9,6.2
+summer_peak,b4,coral_ocean,Coral St / Ocean St,60269598#2,Ocean Street (60269598#2),2563,5.9,26.1
+summer_peak,b4,albert_esplanade,Albert Pl / Esplanade,-184389885,Albert Place (-184389885),709,1.9,3.4
+summer_peak,b4,albert_esplanade,Albert Pl / Esplanade,-184389891#3,Esplanade (-184389891#3),1181,2.7,6.2
+summer_peak,b4,albert_esplanade,Albert Pl / Esplanade,184389891#2,Esplanade (184389891#2),1206,3.2,9.3
+summer_peak,b4,eyre_flinders_bridge,Eyre Tce / Flinders Pde / Bridge Tce,-217056482#1,Bridge Terrace (-217056482#1),2128,4.9,14.4
+summer_peak,b4,eyre_flinders_bridge,Eyre Tce / Flinders Pde / Bridge Tce,23075179#5,Flinders Parade (23075179#5),2650,2.7,86.0
+summer_peak,b4,eyre_flinders_bridge,Eyre Tce / Flinders Pde / Bridge Tce,50904907#2,Eyre Terrace (50904907#2),509,7.0,41.0
+summer_peak,b4,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,-23075180#5,Crozier Road (-23075180#5),2580,2.1,5.7
+summer_peak,b4,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,23075180#4,Crozier Road (23075180#4),2408,1.8,7.4
+summer_peak,b4,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,42530541#5,Acraman Street (42530541#5),1631,7.3,38.2
+summer_peak,b4,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,42530557#1,Lindsay Street (42530557#1),1407,16.6,114.1
+summer_peak,b4,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,-23075171#7,Seaview Road (-23075171#7),1690,1.7,3.7
+summer_peak,b4,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,-42530541#0,Acraman Street (-42530541#0),1811,5.8,26.9
+summer_peak,b4,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,23075171#6,Seaview Road (23075171#6),1008,1.4,3.4
+summer_peak,b4,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,42530540#4,Carlyle Street (42530540#4),1601,5.2,24.9
+summer_peak,b4,armstrong_crozier,Armstrong Rd / Crozier Rd,-29282260#1,Armstrong Road (-29282260#1),3914,4.2,10.1
+summer_peak,b4,armstrong_crozier,Armstrong Rd / Crozier Rd,39946279,Crozier Road (39946279),3098,30.2,139.0
+summer_peak,b4,armstrong_crozier,Armstrong Rd / Crozier Rd,97536780,Armstrong Road (97536780),4580,8.7,30.9
+summer_peak,b4,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,-42648429#0,Waggon Road (-42648429#0),210,8.4,35.2
+summer_peak,b4,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,-427209587#1,Welch Road (-427209587#1),4292,3.5,3.0
+summer_peak,b4,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,29282267,Armstrong Road (29282267),4252,8.0,3.0
+summer_peak,b5,torrens_victoria_wills,Torrens St / Victoria St / Wills St,1211144532#2,Victoria Street (1211144532#2),3131,5.2,18.4
+summer_peak,b5,torrens_victoria_wills,Torrens St / Victoria St / Wills St,1242247845,Victoria Street (1242247845),6500,3.8,7.7
+summer_peak,b5,torrens_victoria_wills,Torrens St / Victoria St / Wills St,23075177#1,Wills Street (23075177#1),1269,9.8,35.8
+summer_peak,b5,torrens_victoria_wills,Torrens St / Victoria St / Wills St,50904911,Torrens Street (50904911),3575,2.7,7.1
+summer_peak,b5,torrens_crozier,Torrens St / Crozier Rd,1202918968#1,Torrens Street (1202918968#1),5528,3.3,9.7
+summer_peak,b5,torrens_crozier,Torrens St / Crozier Rd,1202918970,Crozier Road (1202918970),1675,3.4,12.2
+summer_peak,b5,torrens_crozier,Torrens St / Crozier Rd,1202918972,Crozier Road (1202918972),1224,7.5,27.7
+summer_peak,b5,torrens_crozier,Torrens St / Crozier Rd,50904910#2,Torrens Street (50904910#2),3922,3.1,7.3
+summer_peak,b5,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,173449331,Hindmarsh Road (173449331),8022,5.4,11.5
+summer_peak,b5,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,184390356,Eyre Terrace (184390356),2463,18.8,65.2
+summer_peak,b5,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,23075170,Seaview Road (23075170),795,12.3,40.2
+summer_peak,b5,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,576495712#3,Torrens Street (576495712#3),6621,6.0,20.0
+summer_peak,b5,torrens_coral,Torrens St / Coral St,173449376#1,Torrens Street (173449376#1),7901,3.2,8.9
+summer_peak,b5,torrens_coral,Torrens St / Coral St,50904910#0,Torrens Street (50904910#0),4266,6.5,57.5
+summer_peak,b5,torrens_coral,Torrens St / Coral St,60269602#2,Coral Street (60269602#2),1152,25.9,84.6
+summer_peak,b5,torrens_ocean,Torrens St / Ocean St,576495725#0,Torrens Street (576495725#0),8571,2.4,3.7
+summer_peak,b5,torrens_ocean,Torrens St / Ocean St,vhfix_torrens_ocean_right,nan (vhfix_torrens_ocean_right),319,9.9,38.0
+summer_peak,b5,torrens_stuart,Torrens St / Stuart St,173449376#4,Torrens Street (173449376#4),7105,2.3,27.0
+summer_peak,b5,torrens_stuart,Torrens St / Stuart St,576495721#1,Torrens Street (576495721#1),6018,1.5,2.5
+summer_peak,b5,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-217056482#2,Bridge Terrace (-217056482#2),87,11.3,40.8
+summer_peak,b5,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-42530401#0,Grantley Avenue (-42530401#0),42,24.2,90.8
+summer_peak,b5,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-50904904#7,Hindmarsh Road (-50904904#7),9003,2.3,47.2
+summer_peak,b5,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,217056482#0,Bridge Terrace (217056482#0),1545,52.0,257.3
+summer_peak,b5,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,50904904#6,Hindmarsh Road (50904904#6),10731,5.0,4.1
+summer_peak,b5,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449324,Bay Road (173449324),8556,7.7,26.3
+summer_peak,b5,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449327,George Main Road (173449327),2206,6.1,24.5
+summer_peak,b5,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449382,Victoria Street (173449382),10462,1.5,2.2
+summer_peak,b5,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706687#1,Port Elliot Road (53706687#1),6853,8.0,26.0
+summer_peak,b5,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706691#1,Adelaide Road (53706691#1),4708,6.8,23.0
+summer_peak,b5,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706695,Hindmarsh Road (53706695),10027,3.6,10.7
+summer_peak,b5,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),714958370#0,nan (714958370#0),443,14.2,47.1
+summer_peak,b5,victoria_burke,Victoria St / Burke St,-1242247847#0,Burke Street (-1242247847#0),1730,9.9,47.8
+summer_peak,b5,victoria_burke,Victoria St / Burke St,-42644219#0,Victoria Street (-42644219#0),39,18.9,149.5
+summer_peak,b5,victoria_burke,Victoria St / Burke St,1242247850,Victoria Street (1242247850),7447,2.3,5.5
+summer_peak,b5,victoria_burke,Victoria St / Burke St,173449385#1,Victoria Street (173449385#1),7787,2.4,7.0
+summer_peak,b5,victoria_oval,Victoria St / Oval Rd,1242247851#0,Victoria Street (1242247851#0),10334,8.1,34.2
+summer_peak,b5,victoria_oval,Victoria St / Oval Rd,173449383#0,Victoria Street (173449383#0),10736,8.8,131.7
+summer_peak,b5,victoria_oval,Victoria St / Oval Rd,39879848#8,Oval Road (39879848#8),526,19.4,254.0
+summer_peak,b5,esplanade_king,Esplanade / King St,1242247849,King Street (1242247849),1305,9.3,26.3
+summer_peak,b5,esplanade_king,Esplanade / King St,23075178#2,Esplanade (23075178#2),200,3.4,6.8
+summer_peak,b5,esplanade_king,Esplanade / King St,287201787#1,Esplanade (287201787#1),491,16.0,83.6
+summer_peak,b5,coral_ocean,Coral St / Ocean St,-60269602#1,Coral Street (-60269602#1),2294,3.8,8.5
+summer_peak,b5,coral_ocean,Coral St / Ocean St,23075181#5,Coral Street (23075181#5),1355,3.8,6.2
+summer_peak,b5,coral_ocean,Coral St / Ocean St,60269598#2,Ocean Street (60269598#2),2621,6.2,29.5
+summer_peak,b5,albert_esplanade,Albert Pl / Esplanade,-184389885,Albert Place (-184389885),778,1.9,3.4
+summer_peak,b5,albert_esplanade,Albert Pl / Esplanade,-184389891#3,Esplanade (-184389891#3),1149,2.8,6.2
+summer_peak,b5,albert_esplanade,Albert Pl / Esplanade,184389891#2,Esplanade (184389891#2),1225,3.4,9.1
+summer_peak,b5,eyre_flinders_bridge,Eyre Tce / Flinders Pde / Bridge Tce,-217056482#1,Bridge Terrace (-217056482#1),2133,5.5,105.6
+summer_peak,b5,eyre_flinders_bridge,Eyre Tce / Flinders Pde / Bridge Tce,23075179#5,Flinders Parade (23075179#5),2677,2.6,68.9
+summer_peak,b5,eyre_flinders_bridge,Eyre Tce / Flinders Pde / Bridge Tce,50904907#2,Eyre Terrace (50904907#2),485,6.8,149.6
+summer_peak,b5,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,-23075180#5,Crozier Road (-23075180#5),2672,2.1,5.7
+summer_peak,b5,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,23075180#4,Crozier Road (23075180#4),2426,1.8,5.8
+summer_peak,b5,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,42530541#5,Acraman Street (42530541#5),1655,8.4,37.2
+summer_peak,b5,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,42530557#1,Lindsay Street (42530557#1),1313,16.0,113.1
+summer_peak,b5,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,-23075171#7,Seaview Road (-23075171#7),1753,1.6,3.7
+summer_peak,b5,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,-42530541#0,Acraman Street (-42530541#0),1695,6.7,30.9
+summer_peak,b5,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,23075171#6,Seaview Road (23075171#6),1077,1.4,3.4
+summer_peak,b5,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,42530540#4,Carlyle Street (42530540#4),1626,5.4,21.2
+summer_peak,b5,armstrong_crozier,Armstrong Rd / Crozier Rd,-29282260#1,Armstrong Road (-29282260#1),4008,4.3,10.1
+summer_peak,b5,armstrong_crozier,Armstrong Rd / Crozier Rd,39946279,Crozier Road (39946279),3154,34.5,139.0
+summer_peak,b5,armstrong_crozier,Armstrong Rd / Crozier Rd,97536780,Armstrong Road (97536780),4687,12.3,33.9
+summer_peak,b5,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,-42648429#0,Waggon Road (-42648429#0),211,9.6,36.7
+summer_peak,b5,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,-427209587#1,Welch Road (-427209587#1),4339,3.5,3.0
+summer_peak,b5,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,29282267,Armstrong Road (29282267),4278,8.0,3.0
+summer_peak,bp,torrens_victoria_wills,Torrens St / Victoria St / Wills St,1211144532#2,Victoria Street (1211144532#2),3158,5.4,18.4
+summer_peak,bp,torrens_victoria_wills,Torrens St / Victoria St / Wills St,1242247845,Victoria Street (1242247845),6589,3.8,7.7
+summer_peak,bp,torrens_victoria_wills,Torrens St / Victoria St / Wills St,23075177#1,Wills Street (23075177#1),1279,9.9,35.9
+summer_peak,bp,torrens_victoria_wills,Torrens St / Victoria St / Wills St,50904911,Torrens Street (50904911),3598,2.8,7.1
+summer_peak,bp,torrens_crozier,Torrens St / Crozier Rd,1202918968#1,Torrens Street (1202918968#1),5622,3.3,8.7
+summer_peak,bp,torrens_crozier,Torrens St / Crozier Rd,1202918970,Crozier Road (1202918970),1658,3.2,11.2
+summer_peak,bp,torrens_crozier,Torrens St / Crozier Rd,1202918972,Crozier Road (1202918972),1212,7.0,26.7
+summer_peak,bp,torrens_crozier,Torrens St / Crozier Rd,50904910#2,Torrens Street (50904910#2),3923,3.1,7.3
+summer_peak,bp,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,173449331,Hindmarsh Road (173449331),8004,5.3,11.5
+summer_peak,bp,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,184390356,Eyre Terrace (184390356),2455,18.9,63.2
+summer_peak,bp,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,23075170,Seaview Road (23075170),741,11.4,36.4
+summer_peak,bp,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,576495712#3,Torrens Street (576495712#3),6577,5.9,19.0
+summer_peak,bp,torrens_coral,Torrens St / Coral St,173449376#1,Torrens Street (173449376#1),7903,3.1,9.0
+summer_peak,bp,torrens_coral,Torrens St / Coral St,50904910#0,Torrens Street (50904910#0),4286,6.3,62.3
+summer_peak,bp,torrens_coral,Torrens St / Coral St,60269602#2,Coral Street (60269602#2),1133,25.4,266.8
+summer_peak,bp,torrens_ocean,Torrens St / Ocean St,576495725#0,Torrens Street (576495725#0),8559,2.4,3.7
+summer_peak,bp,torrens_ocean,Torrens St / Ocean St,vhfix_torrens_ocean_right,nan (vhfix_torrens_ocean_right),316,10.2,40.0
+summer_peak,bp,torrens_stuart,Torrens St / Stuart St,173449376#4,Torrens Street (173449376#4),7063,2.4,38.6
+summer_peak,bp,torrens_stuart,Torrens St / Stuart St,576495721#1,Torrens Street (576495721#1),6012,1.5,3.5
+summer_peak,bp,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-217056482#2,Bridge Terrace (-217056482#2),87,12.3,53.6
+summer_peak,bp,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-42530401#0,Grantley Avenue (-42530401#0),36,21.5,51.1
+summer_peak,bp,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-50904904#7,Hindmarsh Road (-50904904#7),8793,2.3,2.2
+summer_peak,bp,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,1042090394,nan (1042090394),1,48.9,76.8
+summer_peak,bp,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,217056482#0,Bridge Terrace (217056482#0),1540,51.7,398.0
+summer_peak,bp,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,50904904#6,Hindmarsh Road (50904904#6),10606,4.5,4.1
+summer_peak,bp,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449324,Bay Road (173449324),8624,7.4,25.3
+summer_peak,bp,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449327,George Main Road (173449327),2198,6.1,23.5
+summer_peak,bp,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449382,Victoria Street (173449382),10420,1.5,2.2
+summer_peak,bp,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706687#1,Port Elliot Road (53706687#1),6922,6.2,19.1
+summer_peak,bp,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706691#1,Adelaide Road (53706691#1),4536,6.3,21.2
+summer_peak,bp,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706695,Hindmarsh Road (53706695),9748,2.7,4.9
+summer_peak,bp,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),714958370#0,nan (714958370#0),467,8.4,28.9
+summer_peak,bp,victoria_burke,Victoria St / Burke St,-1242247847#0,Burke Street (-1242247847#0),1679,9.9,180.4
+summer_peak,bp,victoria_burke,Victoria St / Burke St,-42644219#0,Victoria Street (-42644219#0),37,24.1,145.3
+summer_peak,bp,victoria_burke,Victoria St / Burke St,1242247850,Victoria Street (1242247850),7552,2.3,5.5
+summer_peak,bp,victoria_burke,Victoria St / Burke St,173449385#1,Victoria Street (173449385#1),7854,2.3,2.4
+summer_peak,bp,victoria_oval,Victoria St / Oval Rd,1242247851#0,Victoria Street (1242247851#0),10420,7.4,37.1
+summer_peak,bp,victoria_oval,Victoria St / Oval Rd,173449383#0,Victoria Street (173449383#0),10835,7.4,100.7
+summer_peak,bp,victoria_oval,Victoria St / Oval Rd,39879848#8,Oval Road (39879848#8),513,17.2,257.0
+summer_peak,bp,esplanade_king,Esplanade / King St,1242247849,King Street (1242247849),1292,9.6,28.3
+summer_peak,bp,esplanade_king,Esplanade / King St,23075178#2,Esplanade (23075178#2),181,6.4,18.0
+summer_peak,bp,esplanade_king,Esplanade / King St,287201787#1,Esplanade (287201787#1),417,12.5,62.2
+summer_peak,bp,coral_ocean,Coral St / Ocean St,-60269602#1,Coral Street (-60269602#1),2307,3.6,6.5
+summer_peak,bp,coral_ocean,Coral St / Ocean St,23075181#5,Coral Street (23075181#5),1296,3.8,6.2
+summer_peak,bp,coral_ocean,Coral St / Ocean St,60269598#2,Ocean Street (60269598#2),2611,5.8,29.1
+summer_peak,bp,albert_esplanade,Albert Pl / Esplanade,-184389885,Albert Place (-184389885),720,1.9,3.4
+summer_peak,bp,albert_esplanade,Albert Pl / Esplanade,-184389891#3,Esplanade (-184389891#3),1172,2.7,6.2
+summer_peak,bp,albert_esplanade,Albert Pl / Esplanade,184389891#2,Esplanade (184389891#2),1190,3.5,7.7
+summer_peak,bp,eyre_flinders_bridge,Eyre Tce / Flinders Pde / Bridge Tce,-217056482#1,Bridge Terrace (-217056482#1),2058,5.1,32.6
+summer_peak,bp,eyre_flinders_bridge,Eyre Tce / Flinders Pde / Bridge Tce,23075179#5,Flinders Parade (23075179#5),2681,2.6,5.0
+summer_peak,bp,eyre_flinders_bridge,Eyre Tce / Flinders Pde / Bridge Tce,50904907#2,Eyre Terrace (50904907#2),463,6.3,31.4
+summer_peak,bp,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,-23075180#5,Crozier Road (-23075180#5),2675,2.0,4.7
+summer_peak,bp,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,23075180#4,Crozier Road (23075180#4),2427,1.7,5.9
+summer_peak,bp,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,42530541#5,Acraman Street (42530541#5),1613,7.2,37.2
+summer_peak,bp,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,42530557#1,Lindsay Street (42530557#1),1350,13.3,100.7
+summer_peak,bp,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,-23075171#7,Seaview Road (-23075171#7),1713,1.6,3.7
+summer_peak,bp,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,-42530541#0,Acraman Street (-42530541#0),1786,6.2,28.9
+summer_peak,bp,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,23075171#6,Seaview Road (23075171#6),1151,1.4,3.4
+summer_peak,bp,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,42530540#4,Carlyle Street (42530540#4),1521,5.2,21.6
+summer_peak,bp,armstrong_crozier,Armstrong Rd / Crozier Rd,-29282260#1,Armstrong Road (-29282260#1),4362,2.1,9.1
+summer_peak,bp,armstrong_crozier,Armstrong Rd / Crozier Rd,39946279,Crozier Road (39946279),2869,51.6,240.9
+summer_peak,bp,armstrong_crozier,Armstrong Rd / Crozier Rd,97536780,Armstrong Road (97536780),4569,14.4,117.4
+summer_peak,bp,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,-42648429#0,Waggon Road (-42648429#0),213,11.3,39.3
+summer_peak,bp,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,-427209587#1,Welch Road (-427209587#1),4619,1.9,5.2
+summer_peak,bp,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,29282267,Armstrong Road (29282267),4394,3.4,19.9
+summer_peak,n1,torrens_victoria_wills,Torrens St / Victoria St / Wills St,1211144532#2,Victoria Street (1211144532#2),3149,4.7,15.4
+summer_peak,n1,torrens_victoria_wills,Torrens St / Victoria St / Wills St,1242247845,Victoria Street (1242247845),6375,3.8,7.7
+summer_peak,n1,torrens_victoria_wills,Torrens St / Victoria St / Wills St,23075177#1,Wills Street (23075177#1),1280,8.9,31.8
+summer_peak,n1,torrens_victoria_wills,Torrens St / Victoria St / Wills St,50904911,Torrens Street (50904911),3191,2.5,7.1
+summer_peak,n1,torrens_crozier,Torrens St / Crozier Rd,1202918968#1,Torrens Street (1202918968#1),5554,3.8,11.7
+summer_peak,n1,torrens_crozier,Torrens St / Crozier Rd,1202918970,Crozier Road (1202918970),2177,3.2,13.8
+summer_peak,n1,torrens_crozier,Torrens St / Crozier Rd,1202918972,Crozier Road (1202918972),2354,8.9,35.3
+summer_peak,n1,torrens_crozier,Torrens St / Crozier Rd,50904910#2,Torrens Street (50904910#2),3591,3.1,7.3
+summer_peak,n1,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,173449331,Hindmarsh Road (173449331),9240,5.9,12.5
+summer_peak,n1,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,184390356,Eyre Terrace (184390356),4113,18.6,58.2
+summer_peak,n1,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,23075170,Seaview Road (23075170),1766,19.6,64.3
+summer_peak,n1,torrens_eyre_seaview_hindmarsh,Torrens St / Eyre Tce / Seaview Rd / Hindmarsh Rd,576495712#3,Torrens Street (576495712#3),6938,8.1,25.0
+summer_peak,n1,torrens_coral,Torrens St / Coral St,173449376#1,Torrens Street (173449376#1),7974,2.2,8.0
+summer_peak,n1,torrens_coral,Torrens St / Coral St,50904910#0,Torrens Street (50904910#0),3762,10.3,137.6
+summer_peak,n1,torrens_coral,Torrens St / Coral St,60269602#2,Coral Street (60269602#2),1273,33.5,196.1
+summer_peak,n1,torrens_ocean,Torrens St / Ocean St,576495725#0,Torrens Street (576495725#0),8753,2.4,3.7
+summer_peak,n1,torrens_ocean,Torrens St / Ocean St,vhfix_torrens_ocean_right,nan (vhfix_torrens_ocean_right),318,9.3,34.0
+summer_peak,n1,torrens_stuart,Torrens St / Stuart St,173449376#4,Torrens Street (173449376#4),7253,3.0,42.0
+summer_peak,n1,torrens_stuart,Torrens St / Stuart St,576495721#1,Torrens Street (576495721#1),5478,1.6,3.5
+summer_peak,n1,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-217056482#2,Bridge Terrace (-217056482#2),87,2.0,4.6
+summer_peak,n1,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-42530401#0,Grantley Avenue (-42530401#0),60,46.8,226.6
+summer_peak,n1,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,-50904904#7,Hindmarsh Road (-50904904#7),10323,1.6,4.0
+summer_peak,n1,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,217056482#0,Bridge Terrace (217056482#0),151,4.3,9.5
+summer_peak,n1,hindmarsh_grantley_bridge,Hindmarsh Rd / Grantley Ave / Bridge Tce,50904904#6,Hindmarsh Road (50904904#6),9220,8.8,32.1
+summer_peak,n1,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449324,Bay Road (173449324),8597,6.7,21.3
+summer_peak,n1,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449327,George Main Road (173449327),2208,6.0,24.5
+summer_peak,n1,bay_victoria_georgemain,Bay Rd / Victoria St / George Main Rd,173449382,Victoria Street (173449382),10447,1.5,2.2
+summer_peak,n1,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706687#1,Port Elliot Road (53706687#1),6988,7.0,21.0
+summer_peak,n1,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706691#1,Adelaide Road (53706691#1),4269,6.9,25.0
+summer_peak,n1,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),53706695,Hindmarsh Road (53706695),9891,3.7,10.7
+summer_peak,n1,adelaide_hindmarsh_portelliot,Adelaide Rd / Hindmarsh Rd / Port Elliot Rd (McCracken),714958370#0,nan (714958370#0),436,13.2,41.1
+summer_peak,n1,victoria_burke,Victoria St / Burke St,-1242247847#0,Burke Street (-1242247847#0),1998,10.0,43.0
+summer_peak,n1,victoria_burke,Victoria St / Burke St,-42644219#0,Victoria Street (-42644219#0),34,30.1,157.7
+summer_peak,n1,victoria_burke,Victoria St / Burke St,1242247850,Victoria Street (1242247850),7237,2.3,5.5
+summer_peak,n1,victoria_burke,Victoria St / Burke St,173449385#1,Victoria Street (173449385#1),7436,2.2,2.4
+summer_peak,n1,victoria_oval,Victoria St / Oval Rd,1242247851#0,Victoria Street (1242247851#0),10374,7.9,32.2
+summer_peak,n1,victoria_oval,Victoria St / Oval Rd,173449383#0,Victoria Street (173449383#0),10818,8.7,96.7
+summer_peak,n1,victoria_oval,Victoria St / Oval Rd,39879848#8,Oval Road (39879848#8),581,21.8,348.9
+summer_peak,n1,esplanade_king,Esplanade / King St,1242247849,King Street (1242247849),1310,8.8,26.3
+summer_peak,n1,esplanade_king,Esplanade / King St,23075178#2,Esplanade (23075178#2),188,4.5,7.8
+summer_peak,n1,esplanade_king,Esplanade / King St,287201787#1,Esplanade (287201787#1),373,9.2,63.2
+summer_peak,n1,coral_ocean,Coral St / Ocean St,-60269602#1,Coral Street (-60269602#1),2460,3.9,124.1
+summer_peak,n1,coral_ocean,Coral St / Ocean St,23075181#5,Coral Street (23075181#5),1310,3.7,71.2
+summer_peak,n1,coral_ocean,Coral St / Ocean St,60269598#2,Ocean Street (60269598#2),3103,6.8,37.1
+summer_peak,n1,albert_esplanade,Albert Pl / Esplanade,-184389885,Albert Place (-184389885),1214,2.0,3.4
+summer_peak,n1,albert_esplanade,Albert Pl / Esplanade,-184389891#3,Esplanade (-184389891#3),1153,3.0,7.2
+summer_peak,n1,albert_esplanade,Albert Pl / Esplanade,184389891#2,Esplanade (184389891#2),1224,3.4,9.7
+summer_peak,n1,eyre_flinders_bridge,Eyre Tce / Flinders Pde / Bridge Tce,-217056482#1,Bridge Terrace (-217056482#1),149,3.6,9.6
+summer_peak,n1,eyre_flinders_bridge,Eyre Tce / Flinders Pde / Bridge Tce,23075179#5,Flinders Parade (23075179#5),1984,3.2,111.0
+summer_peak,n1,eyre_flinders_bridge,Eyre Tce / Flinders Pde / Bridge Tce,50904907#2,Eyre Terrace (50904907#2),2085,3.6,11.0
+summer_peak,n1,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,-23075180#5,Crozier Road (-23075180#5),2900,2.8,10.4
+summer_peak,n1,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,23075180#4,Crozier Road (23075180#4),2613,2.2,88.3
+summer_peak,n1,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,42530541#5,Acraman Street (42530541#5),2203,14.4,66.2
+summer_peak,n1,crozier_acraman_lindsay,Crozier Rd / Acraman St / Lindsay St,42530557#1,Lindsay Street (42530557#1),1562,32.0,213.2
+summer_peak,n1,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,-23075171#7,Seaview Road (-23075171#7),1852,2.0,3.7
+summer_peak,n1,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,-42530541#0,Acraman Street (-42530541#0),2171,9.3,43.9
+summer_peak,n1,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,23075171#6,Seaview Road (23075171#6),1031,1.5,17.0
+summer_peak,n1,seaview_acraman_carlyle,Seaview Rd / Acraman St / Carlyle St,42530540#4,Carlyle Street (42530540#4),2417,7.8,68.3
+summer_peak,n1,armstrong_crozier,Armstrong Rd / Crozier Rd,-29282260#1,Armstrong Road (-29282260#1),4387,4.5,11.1
+summer_peak,n1,armstrong_crozier,Armstrong Rd / Crozier Rd,39946279,Crozier Road (39946279),3054,43.2,203.0
+summer_peak,n1,armstrong_crozier,Armstrong Rd / Crozier Rd,97536780,Armstrong Road (97536780),4612,14.1,40.9
+summer_peak,n1,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,-42648429#0,Waggon Road (-42648429#0),209,9.9,40.9
+summer_peak,n1,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,-427209587#1,Welch Road (-427209587#1),4833,3.6,3.0
+summer_peak,n1,armstrong_welch_waggon,Armstrong Rd / Welch Rd / Waggon Rd,29282267,Armstrong Road (29282267),4399,8.2,3.0

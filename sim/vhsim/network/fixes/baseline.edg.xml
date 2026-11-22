@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Sourced corrections to the OSM network, applied in build pass 2 (before the plain files are written).
+     F1  Torrens St / Ocean St: right turn from Torrens St (north-east-bound carriageway) into Ocean St.
+         The 2017 Torrens Street review [S-D19 s3] counts ~700 right turns/day here and describes an existing
+         right-turn lane of about 50 m ("Retain the right turn movement from Torrens Street into Ocean
+         Street"). OSM [S-E01] has no median opening at this junction, so the movement is missing.
+         Added as a 1-lane link across the median from the carriageway node (OSM 11174609027) to the
+         Ocean St junction (OSM 1948692233); it yields to the opposite carriageway at 1948692233.
+         The ~50 m storage of the real turn lane is not modelled (assumption A-S1-09). -->
+<edges>
+    <edge id="vhfix_torrens_ocean_right" from="11174609027" to="1948692233" type="highway.trunk_link"
+          priority="2" numLanes="1" speed="13.89">
+        <param key="source" value="S-D19 s3 (fix F1)"/>
+    </edge>
+</edges>

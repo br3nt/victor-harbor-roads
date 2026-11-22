@@ -1,0 +1,22 @@
+.DS_Store
+.public-build
+__pycache__/
+*.egg-info/
+.venv/
+node_modules/
+# local KB export (bin/kb export) and staged copies
+site/
+publish/
+# bulky regenerable simulation outputs (rebuild: python -m vhsim.integration.batch / report)
+sim/data/networks/*.net.xml
+sim/data/networks/*.work/
+sim/data/runs/
+sim/data/results/*/movements.csv
+sim/data/results/*/accessibility.csv
+sim/data/results/*.log
+sim/data/viewer/runs/
+sim/data/viewer/networks/
+sim/data/viewer/index.json
+sim/data/terrain-raw/
+# raw OpenStreetMap extract for the game (hash in game/data/raw/SOURCES.md)
+game/data/raw/*.osm

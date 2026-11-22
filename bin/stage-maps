@@ -1,0 +1,66 @@
+#!/usr/bin/env bash
+# Stage the residents' site and the engineer viewer for publishing as one Claude artifact.
+#   bin/stage-maps KB_URL [OUT]      (OUT defaults to publish/maps)
+# Differences from viewer/ as served locally:
+#   - the landing page (viewer/publish-landing.html) is the artifact's main page, index.html;
+#   - the engineer viewer is engineer.html (the residents' footer link is rewritten to it);
+#   - the MapLibre stylesheet is served from the bundle (artifact pages may not load CSS from a CDN);
+#   - the residents' address list (residents/data/addresses.json) is copied alongside the page;
+#   - the residents' methods link points at the published knowledge base (KB_URL);
+#   - the base map (viewer/basemap: OpenStreetMap land, sea, buildings and labels as .json, terrain tiles as .png) is
+#     copied as basemap/, with its SOURCES.md as SOURCES.txt (artifacts serve .txt, not .md); no tile server is used.
+# Prints the files list (one path per line, relative to OUT) on stdout's last lines via files.txt.
+set -euo pipefail
+cd "$(dirname "$0")/.."
+KB_URL=${1:?usage: bin/stage-maps KB_URL [OUT]}
+OUT=${2:-publish/maps}
+CSS_CDN='https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/5.6.0/maplibre-gl.css'
+
+rm -rf "$OUT"; mkdir -p "$OUT/css" "$OUT/data"
+sed "s|__KB_URL__|$KB_URL|" viewer/publish-landing.html > "$OUT/index.html"
+cp -R viewer/js "$OUT/js"
+cp viewer/css/viewer.css viewer/vendor/maplibre-gl.css "$OUT/css/"
+sed "s|$CSS_CDN|css/maplibre-gl.css|" viewer/index.html > "$OUT/engineer.html"
+mkdir -p "$OUT/residents/js"
+cp viewer/residents/residents.css "$OUT/residents/"
+cp viewer/residents/js/*.js "$OUT/residents/js/"
+# the address list for address search (text; SOURCES.md stays in the repo, the attribution is inside the JSON and on the page)
+mkdir -p "$OUT/residents/data"
+cp viewer/residents/data/*.json "$OUT/residents/data/"
+sed -e "s|$CSS_CDN|../css/maplibre-gl.css|" -e 's|href="../index.html"|href="../engineer.html"|' \
+  viewer/residents/index.html > "$OUT/residents/index.html"
+sed -i '' "s|^const METHODS_URL = .*|const METHODS_URL = '$KB_URL';|" "$OUT/residents/js/app.js"
+grep -q "const METHODS_URL = '$KB_URL'" "$OUT/residents/js/app.js"
+
+# base map: about 5 MB in 24 files (the download manifest terrain-sources.json stays in the repo)
+mkdir -p "$OUT/basemap"
+cp viewer/basemap/basemap.json viewer/basemap/buildings.json "$OUT/basemap/"
+cp viewer/basemap/SOURCES.md "$OUT/basemap/SOURCES.txt"
+cp -R viewer/basemap/terrain "$OUT/basemap/terrain"
+if find "$OUT/basemap" -type f ! -name '*.json' ! -name '*.png' ! -name '*.txt' | grep -q .; then
+  echo "unexpected file type in the base map" >&2; exit 1
+fi
+
+D=${VIEWER_DATA_DIR:-sim/data/viewer}   # exported results (e.g. the main checkout's, from a worktree)
+cp "$D/index.json" "$OUT/data/"
+cp -R "$D/networks" "$OUT/data/networks"
+mkdir -p "$OUT/data/runs"
+python3 - "$D/index.json" "$D" "$OUT/data" <<'EOF'
+# Artifacts don't serve .gz: each binary file goes as base64 text (*.b64.txt, decoded by js/data.js fetchBin)
+# and the run's meta.json is rewritten to point at it.
+import base64, json, sys, pathlib
+idx = json.load(open(sys.argv[1])); src = pathlib.Path(sys.argv[2]); out = pathlib.Path(sys.argv[3])
+n = 0
+for r in idx["runs"]:
+    rd = pathlib.Path(r["path"]).parent
+    (out / rd).mkdir(parents=True, exist_ok=True)
+    meta = json.loads((src / r["path"]).read_text())
+    for f in meta["files"].values():
+        name = f["path"] + ".b64.txt"
+        (out / rd / name).write_text(base64.b64encode((src / rd / f["path"]).read_bytes()).decode())
+        f["path"] = name; n += 1
+    (out / r["path"]).write_text(json.dumps(meta)); n += 1
+print(f"staged {n} run files", file=sys.stderr)
+EOF
+(cd "$OUT" && find . -type f ! -path ./index.html | sed 's|^\./||' | sort) > "$OUT.files.txt"
+echo "staged $(wc -l < "$OUT.files.txt") files, $(du -sh "$OUT" | cut -f1) in $OUT" >&2

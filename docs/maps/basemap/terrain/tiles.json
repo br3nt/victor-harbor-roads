@@ -1,0 +1,35 @@
+{
+ "encoding": "terrarium",
+ "tileSize": 512,
+ "minzoom": 10,
+ "maxzoom": 12,
+ "tiles": [
+  "10/905/619",
+  "10/905/620",
+  "10/906/619",
+  "10/906/620",
+  "11/1810/1239",
+  "11/1810/1240",
+  "11/1810/1241",
+  "11/1811/1239",
+  "11/1811/1240",
+  "11/1811/1241",
+  "11/1812/1239",
+  "11/1812/1240",
+  "11/1812/1241",
+  "11/1813/1239",
+  "11/1813/1240",
+  "11/1813/1241",
+  "12/3624/2480",
+  "12/3624/2481",
+  "12/3625/2480",
+  "12/3625/2481"
+ ],
+ "bounds": [
+  138.164062,
+  -35.746512,
+  138.867188,
+  -35.173808
+ ],
+ "attribution": "<a href=\"https://github.com/tilezen/joerd/blob/master/docs/attribution.md\">Terrain Tiles</a> (Mapzen/Tilezen, AWS Open Data): Australia terrain data © Commonwealth of Australia (Geoscience Australia) 2017, CC BY 4.0; SRTM and GMTED2010 terrain data courtesy of the U.S. Geological Survey; ETOPO1: U.S. National Oceanic and Atmospheric Administration"
+}

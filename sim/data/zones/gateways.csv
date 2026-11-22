@@ -1,0 +1,8 @@
+gateway_id,road,lon,lat,aadt,cv_pct,count_year,source,merged_into,notes
+gw_vhr,Victor Harbor Road,138.649008,-35.462,7700,12.5,2025,S-D02 via sim/data/counts/aadt.csv,,"DIT road 04760 RRD 28.26-43.21. Crosses the north edge of S-S1-01 on DIT section 28.26-43.21 (north of the Hindmarsh Tiers Rd / Virgin Rd junction at RRD 43.21). S-D18's >11,000/day summer figure refers to this stretch."
+gw_hti,Hindmarsh Tiers Road,138.605287,-35.462,1200,12.5,2025,S-D02 via sim/data/counts/aadt.csv,,DIT road 04790 RRD 0.0-20.86. Crosses the north edge of S-S1-01; DIT road 04790 joins Victor Harbor Rd inside the network.
+gw_ivr,Inman Valley Road,138.552,-35.51431,1700,8.0,2021,S-D02 via sim/data/counts/aadt.csv,,"DIT road 04793 RRD 21.38-30.41. Crosses the west edge on the rural 1,700 section; the 12,000 on Victoria St (31.50-32.36) is town traffic."
+gw_per,Port Elliot Road,138.668,-35.532184,9500,9.0,2025,S-D02 via sim/data/counts/aadt.csv,,"DIT road 04688 RRD 0.0-3.9. DIT section 0-3.90 (McCracken roundabout to North Tce, Port Elliot)."
+gw_wai,Waitpinga Road,138.552,-35.583157,800,5.0,,assumption (config gateways.aadt_assumed),,"Council road, no DIT count: AADT assumed (config gateways.aadt_assumed)."
+gw_rng,Range Road,138.552,-35.573519,400,5.0,,assumption (config gateways.aadt_assumed),,"Council road, no DIT count: AADT assumed (config gateways.aadt_assumed)."
+gw_bvr,Back Valley Road,138.552,-35.531289,300,5.0,,assumption (config gateways.aadt_assumed),,"Council road, no DIT count: AADT assumed (config gateways.aadt_assumed)."

@@ -1,0 +1,75 @@
+<!DOCTYPE html><html lang="en"><head profile="https://br3nt.github.io/okf/">
+<meta charset="utf-8">
+<title>Options Register</title>
+<link rel="canonical" href="options-register.html">
+<meta name="uuid" scheme="UUID" content="8e5e9bd4-c9a8-47d6-beee-e1f0b548a7da">
+<meta name="created" scheme="ISO8601" content="2026-11-21T09:35:44+10:30">
+<meta name="updated" scheme="ISO8601" content="2026-11-21T13:29:06+10:30">
+<meta name="keywords" content="options">
+<link rev="chapter" href="victor-harbor-traffic-investigation.html">
+<link rev="describedby" href="investigation-plan.html">
+<link rev="related" href="brents-position.html">
+<link rev="related" href="recommendations.html">
+<link rev="related" href="simulation-design.html">
+<link rev="related" href="simulation-results.html">
+<link rel="stylesheet" href="kb.css">
+</head>
+<body><nav class="kb-nav"><a href="victor-harbor-traffic-investigation.html">⌂ Home</a> · <a href="sitemap.html">Sitemap</a> · <a class="pn-navlink" href="private-names-review.html">Private residents</a></nav>
+<h1>Options Register</h1>
+<p>Every road/traffic option we will simulate, with who proposed it and where it came from. Council details fill in as research lands
+(see <a rel="describedby" href="investigation-plan.html">Investigation Plan</a> R1, R5, R16, R27). Out of scope: public transport, recreation, digital parking (R17).</p>
+
+<h2>Baseline</h2>
+<table><thead><tr><th>Id</th><th>Option</th><th>Proposed by</th><th>Source</th></tr></thead><tbody>
+<tr id="X0"><td class="req-id">X0</td><td>Today's network, today's demand (calibration target)</td><td>—</td><td>OpenStreetMap (<abbr title="OpenStreetMap">OSM</abbr>) + counts</td></tr>
+<tr id="X1"><td class="req-id">X1</td><td>Today's network, forecast demand (the "do nothing" future)</td><td>—</td><td>Forecast (R6)</td></tr>
+</tbody></table>
+
+<h2>Council options (draft Victor Harbor Integrated Transport Strategy)</h2>
+<table><thead><tr><th>Id</th><th>Option</th><th>Proposed by</th><th>Source</th><th>Status</th></tr></thead><tbody>
+<tr id="C1" data-status="partial"><td class="req-id">C1</td><td>30 km/h speed limit in all areas of the town centre</td><td>City of Victor Harbor (originator TBC)</td><td>S-H01</td><td>details todo</td></tr>
+<tr id="C2" data-status="partial"><td class="req-id">C2</td><td>Shared use zones in pedestrian hotspots, 10–20 km/h, pedestrian priority</td><td>Council (TBC)</td><td>S-H01</td><td>locations todo</td></tr>
+<tr id="C3" data-status="partial"><td class="req-id">C3</td><td>One-way outer loop around the town centre (map only; clockwise by inference: in via Victoria St, up Torrens St, down the foreshore side, out via Victoria St)</td><td>Council (TBC)</td><td>S-A03, S-A04c</td><td>street list unconfirmed</td></tr>
+<tr id="C4" data-status="partial"><td class="req-id">C4</td><td>Traffic signals replacing the roundabouts at Torrens St/Hindmarsh Rd × Seaview Rd and × Crozier Rd</td><td>Council (TBC)</td><td>S-A03, S-E01</td><td>phasing unknown</td></tr>
+<tr id="C5" data-status="partial"><td class="req-id">C5</td><td>Ring Road Option 1: new outer ring road west and north of the growth area; existing ring road becomes a 60 km/h link road</td><td>Council (TBC)</td><td>S-A03, S-A04b</td><td>map-level route</td></tr>
+<tr id="C6" data-status="partial"><td class="req-id">C6</td><td>Ring Road Option 2: retain current ring road, plus new activity centre north of it</td><td>Council (TBC)</td><td>S-A03, S-A04b</td><td>map-level</td></tr>
+</tbody></table>
+
+<h2>Brent's options</h2>
+<p>From <a rel="related" href="brents-position.html">Brent's Position</a>.</p>
+<table><thead><tr><th>Id</th><th>Option</th><th>Source</th></tr></thead><tbody>
+<tr id="B1"><td class="req-id">B1</td><td>Keep two-way streets (no one-way loop)</td><td>S-F02, S-H01</td></tr>
+<tr id="B2"><td class="req-id">B2</td><td>Time- and event-based reduced speed zones on e-ink variable speed signs, normal limits otherwise</td><td>S-F02, S-H01</td></tr>
+<tr id="B3"><td class="req-id">B3</td><td>Widen the existing ring route to four lanes (two each way), then upgrade tributary roads</td><td>S-H01</td></tr>
+<tr id="B4"><td class="req-id">B4</td><td>Two-lane roundabout at the main entry into Victor</td><td>S-H01</td></tr>
+<tr id="B5"><td class="req-id">B5</td><td>Roundabout slip lanes (left-turn bypass) at congested intersections instead of / before signals</td><td>S-F03</td></tr>
+<tr id="B6"><td class="req-id">B6</td><td>Commercial/retail zone closer to Encounter Bay (land use: shortens trips, takes load off the centre)</td><td>S-H01</td></tr>
+</tbody></table>
+
+<h2>Options considered and rejected earlier</h2>
+<p>From the council-endorsed <a rel="related" href="2017-town-centre-traffic-strategy.html">2017 Town Centre Traffic Strategy</a>; more to come from council records (R5, E10).</p>
+<table><thead><tr><th>Id</th><th>Option</th><th>2017 outcome</th><th>Source</th></tr></thead><tbody>
+<tr id="P1"><td class="req-id">P1</td><td>Signals at Torrens St / Victoria St</td><td>Rejected: would likely increase delay vs the roundabout</td><td>S-A08a p.13</td></tr>
+<tr id="P2"><td class="req-id">P2</td><td>Roundabout at Torrens St / Crozier Rd</td><td>Recommended (now built)</td><td>S-A08a p.13, S-E01</td></tr>
+<tr id="P3"><td class="req-id">P3</td><td>Signals at Hindmarsh Rd / Seaview Rd / Eyre Tce</td><td>Deferred: needs detailed investigation and modelling</td><td>S-A08a p.14</td></tr>
+<tr id="P4"><td class="req-id">P4</td><td>Banning right turns into Ocean St and Stuart St</td><td>Discounted (2017 strategy); the 2017 Torrens St review then recommended banning the Stuart St right turn only</td><td>S-A08a, S-D19</td></tr>
+<tr id="P7"><td class="req-id">P7</td><td>Officers' alternative to the Dec 2025 motion: cost Urban Growth Management Strategy (<abbr title="Urban Growth Management Strategy">UGMS</abbr>) actions first, traffic strategy later</td><td>Not adopted; council ordered the investigation to start in 2025/26</td><td>S-B06 p.318, S-B07 p.15</td></tr>
+<tr id="P8"><td class="req-id">P8</td><td>Existing ring road as the freight route (<abbr title="SMEC, an engineering consultancy (originally the Snowy Mountains Engineering Corporation)">SMEC</abbr>'s preference, Aug 2026; council position 2002–2026)</td><td><abbr title="SMEC, an engineering consultancy (originally the Snowy Mountains Engineering Corporation)">SMEC</abbr> said a northern bypass "should be explored"; the Oct 2026 Vision map shows an outer freight ring road and the survey makes retaining the current road "Option 2". No documented reasons for the change</td><td>S-B04 pp.50, 66, 74-75; S-B03 p.92; S-A05</td></tr>
+<tr id="P5"><td class="req-id">P5</td><td>Signals at Torrens/Seaview/Eyre</td><td>"May be warranted in the long term"; needs three lanes per approach and land acquisition</td><td>S-D21 s13.3.14</td></tr>
+<tr id="P6"><td class="req-id">P6</td><td>Torrens St Traffic Management Review 2017: half-closure of Grantley Ave, raised median Crozier–Seaview, 1.4 m bike lanes</td><td>Consulted Aug–Sep 2017; outcome unknown</td><td>S-D19, S-D20</td></tr>
+</tbody></table>
+
+<h2>New options to find (R16)</h2>
+<p>Generated once the calibrated baseline shows where the delay actually is. Candidates to screen, none endorsed yet:</p>
+<ul>
+<li id="N1"><strong>N1</strong> Close (or half-close) the Grantley Avenue rail crossing to relieve the Seaview/Eyre roundabout (from the 2015–16 study, D14).</li>
+<li>Targeted turn restrictions or left-in/left-out at the worst-performing approaches.</li>
+<li>Roundabout metering signals that run only in holiday peaks.</li>
+<li>Signed caravan / heavy-vehicle route that keeps them off the foreshore loop.</li>
+<li>Seasonal traffic management plans for known peak days (New Year's Eve, Schoolies, Easter).</li>
+<li>Combinations: e.g. B3 + B5 + B2.</li>
+</ul>
+<aside class="kb-backlinks"><h2>Linked from</h2><ul><li><span class="rel">chapter</span> ← <a href="victor-harbor-traffic-investigation.html">Victor Harbor Traffic Investigation</a></li><li><span class="rel">describedby</span> ← <a href="investigation-plan.html">Investigation Plan</a></li><li><span class="rel">related</span> ← <a href="brents-position.html">Brents Position</a>, <a href="recommendations.html">Recommendations</a>, <a href="simulation-design.html">Simulation Design</a>, <a href="simulation-results.html">Simulation Results</a></li></ul></aside>
+
+
+</body></html>

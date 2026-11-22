@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- vehicle types for the S2 demand; parameters from config key 'vtypes' (assumption) -->
+<additional>
+    <vType id="car" vClass="passenger" length="4.6" minGap="2.5" accel="2.6" decel="4.5" maxSpeed="44.44" speedFactor="normc(1.0,0.1,0.2,2.0)"/>
+    <vType id="truck" vClass="truck" length="12.0" minGap="3.0" accel="1.0" decel="4.0" maxSpeed="27.78" speedFactor="normc(0.95,0.05,0.2,2.0)" guiShape="truck"/>
+    <vType id="caravan" vClass="passenger" length="11.5" minGap="3.0" accel="1.1" decel="3.5" maxSpeed="27.78" speedFactor="normc(0.92,0.05,0.2,2.0)" guiShape="passenger/van"/>
+</additional>

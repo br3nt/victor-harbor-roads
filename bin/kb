@@ -1,0 +1,221 @@
+#!/usr/bin/env ruby
+# Knowledge-base CLI over the okf-html gem (files in kb/ are the truth).
+#   bin/kb put "Title" FILE [--tags a,b]   create-or-update the note titled "Title" with FILE's body HTML
+#   bin/kb get SLUG                        print a note's body HTML
+#   bin/kb lint-acronyms [-v]             blocks using an acronym without its full name
+#   bin/kb ls                              list notes (slug  title)
+#   bin/kb reconcile                       rebuild index + repair rev mirrors
+#   bin/kb export [DIR]                    static, browsable copy (default site/), /n/ links made relative
+Encoding.default_external = Encoding::UTF_8
+Encoding.default_internal = Encoding::UTF_8
+# okf-html: https://github.com/br3nt/okf-html (set OKF_HTML_LIB to its lib/ folder if it is not in the default place)
+$LOAD_PATH.unshift File.expand_path(ENV.fetch("OKF_HTML_LIB", "~/Development/okf-html-gem/okf-html/lib"))
+require "okf/html"
+require "fileutils"
+require "set"
+require "cgi"
+require "nokogiri"
+
+ROOT = File.expand_path("..", __dir__)
+repo = OKF::Repository.new(store: OKF::Store::Filesystem.new(root: File.join(ROOT, "kb")))
+slugify = ->(s) { s.to_s.parameterize }
+
+ACRONYMS = File.readlines(File.join(ROOT, "bin", "acronyms.tsv"), chomp: true).drop(1)
+  .reject(&:empty?).to_h { |l| l.split("\t", 2) }
+ACR_RE = /(?<![\w-])(#{ACRONYMS.keys.sort_by { |k| -k.size }.map { |k| Regexp.escape(k) }.join("|")})(?![\w-])/
+SKIP_TAGS = %w[script style code pre abbr title head].freeze
+BLOCKS = %w[p li td th dd dt figcaption h1 h2 h3 caption blockquote].freeze
+
+# Wrap every acronym in body text with <abbr title="full name"> (not inside code/script/existing abbr).
+def abbr_markup(html)
+  doc = Nokogiri::HTML5(html)
+  doc.xpath("//body//text()").each do |t|
+    next if t.ancestors.any? { |a| SKIP_TAGS.include?(a.name) }
+    next unless t.content.match?(ACR_RE)
+    frag = CGI.escapeHTML(t.content).gsub(ACR_RE) { %(<abbr title="#{CGI.escapeHTML(ACRONYMS[$1])}">#{$1}</abbr>) }
+    t.replace(Nokogiri::HTML5.fragment(frag))
+  end
+  doc.to_html
+end
+
+# Private people named in the knowledge base (bin/private-names.tsv): pattern, kind (private|pseudonym|you), who.
+# "pseudonym" rows (the public copy, see bin/build-public) flag a private resident already shown by a pseudonym.
+# "page:<slug>" rows flag a whole page. Every mention is highlighted and the page gets a banner, so nothing
+# about a private resident can go out unnoticed when the knowledge base is shared.
+PRIVATE_ROWS = File.readlines(File.join(ROOT, "bin", "private-names.tsv"), chomp: true).drop(1)
+  .reject(&:empty?).map { |l| l.split("\t", 3) }
+PRIVATE_NAMES = PRIVATE_ROWS.reject { |p, _, _| p.start_with?("page:") }.to_h { |p, k, w| [p, [k, w]] }
+PRIVATE_PAGES = PRIVATE_ROWS.select { |p, _, _| p.start_with?("page:") }.to_h { |p, k, w| [p.delete_prefix("page:"), [k, w]] }
+PRIVATE_RE = /(#{PRIVATE_NAMES.keys.sort_by { |k| -k.size }.map { |k| Regexp.escape(k) }.join("|")})/
+PRIVATE_LABEL = { "private" => "PRIVATE RESIDENT", "pseudonym" => "PSEUDONYM", "you" => "YOU" }.freeze
+PSEUDONYMS_ONLY = PRIVATE_NAMES.values.none? { |k, _| k == "private" } && PRIVATE_NAMES.values.any? { |k, _| k == "pseudonym" }
+
+# Returns [html, hits]; hits = [[pattern, kind, who, context]].
+def private_markup(html, slug)
+  doc = Nokogiri::HTML5(html)
+  hits = []
+  # contexts first, so a block's text isn't read after an earlier name in it has been marked up
+  targets = doc.xpath("//body//text()").filter_map do |t|
+    next if t.ancestors.any? { |a| %w[script style title head].include?(a.name) || a["class"].to_s.include?("pn-") }
+    next unless t.content.match?(PRIVATE_RE)
+    [t, (t.ancestors.find { |a| BLOCKS.include?(a.name) } || t.parent).text.strip.gsub(/\s+/, " ")]
+  end
+  targets.each do |t, ctx|
+    frag = CGI.escapeHTML(t.content).gsub(PRIVATE_RE) do
+      kind, who = PRIVATE_NAMES[$1]
+      hits << [$1, kind, who, ctx]
+      %(<mark class="pn pn-#{kind}" title="#{CGI.escapeHTML(who)}">#{$1} <span class="pn-flag">#{PRIVATE_LABEL[kind]}</span></mark>)
+    end
+    t.replace(Nokogiri::HTML5.fragment(frag))
+  end
+  if (pg = PRIVATE_PAGES[slug])
+    hits << ["(whole page)", pg[0], pg[1], ""]
+  end
+  unless hits.empty?
+    body = doc.at("body")
+    kinds = hits.map { |h| h[1] }.uniq
+    names = hits.reject { |h| h[0] == "(whole page)" }.map { |h| h[0] }.uniq
+    lines = []
+    if kinds.include?("private")
+      priv = hits.select { |h| h[1] == "private" }.map { |h| h[0] }.uniq
+      lines << %(<p><strong>⚠ This page names private residents:</strong> #{priv.map { |n| CGI.escapeHTML(n) }.join(", ")}. They are members of the public, not officials. Decide whether to keep or remove them before sharing this page.</p>)
+    end
+    if kinds.include?("pseudonym")
+      ps = hits.select { |h| h[1] == "pseudonym" }.map { |h| h[0] }.uniq
+      lines << %(<p><strong>Private residents on this page are shown by pseudonym:</strong> #{ps.map { |n| CGI.escapeHTML(n) }.join(", ")}. They are members of the public, not officials; their real names are not published.</p>)
+    end
+    you = hits.select { |h| h[1] == "you" }
+    unless you.empty?
+      lines << %(<p><strong>Your own details:</strong> #{you.map { |h| h[0] == "(whole page)" ? CGI.escapeHTML(h[2]) : CGI.escapeHTML(h[0]) }.uniq.join("; ")}.</p>)
+    end
+    lines << (PSEUDONYMS_ONLY ? %(<p><a href="private-names-review.html">About the pseudonyms</a></p>) : %(<p><a href="private-names-review.html">Review every private name in the knowledge base</a></p>))
+    banner = %w[private pseudonym you].find { |k| kinds.include?(k) }
+    body.children.first.add_previous_sibling(%(<div class="pn-banner pn-banner-#{banner}">#{lines.join}</div>))
+  end
+  [doc.to_html, hits]
+end
+
+# Blocks that use an acronym without also spelling out its full name in the same block.
+def acronym_lint(html)
+  doc = Nokogiri::HTML5(html)
+  doc.css(BLOCKS.join(",")).filter_map do |b|
+    next if b.css(BLOCKS.join(",")).any? # innermost blocks only
+    text = b.text
+    missing = text.scan(ACR_RE).flatten.uniq.reject do |a|
+      full = ACRONYMS[a].split(/[,(]/).first.strip
+      text.downcase.include?(full.downcase)
+    end
+    [missing, text.strip.gsub(/\s+/, " ")[0, 100]] if missing.any?
+  end
+end
+
+case ARGV.shift
+when "put"
+  title = ARGV.shift or abort "title required"
+  file  = ARGV.shift or abort "file required"
+  tags  = (i = ARGV.index("--tags")) ? ARGV[i + 1].split(",").map(&:strip) : nil
+  body  = File.read(file)
+  attrs = { title: title, content: body }
+  attrs[:tag_names] = tags if tags
+  note = repo.find(slugify.(title))
+  note = note ? repo.update(note.uuid, attrs) : repo.create(attrs)
+  puts "#{note.slug}\t#{note.uuid}"
+when "get"
+  note = repo.find(ARGV.shift.to_s) or abort "not found"
+  print note.content
+when "lint-acronyms"
+  total = 0
+  repo.all.sort_by(&:slug).each do |n|
+    hits = acronym_lint(repo.store.read(n.uuid))
+    next if hits.empty?
+    total += hits.size
+    puts "#{n.slug}: #{hits.size} block(s)"
+    hits.first(ARGV.include?("-v") ? 999 : 3).each { |m, t| puts "    [#{m.join(",")}] #{t}" }
+  end
+  puts "#{total} block(s) use an acronym without its full name"
+when "ls"
+  repo.all.sort_by(&:slug).each { |n| puts "#{n.slug}\t#{n.effective_title}" }
+when "reconcile"
+  repo.reconcile
+  puts "reconciled #{repo.all.size} notes"
+when "export"
+  out = File.expand_path(ARGV.shift || File.join(ROOT, "site"))
+  store = File.expand_path(File.join(ROOT, "kb"))
+  abort "refusing to export into the note store (#{store})" if out == store
+  abort "refusing to export into the project root" if out == File.expand_path(ROOT)
+  marker = File.join(out, ".kb-export")
+  if Dir.exist?(out) && !Dir.empty?(out) && !File.exist?(marker)
+    abort "refusing to clear #{out}: it was not created by `bin/kb export` (no .kb-export marker)"
+  end
+  FileUtils.mkdir_p(out)
+  File.write(marker, "Generated by bin/kb export; safe to delete and regenerate.\n")
+  Dir[File.join(out, "*.html")].each { |f| File.delete(f) }
+  notes = repo.all
+  by_uuid = notes.to_h { |n| [n.uuid, n.slug] }
+  tags = Hash.new { |h, k| h[k] = [] }
+  notes.each { |n| Array(n.tag_names).each { |t| tags[t] << n } }
+  css = '<link rel="stylesheet" href="kb.css">'
+  NAV = %(<nav class="kb-nav"><a href="victor-harbor-traffic-investigation.html">⌂ Home</a> · <a href="sitemap.html">Sitemap</a> · <a class="pn-navlink" href="private-names-review.html">#{PSEUDONYMS_ONLY ? "Private residents" : "⚠ Private names"}</a></nav>)
+  private_hits = []
+  known = Set.new(by_uuid.keys) + Set.new(by_uuid.values)
+  unresolved = Hash.new { |h, k| h[k] = Set.new }
+  rewrite = lambda do |html, from = nil|
+    html.gsub(%r{href="/n/([^"#]+)(#[^"]*)?"}) do
+      target = $1; frag = $2
+      unresolved[target] << from unless known.include?(target)
+      "href=\"#{by_uuid[target] || target}.html#{frag}\""
+    end
+        .gsub(%r{href="/tags/([^"]+)"}) { "href=\"tag-#{$1}.html\"" }
+        .sub("</head>", "#{css}\n</head>")
+        .sub(/<body>/, "<body>#{NAV}")
+  end
+  titles = notes.to_h { |n| [n.slug, n.effective_title] }
+  by_uuid.each { |u, sl| titles[u] = titles[sl] }
+  backlinks = lambda do |html|
+    revs = html.scan(%r{<link rev="([^"]+)" href="/n/([^"#]+)">}).uniq
+    odd = html.scan(/<link rev[^>]*>/).size - html.scan(%r{<link rev="([^"]+)" href="/n/([^"#]+)">}).size
+    warn "warning: #{odd} <link rev> element(s) in an unexpected form were not shown as backlinks" if odd.positive?
+    return html if revs.empty?
+    items = revs.group_by(&:first).sort.map do |rel, pairs|
+      links = pairs.map { |_, id| sl = by_uuid[id] || id; %(<a href="/n/#{sl}">#{CGI.escapeHTML(titles[id].to_s.empty? ? sl : titles[id])}</a>) }.uniq.sort
+      %(<li><span class="rel">#{CGI.escapeHTML(rel)}</span> ← #{links.join(", ")}</li>)
+    end
+    html.sub("</body>", %(<aside class="kb-backlinks"><h2>Linked from</h2><ul>#{items.join}</ul></aside>\n</body>))
+  end
+  notes.each do |n|
+    html, hits = private_markup(abbr_markup(backlinks.(repo.store.read(n.uuid))), n.slug)
+    hits.each { |h| private_hits << [n, *h] }
+    File.write(File.join(out, "#{n.slug}.html"), rewrite.(html, n.slug))
+  end
+  page = lambda do |name, title, items|
+    lis = items.map { |n| %(<li><a href="#{n.slug}.html">#{CGI.escapeHTML(n.effective_title.to_s)}</a></li>) }.join("\n")
+    title = CGI.escapeHTML(title)
+    File.write(File.join(out, name), %(<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>#{title}</title>#{css}</head><body>#{NAV}<h1>#{title}</h1><ul>#{lis}</ul></body></html>))
+  end
+  page.("sitemap.html", "Sitemap", notes.sort_by(&:effective_title))
+  tags.each { |t, ns| page.("tag-#{t}.html", "Tag: #{t}", ns.sort_by(&:effective_title)) }
+  rows = private_hits.sort_by { |n, pat, kind, *| [%w[private pseudonym you].index(kind) || 3, pat, n.effective_title.to_s] }.map do |n, pat, kind, who, ctx|
+    %(<tr class="pn-row-#{kind}"><td><mark class="pn pn-#{kind}">#{CGI.escapeHTML(pat)} <span class="pn-flag">#{PRIVATE_LABEL[kind]}</span></mark></td><td>#{CGI.escapeHTML(who)}</td><td><a href="#{n.slug}.html">#{CGI.escapeHTML(n.effective_title.to_s)}</a></td><td>#{CGI.escapeHTML(ctx[0, 300])}</td></tr>)
+  end
+  npriv = private_hits.count { |h| h[2] == "private" }
+  review_intro = if PSEUDONYMS_ONLY
+    nps = private_hits.count { |h| h[2] == "pseudonym" }
+    %(<h1>Private residents</h1>
+<div class="pn-banner pn-banner-pseudonym"><p><strong>#{nps} mention(s) of private residents</strong> across #{private_hits.select { |h| h[2] == "pseudonym" }.map { |h| h[0].slug }.uniq.size} page(s), all shown by pseudonym (#{PRIVATE_NAMES.select { |_, (k, _)| k == "pseudonym" }.keys.map { |n| CGI.escapeHTML(n) }.join(", ")}). They are members of the public who posted or commented in a public Facebook group; their real names are not published. Everyone else named in this knowledge base is acting in a public or professional role (councillors, council officers, the local Member of Parliament, State and consultancy staff), or is the author.</p></div>)
+  else
+    %(<h1>Private names: review before sharing</h1>
+<div class="pn-banner pn-banner-private"><p><strong>#{npriv} mention(s) of private residents</strong> across #{private_hits.select { |h| h[2] == "private" }.map { |h| h[0].slug }.uniq.size} page(s). Everyone else named in this knowledge base is acting in a public or professional role (councillors, council officers, the local Member of Parliament, State and consultancy staff).</p>
+<p>Private residents are highlighted in red wherever they appear; your own details in amber. To remove a name, take it out of the note (or out of <code>research/F-H-sources.tsv</code> for the Sources Register) and re-export. The list of names checked is <code>bin/private-names.tsv</code>.</p></div>)
+  end
+  File.write(File.join(out, "private-names-review.html"), %(<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>#{PSEUDONYMS_ONLY ? "Private Residents" : "Private Names Review"}</title>#{css}</head><body>#{NAV}
+#{review_intro}
+<table><thead><tr><th>Name</th><th>Who</th><th>Page</th><th>Where it appears</th></tr></thead><tbody>#{rows.join("\n")}</tbody></table></body></html>))
+  assets = File.join(ROOT, "kb-assets")
+  FileUtils.cp_r(File.join(assets, "."), File.join(out, "assets")) if Dir.exist?(assets)
+  FileUtils.cp(File.join(ROOT, "bin", "kb.css"), out) if File.exist?(File.join(ROOT, "bin", "kb.css"))
+  File.write(File.join(out, "index.html"), '<!DOCTYPE html><meta http-equiv="refresh" content="0; url=victor-harbor-traffic-investigation.html">')
+  unresolved.each { |t, froms| warn "warning: unresolved link /n/#{t} (from #{froms.to_a.compact.join(", ")})" }
+  puts "exported #{notes.size} notes + #{tags.size} tag pages to #{out}"
+else
+  abort File.read(__FILE__).lines.grep(/^#  /).join
+end

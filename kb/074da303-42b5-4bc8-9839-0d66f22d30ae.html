@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head profile="https://br3nt.github.io/okf/">
+<meta charset="utf-8">
+<title>Seasons and Events</title>
+<link rel="canonical" href="/n/seasons-and-events">
+<meta name="uuid" scheme="UUID" content="074da303-42b5-4bc8-9839-0d66f22d30ae">
+<meta name="created" scheme="ISO8601" content="2026-11-21T10:16:21+10:30">
+<meta name="updated" scheme="ISO8601" content="2026-11-21T19:00:51+10:30">
+<meta name="keywords" content="demand, seasons">
+<link rev="chapter" href="/n/victor-harbor-traffic-investigation">
+<link rev="related" href="/n/discoveries-log">
+<link rev="related" href="/n/recommendations">
+<link rev="related" href="/n/simulation-design">
+</head>
+<body>
+<h1>Seasons and Events</h1>
+<p>When Victor Harbor's roads carry more than usual, and why (<a rel="related" href="/n/investigation-plan#R9">R9</a>). These dates set the simulation's traffic conditions (<a rel="related" href="/n/simulation-design">Simulation Design</a>).</p>
+
+<h2 id="school">South Australia (SA) school holidays</h2>
+<p>From South Australia (SA) Department for Education term dates <a href="/n/sources-register#S-C20">[S-C20]</a> (state schools; independent schools may differ):</p>
+<table>
+<thead><tr><th>Holiday</th><th>2026</th><th>2027</th></tr></thead>
+<tbody>
+<tr><td>Summer</td><td>12 Dec 2026 – 26 Jan 2027</td><td>from 11 Dec 2027</td></tr>
+<tr><td>Autumn (Easter)</td><td>11 – 26 Apr (Easter Sunday 5 Apr)</td><td>10 – 25 Apr (Easter Sunday 28 Mar)</td></tr>
+<tr><td>Winter</td><td>4 – 19 Jul</td><td>3 – 18 Jul</td></tr>
+<tr><td>Spring</td><td>26 Sep – 11 Oct</td><td>25 Sep – 10 Oct</td></tr>
+</tbody></table>
+<p>2027 holidays are the gaps between published terms; Easter dates are calculated, not from a primary page.</p>
+
+<h2 id="events">Events with road closures, 2026–27</h2>
+<script type="application/json" id="events">
+{"source":"S-C31","pax_source":"S-M03","rows":[
+ {"event":"Schoolies Festival","pax":4000,"start":"2026-11-20","end":"2026-11-22","place":"Warland Reserve","closures":true},
+ {"event":"Half Marathon","pax":7500,"start":"2026-12-06","closures":true},
+ {"event":"Christmas Pageant and Carols","pax":6000,"start":"2026-12-12","closures":true},
+ {"event":"New Year's Eve","pax":8000,"start":"2026-12-31","place":"Warland Reserve","closures":true},
+ {"event":"Tour Down Under stage","pax":6000,"start":"2027-01-22","closures":true},
+ {"event":"Adelaide Hills cycling event","pax":200,"start":"2027-02-28","place":"Waitpinga Road","closures":true},
+ {"event":"Triathlon","pax":1500,"start":"2027-03-06","end":"2027-03-08","closures":true},
+ {"event":"Valhalla Festival","pax":6000,"start":"2027-06-05","end":"2027-06-06","place":"Kent Reserve","closures":true},
+ {"event":"Flinders to Fleurieu","pax":300,"start":"2027-06-11","closures":true},
+ {"event":"Rock N Roll Festival","pax":12000,"start":"2027-09-17","end":"2027-09-19","closures":true}
+]}
+</script>
+<table>
+<thead><tr><th>Dates</th><th>Event</th><th>Expected attendance</th><th>Venue, closures and notes</th></tr></thead>
+<tbody>
+<tr><td>11 Nov 2026</td><td>RSL Remembrance Day Service</td><td>500</td><td>Soldiers Memorial Gardens; no road closures.</td></tr>
+<tr><td>20–22 Nov 2026</td><td>Schoolies Festival</td><td>4,000</td><td>Warland Reserve; closures; set-up from 17 Nov 2026; pack-down by 23 Nov 2026. 7pm–1am Fri/Sat, 3–11pm Sun; Goolwa shuttle bus <a href="/n/sources-register#S-C32">[S-C32]</a>. <strong>Happening this weekend.</strong></td></tr>
+<tr><td>6 Dec 2026</td><td>Victor Harbor Half Marathon</td><td>7,500</td><td>Warland Reserve; closures.</td></tr>
+<tr><td>12 Dec 2026</td><td>Christmas Pageant &amp; Carols</td><td>6,000</td><td>Warland Reserve; closures. First day of summer school holidays.</td></tr>
+<tr><td>31 Dec 2026</td><td>New Year's Eve Celebrations</td><td>8,000</td><td>Warland Reserve; closures. The simulation assumed 5,000 here; it is being raised to 8,000 (see below).</td></tr>
+<tr><td>9–16 Jan 2027</td><td>Rotary Art Show</td><td>7,000</td><td>Warland Reserve; no road closures; set-up from 2 Jan 2027; pack-down by 18 Jan 2027.</td></tr>
+<tr><td>22 Jan 2027</td><td>Tour Down Under</td><td>6,000</td><td>Warland Reserve; closures.</td></tr>
+<tr><td>26 Jan 2027</td><td>Australia Day Celebrations</td><td>400</td><td>SMG; no road closures; set-up from 25 Jan 2027; pack-down by 27 Jan 2027.</td></tr>
+<tr><td>13 Feb 2027</td><td>Victor Harbor Fringe Festival</td><td>2,000</td><td>Warland Reserve; no road closures.</td></tr>
+<tr><td>28 Feb 2027</td><td>Adelaide Hills Cycling event</td><td>200</td><td>Waitpinga Road; closures.</td></tr>
+<tr><td>6–8 Mar 2027</td><td>Sid James Victor Harbor Triathlon</td><td>1,500</td><td>SMG; closures; set-up from 5 Mar 2027; pack-down by 9 Mar 2027.</td></tr>
+<tr><td>25 Apr 2027</td><td>ANZAC Day Dawn Service</td><td>2,000</td><td>Soldiers Memorial Gardens; no road closures.</td></tr>
+<tr><td>11 Jun 2027</td><td>Flinders to Fleurieu</td><td>300</td><td>Warland Reserve; closures.</td></tr>
+<tr><td>5–6 Jun 2027</td><td>Valhalla Festival</td><td>6,000</td><td>Kent Reserve; closures; set-up from 3 Jun 2027; pack-down by 8 Jun 2027. Long weekend.</td></tr>
+<tr><td>2027 TBC</td><td>NAIDOC March</td><td>200</td><td>Warland Reserve; closures.</td></tr>
+<tr><td>20 Jun 2027</td><td>Granite Island Run</td><td>500</td><td>Causeway Plaza; no road closures.</td></tr>
+<tr><td>10 Sep 2027</td><td>Coastrek</td><td>1,000</td><td>Causeway Plaza; no road closures; set-up from 9 Sep 2027; pack-down by 11 Sep 2027.</td></tr>
+<tr><td>17–19 Sep 2027</td><td>Rock N Roll Festival</td><td>12,000</td><td>Warland/Road Closure; closures; set-up from 17 Sep 2027; pack-down by 19 Sep 2027. The largest event on the calendar.</td></tr>
+<tr><td>23–24 Oct 2027</td><td>Heysen Ultra Trail</td><td>600</td><td>SMG; no road closures; set-up from 22 Oct 2027; pack-down by 25 Oct 2027.</td></tr>
+</tbody></table>
+<p>Sources: the council's Event Calendar 2026/27 (last updated 4 Nov 2026), which gives the dates, venues, whether roads are closed, set-up and pack-down periods, and expected attendance (published as "PAX") <a href="/n/sources-register#S-M03">[S-M03]</a>; the earlier council events page <a href="/n/sources-register#S-C31">[S-C31]</a>. Expected attendance counts people, not vehicles; the calendar does not say whether it is a total or a daily figure for the multi-day events. The calendar says whether road closures are needed but does not name the roads. Also seasonal but unquantified: whale season (May–October), Saturday farmers' market, Cockle Train, Granite Island visitors.</p>
+<p><strong>Inference:</strong> by the published attendance, the Rock N Roll Festival (12,000) is the biggest event of the year, followed by New Year's Eve (8,000), the Half Marathon (7,500) and the Rotary Art Show (7,000, spread over eight days). The New Year's Eve figure of 8,000 <a href="/n/sources-register#S-M03">[S-M03]</a> is 60% above the 5,000 our demand model first assumed (its <code>event.attendees</code> setting); that assumption is being raised to 8,000. We do not know how many of the attendees arrive by car.</p>
+
+<h2 id="conditions">What this means for the simulation</h2>
+<ul>
+<li><strong>Normal:</strong> school-term weekday (midday peak) and Saturday.</li>
+<li><strong>Holiday peak:</strong> a weekday between Christmas and New Year — residents plus the full visitor layer.</li>
+<li><strong>Event:</strong> New Year's Eve (8,000 expected) or Schoolies (4,000) at Warland Reserve, with the published road closures <a href="/n/sources-register#S-M03">[S-M03]</a> — the hardest test for a one-way loop that routes all traffic past the foreshore (<a href="/n/investigation-plan#R23">R23a</a>).</li>
+</ul>
+</body>
+</html>

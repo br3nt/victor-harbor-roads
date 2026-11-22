@@ -1,0 +1,45 @@
+{
+ "key": "n4__weekday_term_2041_high",
+ "scenario": "n4",
+ "condition": "weekday_term",
+ "year": "2041",
+ "growth": "high",
+ "network": "n4_bays",
+ "seeds": [
+  1,
+  2
+ ],
+ "errors": [],
+ "per_seed": [
+  {
+   "seed": 1,
+   "teleports": 3,
+   "trips": 97217,
+   "mean_trip_min": 6.57,
+   "median_trip_min": 6.08,
+   "p95_trip_min": 13.42,
+   "total_delay_veh_h": 2093.2,
+   "total_waiting_veh_h": 510.3
+  },
+  {
+   "seed": 2,
+   "teleports": 11,
+   "trips": 97217,
+   "mean_trip_min": 6.85,
+   "median_trip_min": 6.25,
+   "p95_trip_min": 14.27,
+   "total_delay_veh_h": 2468.8,
+   "total_waiting_veh_h": 756.9
+  }
+ ],
+ "mean": {
+  "teleports": 7.0,
+  "trips": 97217.0,
+  "mean_trip_min": 6.71,
+  "median_trip_min": 6.17,
+  "p95_trip_min": 13.84,
+  "total_delay_veh_h": 2281.0,
+  "total_waiting_veh_h": 633.6
+ },
+ "viewer_export": "ok"
+}

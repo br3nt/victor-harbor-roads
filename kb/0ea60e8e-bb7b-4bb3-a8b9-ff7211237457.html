@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head profile="https://br3nt.github.io/okf/">
+<meta charset="utf-8">
+<title>Simulation Design</title>
+<link rel="canonical" href="/n/simulation-design">
+<meta name="uuid" scheme="UUID" content="0ea60e8e-bb7b-4bb3-a8b9-ff7211237457">
+<meta name="created" scheme="ISO8601" content="2026-11-21T09:35:44+10:30">
+<meta name="updated" scheme="ISO8601" content="2026-11-21T13:29:09+10:30">
+<meta name="keywords" content="simulation">
+<link rev="chapter" href="/n/victor-harbor-traffic-investigation">
+<link rev="describedby" href="/n/investigation-plan">
+<link rev="related" href="/n/brents-questions">
+<link rev="related" href="/n/road-network">
+<link rev="related" href="/n/seasons-and-events">
+<link rev="related" href="/n/simulation-results">
+</head>
+<body>
+<h1>Simulation Design</h1>
+<p>How we will answer the plan's simulation requirements (<a rel="describedby" href="/n/investigation-plan#R13">R13</a>, R14, R15, R16, R23, R26).
+This is a draft; the toolchain check and data availability from the research sweep will firm it up.</p>
+
+<h2>Engine</h2>
+<p>Eclipse Simulation of Urban MObility (SUMO) (open-source microscopic traffic simulator): imports OpenStreetMap, models roundabouts, signals, lane changes, speed limits and per-vehicle routes, and logs per-trip travel times and per-lane/per-movement delays. Every scenario is a SUMO network variant plus a demand variant, scripted so results regenerate from the data.</p>
+
+<h2>Network (R12)</h2>
+<ul>
+<li>OpenStreetMap (OSM) extract of greater Victor Harbor and its approach roads, cleaned: lanes, speeds, roundabout geometry, signal plans, turn restrictions checked against aerial imagery.</li>
+<li>Scenario networks: one per option in the <a rel="related" href="/n/options-register">Options Register</a> (one-way loop, signals, 30 km/h, shared zones, ring-road variants, Brent's options, new options).</li>
+</ul>
+
+<h2>Demand</h2>
+<ul>
+<li><strong>Residents:</strong> synthetic households placed by Australian Bureau of Statistics (ABS) mesh-block dwelling and person counts, minus unoccupied dwellings; trips by purpose (shopping, dining, services, gym, school, work, recreation) and hour, from published trip-generation rates; destinations chosen among real POIs by distance and attractiveness.</li>
+<li><strong>Visitors:</strong> a separate layer sized to the summer anchor (&gt;11,000 vehicles/day on Victor Harbor Rd) since holiday homes alone explain only ≈ +29% (<a rel="related" href="/n/housing-and-visitors#visitors">Housing and Visitors</a>).  holiday-home occupancy (unoccupied dwellings filling up in season), short-term rentals, caravan-park guests, and day-trippers entering on Victor Harbor Rd / Port Elliot Rd scaled to seasonal counts.</li>
+<li><strong>Through and freight traffic:</strong> from state-road volumes and heavy-vehicle shares.</li>
+<li><strong>Future years:</strong> two scenarios from the council's Urban Growth Management Strategy (UGMS) — moderate (≈ +8,000 people by 2050, 185 dwellings/yr) and high (Greater Adelaide Regional Plan [GARP], ≈ +19,200, 318→410→475 dwellings/yr) — run at 2031, 2041 and 2051, with new households placed in the northern growth areas and infill (<a rel="related" href="/n/population-and-growth#scenarios">Population and Growth</a>). Method:  scale and relocate households to the council's forecast years and growth areas (north growth area, infill), keeping assumptions explicit.</li>
+</ul>
+
+<h2>Conditions</h2>
+<p>School-term weekday off-peak · weekday midday peak (the town centre peaks 11:15–14:15, not at commuter times — <a href="/n/discoveries-log#D12">D12</a>) · weekday AM and PM · Saturday midday · summer-holiday peak day · event day with published road closures (New Year's Eve, Schoolies — see <a rel="related" href="/n/seasons-and-events">Seasons and Events</a>). Each condition runs with several random seeds so results are distributions, not single numbers.</p>
+
+<h2>Calibration (R26)</h2>
+<p>Match simulated link volumes to observed counts (target GEH statistic &lt; 5 on most counted links) and simulated travel times to observed ones (Google/TomTom-style travel-time samples if obtainable). Where no observation exists, mark the result as assumption-driven and run sensitivity tests.</p>
+
+<h2>Outputs</h2>
+<ul>
+<li><strong>Accessibility (R14):</strong> for each residential area × point of interest (POI) type × condition × scenario × year: travel-time distribution with median, mean, p95, p99 and a histogram. Travel times are usually right-skewed, so we report the observed shape rather than assume a normal distribution.</li>
+<li><strong>Intersections (R15):</strong> for each intersection × approach × turning movement: mean and p95 delay (wait to turn), queue length, throughput, by condition and scenario.</li>
+<li><strong>Safety proxy:</strong> conflicting movements and right-angle exposure at priority junctions, since right-angle crashes dominate the crash record (<a href="/n/discoveries-log#D11">D11</a>).</li>
+<li><strong>Network:</strong> total vehicle-hours, km travelled, heavy vehicles and caravans past the foreshore / Warland Reserve (R23a), effect of speed limits on throughput (R23b).</li>
+<li>Results pages in this knowledge base, with data embedded in <code>&lt;script type="application/json"&gt;</code> and interactive charts / animated replays.</li>
+</ul>
+</body>
+</html>

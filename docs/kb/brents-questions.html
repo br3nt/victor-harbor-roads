@@ -1,0 +1,63 @@
+<!DOCTYPE html><html lang="en"><head profile="https://br3nt.github.io/okf/">
+<meta charset="utf-8">
+<title>Brents Questions</title>
+<link rel="canonical" href="brents-questions.html">
+<meta name="uuid" scheme="UUID" content="d4c3a282-e4b6-4d90-9d95-862ce679fb12">
+<meta name="created" scheme="ISO8601" content="2026-11-21T13:24:39+10:30">
+<meta name="updated" scheme="ISO8601" content="2026-11-21T19:04:01+10:30">
+<meta name="keywords" content="plan, questions">
+<link rev="chapter" href="victor-harbor-traffic-investigation.html">
+<link rel="stylesheet" href="kb.css">
+</head>
+<body><nav class="kb-nav"><a href="victor-harbor-traffic-investigation.html">⌂ Home</a> · <a href="sitemap.html">Sitemap</a> · <a class="pn-navlink" href="private-names-review.html">Private residents</a></nav>
+<h1>Brent's Questions</h1>
+<p>Every question Brent has asked during the investigation, with the answer and where the evidence is. Open questions stay marked open. Requests and decisions are tracked in the <a rel="related" href="investigation-plan.html">Investigation Plan</a>; this note makes sure no question gets dropped.</p>
+
+<h2 id="q-2026-11-21">21 November 2026</h2>
+<dl>
+<dt id="q-sim-by-sunday">Can the simulation be ready before consultation closes (5pm Sunday 22 November)?</dt>
+<dd><span data-status="partial">In progress.</span> Brent pointed out there's no reason it can't. Target: a calibrated baseline plus the council's town-centre package and Brent's package, for a term weekday and the summer peak, before the deadline. See <a rel="related" href="simulation-design.html">Simulation Design</a>.</dd>
+
+<dt id="q-browser">Why can't browser automation fetch the blocked documents?</dt>
+<dd>The research agents used command-line downloads and a headless browser, which the council's and the Department for Infrastructure and Transport's (<abbr title="Department for Infrastructure and Transport">DIT</abbr>) bot protection (Cloudflare) challenges. Brent's own Chrome, driven by Claude in Chrome, is a real browser and will probably get through; downloads still need Brent's OK. List: <a rel="related" href="manual-retrieval-list.html">Manual Retrieval List</a>.</dd>
+
+<dt id="q-foi-cost">Does a Freedom of Information (<abbr title="Freedom of Information">FOI</abbr>) request cost money?</dt>
+<dd>Yes, modestly. For a Freedom of Information (<abbr title="Freedom of Information">FOI</abbr>) request in South Australia the application fee was $43.30 in 2025–26; a 2026 fees notice lists $44.70. Processing time can be charged at $16.40 per 15 minutes. Agencies can waive or reduce fees (for example for concession-card holders or hardship), and a Member of Parliament (<abbr title="Member of Parliament">MP</abbr>) is generally exempt unless fees exceed $1,000 — so asking the local <abbr title="Member of Parliament">MP</abbr> to request documents is an option. Asking the council informally first costs nothing. Sources: <a rel="external" href="https://archives.sa.gov.au/finding-information/sa-government-information/foi-fees-and-charges">State Records <abbr title="South Australia">SA</abbr> fees page</a>, <a rel="external" href="https://archives.sa.gov.au/__data/assets/pdf_file/0007/1219570/FOI-Fees-Notice-2026.pdf"><abbr title="Freedom of Information">FOI</abbr> Fees Notice 2026</a>, <a rel="external" href="https://yorke.sa.gov.au/content/uploads/2025/07/SF011-Freedom-of-Information-Request-to-Access-Documents.pdf">Yorke Peninsula Council <abbr title="Freedom of Information">FOI</abbr> form</a> (Member of Parliament exemption). Not yet archived.</dd>
+
+<dt id="q-smec-model">What is <abbr title="SMEC, an engineering consultancy (originally the Snowy Mountains Engineering Corporation)">SMEC</abbr>'s model?</dt>
+<dd><abbr title="SMEC, an engineering consultancy (originally the Snowy Mountains Engineering Corporation)">SMEC</abbr> is the engineering consultancy the council hired for the Victor Harbor Integrated Transport Strategy (<abbr title="Victor Harbor Integrated Transport Strategy">VHITS</abbr>). Its model is the Victor Harbor Roads Assessment Model (<abbr title="Victor Harbor Roads Assessment Model (SMEC's sketch traffic model)">VHRAM</abbr>), which <abbr title="SMEC, an engineering consultancy (originally the Snowy Mountains Engineering Corporation)">SMEC</abbr> itself calls <q>a simplified transport demand model</q>: it estimates how many trips start and end in each area, where they go, and which roads they use, for one typical weekday. It is a "sketch" model — it does not simulate individual cars, queues at intersections, or roundabout and signal behaviour <a href="sources-register.html#S-B04">[S-B04 pp.43–45]</a>. See <a rel="related" href="due-diligence-assessment.html">Due Diligence Assessment</a>.</dd>
+
+<dt id="q-typical-weekday">What is a "typical weekday" model?</dt>
+<dd>A model of an ordinary school-term weekday's traffic — not weekends, school holidays, summer peak or events. For Victor Harbor, which is busiest in holidays and at events, that leaves out exactly the conditions residents complain about. <abbr title="SMEC, an engineering consultancy (originally the Snowy Mountains Engineering Corporation)">SMEC</abbr> used one permanent counter's 2025 data only to describe seasonality, not to model it <a href="sources-register.html#S-B04">[S-B04 pp.41, 45]</a>.</dd>
+
+<dt id="q-weekday-data">Do we have data for a typical weekday?</dt>
+<dd>Partly. Annual Average Daily Traffic (<abbr title="Annual Average Daily Traffic">AADT</abbr>) from the Department for Infrastructure and Transport (<abbr title="Department for Infrastructure and Transport">DIT</abbr>) is a yearly average, not a weekday figure. The detailed 2017 turning counts were taken on Wednesday 26 April 2017 — <em>during</em> school holidays <a href="sources-register.html#S-D19">[S-D19]</a>. No term-time weekday counts for the town centre were found. Our simulation uses the 2017 shape for weekdays and records that as an assumption; new term-time counts would fix it.</dd>
+
+<dt id="q-do-nothing">What is a "do-nothing" network?</dt>
+<dd>Today's roads, unchanged, loaded with future traffic — the standard baseline for seeing what happens if nothing is built. Each option should then be tested against it. <abbr title="SMEC, an engineering consultancy (originally the Snowy Mountains Engineering Corporation)">SMEC</abbr> tested <em>only</em> the do-nothing network; none of the proposed options (one-way loop, 30 km/h, signals, outer ring road) were modelled <a href="sources-register.html#S-B04">[S-B04 pp.52, 78]</a>.</dd>
+
+<dt id="q-guess-demand">Can we estimate traffic from where supermarkets, services, homes and workplaces are, and validate it?</dt>
+<dd>Yes — that is how our demand model works: homes come from Australian Bureau of Statistics (<abbr title="Australian Bureau of Statistics">ABS</abbr>) mesh blocks, and trips go to real shops, services and workplaces weighted by size and distance (a "gravity model"). Every parameter is in one configuration file with its source or marked as an assumption, so it can be changed and re-run. A validation report checks the pattern for plausibility before it is calibrated against the 2017 counts and the Department for Infrastructure and Transport (<abbr title="Department for Infrastructure and Transport">DIT</abbr>) volumes. See <code>sim/data/demand/config/</code> and <code>sim/data/demand/VALIDATION.md</code> once the demand stream lands.</dd>
+
+<dt id="q-recording">Is the 26 October council meeting recording something Brent needs to get manually?</dt>
+<dd>Answered. Brent read the auto-generated captions of the council's YouTube video in his own Chrome, and we archived the extract for item 10.1 <a href="sources-register.html#S-M05">[S-M05]</a>. Item 10.1 was debated for about five minutes; six speakers; carried; none mentioned the one-way loop, 30 km/h, signals, the outer ring road or modelling evidence; Cr Burns asked for cost estimates to be in the consultation material. Details and quotes: <a rel="related" href="people-and-roles.html#no-debate">People and Roles</a>. Captions can mis-hear words, so check the video before quoting.</dd>
+
+<dt id="q-order">Testing and costing after consultation — isn't that the wrong order?</dt>
+<dd>Yes; it is now a recommendation: <a rel="related" href="recommendations.html#test-first">test before consulting and before endorsing a "Vision"</a>. The council's timeline puts testing, modelling and costing in February–June 2027, after consultation and after endorsing an "Ultimate Vision" <a href="sources-register.html#S-B03">[S-B03 p.78]</a>.</dd>
+
+<dt id="q-facts-broad">The traffic facts are very broad — where is the detail?</dt>
+<dd>The detailed data is in the simulation inputs: 6,000 rows of 15-minute turning counts for every movement at 7 intersections (<code>sim/data/counts/turning_2017.csv</code>), 16 Department for Infrastructure and Transport (<abbr title="Department for Infrastructure and Transport">DIT</abbr>) road sections with positions, and an hourly profile. <span data-status="todo">To do:</span> a knowledge-base page that shows them per intersection and movement, and the viewer will show them on the map.</dd>
+
+<dt id="q-project-counts">Can the 2017 counts be projected to today and validated?</dt>
+<dd>Yes; a first version is done. Each 2017 movement is scaled by a growth factor: Torrens St 0.98, Hindmarsh Rd 1.05 and Victoria St 0.91, each fitted to the Department for Infrastructure and Transport (<abbr title="Department for Infrastructure and Transport">DIT</abbr>) count history for that road, and 1.17 for council streets, which <abbr title="Department for Infrastructure and Transport">DIT</abbr> does not count (population growth of about 1.95% a year over 8.2 years) <a href="sources-register.html#S-D19">[S-D19]</a> <a href="sources-register.html#S-D01">[S-D01]</a> <a href="sources-register.html#S-C03">[S-C03]</a>. Against <abbr title="Department for Infrastructure and Transport">DIT</abbr>'s 2024 annual average daily traffic, 5 of 6 comparisons are within ±10% (ratios 0.91 to 1.09) and all are within 17%. The model, in turn, carries about 0.80 of the projected 2025 counted volume at matched movements (figure reported by the simulation stream; not yet written up in the results note). Method, factor table and limits: <a rel="related" href="traffic-and-crash-data.html#projected-counts">Traffic and Crash Data</a>; code and files in <code>sim/data/counts/PROJECTION.md</code>.</dd>
+
+<dt id="q-resident-site">Can there be a resident site where people enter their routes?</dt>
+<dd><span data-status="partial">In progress.</span> A page in the viewer (<code>viewer/residents/</code>) where a resident can enter their own routes. What is entered is stored only in that person's own browser, not on a server.</dd>
+
+
+
+</dl>
+<aside class="kb-backlinks"><h2>Linked from</h2><ul><li><span class="rel">chapter</span> ← <a href="victor-harbor-traffic-investigation.html">Victor Harbor Traffic Investigation</a></li></ul></aside>
+
+
+</body></html>

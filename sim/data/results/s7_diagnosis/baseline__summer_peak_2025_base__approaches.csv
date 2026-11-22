@@ -1,0 +1,41 @@
+seeds,junction,node_streets,approach,street,veh_per_day,wait_veh_h,wait_s_per_veh,peak_hour,peak_hour_wait_veh_h
+3,hindmarsh_grantley_bridge,Bridge Terrace,217056482#0,Bridge Terrace,2755.0,23.08,30.2,15,4.79
+3,armstrong_crozier,Armstrong Road / Crozier Road,39946279,Crozier Road,3182.0,14.85,16.8,12,2.96
+3,13163189092,Victoria Street,173449383#3,Victoria Street,9588.0,13.44,5.0,15,2.01
+3,13163189092,Victoria Street,-1432093544,,992.0,11.3,41.0,11,1.55
+3,victoria_granite,Granite Street / Victoria Street,42530572#1,Granite Street,1218.0,10.8,31.9,11,1.91
+3,1842609660,Hindmarsh Road / Wattle Drive,-43152356#0,Wattle Drive,1006.0,10.22,36.6,11,1.48
+3,torrens_eyre_seaview_hindmarsh,Eyre Terrace,184390356,Eyre Terrace,2616.0,9.57,13.2,12,1.43
+3,eyre_mckinlay,Eyre Terrace / McKinlay Street,42645831#7,McKinlay Street,1845.0,8.66,16.9,12,1.98
+3,531006823,Burke Street / Crozier Road,1242247847#2,Burke Street,1842.0,8.45,16.5,12,1.89
+3,victoria_oval,Oval Road / Victoria Street,173449383#0,Victoria Street,10870.0,8.31,2.8,11,1.53
+3,hindmarsh_grantley_bridge,Grantley Avenue / Hindmarsh Road,-184390360#1,,2154.0,8.12,13.6,12,1.02
+3,victoria_oval,Oval Road / Victoria Street,1242247851#0,Victoria Street,12096.0,7.33,2.2,12,1.79
+3,torrens_coral,Coral Street / Torrens Street,60269602#2,Coral Street,1387.0,7.03,18.2,12,1.37
+3,1939404655,Bartel Boulevard / Bay Road,-183540840#0,Bartel Boulevard,3246.0,6.48,7.2,12,0.92
+3,537638825,Hindmarsh Road / Renown Avenue,46824061#2,Renown Avenue,794.0,6.37,28.9,12,1.28
+3,1842610451,Victoria Street,173449381,Victoria Street,11002.0,5.94,1.9,14,0.93
+3,1926735011,Bay Road / Harbour View Terrace,-1304353905,Harbour View Terrace,1675.0,5.88,12.6,12,0.94
+3,11160024641,Torrens Street,576495712#0,Torrens Street,7048.0,5.71,2.9,12,0.91
+3,13163189007,,-1432093523,,4399.0,5.23,4.3,12,1.63
+3,535091796,Hindmarsh Road / The Parkway,-42793547#0,The Parkway,1211.0,5.07,15.1,15,0.83
+3,adelaide_hindmarsh_portelliot,Port Elliot Road,53706687#1,Port Elliot Road,6829.0,4.73,2.5,10,0.81
+3,torrens_coral,Coral Street / Torrens Street,50904910#0,Torrens Street,4507.0,4.61,3.7,12,1.3
+3,1388354465,Tregonning Street,124861827#1,,1660.0,4.26,9.2,13,0.87
+3,1842610350,George Main Road,-23075152#0,George Main Road,2234.0,4.13,6.6,12,1.7
+3,795603919,Burke Street / Little Burke Street,-1242247847#1,Burke Street,1674.0,4.13,8.9,12,0.84
+3,287006238,Hindmarsh Road / The Drive,-45099387#0,The Drive,340.0,3.86,40.9,12,0.81
+3,adelaide_hindmarsh_portelliot,Adelaide Road,53706691#1,Adelaide Road,4715.0,3.8,2.9,14,0.54
+3,cluster_1129280032_1129280430,Tugwell Road / Waitpinga Road / Whalers Road,-23075154#0,Whalers Road,1987.0,3.72,6.7,14,0.54
+3,571781795,Adare Avenue / Hindmarsh Road,45099728,Adare Avenue,612.0,3.69,21.7,12,0.62
+3,537636673,Hindmarsh Road / Peace Avenue,-42926551#0,Peace Avenue,598.0,3.68,22.1,12,0.66
+3,eyre_mckinlay,Eyre Terrace / McKinlay Street,-50904907#1,Eyre Terrace,1017.0,3.59,12.7,14,0.71
+3,575502889,Hindmarsh Road / Rupara Avenue,173449332#15,Hindmarsh Road,10489.0,3.59,1.2,12,0.63
+3,torrens_eyre_seaview_hindmarsh,Seaview Road,23075170,Seaview Road,1454.0,3.5,8.7,12,0.57
+3,armstrong_crozier,Armstrong Road / Crozier Road,97536780,Armstrong Road,4588.0,3.33,2.6,12,0.77
+3,victoria_burke,Burke Street / Victoria Street,-23075182,Burke Street,1732.0,3.17,6.6,14,0.37
+3,victoria_burke,Burke Street / Victoria Street,-1242247847#0,Burke Street,1728.0,3.08,6.4,13,0.5
+3,cluster_2197472419_660156334,Mentone Road / Port Elliot Road / Wilkinson Avenue,23075202#16,Mentone Road,1387.0,3.04,7.9,12,0.38
+3,11195084649,Mentone Road,23075202#15,Mentone Road,1217.0,2.94,8.7,11,0.5
+3,crozier_acraman_lindsay,Acraman Street / Crozier Road / Lindsay Street,42530557#1,Lindsay Street,1334.0,2.77,7.5,12,0.75
+3,torrens_crozier,Crozier Road,1202918972,Crozier Road,2086.0,2.75,4.7,12,0.61

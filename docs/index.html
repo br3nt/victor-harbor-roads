@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Victor Harbor Roads</title>
+<meta name="description" content="An independent traffic simulation of Victor Harbor's road options, the evidence behind it, and a trip checker for residents.">
+<style>
+:root {
+  --bg: #f4f6f5; --card: #ffffff; --fg: #17262b; --muted: #51636a; --accent: #0b6b88;
+  --line: #d5dfe0; --sea: #e3eff2;
+  color-scheme: light dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #0f181b; --card: #16242a; --fg: #e4eef0; --muted: #9db1b7; --accent: #6cc4de; --line: #2a3b41; --sea: #14303a; }
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--fg); font: 17px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif; margin: 0; }
+.wrap { max-width: 50rem; margin: 0 auto; padding: 3rem max(16px, env(safe-area-inset-right, 0px)) 4rem max(16px, env(safe-area-inset-left, 0px)); display: grid; gap: 2rem; }
+.eyebrow { font-weight: 600; font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin: 0; }
+h1 { font-size: clamp(1.9rem, 5vw, 2.6rem); line-height: 1.15; margin: .3rem 0 0; text-wrap: balance; }
+h2 { font-size: 1.15rem; margin: 0 0 .75rem; }
+.lead { margin: .75rem 0 0; color: var(--muted); }
+.doors { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); }
+a.door { display: grid; gap: .3rem; align-content: start; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 1rem 1.2rem; text-decoration: none; color: var(--fg); }
+a.door:hover { border-color: var(--accent); }
+a.door:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+a.door.primary { background: var(--sea); border-color: var(--accent); }
+.door h3 { font-size: 1.1rem; margin: 0; color: var(--accent); }
+.door p { margin: 0; font-size: .95rem; }
+.soon { opacity: .75; }
+section p, section li { color: var(--muted); font-size: .95rem; }
+section ul { padding-left: 1.2rem; margin: 0; display: grid; gap: .4rem; }
+a { color: var(--accent); }
+footer { border-top: 1px solid var(--line); padding-top: 1rem; font-size: .85rem; color: var(--muted); }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header>
+    <p class="eyebrow">Victor Harbor Integrated Transport Strategy</p>
+    <h1>How would the road options change Victor Harbor?</h1>
+    <p class="lead">An independent traffic simulation of Victor Harbor, built by a resident. It compares today's roads with
+      the City of Victor Harbor's proposed town-centre changes and with alternatives, on a school-term weekday and a summer
+      holiday day, now and as the town grows. Results are preliminary: read them as differences between options on the
+      same traffic, not as exact forecasts.</p>
+  </header>
+
+  <section aria-labelledby="explore">
+    <h2 id="explore">Explore</h2>
+    <nav class="doors" aria-label="Explore">
+      <a class="door primary" href="maps/residents/index.html">
+        <h3>Your trips</h3>
+        <p>Add the trips you make most often and see whether each option makes them faster, slower or about the same.
+          Your trips stay in your browser.</p>
+      </a>
+      <a class="door" href="maps/engineer.html">
+        <h3>Detailed results viewer</h3>
+        <p>Congestion lane by lane, travel time to any place, a timeline through the day, before/after comparisons, 2D or 3D.</p>
+      </a>
+      <a class="door" href="kb/simulation-results.html">
+        <h3>Simulation results</h3>
+        <p>What the simulation found for each option, with the method, calibration and known issues.</p>
+      </a>
+      <a class="door" href="kb/index.html">
+        <h3>Evidence and method</h3>
+        <p>The knowledge base: council decisions, documents, data sources and assumptions, each linked to its source.</p>
+      </a>
+      <a class="door" href="game/index.html">
+        <h3>Schoolies Mayhem</h3>
+        <p>A light-hearted pixel-art game on the real streets of Victor Harbor. Keyboard or touch.</p>
+      </a>
+      <a class="door" href="maps/index.html">
+        <h3>Maps overview</h3>
+        <p>The start page for the trip checker and the results viewer.</p>
+      </a>
+    </nav>
+  </section>
+
+  <section aria-labelledby="coming">
+    <h2 id="coming">Coming soon</h2>
+    <nav class="doors" aria-label="Coming soon">
+      <a class="door soon" href="onboarding/index.html"><h3>Getting started</h3><p>A short guided introduction.</p></a>
+      <a class="door soon" href="deck/index.html"><h3>Presentation</h3><p>The slides.</p></a>
+    </nav>
+  </section>
+
+  <section aria-labelledby="source">
+    <h2 id="source">Source code and data</h2>
+    <p>Everything behind this site (the simulation, the viewers, the game, the notes and the source lists) is in the
+      repository <a href="https://github.com/br3nt/victor-harbor-roads">github.com/br3nt/victor-harbor-roads</a>.
+      Council documents and other archived sources are not copied: the knowledge base's
+      <a href="kb/sources-register.html">Sources Register</a> lists each one with its address and checksum.</p>
+    <p>Two private residents who posted or commented in a public Facebook group appear as <strong>Resident 1</strong>
+      and <strong>Resident 2</strong>. Everyone else named is acting in a public or professional role, or is the author.</p>
+  </section>
+
+  <section aria-labelledby="credits" id="credits-section">
+    <h2 id="credits">Credits and licences</h2>
+    <ul>
+      <li>Code: MIT License. Notes and writing: Creative Commons Attribution 4.0 International (CC BY 4.0), credit
+        "Brent Jacobs, Victor Harbor roads".</li>
+      <li>Map data © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>, Open Database
+        License (ODbL) 1.0. The road network, base map and game map are derived from it and offered under the ODbL.</li>
+      <li>Incorporates or developed using G-NAF © Geoscape Australia licensed by the Commonwealth of Australia under the
+        Open Geo-coded National Address File (G-NAF) End User Licence Agreement. Modified: reduced to this area and simplified.</li>
+      <li>Terrain Tiles (Mapzen/Tilezen, AWS Open Data): Australia terrain data © Commonwealth of Australia (Geoscience
+        Australia) 2017, CC BY 4.0; SRTM and GMTED2010 terrain data courtesy of the U.S. Geological Survey; ETOPO1:
+        U.S. National Oceanic and Atmospheric Administration.</li>
+      <li>Australian Bureau of Statistics (ABS) census and boundary data; Department for Infrastructure and Transport (DIT)
+        traffic, crash and road data; PlanSA population projections: each CC BY 4.0, adapted (clipped to the area, aggregated or summarised).</li>
+      <li>City of Victor Harbor documents are cited and linked, not copied.</li>
+    </ul>
+  </section>
+
+  <footer>Victor Harbor roads, November 2026. An independent project, not affiliated with the City of Victor Harbor.</footer>
+</main>
+</body>
+</html>

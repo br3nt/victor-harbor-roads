@@ -1,0 +1,186 @@
+condition,check,item,value,reference,reference_basis,status,note
+weekday_term,supermarket_attraction,Woolworths,0.3224,0.2901,config poi.named_weight / default_weight,ok,share of resident supermarket trips vs weight share; ratio 1.11
+weekday_term,supermarket_attraction,Coles,0.2115,0.2672,config poi.named_weight / default_weight,ok,share of resident supermarket trips vs weight share; ratio 0.79
+weekday_term,supermarket_attraction,Drakes,0.1505,0.1374,config poi.named_weight / default_weight,ok,share of resident supermarket trips vs weight share; ratio 1.10
+weekday_term,supermarket_attraction,Aldi,0.1143,0.1298,config poi.named_weight / default_weight,ok,share of resident supermarket trips vs weight share; ratio 0.88
+weekday_term,supermarket_attraction,IGA,0.0695,0.0611,config poi.named_weight / default_weight,ok,share of resident supermarket trips vs weight share; ratio 1.14
+weekday_term,supermarket_attraction,Harbour Bakery,0.025,0.0229,config poi.named_weight / default_weight,ok,share of resident supermarket trips vs weight share; ratio 1.09
+weekday_term,supermarket_attraction,Ocean Street Bakery,0.0229,0.0229,config poi.named_weight / default_weight,ok,share of resident supermarket trips vs weight share; ratio 1.00
+weekday_term,supermarket_attraction,Veg Out,0.0262,0.0229,config poi.named_weight / default_weight,ok,share of resident supermarket trips vs weight share; ratio 1.15
+weekday_term,supermarket_attraction,poi_w1201486273,0.0294,0.0229,config poi.named_weight / default_weight,ok,share of resident supermarket trips vs weight share; ratio 1.28
+weekday_term,supermarket_attraction,Reddy Express,0.0283,0.0229,config poi.named_weight / default_weight,ok,share of resident supermarket trips vs weight share; ratio 1.24
+weekday_term,spatial_pattern,Encounter Bay: same-suburb share,0.1898,,,info,5327 outbound resident trips
+weekday_term,spatial_pattern,Encounter Bay: shopping to centre+McCracken,0.9128,0.5,assumption: the two retail centres hold the big stores,ok,"centre 0.77, McCracken 0.14"
+weekday_term,spatial_pattern,Victor Harbor: same-suburb share,0.8435,,,info,4447 outbound resident trips
+weekday_term,spatial_pattern,Victor Harbor: shopping to centre+McCracken,0.9505,0.5,assumption: the two retail centres hold the big stores,ok,"centre 0.86, McCracken 0.09"
+weekday_term,spatial_pattern,Hayborough: same-suburb share,0.2775,,,info,2173 outbound resident trips
+weekday_term,spatial_pattern,Hayborough: shopping to centre+McCracken,0.9083,0.5,assumption: the two retail centres hold the big stores,ok,"centre 0.21, McCracken 0.70"
+weekday_term,spatial_pattern,McCracken: same-suburb share,0.25,,,info,2064 outbound resident trips
+weekday_term,spatial_pattern,McCracken: shopping to centre+McCracken,0.9628,0.5,assumption: the two retail centres hold the big stores,ok,"centre 0.36, McCracken 0.60"
+weekday_term,spatial_pattern,Hindmarsh Valley: same-suburb share,0.0546,,,info,678 outbound resident trips
+weekday_term,spatial_pattern,Hindmarsh Valley: shopping to centre+McCracken,0.9272,0.5,assumption: the two retail centres hold the big stores,ok,"centre 0.49, McCracken 0.44"
+weekday_term,spatial_pattern,Lower Inman Valley: same-suburb share,0.0253,,,info,592 outbound resident trips
+weekday_term,spatial_pattern,Lower Inman Valley: shopping to centre+McCracken,0.9694,0.5,assumption: the two retail centres hold the big stores,ok,"centre 0.67, McCracken 0.30"
+weekday_term,spatial_pattern,Waitpinga: same-suburb share,0.03,,,info,434 outbound resident trips
+weekday_term,spatial_pattern,Waitpinga: shopping to centre+McCracken,0.9521,0.5,assumption: the two retail centres hold the big stores,ok,"centre 0.72, McCracken 0.23"
+weekday_term,trip_length,beach_foreshore,3.258,1.5-6.0,assumption: config validation.trip_length_km,ok,n=1243; median 2.50 km; network km = straight line x detour
+weekday_term,trip_length,dining,2.8259,1.5-6.0,assumption: config validation.trip_length_km,ok,n=1753; median 2.56 km; network km = straight line x detour
+weekday_term,trip_length,gym,3.7179,1.0-6.0,assumption: config validation.trip_length_km,ok,n=757; median 2.93 km; network km = straight line x detour
+weekday_term,trip_length,medical,2.6647,1.5-6.0,assumption: config validation.trip_length_km,ok,n=1513; median 2.07 km; network km = straight line x detour
+weekday_term,trip_length,recreation,2.4973,1.0-6.0,assumption: config validation.trip_length_km,ok,n=1752; median 1.75 km; network km = straight line x detour
+weekday_term,trip_length,residential,2.0691,1.5-6.0,assumption: config validation.trip_length_km,ok,n=1923; median 1.08 km; network km = straight line x detour
+weekday_term,trip_length,school,2.6731,1.0-5.0,assumption: config validation.trip_length_km,ok,n=742; median 1.79 km; network km = straight line x detour
+weekday_term,trip_length,services,2.4657,1.5-6.0,assumption: config validation.trip_length_km,ok,n=2039; median 1.57 km; network km = straight line x detour
+weekday_term,trip_length,shops,2.592,1.5-5.5,assumption: config validation.trip_length_km,ok,n=2980; median 1.96 km; network km = straight line x detour
+weekday_term,trip_length,supermarket,2.4626,1.5-5.0,assumption: config validation.trip_length_km,ok,n=4804; median 1.47 km; network km = straight line x detour
+weekday_term,trip_length,work,3.2933,2.0-8.0,assumption: config validation.trip_length_km,ok,n=2545; median 2.55 km; network km = straight line x detour
+weekday_term,vkt_per_household,resident vehicle-km per household per day,19.2369,,,info,in-area km only (trips leaving the area stop at the gateway)
+weekday_term,vkt_per_household,resident vehicle-km per car per day,11.3159,30.0,"assumption: config validation.vkt_reference_km_per_car_day (ABS SMVU order of magnitude, not archived)",ok,should be well below the all-trips national figure
+weekday_term,gateway_vs_aadt,gw_vhr,7712.0,7700.0,S-D02 via sim/data/counts/aadt.csv,ok,two-way crossings vs AADT; GEH 0.1; trucks 962 vs CV 12.5%
+weekday_term,gateway_vs_aadt,gw_hti,1193.0,1200.0,S-D02 via sim/data/counts/aadt.csv,ok,two-way crossings vs AADT; GEH 0.2; trucks 154 vs CV 12.5%
+weekday_term,gateway_vs_aadt,gw_ivr,1706.0,1700.0,S-D02 via sim/data/counts/aadt.csv,ok,two-way crossings vs AADT; GEH 0.1; trucks 152 vs CV 8.0%
+weekday_term,gateway_vs_aadt,gw_per,9507.0,9500.0,S-D02 via sim/data/counts/aadt.csv,ok,two-way crossings vs AADT; GEH 0.1; trucks 808 vs CV 9.0%
+weekday_term,gateway_vs_aadt,gw_wai,812.0,800.0,assumption (config gateways.aadt_assumed),ok,two-way crossings vs AADT; GEH 0.4; trucks 34 vs CV 5.0%
+weekday_term,gateway_vs_aadt,gw_rng,406.0,400.0,assumption (config gateways.aadt_assumed),ok,two-way crossings vs AADT; GEH 0.3; trucks 16 vs CV 5.0%
+weekday_term,gateway_vs_aadt,gw_bvr,300.0,300.0,assumption (config gateways.aadt_assumed),ok,two-way crossings vs AADT; GEH 0.0; trucks 6 vs CV 5.0%
+weekday_term,hourly_shape,all_trips_tv_distance,0.0334,0.1,hourly_profile.csv (S3; S-D19 07-18),ok,"model peak hour 12, profile peak 12; 0 = identical shape"
+weekday_term,hourly_shape,resident_trips_tv_distance,0.0133,0.1,hourly_profile.csv (S3; S-D19 07-18),ok,"model peak hour 12, profile peak 12; 0 = identical shape"
+weekday_term,town_centre_entries_2017,trips into the town-centre cordon 07-19,9293.0,7600.0,S-D19,ok,"2017 count was a school-holiday Wednesday; destinations inside the cordon, origins outside"
+saturday,supermarket_attraction,Woolworths,0.3155,0.2901,config poi.named_weight / default_weight,ok,share of resident supermarket trips vs weight share; ratio 1.09
+saturday,supermarket_attraction,Coles,0.21,0.2672,config poi.named_weight / default_weight,ok,share of resident supermarket trips vs weight share; ratio 0.79
+saturday,supermarket_attraction,Drakes,0.1573,0.1374,config poi.named_weight / default_weight,ok,share of resident supermarket trips vs weight share; ratio 1.14
+saturday,supermarket_attraction,Aldi,0.11,0.1298,config poi.named_weight / default_weight,ok,share of resident supermarket trips vs weight share; ratio 0.85
+saturday,supermarket_attraction,IGA,0.0722,0.0611,config poi.named_weight / default_weight,ok,share of resident supermarket trips vs weight share; ratio 1.18
+saturday,supermarket_attraction,Harbour Bakery,0.0271,0.0229,config poi.named_weight / default_weight,ok,share of resident supermarket trips vs weight share; ratio 1.18
+saturday,supermarket_attraction,Ocean Street Bakery,0.0216,0.0229,config poi.named_weight / default_weight,ok,share of resident supermarket trips vs weight share; ratio 0.94
+saturday,supermarket_attraction,Veg Out,0.0271,0.0229,config poi.named_weight / default_weight,ok,share of resident supermarket trips vs weight share; ratio 1.18
+saturday,supermarket_attraction,poi_w1201486273,0.0317,0.0229,config poi.named_weight / default_weight,ok,share of resident supermarket trips vs weight share; ratio 1.38
+saturday,supermarket_attraction,Reddy Express,0.0274,0.0229,config poi.named_weight / default_weight,ok,share of resident supermarket trips vs weight share; ratio 1.20
+saturday,spatial_pattern,Encounter Bay: same-suburb share,0.2259,,,info,3351 outbound resident trips
+saturday,spatial_pattern,Encounter Bay: shopping to centre+McCracken,0.909,0.5,assumption: the two retail centres hold the big stores,ok,"centre 0.77, McCracken 0.13"
+saturday,spatial_pattern,Victor Harbor: same-suburb share,0.8414,,,info,2799 outbound resident trips
+saturday,spatial_pattern,Victor Harbor: shopping to centre+McCracken,0.954,0.5,assumption: the two retail centres hold the big stores,ok,"centre 0.86, McCracken 0.10"
+saturday,spatial_pattern,Hayborough: same-suburb share,0.2203,,,info,1371 outbound resident trips
+saturday,spatial_pattern,Hayborough: shopping to centre+McCracken,0.8815,0.5,assumption: the two retail centres hold the big stores,ok,"centre 0.24, McCracken 0.64"
+saturday,spatial_pattern,McCracken: same-suburb share,0.3002,,,info,1299 outbound resident trips
+saturday,spatial_pattern,McCracken: shopping to centre+McCracken,0.9627,0.5,assumption: the two retail centres hold the big stores,ok,"centre 0.40, McCracken 0.57"
+saturday,spatial_pattern,Hindmarsh Valley: same-suburb share,0.0304,,,info,427 outbound resident trips
+saturday,spatial_pattern,Hindmarsh Valley: shopping to centre+McCracken,0.9198,0.5,assumption: the two retail centres hold the big stores,ok,"centre 0.59, McCracken 0.33"
+saturday,spatial_pattern,Lower Inman Valley: same-suburb share,0.0297,,,info,370 outbound resident trips
+saturday,spatial_pattern,Lower Inman Valley: shopping to centre+McCracken,0.8699,0.5,assumption: the two retail centres hold the big stores,ok,"centre 0.64, McCracken 0.23"
+saturday,spatial_pattern,Waitpinga: same-suburb share,0.0436,,,info,275 outbound resident trips
+saturday,spatial_pattern,Waitpinga: shopping to centre+McCracken,0.9286,0.5,assumption: the two retail centres hold the big stores,ok,"centre 0.72, McCracken 0.21"
+saturday,trip_length,beach_foreshore,3.1527,1.5-6.0,assumption: config validation.trip_length_km,ok,n=1210; median 2.37 km; network km = straight line x detour
+saturday,trip_length,dining,2.8787,1.5-6.0,assumption: config validation.trip_length_km,ok,n=1552; median 2.77 km; network km = straight line x detour
+saturday,trip_length,gym,3.7422,1.0-6.0,assumption: config validation.trip_length_km,ok,n=417; median 2.91 km; network km = straight line x detour
+saturday,trip_length,medical,2.6381,1.5-6.0,assumption: config validation.trip_length_km,ok,n=283; median 2.02 km; network km = straight line x detour
+saturday,trip_length,recreation,2.5035,1.0-6.0,assumption: config validation.trip_length_km,ok,n=2014; median 1.63 km; network km = straight line x detour
+saturday,trip_length,residential,2.0658,1.5-6.0,assumption: config validation.trip_length_km,ok,n=1575; median 1.03 km; network km = straight line x detour
+saturday,trip_length,services,2.494,1.5-6.0,assumption: config validation.trip_length_km,ok,n=466; median 1.83 km; network km = straight line x detour
+saturday,trip_length,shops,2.723,1.5-5.5,assumption: config validation.trip_length_km,ok,n=2582; median 2.14 km; network km = straight line x detour
+saturday,trip_length,supermarket,2.5312,1.5-5.0,assumption: config validation.trip_length_km,ok,n=3281; median 1.49 km; network km = straight line x detour
+saturday,trip_length,work,3.5239,2.0-8.0,assumption: config validation.trip_length_km,ok,n=506; median 2.95 km; network km = straight line x detour
+saturday,vkt_per_household,resident vehicle-km per household per day,12.1977,,,info,in-area km only (trips leaving the area stop at the gateway)
+saturday,vkt_per_household,resident vehicle-km per car per day,7.1751,30.0,"assumption: config validation.vkt_reference_km_per_car_day (ABS SMVU order of magnitude, not archived)",ok,should be well below the all-trips national figure
+saturday,gateway_vs_aadt,gw_vhr,7156.0,7700.0,S-D02 via sim/data/counts/aadt.csv,info,two-way crossings vs AADT; GEH 6.3; trucks 809 vs CV 12.5%
+saturday,gateway_vs_aadt,gw_hti,944.0,1200.0,S-D02 via sim/data/counts/aadt.csv,info,two-way crossings vs AADT; GEH 7.8; trucks 104 vs CV 12.5%
+saturday,gateway_vs_aadt,gw_ivr,1598.0,1700.0,S-D02 via sim/data/counts/aadt.csv,info,two-way crossings vs AADT; GEH 2.5; trucks 103 vs CV 8.0%
+saturday,gateway_vs_aadt,gw_per,8527.0,9500.0,S-D02 via sim/data/counts/aadt.csv,info,two-way crossings vs AADT; GEH 10.2; trucks 748 vs CV 9.0%
+saturday,gateway_vs_aadt,gw_wai,768.0,800.0,assumption (config gateways.aadt_assumed),info,two-way crossings vs AADT; GEH 1.1; trucks 26 vs CV 5.0%
+saturday,gateway_vs_aadt,gw_rng,377.0,400.0,assumption (config gateways.aadt_assumed),info,two-way crossings vs AADT; GEH 1.2; trucks 18 vs CV 5.0%
+saturday,gateway_vs_aadt,gw_bvr,332.0,300.0,assumption (config gateways.aadt_assumed),info,two-way crossings vs AADT; GEH 1.8; trucks 10 vs CV 5.0%
+saturday,hourly_shape,all_trips_tv_distance,0.0363,0.1,hourly_profile.csv (S3; S-D19 07-18),info,"model peak hour 12, profile peak 12; 0 = identical shape"
+saturday,hourly_shape,resident_trips_tv_distance,0.019,0.1,hourly_profile.csv (S3; S-D19 07-18),info,"model peak hour 12, profile peak 12; 0 = identical shape"
+saturday,town_centre_entries_2017,trips into the town-centre cordon 07-19,8002.0,7600.0,S-D19,info,"2017 count was a school-holiday Wednesday; destinations inside the cordon, origins outside"
+summer_peak,supermarket_attraction,Woolworths,0.3182,0.2901,config poi.named_weight / default_weight,ok,share of resident supermarket trips vs weight share; ratio 1.10
+summer_peak,supermarket_attraction,Coles,0.2168,0.2672,config poi.named_weight / default_weight,ok,share of resident supermarket trips vs weight share; ratio 0.81
+summer_peak,supermarket_attraction,Drakes,0.1477,0.1374,config poi.named_weight / default_weight,ok,share of resident supermarket trips vs weight share; ratio 1.07
+summer_peak,supermarket_attraction,Aldi,0.1139,0.1298,config poi.named_weight / default_weight,ok,share of resident supermarket trips vs weight share; ratio 0.88
+summer_peak,supermarket_attraction,IGA,0.071,0.0611,config poi.named_weight / default_weight,ok,share of resident supermarket trips vs weight share; ratio 1.16
+summer_peak,supermarket_attraction,Harbour Bakery,0.0265,0.0229,config poi.named_weight / default_weight,ok,share of resident supermarket trips vs weight share; ratio 1.16
+summer_peak,supermarket_attraction,Ocean Street Bakery,0.0239,0.0229,config poi.named_weight / default_weight,ok,share of resident supermarket trips vs weight share; ratio 1.04
+summer_peak,supermarket_attraction,Veg Out,0.0251,0.0229,config poi.named_weight / default_weight,ok,share of resident supermarket trips vs weight share; ratio 1.10
+summer_peak,supermarket_attraction,poi_w1201486273,0.0317,0.0229,config poi.named_weight / default_weight,ok,share of resident supermarket trips vs weight share; ratio 1.38
+summer_peak,supermarket_attraction,Reddy Express,0.0253,0.0229,config poi.named_weight / default_weight,ok,share of resident supermarket trips vs weight share; ratio 1.10
+summer_peak,spatial_pattern,Encounter Bay: same-suburb share,0.2092,,,info,5329 outbound resident trips
+summer_peak,spatial_pattern,Encounter Bay: shopping to centre+McCracken,0.9138,0.5,assumption: the two retail centres hold the big stores,ok,"centre 0.76, McCracken 0.16"
+summer_peak,spatial_pattern,Victor Harbor: same-suburb share,0.8185,,,info,4447 outbound resident trips
+summer_peak,spatial_pattern,Victor Harbor: shopping to centre+McCracken,0.9428,0.5,assumption: the two retail centres hold the big stores,ok,"centre 0.84, McCracken 0.10"
+summer_peak,spatial_pattern,Hayborough: same-suburb share,0.2257,,,info,2180 outbound resident trips
+summer_peak,spatial_pattern,Hayborough: shopping to centre+McCracken,0.8892,0.5,assumption: the two retail centres hold the big stores,ok,"centre 0.23, McCracken 0.66"
+summer_peak,spatial_pattern,McCracken: same-suburb share,0.2652,,,info,2066 outbound resident trips
+summer_peak,spatial_pattern,McCracken: shopping to centre+McCracken,0.9634,0.5,assumption: the two retail centres hold the big stores,ok,"centre 0.36, McCracken 0.60"
+summer_peak,spatial_pattern,Hindmarsh Valley: same-suburb share,0.0382,,,info,681 outbound resident trips
+summer_peak,spatial_pattern,Hindmarsh Valley: shopping to centre+McCracken,0.9536,0.5,assumption: the two retail centres hold the big stores,ok,"centre 0.57, McCracken 0.39"
+summer_peak,spatial_pattern,Lower Inman Valley: same-suburb share,0.0186,,,info,592 outbound resident trips
+summer_peak,spatial_pattern,Lower Inman Valley: shopping to centre+McCracken,0.9417,0.5,assumption: the two retail centres hold the big stores,ok,"centre 0.67, McCracken 0.27"
+summer_peak,spatial_pattern,Waitpinga: same-suburb share,0.0414,,,info,435 outbound resident trips
+summer_peak,spatial_pattern,Waitpinga: shopping to centre+McCracken,0.9177,0.5,assumption: the two retail centres hold the big stores,ok,"centre 0.69, McCracken 0.23"
+summer_peak,trip_length,beach_foreshore,3.2061,1.5-6.0,assumption: config validation.trip_length_km,ok,n=1965; median 2.49 km; network km = straight line x detour
+summer_peak,trip_length,dining,2.8696,1.5-6.0,assumption: config validation.trip_length_km,ok,n=2149; median 2.67 km; network km = straight line x detour
+summer_peak,trip_length,gym,3.5252,1.0-6.0,assumption: config validation.trip_length_km,ok,n=717; median 2.67 km; network km = straight line x detour
+summer_peak,trip_length,medical,2.7122,1.5-6.0,assumption: config validation.trip_length_km,ok,n=1261; median 2.02 km; network km = straight line x detour
+summer_peak,trip_length,recreation,2.5538,1.0-6.0,assumption: config validation.trip_length_km,ok,n=2206; median 1.88 km; network km = straight line x detour
+summer_peak,trip_length,residential,1.9502,1.5-6.0,assumption: config validation.trip_length_km,ok,n=2086; median 1.05 km; network km = straight line x detour
+summer_peak,trip_length,services,2.4125,1.5-6.0,assumption: config validation.trip_length_km,ok,n=1757; median 1.61 km; network km = straight line x detour
+summer_peak,trip_length,shops,2.6336,1.5-5.5,assumption: config validation.trip_length_km,ok,n=3103; median 2.02 km; network km = straight line x detour
+summer_peak,trip_length,supermarket,2.6105,1.5-5.0,assumption: config validation.trip_length_km,ok,n=4862; median 1.59 km; network km = straight line x detour
+summer_peak,trip_length,work,3.4452,2.0-8.0,assumption: config validation.trip_length_km,ok,n=1971; median 2.69 km; network km = straight line x detour
+summer_peak,vkt_per_household,resident vehicle-km per household per day,19.485,,,info,in-area km only (trips leaving the area stop at the gateway)
+summer_peak,vkt_per_household,resident vehicle-km per car per day,11.4618,30.0,"assumption: config validation.vkt_reference_km_per_car_day (ABS SMVU order of magnitude, not archived)",ok,should be well below the all-trips national figure
+summer_peak,gateway_vs_aadt,gw_vhr,11001.0,11000.0,"S-D18 (summer peak > 11,000/day)",ok,AADT 7700 (S-D02 via sim/data/counts/aadt.csv)
+summer_peak,gateway_vs_aadt,gw_hti,1455.0,1200.0,S-D02 via sim/data/counts/aadt.csv,info,two-way crossings vs AADT; GEH 7.0; trucks 160 vs CV 12.5%
+summer_peak,gateway_vs_aadt,gw_ivr,2506.0,1700.0,S-D02 via sim/data/counts/aadt.csv,info,two-way crossings vs AADT; GEH 17.6; trucks 148 vs CV 8.0%
+summer_peak,gateway_vs_aadt,gw_per,12139.0,9500.0,S-D02 via sim/data/counts/aadt.csv,info,two-way crossings vs AADT; GEH 25.4; trucks 811 vs CV 9.0%
+summer_peak,gateway_vs_aadt,gw_wai,1251.0,800.0,assumption (config gateways.aadt_assumed),info,two-way crossings vs AADT; GEH 14.1; trucks 40 vs CV 5.0%
+summer_peak,gateway_vs_aadt,gw_rng,608.0,400.0,assumption (config gateways.aadt_assumed),info,two-way crossings vs AADT; GEH 9.3; trucks 18 vs CV 5.0%
+summer_peak,gateway_vs_aadt,gw_bvr,544.0,300.0,assumption (config gateways.aadt_assumed),info,two-way crossings vs AADT; GEH 11.9; trucks 8 vs CV 5.0%
+summer_peak,hourly_shape,all_trips_tv_distance,0.0365,0.1,hourly_profile.csv (S3; S-D19 07-18),info,"model peak hour 11, profile peak 12; 0 = identical shape"
+summer_peak,hourly_shape,resident_trips_tv_distance,0.0138,0.1,hourly_profile.csv (S3; S-D19 07-18),info,"model peak hour 11, profile peak 12; 0 = identical shape"
+summer_peak,town_centre_entries_2017,trips into the town-centre cordon 07-19,13266.0,7600.0,S-D19,info,"2017 count was a school-holiday Wednesday; destinations inside the cordon, origins outside"
+event_nye,supermarket_attraction,Woolworths,0.3182,0.2901,config poi.named_weight / default_weight,ok,share of resident supermarket trips vs weight share; ratio 1.10
+event_nye,supermarket_attraction,Coles,0.2168,0.2672,config poi.named_weight / default_weight,ok,share of resident supermarket trips vs weight share; ratio 0.81
+event_nye,supermarket_attraction,Drakes,0.1477,0.1374,config poi.named_weight / default_weight,ok,share of resident supermarket trips vs weight share; ratio 1.07
+event_nye,supermarket_attraction,Aldi,0.1139,0.1298,config poi.named_weight / default_weight,ok,share of resident supermarket trips vs weight share; ratio 0.88
+event_nye,supermarket_attraction,IGA,0.071,0.0611,config poi.named_weight / default_weight,ok,share of resident supermarket trips vs weight share; ratio 1.16
+event_nye,supermarket_attraction,Harbour Bakery,0.0265,0.0229,config poi.named_weight / default_weight,ok,share of resident supermarket trips vs weight share; ratio 1.16
+event_nye,supermarket_attraction,Ocean Street Bakery,0.0239,0.0229,config poi.named_weight / default_weight,ok,share of resident supermarket trips vs weight share; ratio 1.04
+event_nye,supermarket_attraction,Veg Out,0.0251,0.0229,config poi.named_weight / default_weight,ok,share of resident supermarket trips vs weight share; ratio 1.10
+event_nye,supermarket_attraction,poi_w1201486273,0.0317,0.0229,config poi.named_weight / default_weight,ok,share of resident supermarket trips vs weight share; ratio 1.38
+event_nye,supermarket_attraction,Reddy Express,0.0253,0.0229,config poi.named_weight / default_weight,ok,share of resident supermarket trips vs weight share; ratio 1.10
+event_nye,spatial_pattern,Encounter Bay: same-suburb share,0.2016,,,info,5531 outbound resident trips
+event_nye,spatial_pattern,Encounter Bay: shopping to centre+McCracken,0.9138,0.5,assumption: the two retail centres hold the big stores,ok,"centre 0.76, McCracken 0.16"
+event_nye,spatial_pattern,Victor Harbor: same-suburb share,0.8245,,,info,4599 outbound resident trips
+event_nye,spatial_pattern,Victor Harbor: shopping to centre+McCracken,0.9428,0.5,assumption: the two retail centres hold the big stores,ok,"centre 0.84, McCracken 0.10"
+event_nye,spatial_pattern,Hayborough: same-suburb share,0.2183,,,info,2254 outbound resident trips
+event_nye,spatial_pattern,Hayborough: shopping to centre+McCracken,0.8892,0.5,assumption: the two retail centres hold the big stores,ok,"centre 0.23, McCracken 0.66"
+event_nye,spatial_pattern,McCracken: same-suburb share,0.2562,,,info,2139 outbound resident trips
+event_nye,spatial_pattern,McCracken: shopping to centre+McCracken,0.9634,0.5,assumption: the two retail centres hold the big stores,ok,"centre 0.36, McCracken 0.60"
+event_nye,spatial_pattern,Hindmarsh Valley: same-suburb share,0.0374,,,info,696 outbound resident trips
+event_nye,spatial_pattern,Hindmarsh Valley: shopping to centre+McCracken,0.9536,0.5,assumption: the two retail centres hold the big stores,ok,"centre 0.57, McCracken 0.39"
+event_nye,spatial_pattern,Lower Inman Valley: same-suburb share,0.0181,,,info,609 outbound resident trips
+event_nye,spatial_pattern,Lower Inman Valley: shopping to centre+McCracken,0.9417,0.5,assumption: the two retail centres hold the big stores,ok,"centre 0.67, McCracken 0.27"
+event_nye,spatial_pattern,Waitpinga: same-suburb share,0.0409,,,info,440 outbound resident trips
+event_nye,spatial_pattern,Waitpinga: shopping to centre+McCracken,0.9177,0.5,assumption: the two retail centres hold the big stores,ok,"centre 0.69, McCracken 0.23"
+event_nye,trip_length,beach_foreshore,3.2555,1.5-6.0,assumption: config validation.trip_length_km,ok,n=2505; median 2.82 km; network km = straight line x detour
+event_nye,trip_length,dining,2.8696,1.5-6.0,assumption: config validation.trip_length_km,ok,n=2149; median 2.67 km; network km = straight line x detour
+event_nye,trip_length,gym,3.5252,1.0-6.0,assumption: config validation.trip_length_km,ok,n=717; median 2.67 km; network km = straight line x detour
+event_nye,trip_length,medical,2.7122,1.5-6.0,assumption: config validation.trip_length_km,ok,n=1261; median 2.02 km; network km = straight line x detour
+event_nye,trip_length,recreation,2.5538,1.0-6.0,assumption: config validation.trip_length_km,ok,n=2206; median 1.88 km; network km = straight line x detour
+event_nye,trip_length,residential,1.9502,1.5-6.0,assumption: config validation.trip_length_km,ok,n=2086; median 1.05 km; network km = straight line x detour
+event_nye,trip_length,services,2.4125,1.5-6.0,assumption: config validation.trip_length_km,ok,n=1757; median 1.61 km; network km = straight line x detour
+event_nye,trip_length,shops,2.6336,1.5-5.5,assumption: config validation.trip_length_km,ok,n=3103; median 2.02 km; network km = straight line x detour
+event_nye,trip_length,supermarket,2.6105,1.5-5.0,assumption: config validation.trip_length_km,ok,n=4862; median 1.59 km; network km = straight line x detour
+event_nye,trip_length,work,3.4452,2.0-8.0,assumption: config validation.trip_length_km,ok,n=1971; median 2.69 km; network km = straight line x detour
+event_nye,vkt_per_household,resident vehicle-km per household per day,19.9564,,,info,in-area km only (trips leaving the area stop at the gateway)
+event_nye,vkt_per_household,resident vehicle-km per car per day,11.7391,30.0,"assumption: config validation.vkt_reference_km_per_car_day (ABS SMVU order of magnitude, not archived)",ok,should be well below the all-trips national figure
+event_nye,gateway_vs_aadt,gw_vhr,11442.0,11000.0,"S-D18 (summer peak > 11,000/day)",ok,AADT 7700 (S-D02 via sim/data/counts/aadt.csv)
+event_nye,gateway_vs_aadt,gw_hti,1469.0,1200.0,S-D02 via sim/data/counts/aadt.csv,info,two-way crossings vs AADT; GEH 7.4; trucks 160 vs CV 12.5%
+event_nye,gateway_vs_aadt,gw_ivr,2548.0,1700.0,S-D02 via sim/data/counts/aadt.csv,info,two-way crossings vs AADT; GEH 18.4; trucks 148 vs CV 8.0%
+event_nye,gateway_vs_aadt,gw_per,12277.0,9500.0,S-D02 via sim/data/counts/aadt.csv,info,two-way crossings vs AADT; GEH 26.6; trucks 811 vs CV 9.0%
+event_nye,gateway_vs_aadt,gw_wai,1249.0,800.0,assumption (config gateways.aadt_assumed),info,two-way crossings vs AADT; GEH 14.0; trucks 40 vs CV 5.0%
+event_nye,gateway_vs_aadt,gw_rng,610.0,400.0,assumption (config gateways.aadt_assumed),info,two-way crossings vs AADT; GEH 9.3; trucks 18 vs CV 5.0%
+event_nye,gateway_vs_aadt,gw_bvr,544.0,300.0,assumption (config gateways.aadt_assumed),info,two-way crossings vs AADT; GEH 11.9; trucks 8 vs CV 5.0%
+event_nye,hourly_shape,all_trips_tv_distance,0.0588,0.1,hourly_profile.csv (S3; S-D19 07-18),info,"model peak hour 11, profile peak 12; 0 = identical shape"
+event_nye,hourly_shape,resident_trips_tv_distance,0.0297,0.1,hourly_profile.csv (S3; S-D19 07-18),info,"model peak hour 11, profile peak 12; 0 = identical shape"
+event_nye,town_centre_entries_2017,trips into the town-centre cordon 07-19,13589.0,7600.0,S-D19,info,"2017 count was a school-holiday Wednesday; destinations inside the cordon, origins outside"
