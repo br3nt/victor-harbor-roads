@@ -652,6 +652,33 @@ HOME_LINKS = [  # (page under docs/, text to find, replacement): a way back to t
 ]
 
 
+def _byline() -> str:
+    import datetime
+    d = datetime.date.today()
+    return f"By Brent Jacobs &middot; {d.day} {d.strftime('%B %Y')}"
+
+
+def add_bylines(docs: Path) -> int:
+    """The author's name and the publication date on every page (the game handles its own)."""
+    by = _byline()
+    n = 0
+    for f in docs.rglob("*.html"):
+        rel = f.relative_to(docs).as_posix()
+        if rel.startswith("game/"):
+            continue
+        s = f.read_text()
+        if "class=\"byline\"" in s:
+            continue
+        if rel in ("maps/engineer.html", "deck/index.html"):   # full-screen apps: next to their Home link
+            new = s.replace('&#8962; Home</a>', f'&#8962; Home</a> <span class="byline" style="opacity:.75;font-weight:400">&middot; {by}</span>', 1)
+        else:
+            new = s.replace("</body>", f'<p class="byline" style="text-align:center;font:13px/1.4 system-ui,sans-serif;'
+                                       f'color:#666;margin:2rem 16px 1.5rem">{by}</p></body>', 1)
+        if new != s:
+            f.write_text(new); n += 1
+    return n
+
+
 def add_home_links(docs: Path) -> list[str]:
     done = []
     for page, find, repl in HOME_LINKS:
@@ -679,7 +706,8 @@ def build_site(out: Path, viewer_data: Path) -> dict:
     stage_game(out)
     method = stage_method(out)
     homes = add_home_links(docs)
-    return {"map_data_files": n_maps, **method, "home_links": homes}
+    bylines = add_bylines(docs)
+    return {"map_data_files": n_maps, **method, "home_links": homes, "bylines": bylines}
 
 
 def build(root: Path, out: Path, viewer_data: Path | None = None, ref: str = "HEAD", site: bool = True) -> dict:
