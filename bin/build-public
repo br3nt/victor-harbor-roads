@@ -667,12 +667,12 @@ def add_bylines(docs: Path) -> int:
         if rel.startswith("game/"):
             continue
         s = f.read_text()
-        if "class=\"byline\"" in s:
+        if "class=\"site-byline\"" in s:
             continue
         if rel in ("maps/engineer.html", "deck/index.html"):   # full-screen apps: next to their Home link
-            new = s.replace('&#8962; Home</a>', f'&#8962; Home</a> <span class="byline" style="opacity:.75;font-weight:400">&middot; {by}</span>', 1)
+            new = s.replace('&#8962; Home</a>', f'&#8962; Home</a> <span class="site-byline" style="opacity:.75;font-weight:400">&middot; {by}</span>', 1)
         else:
-            new = s.replace("</body>", f'<p class="byline" style="text-align:center;font:13px/1.4 system-ui,sans-serif;'
+            new = s.replace("</body>", f'<p class="site-byline" style="text-align:center;font:13px/1.4 system-ui,sans-serif;'
                                        f'color:#666;margin:2rem 16px 1.5rem">{by}</p></body>', 1)
         if new != s:
             f.write_text(new); n += 1
