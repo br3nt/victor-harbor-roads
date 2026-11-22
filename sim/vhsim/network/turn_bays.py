@@ -101,7 +101,33 @@ def build(plain_dir: Path = DATA / "networks" / "baseline.plain", prefix: str = 
     (workdir / "netconvert.log").write_text(p.stdout + p.stderr)
     if p.returncode != 0:
         raise RuntimeError(f"netconvert failed: {p.stderr[-2000:]}")
+    restore_routing_types(plain_dir / f"{prefix}.edg.xml", out_net)
     return {"bays": len(bays), "connections_moved": moved, "net": str(out_net)}
+
+
+def restore_routing_types(plain_edges: Path, net_path: Path) -> int:
+    """netconvert's <split> drops an edge's routingType (S9: C5 marks the old ring road for the truck routing
+    preference), so give the split parts (`<id>`, `<id>.bay`, `<id>.x`) their original edge's routingType.
+    Returns the number of edges changed."""
+    rtypes = {e.get("id"): e.get("routingType") for e in ET.parse(plain_edges).getroot().iter("edge")
+              if e.get("routingType")}
+    if not rtypes:
+        return 0
+    changed = 0
+
+    def sub(m):
+        nonlocal changed
+        tag, eid = m.group(0), m.group(1)
+        base = eid[:-4] if eid.endswith(".bay") else eid[:-2] if eid.endswith(".x") else eid
+        if base not in rtypes or "routingType=" in tag:
+            return tag
+        changed += 1
+        return tag.replace(f'id="{eid}"', f'id="{eid}" routingType="{rtypes[base]}"', 1)
+
+    net_path = Path(net_path)
+    text = re.sub(r'<edge id="([^"]+)"[^>]*>', sub, net_path.read_text())
+    net_path.write_text(text)
+    return changed
 
 
 if __name__ == "__main__":

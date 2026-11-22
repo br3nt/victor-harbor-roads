@@ -1,0 +1,78 @@
+{
+ "added": {
+  "edges": 2,
+  "ids": [
+   "-c5_new_598113160_6599700307",
+   "c5_new_598113160_6599700307"
+  ]
+ },
+ "checks": {
+  "edges": 4686,
+  "ok": true,
+  "roundabout_problems": {},
+  "traffic_lights": 0,
+  "undrivable_passenger": [],
+  "undrivable_truck": []
+ },
+ "components": [
+  "c5"
+ ],
+ "edges_touched_directed_km": 31.987,
+ "junction_aliases": {},
+ "movements_extra": [],
+ "movements_missing": {},
+ "movements_removed_after_guess": [],
+ "net": "sim/data/networks/c5_bays.net.xml",
+ "new_signals": [],
+ "notes": [
+  "C5 existing ring road (Welch Rd / Armstrong Rd) as a link road: 14 edges to 60 km/h",
+  "C5 outer ring road (c5): 9.5 km of existing road (Swains Crossing Road, Water Reserve Road, Greenhills Road, Hutchinson Road, Hindmarsh Tiers Road) to 100 km/h, priority 11; 1 new two-way section(s), 0.4 km straight-line; 36 ring-road edges routingType c5_link (trucks' routing priority 0.5); legs lowered to priority 10 where the outer road is major: -1568495085#2, -46837959#12, -46837959#3, 1568495085#2, 46837959#12, 46837959#3"
+ ],
+ "removed": {
+  "directed_km": 0.0,
+  "edges": 0,
+  "ids": []
+ },
+ "rerouted_to_new_node": {
+  "edges": 0,
+  "ids": []
+ },
+ "routing_preferences": {
+  "file": "sim/data/networks/c5_bays.prefs.add.xml",
+  "preferences": [
+   [
+    "c5_link",
+    "truck",
+    0.5
+   ]
+  ]
+ },
+ "scenario": "c5",
+ "signal_cycles_s": {},
+ "speed_changed": {
+  "100": {
+   "directed_km": 19.074,
+   "edges": 26,
+   "streets": [
+    "Greenhills Road",
+    "Hindmarsh Tiers Road",
+    "Hutchinson Road",
+    "Swains Crossing Road",
+    "Water Reserve Road"
+   ]
+  },
+  "60": {
+   "directed_km": 8.121,
+   "edges": 14,
+   "streets": [
+    "Armstrong Road",
+    "Welch Road"
+   ]
+  }
+ },
+ "turn_bays": 181,
+ "widened": {
+  "directed_km": 0.0,
+  "edges": 2
+ }
+}

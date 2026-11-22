@@ -1,0 +1,34 @@
+{
+ "key": "n4__weekday_term_2031_moderate",
+ "scenario": "n4",
+ "condition": "weekday_term",
+ "year": "2031",
+ "growth": "moderate",
+ "network": "n4_bays",
+ "seeds": [
+  1
+ ],
+ "errors": [],
+ "per_seed": [
+  {
+   "seed": 1,
+   "teleports": 0,
+   "trips": 72669,
+   "mean_trip_min": 6.24,
+   "median_trip_min": 5.57,
+   "p95_trip_min": 13.05,
+   "total_delay_veh_h": 1169.5,
+   "total_waiting_veh_h": 148.8
+  }
+ ],
+ "mean": {
+  "teleports": 0.0,
+  "trips": 72669.0,
+  "mean_trip_min": 6.24,
+  "median_trip_min": 5.57,
+  "p95_trip_min": 13.05,
+  "total_delay_veh_h": 1169.5,
+  "total_waiting_veh_h": 148.8
+ },
+ "viewer_export": "ok"
+}

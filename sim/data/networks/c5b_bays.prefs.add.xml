@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Routing preferences (vhsim.scenarios); loaded by duarouter and sumo. -->
+<additional>
+    <preference routingType="c5_link" vClasses="truck" priority="0.5"/>
+</additional>

@@ -1,0 +1,147 @@
+{
+ "hotspots": [
+  {
+   "id": "foreshore-loop",
+   "short": "Foreshore loop route",
+   "title": "Foreshore route of the one-way loop: Bridge Tce, north Flinders Pde, Coral St",
+   "kind": "hotspot",
+   "key_approach": "Bridge Terrace from the north (Eyre Tce / Bridge Tce)",
+   "headlines": [
+    "Summer peak day, now (2025 data): time stopped here 3.6 vehicle-hours a day on today's network; Bridge Terrace from the north (Eyre Tce / Bridge Tce) waits 5 s a vehicle. Council package 11.0 (6 s); C3 one-way loop 21.4 (7 s); Brent's package 3.3 (5 s); N9 turn lanes + Grantley roundabout 2.7 (4 s).",
+    "Summer peak day, now (2025 data): Bridge Terrace from the north (Eyre Tce / Bridge Tce) carries 2,626 vehicles a day (14 trucks, 67 caravans) on today's network; Council package 5,211 vehicles a day (82 trucks, 97 caravans); C3 one-way loop 7,437 vehicles a day (162 trucks, 118 caravans); Brent's package 2,546 vehicles a day (14 trucks, 67 caravans); N9 turn lanes + Grantley roundabout 2,532 vehicles a day (22 trucks, 65 caravans)."
+   ]
+  },
+  {
+   "id": "lindsay-st",
+   "short": "Lindsay St / Acraman St",
+   "title": "Crozier Rd / Acraman St / Lindsay St: side-street diversion",
+   "kind": "hotspot",
+   "key_approach": "Lindsay Street from the south-west",
+   "headlines": [
+    "Summer peak day, now (2025 data): time stopped here 5.0 vehicle-hours a day on today's network; Lindsay Street from the south-west waits 14 s a vehicle. Council package 39.5 (83 s); C3 one-way loop 24.8 (48 s); Brent's package 4.4 (13 s); N9 turn lanes + Grantley roundabout 4.6 (12 s).",
+    "Summer peak day, 2031 (in about 5 years), high growth: time stopped here 20.3 vehicle-hours a day on today's network; Lindsay Street from the south-west waits 45 s a vehicle. Council package 71.2 (142 s); C3 one-way loop 249.6 (312 s); Brent's package 19.4 (43 s); N9 turn lanes + Grantley roundabout 16.6 (38 s)."
+   ]
+  },
+  {
+   "id": "torrens-signals",
+   "short": "Torrens St roundabouts (C4 signals)",
+   "title": "Torrens St at Seaview Rd / Eyre Tce and at Crozier Rd: the council's signals (C4)",
+   "kind": "hotspot",
+   "key_approach": "Eyre Terrace from the south-east (Seaview Rd / Eyre Tce roundabout)",
+   "headlines": [
+    "Summer peak day, now (2025 data): time stopped here 43.7 vehicle-hours a day on today's network; Eyre Terrace from the south-east (Seaview Rd / Eyre Tce roundabout) waits 27 s a vehicle. Council package 113.5; C4 signals 91.2 (31 s); Brent's package 44.1 (22 s); N9 turn lanes + Grantley roundabout 26.0 (19 s).",
+    "Summer peak day, 2031 (in about 5 years), high growth: time stopped here 67.1 vehicle-hours a day on today's network; Eyre Terrace from the south-east (Seaview Rd / Eyre Tce roundabout) waits 31 s a vehicle. Council package 161.5; C4 signals 137.1 (38 s); Brent's package 75.6 (26 s); N9 turn lanes + Grantley roundabout 40.2 (21 s)."
+   ]
+  },
+  {
+   "id": "victoria-st",
+   "short": "Victoria St corridor",
+   "title": "Victoria St between Bay Rd and Torrens St",
+   "kind": "hotspot",
+   "key_approach": "Victoria Street from the south-west",
+   "headlines": [
+    "Summer peak day, now (2025 data): time stopped here 77.4 vehicle-hours a day on today's network; Victoria Street from the south-west waits 22 s a vehicle. Council package 113.6 (26 s); Brent's package 80.0 (22 s); N8 Victoria St left-turn lanes 103.7 (26 s).",
+    "Summer peak day, 2031 (in about 5 years), high growth: time stopped here 177.6 vehicle-hours a day on today's network; Victoria Street from the south-west waits 29 s a vehicle. Council package 248.6 (38 s); Brent's package 234.0 (33 s)."
+   ]
+  },
+  {
+   "id": "grantley",
+   "short": "Grantley Ave / Bridge Tce",
+   "title": "Bridge Tce / Grantley Ave link onto Hindmarsh Rd (beside the rail crossing)",
+   "kind": "hotspot",
+   "key_approach": "Bridge Terrace from the south",
+   "headlines": [
+    "Summer peak day, now (2025 data): time stopped here 33.2 vehicle-hours a day on today's network; Bridge Terrace from the south waits 49 s a vehicle. Council package 6.1 (9 s); C3 one-way loop 10.3 (18 s); Brent's package 33.4 (50 s); N4 Grantley roundabout 12.6 (15 s).",
+    "Summer peak day, 2031 (in about 5 years), high growth: time stopped here 54.6 vehicle-hours a day on today's network; Bridge Terrace from the south waits 89 s a vehicle. Council package 9.6 (15 s); C3 one-way loop 270.0 (201 s); Brent's package 42.2 (63 s); N4 Grantley roundabout 18.0 (19 s)."
+   ]
+  },
+  {
+   "id": "armstrong-crozier",
+   "short": "Armstrong Rd / Crozier Rd",
+   "title": "Armstrong Rd / Crozier Rd (ring road)",
+   "kind": "hotspot",
+   "key_approach": "Crozier Road from the east",
+   "headlines": [
+    "Summer peak day, now (2025 data): time stopped here 18.2 vehicle-hours a day on today's network; Crozier Road from the east waits 29 s a vehicle. Council package 37.1 (43 s); Brent's package 36.6 (52 s); N3 Crozier Rd turn lanes 11.5 (16 s); N7 three roundabouts 2.4 (6 s).",
+    "Summer peak day, 2031 (in about 5 years), high growth: time stopped here 69.9 vehicle-hours a day on today's network; Crozier Road from the east waits 79 s a vehicle. Council package 117.7 (104 s); Brent's package 111.0 (112 s); N3 Crozier Rd turn lanes 49.9 (50 s); N7 three roundabouts 5.0 (8 s)."
+   ]
+  },
+  {
+   "id": "armstrong-greenhills",
+   "short": "Armstrong Rd / Greenhills Rd",
+   "title": "Armstrong Rd / Greenhills Rd (ring road)",
+   "kind": "hotspot",
+   "key_approach": "Greenhills Road from the east",
+   "headlines": [
+    "Summer peak day, now (2025 data): time stopped here 1.6 vehicle-hours a day on today's network; Greenhills Road from the east waits 12 s a vehicle. Council package 2.4 (13 s); Brent's package 3.8 (18 s); N7 three roundabouts 0.6 (7 s).",
+    "Summer peak day, 2031 (in about 5 years), high growth: time stopped here 8.2 vehicle-hours a day on today's network; Greenhills Road from the east waits 20 s a vehicle. Council package 12.7 (23 s); Brent's package 15.8 (34 s); N7 three roundabouts 1.6 (8 s)."
+   ]
+  },
+  {
+   "id": "mccracken",
+   "short": "McCracken roundabout",
+   "title": "McCracken roundabout (Adelaide Rd / Hindmarsh Rd / Port Elliot Rd) by Bunnings and the service stations",
+   "kind": "local",
+   "key_approach": "Port Elliot Road from the east (McCracken roundabout)",
+   "headlines": [
+    "Summer peak day, now (2025 data): time stopped here 22.7 vehicle-hours a day on today's network; Port Elliot Road from the east (McCracken roundabout) waits 14 s a vehicle. Council package 16.6 (12 s); Brent's package 23.6 (11 s); B4 two-lane McCracken roundabout 27.1 (12 s).",
+    "Summer peak day, 2031 (in about 5 years), high growth: time stopped here 32.2 vehicle-hours a day on today's network; Port Elliot Road from the east (McCracken roundabout) waits 14 s a vehicle. Council package 23.1 (13 s); Brent's package 31.7 (12 s)."
+   ]
+  },
+  {
+   "id": "maude-st",
+   "short": "Maude St roundabout",
+   "title": "The Maude St roundabout (Armstrong Rd / George Main Rd / Inman Valley Rd / Mill Rd / Maude St) and Bay Rd / Maude St",
+   "kind": "local",
+   "key_approach": "Inman Valley Road from the west (Maude St roundabout)",
+   "headlines": [
+    "Summer peak day, now (2025 data): time stopped here 6.2 vehicle-hours a day on today's network; Inman Valley Road from the west (Maude St roundabout) waits 8 s a vehicle. Council package 9.4 (8 s); Brent's package 8.9 (8 s); N9 turn lanes + Grantley roundabout 5.7 (7 s).",
+    "Summer peak day, 2031 (in about 5 years), high growth: time stopped here 25.6 vehicle-hours a day on today's network; Inman Valley Road from the west (Maude St roundabout) waits 14 s a vehicle. Council package 35.7 (18 s); Brent's package 40.8 (18 s); N9 turn lanes + Grantley roundabout 31.2 (16 s)."
+   ]
+  },
+  {
+   "id": "entrance-roundabout",
+   "short": "Entrance roundabout (Victor Harbor Rd)",
+   "title": "Town entrance roundabout: Victor Harbor Rd / Welch Rd / Waterport Rd (towards Urimbirra Wildlife Park)",
+   "kind": "local",
+   "key_approach": "Victor Harbor Road from the south-east",
+   "headlines": [
+    "Summer peak day, now (2025 data): time stopped here 4.0 vehicle-hours a day on today's network; Victor Harbor Road from the south-east waits 6 s a vehicle. Council package 4.8 (7 s); Brent's package 4.2 (6 s); N7 three roundabouts 3.7 (6 s).",
+    "Summer peak day, 2031 (in about 5 years), high growth: time stopped here 8.6 vehicle-hours a day on today's network; Victor Harbor Road from the south-east waits 10 s a vehicle. Council package 9.5 (11 s); Brent's package 9.1 (11 s); N7 three roundabouts 6.6 (8 s)."
+   ]
+  },
+  {
+   "id": "whalers",
+   "short": "Franklin Pde at Whalers",
+   "title": "Franklin Pde by Whaler's Seaside Dining (the Bluff end)",
+   "kind": "local",
+   "key_approach": "Jagger Road from the east",
+   "headlines": [
+    "Summer peak day, now (2025 data): time stopped here 0.0 vehicle-hours a day on today's network; Jagger Road from the east waits 1 s a vehicle. Council package 0.0 (1 s); Brent's package 0.0 (1 s); N9 turn lanes + Grantley roundabout 0.0 (1 s).",
+    "Summer peak day, 2031 (in about 5 years), high growth: time stopped here 0.0 vehicle-hours a day on today's network; Jagger Road from the east waits 1 s a vehicle. Council package 0.0 (2 s); Brent's package 0.0 (2 s); N9 turn lanes + Grantley roundabout 0.0 (1 s)."
+   ]
+  },
+  {
+   "id": "service-stations",
+   "short": "Service stations",
+   "title": "The town-centre service stations: Shell (Hindmarsh Rd), Caltex (Torrens St), Liberty (Victoria St)",
+   "kind": "local",
+   "key_approach": "Hindmarsh Road from the north-east (Shell, Hindmarsh Rd)",
+   "headlines": [
+    "Summer peak day, now (2025 data): time stopped here 8.6 vehicle-hours a day on today's network; Hindmarsh Road from the north-east (Shell, Hindmarsh Rd) waits 8 s a vehicle. Council package 24.4 (21 s); Brent's package 11.7 (7 s); N9 turn lanes + Grantley roundabout 6.7 (6 s).",
+    "Summer peak day, 2031 (in about 5 years), high growth: time stopped here 29.6 vehicle-hours a day on today's network; Hindmarsh Road from the north-east (Shell, Hindmarsh Rd) waits 9 s a vehicle. Council package 57.4 (23 s); Brent's package 49.0 (8 s); N9 turn lanes + Grantley roundabout 33.1 (6 s)."
+   ]
+  },
+  {
+   "id": "oval-roundabout",
+   "short": "Roundabout by the oval",
+   "title": "The roundabout by the oval: Bay Rd / Victoria St / George Main Rd",
+   "kind": "local",
+   "key_approach": "George Main Road from the north-west",
+   "headlines": [
+    "Summer peak day, now (2025 data): time stopped here 15.8 vehicle-hours a day on today's network; George Main Road from the north-west waits 19 s a vehicle. Council package 16.4 (23 s); Brent's package 18.4 (24 s); N9 turn lanes + Grantley roundabout 14.9 (18 s).",
+    "Summer peak day, 2031 (in about 5 years), high growth: time stopped here 41.3 vehicle-hours a day on today's network; George Main Road from the north-west waits 54 s a vehicle. Council package 60.3 (76 s); Brent's package 73.0 (90 s); N9 turn lanes + Grantley roundabout 48.6 (65 s)."
+   ]
+  }
+ ]
+}

@@ -25,7 +25,9 @@ S-B03 pp.91, 94), fact sheet (S-A03), survey text (S-A05).
 | C2 | Shared use zones 10–20 km/h | 20 km/h on Ocean St (the 2014 Mainstreet plan's "shared space", S-B26) plus Albert Pl and Railway Tce within the area; pedestrian priority modelled as reduced speed plus pedestrian crossing delay at Ocean St / Coral St where SUMO supports it. **C2b**: 10 km/h. | *Inference* — locations not named |
 | C3 | One-way outer loop | **Clockwise** (reading of the map's arrows): Torrens St one-way north-east from Victoria St to the Hindmarsh/Seaview/Eyre roundabout; Eyre Tce → Flinders Pde one-way southbound to the Esplanade; Esplanade one-way westbound to the Victoria St / Albert Pl area; Victoria St stays two-way. Internal streets keep their current direction unless they conflict with the loop. **C3b**: anticlockwise. | *Inference* — streets and direction never named in text |
 | C4 | Traffic signals | Replace the roundabouts at Torrens St/Hindmarsh Rd × Seaview Rd/Eyre Tce and Torrens St × Crozier Rd with signalised intersections (actuated, fixed cycle ≤ 90 s, pedestrian phase on Torrens St). Lane layout: existing approach lanes (no land acquisition) — **C4b**: three lanes per approach at Seaview/Eyre as the 2015–16 study said signals there would need (S-D21 s13.3.14). | Sites named in text (S-A03); design not published |
-| C5 | Outer freight ring road (Option 1) | New indicative two-lane 100 km/h road following the Vision map: from Inman Valley Rd near Greenhills Rd, north along the west of the growth area to Hutchinson Rd, east across Hindmarsh Tiers Rd to Victor Harbor Rd / Waterport Rd; existing ring road (Welch/Armstrong Rd) lowered to 60 km/h with more connections to the north growth area. Trucks routed to the outer road. Only meaningful for future years. | *Inference* — "indicative" alignment |
+| C5 | Outer freight ring road (Option 1), inner reading | Built from the described end points over existing roads, not traced from the map (S9, `sim/assumptions/S9-ring-road.md`): Inman Valley Rd → Swains Crossing Rd (existing Inman River crossing) → **new 0.4 km link** → Water Reserve Rd → Greenhills Rd past Day Rd → Hutchinson Rd → Hindmarsh Tiers Rd → Victor Harbor Rd. Outer road 100 km/h, one lane each way, priority over the side roads it meets; at Inman Valley Rd it forms the main road with Inman Valley Rd west (town-bound traffic gives way); give-way to Victor Harbor Rd. Existing ring road (Welch/Armstrong Rd) lowered to 60 km/h; trucks prefer the outer road (SUMO routing preference: the link road counts at twice its travel time for trucks). "More connections to the north growth area" not modelled (no estate streets, S2 M3/M15). | *Inference* — "indicative" alignment |
+| C5b | Outer freight ring road (Option 1), outer reading | As C5, but Swains Crossing Rd → Stock Rd → new 0.2 km link → Spring Rd → **new 2.8 km road** 0.3–0.9 km west of Greenhills Rd (clear of the growth-area frontage) to Hutchinson Rd, then Mont Rosa Rd straight across Hindmarsh Tiers Rd to Victor Harbor Rd | *Inference* — variant |
+| C5s | Sensitivity of C5 | C5 with Welch Rd / Armstrong Rd left at today's limits (truck preference kept): separates the outer road from the 60 km/h downgrade | Sensitivity (runs not finished, S9 gaps) |
 | C6 | Retain current ring road (Option 2) | Baseline ring road; demand variant adds an activity centre (supermarket + services POIs) north of the ring road near Waggon Rd / Hindmarsh River (S-A03 p.5, S-B03 p.91). | Demand-side change |
 | CP | Council town-centre package | C1a + C2 + C3 + C4 together, as consulted. | Package |
 
@@ -68,9 +70,10 @@ comparison only (**$** under $0.5 M, **$$** $0.5–3 M, **$$$** $3–10 M; assum
 Not built, with the reason in `S7-improvements.md`: roundabout metering signals (no roundabout
 approach in the diagnosis is starved by a dominant circulating flow except Eyre Tce, and its loss is
 small), better-designed signals at the C4 sites (the two roundabouts there are not bottlenecks today),
-a link road for growth area 1 (the demand model has no estate streets to connect it to), C5 (the
-indicative alignment could not be placed reliably), seasonal
-traffic management and a caravan route (no measured target in the model).
+a link road for growth area 1 (the demand model has no estate streets to connect it to), seasonal
+traffic management and a caravan route (no measured target in the model). C5 was first left out because the
+indicative alignment could not be georeferenced; it was built in S9 from the described end points and existing
+roads instead (rows C5 / C5b above).
 
 ## Outputs per run
 

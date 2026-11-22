@@ -1,0 +1,968 @@
+{
+ "hotspots": [
+  {
+   "id": "foreshore-loop",
+   "set": "summer_peak_2025_base",
+   "condition": "summer_peak",
+   "year": 2025,
+   "growth": "base",
+   "interval": 51,
+   "time": "12:45",
+   "why": "busiest quarter-hour of the three runs shown together (12:45, seed 1)",
+   "bounds": [
+    [
+     138.62180211205487,
+     -35.554912483100495
+    ],
+    [
+     138.62599788794512,
+     -35.5514875168995
+    ]
+   ],
+   "shots": [
+    {
+     "name": "summer_peak_2025_base__baseline",
+     "a": "baseline"
+    },
+    {
+     "name": "summer_peak_2025_base__cp",
+     "a": "cp"
+    },
+    {
+     "name": "summer_peak_2025_base__n9",
+     "a": "n9"
+    },
+    {
+     "name": "summer_peak_2025_base__diff_cp",
+     "a": "baseline",
+     "b": "cp"
+    },
+    {
+     "name": "summer_peak_2025_base__diff_n9",
+     "a": "baseline",
+     "b": "n9"
+    }
+   ],
+   "labels": [
+    [
+     "Bridge Tce",
+     138.62442765968046,
+     -35.55245128853418
+    ],
+    [
+     "Coral St",
+     138.6246205599385,
+     -35.553786110907346
+    ],
+    [
+     "Eyre Tce",
+     138.6240869365249,
+     -35.55235407010499
+    ],
+    [
+     "Flinders Pde",
+     138.6247041806206,
+     -35.55369608589688
+    ],
+    [
+     "Ocean St",
+     138.62301477936592,
+     -35.55368039755326
+    ]
+   ]
+  },
+  {
+   "id": "lindsay-st",
+   "set": "summer_peak_2025_base",
+   "condition": "summer_peak",
+   "year": 2025,
+   "growth": "base",
+   "interval": 52,
+   "time": "13:00",
+   "why": "busiest quarter-hour of the three runs shown together (13:00, seed 1)",
+   "bounds": [
+    [
+     138.61723801569383,
+     -35.554429568273996
+    ],
+    [
+     138.61988798430616,
+     -35.552266431726004
+    ]
+   ],
+   "shots": [
+    {
+     "name": "summer_peak_2025_base__baseline",
+     "a": "baseline"
+    },
+    {
+     "name": "summer_peak_2025_base__cp",
+     "a": "cp"
+    },
+    {
+     "name": "summer_peak_2025_base__n9",
+     "a": "n9"
+    },
+    {
+     "name": "summer_peak_2025_base__diff_cp",
+     "a": "baseline",
+     "b": "cp"
+    },
+    {
+     "name": "summer_peak_2025_base__diff_n9",
+     "a": "baseline",
+     "b": "n9"
+    }
+   ],
+   "labels": [
+    [
+     "Acraman St",
+     138.61886789529078,
+     -35.55292887507215
+    ],
+    [
+     "Crozier Rd",
+     138.61915704510182,
+     -35.553667477309894
+    ],
+    [
+     "Lindsay St",
+     138.61825602314352,
+     -35.55375883319663
+    ]
+   ]
+  },
+  {
+   "id": "torrens-signals",
+   "set": "summer_peak_2025_base",
+   "condition": "summer_peak",
+   "year": 2025,
+   "growth": "base",
+   "interval": 49,
+   "time": "12:15",
+   "why": "busiest quarter-hour of the three runs shown together (12:15, seed 1)",
+   "bounds": [
+    [
+     138.61936045777037,
+     -35.55507300585849
+    ],
+    [
+     138.62443954222965,
+     -35.550926994141506
+    ]
+   ],
+   "shots": [
+    {
+     "name": "summer_peak_2025_base__baseline",
+     "a": "baseline"
+    },
+    {
+     "name": "summer_peak_2025_base__c4",
+     "a": "c4"
+    },
+    {
+     "name": "summer_peak_2025_base__n9",
+     "a": "n9"
+    },
+    {
+     "name": "summer_peak_2025_base__diff_c4",
+     "a": "baseline",
+     "b": "c4"
+    },
+    {
+     "name": "summer_peak_2025_base__diff_n9",
+     "a": "baseline",
+     "b": "n9"
+    }
+   ],
+   "labels": [
+    [
+     "Crozier Rd",
+     138.6209809828161,
+     -35.55450142447218
+    ],
+    [
+     "Eyre Tce",
+     138.62308887327652,
+     -35.55172440570486
+    ],
+    [
+     "Hindmarsh Rd",
+     138.62305075397913,
+     -35.55152119750945
+    ],
+    [
+     "McKinlay St",
+     138.62349362063378,
+     -35.55285455148463
+    ],
+    [
+     "Seaview Rd",
+     138.62288845898718,
+     -35.551582356893064
+    ],
+    [
+     "Torrens Ln",
+     138.6205247293707,
+     -35.554703886618924
+    ],
+    [
+     "Torrens St",
+     138.62130889909355,
+     -35.55386402205963
+    ]
+   ]
+  },
+  {
+   "id": "victoria-st",
+   "set": "summer_peak_2025_base",
+   "condition": "summer_peak",
+   "year": 2025,
+   "growth": "base",
+   "interval": 50,
+   "time": "12:30",
+   "why": "busiest quarter-hour of the three runs shown together (12:30, seed 1)",
+   "bounds": [
+    [
+     138.61232484615127,
+     -35.560644704821996
+    ],
+    [
+     138.62027515384872,
+     -35.554155295178006
+    ]
+   ],
+   "shots": [
+    {
+     "name": "summer_peak_2025_base__baseline",
+     "a": "baseline"
+    },
+    {
+     "name": "summer_peak_2025_base__cp",
+     "a": "cp"
+    },
+    {
+     "name": "summer_peak_2025_base__n8",
+     "a": "n8"
+    },
+    {
+     "name": "summer_peak_2025_base__diff_cp",
+     "a": "baseline",
+     "b": "cp"
+    },
+    {
+     "name": "summer_peak_2025_base__diff_n8",
+     "a": "baseline",
+     "b": "n8"
+    }
+   ],
+   "labels": [
+    [
+     "Burke St",
+     138.61922653541262,
+     -35.55590091485705
+    ],
+    [
+     "Granite St",
+     138.61654828674742,
+     -35.55579244542249
+    ],
+    [
+     "Inman St",
+     138.61328155419255,
+     -35.55852548197272
+    ],
+    [
+     "Island St",
+     138.6174753623659,
+     -35.55823087477645
+    ],
+    [
+     "King St",
+     138.6185505225024,
+     -35.55671513896909
+    ],
+    [
+     "Oval Rd",
+     138.61507179000364,
+     -35.556128618060626
+    ],
+    [
+     "Victoria St",
+     138.61446321053538,
+     -35.55801551892129
+    ],
+    [
+     "Liberty",
+     138.61349,
+     -35.55813
+    ]
+   ]
+  },
+  {
+   "id": "grantley",
+   "set": "summer_peak_2025_base",
+   "condition": "summer_peak",
+   "year": 2025,
+   "growth": "base",
+   "interval": 55,
+   "time": "13:45",
+   "why": "busiest quarter-hour of the three runs shown together (13:45, seed 1)",
+   "bounds": [
+    [
+     138.62295425723937,
+     -35.550861829652995
+    ],
+    [
+     138.62604574276065,
+     -35.548338170347
+    ]
+   ],
+   "shots": [
+    {
+     "name": "summer_peak_2025_base__baseline",
+     "a": "baseline"
+    },
+    {
+     "name": "summer_peak_2025_base__cp",
+     "a": "cp"
+    },
+    {
+     "name": "summer_peak_2025_base__n4",
+     "a": "n4"
+    },
+    {
+     "name": "summer_peak_2025_base__diff_cp",
+     "a": "baseline",
+     "b": "cp"
+    },
+    {
+     "name": "summer_peak_2025_base__diff_n4",
+     "a": "baseline",
+     "b": "n4"
+    }
+   ],
+   "labels": [
+    [
+     "Bridge Tce",
+     138.62513239464462,
+     -35.54932768934077
+    ],
+    [
+     "Grantley Ave",
+     138.62374662943026,
+     -35.54881311691599
+    ],
+    [
+     "Hindmarsh Rd",
+     138.6248893313785,
+     -35.54907794135697
+    ]
+   ]
+  },
+  {
+   "id": "armstrong-crozier",
+   "set": "summer_peak_2025_base",
+   "condition": "summer_peak",
+   "year": 2025,
+   "growth": "base",
+   "interval": 46,
+   "time": "11:30",
+   "why": "busiest quarter-hour of the three runs shown together (11:30, seed 1)",
+   "bounds": [
+    [
+     138.60759628070082,
+     -35.549644829653
+    ],
+    [
+     138.61068771929916,
+     -35.547121170347005
+    ]
+   ],
+   "shots": [
+    {
+     "name": "summer_peak_2025_base__baseline",
+     "a": "baseline"
+    },
+    {
+     "name": "summer_peak_2025_base__cp",
+     "a": "cp"
+    },
+    {
+     "name": "summer_peak_2025_base__n3",
+     "a": "n3"
+    },
+    {
+     "name": "summer_peak_2025_base__diff_cp",
+     "a": "baseline",
+     "b": "cp"
+    },
+    {
+     "name": "summer_peak_2025_base__diff_n3",
+     "a": "baseline",
+     "b": "n3"
+    }
+   ],
+   "labels": [
+    [
+     "Armstrong Rd",
+     138.60887348876852,
+     -35.54896563111573
+    ],
+    [
+     "Crozier Rd",
+     138.6098177984926,
+     -35.54867973326619
+    ]
+   ]
+  },
+  {
+   "id": "armstrong-crozier",
+   "set": "summer_peak_2031_high",
+   "condition": "summer_peak",
+   "year": 2031,
+   "growth": "high",
+   "interval": 52,
+   "time": "13:00",
+   "why": "busiest quarter-hour of the three runs shown together (13:00, seed 1)",
+   "bounds": [
+    [
+     138.60759628070082,
+     -35.549644829653
+    ],
+    [
+     138.61068771929916,
+     -35.547121170347005
+    ]
+   ],
+   "shots": [
+    {
+     "name": "summer_peak_2031_high__baseline",
+     "a": "baseline"
+    },
+    {
+     "name": "summer_peak_2031_high__cp",
+     "a": "cp"
+    },
+    {
+     "name": "summer_peak_2031_high__n7",
+     "a": "n7"
+    },
+    {
+     "name": "summer_peak_2031_high__diff_cp",
+     "a": "baseline",
+     "b": "cp"
+    },
+    {
+     "name": "summer_peak_2031_high__diff_n7",
+     "a": "baseline",
+     "b": "n7"
+    }
+   ],
+   "labels": [
+    [
+     "Armstrong Rd",
+     138.60887348876852,
+     -35.54896563111573
+    ],
+    [
+     "Crozier Rd",
+     138.6098177984926,
+     -35.54867973326619
+    ]
+   ]
+  },
+  {
+   "id": "armstrong-greenhills",
+   "set": "summer_peak_2031_high",
+   "condition": "summer_peak",
+   "year": 2031,
+   "growth": "high",
+   "interval": 52,
+   "time": "13:00",
+   "why": "busiest quarter-hour of the three runs shown together (13:00, seed 1)",
+   "bounds": [
+    [
+     138.60714544190486,
+     -35.541280829653
+    ],
+    [
+     138.61023655809512,
+     -35.538757170347004
+    ]
+   ],
+   "shots": [
+    {
+     "name": "summer_peak_2031_high__baseline",
+     "a": "baseline"
+    },
+    {
+     "name": "summer_peak_2031_high__cp",
+     "a": "cp"
+    },
+    {
+     "name": "summer_peak_2031_high__n7",
+     "a": "n7"
+    },
+    {
+     "name": "summer_peak_2031_high__diff_cp",
+     "a": "baseline",
+     "b": "cp"
+    },
+    {
+     "name": "summer_peak_2031_high__diff_n7",
+     "a": "baseline",
+     "b": "n7"
+    }
+   ],
+   "labels": [
+    [
+     "Armstrong Rd",
+     138.60836664781317,
+     -35.54061148215118
+    ],
+    [
+     "Finniss Rd",
+     138.60812887305312,
+     -35.53953291788334
+    ],
+    [
+     "Greenhills Rd",
+     138.60931154454963,
+     -35.54040465114229
+    ]
+   ]
+  },
+  {
+   "id": "mccracken",
+   "set": "summer_peak_2025_base",
+   "condition": "summer_peak",
+   "year": 2025,
+   "growth": "base",
+   "interval": 63,
+   "time": "15:45",
+   "why": "busiest quarter-hour of the three runs shown together (15:45, seed 1)",
+   "bounds": [
+    [
+     138.6358609454178,
+     -35.53967300585849
+    ],
+    [
+     138.6409390545822,
+     -35.535526994141506
+    ]
+   ],
+   "shots": [
+    {
+     "name": "summer_peak_2025_base__baseline",
+     "a": "baseline"
+    },
+    {
+     "name": "summer_peak_2025_base__cp",
+     "a": "cp"
+    },
+    {
+     "name": "summer_peak_2025_base__b4",
+     "a": "b4"
+    },
+    {
+     "name": "summer_peak_2025_base__diff_cp",
+     "a": "baseline",
+     "b": "cp"
+    },
+    {
+     "name": "summer_peak_2025_base__diff_b4",
+     "a": "baseline",
+     "b": "b4"
+    }
+   ],
+   "labels": [
+    [
+     "Adelaide Rd",
+     138.6389552218305,
+     -35.5363480226211
+    ],
+    [
+     "Alexander St",
+     138.63948201806164,
+     -35.53811681836421
+    ],
+    [
+     "Antrim St",
+     138.63725662314525,
+     -35.53872142149198
+    ],
+    [
+     "Down St",
+     138.6372792452628,
+     -35.537230657104914
+    ],
+    [
+     "Hindmarsh Rd",
+     138.63896216912798,
+     -35.53667528174791
+    ],
+    [
+     "Port Elliot Rd",
+     138.63934727679467,
+     -35.53656978738809
+    ],
+    [
+     "Bunnings",
+     138.63778,
+     -35.53619
+    ],
+    [
+     "Mobil",
+     138.63941,
+     -35.53611
+    ],
+    [
+     "OTR",
+     138.63969,
+     -35.53672
+    ],
+    [
+     "Caltex",
+     138.63838,
+     -35.53858
+    ]
+   ]
+  },
+  {
+   "id": "maude-st",
+   "set": "summer_peak_2025_base",
+   "condition": "summer_peak",
+   "year": 2025,
+   "growth": "base",
+   "interval": 50,
+   "time": "12:30",
+   "why": "busiest quarter-hour of the three runs shown together (12:30, seed 1)",
+   "bounds": [
+    [
+     138.59730388909884,
+     -35.56302496620099
+    ],
+    [
+     138.60569611090114,
+     -35.556175033799015
+    ]
+   ],
+   "shots": [
+    {
+     "name": "summer_peak_2025_base__baseline",
+     "a": "baseline"
+    },
+    {
+     "name": "summer_peak_2025_base__cp",
+     "a": "cp"
+    },
+    {
+     "name": "summer_peak_2025_base__n9",
+     "a": "n9"
+    },
+    {
+     "name": "summer_peak_2025_base__diff_cp",
+     "a": "baseline",
+     "b": "cp"
+    },
+    {
+     "name": "summer_peak_2025_base__diff_n9",
+     "a": "baseline",
+     "b": "n9"
+    }
+   ],
+   "labels": [
+    [
+     "Bay Rd",
+     138.60262408985037,
+     -35.56250030855068
+    ],
+    [
+     "George Main Rd",
+     138.60190316380888,
+     -35.55690645880807
+    ],
+    [
+     "Inman Valley Rd",
+     138.5992141756483,
+     -35.55685850465019
+    ],
+    [
+     "Maude St",
+     138.60282957528077,
+     -35.56093162894279
+    ],
+    [
+     "Mill Rd",
+     138.5991312833358,
+     -35.55757004294094
+    ]
+   ]
+  },
+  {
+   "id": "entrance-roundabout",
+   "set": "summer_peak_2025_base",
+   "condition": "summer_peak",
+   "year": 2025,
+   "growth": "base",
+   "interval": 56,
+   "time": "14:00",
+   "why": "busiest quarter-hour of the three runs shown together (14:00, seed 1)",
+   "bounds": [
+    [
+     138.63214447244334,
+     -35.5206519603425
+    ],
+    [
+     138.63545552755667,
+     -35.517948039657504
+    ]
+   ],
+   "shots": [
+    {
+     "name": "summer_peak_2025_base__baseline",
+     "a": "baseline"
+    },
+    {
+     "name": "summer_peak_2025_base__cp",
+     "a": "cp"
+    },
+    {
+     "name": "summer_peak_2025_base__n7",
+     "a": "n7"
+    },
+    {
+     "name": "summer_peak_2025_base__diff_cp",
+     "a": "baseline",
+     "b": "cp"
+    },
+    {
+     "name": "summer_peak_2025_base__diff_n7",
+     "a": "baseline",
+     "b": "n7"
+    }
+   ],
+   "labels": [
+    [
+     "Victor Harbor Rd",
+     138.63356893469398,
+     -35.5186512161777
+    ],
+    [
+     "Waterport Rd",
+     138.63462722333438,
+     -35.519224371514014
+    ],
+    [
+     "Welch Rd",
+     138.63302070957474,
+     -35.519440459453264
+    ]
+   ]
+  },
+  {
+   "id": "whalers",
+   "set": "summer_peak_2025_base",
+   "condition": "summer_peak",
+   "year": 2025,
+   "growth": "base",
+   "interval": 74,
+   "time": "18:30",
+   "why": "busiest quarter-hour of the three runs shown together (18:30, seed 1)",
+   "bounds": [
+    [
+     138.59668308249513,
+     -35.587931960342495
+    ],
+    [
+     138.59999691750488,
+     -35.5852280396575
+    ]
+   ],
+   "shots": [
+    {
+     "name": "summer_peak_2025_base__baseline",
+     "a": "baseline"
+    },
+    {
+     "name": "summer_peak_2025_base__cp",
+     "a": "cp"
+    },
+    {
+     "name": "summer_peak_2025_base__n9",
+     "a": "n9"
+    },
+    {
+     "name": "summer_peak_2025_base__diff_cp",
+     "a": "baseline",
+     "b": "cp"
+    },
+    {
+     "name": "summer_peak_2025_base__diff_n9",
+     "a": "baseline",
+     "b": "n9"
+    }
+   ],
+   "labels": [
+    [
+     "Franklin Pde",
+     138.5978686752187,
+     -35.58713497495095
+    ],
+    [
+     "Investigator Cres",
+     138.59738969719416,
+     -35.5865869269794
+    ],
+    [
+     "Jagger Rd",
+     138.59728633885317,
+     -35.58725748906373
+    ],
+    [
+     "Whaler's",
+     138.59834,
+     -35.58658
+    ]
+   ]
+  },
+  {
+   "id": "service-stations",
+   "set": "summer_peak_2025_base",
+   "condition": "summer_peak",
+   "year": 2025,
+   "growth": "base",
+   "interval": 46,
+   "time": "11:30",
+   "why": "busiest quarter-hour of the three runs shown together (11:30, seed 1)",
+   "bounds": [
+    [
+     138.62027090294936,
+     -35.553982875169
+    ],
+    [
+     138.62512909705066,
+     -35.550017124831
+    ]
+   ],
+   "shots": [
+    {
+     "name": "summer_peak_2025_base__baseline",
+     "a": "baseline"
+    },
+    {
+     "name": "summer_peak_2025_base__cp",
+     "a": "cp"
+    },
+    {
+     "name": "summer_peak_2025_base__n9",
+     "a": "n9"
+    },
+    {
+     "name": "summer_peak_2025_base__diff_cp",
+     "a": "baseline",
+     "b": "cp"
+    },
+    {
+     "name": "summer_peak_2025_base__diff_n9",
+     "a": "baseline",
+     "b": "n9"
+    }
+   ],
+   "labels": [
+    [
+     "Hindmarsh Rd",
+     138.62333393433545,
+     -35.55117631491177
+    ],
+    [
+     "Torrens St",
+     138.62210200150733,
+     -35.55284819309637
+    ],
+    [
+     "Shell",
+     138.62315,
+     -35.55095
+    ],
+    [
+     "Caltex",
+     138.62082,
+     -35.55388
+    ]
+   ]
+  },
+  {
+   "id": "oval-roundabout",
+   "set": "summer_peak_2025_base",
+   "condition": "summer_peak",
+   "year": 2025,
+   "growth": "base",
+   "interval": 50,
+   "time": "12:30",
+   "why": "busiest quarter-hour of the three runs shown together (12:30, seed 1)",
+   "bounds": [
+    [
+     138.61023268823135,
+     -35.5586389603425
+    ],
+    [
+     138.61354531176863,
+     -35.555935039657506
+    ]
+   ],
+   "shots": [
+    {
+     "name": "summer_peak_2025_base__baseline",
+     "a": "baseline"
+    },
+    {
+     "name": "summer_peak_2025_base__cp",
+     "a": "cp"
+    },
+    {
+     "name": "summer_peak_2025_base__n9",
+     "a": "n9"
+    },
+    {
+     "name": "summer_peak_2025_base__diff_cp",
+     "a": "baseline",
+     "b": "cp"
+    },
+    {
+     "name": "summer_peak_2025_base__diff_n9",
+     "a": "baseline",
+     "b": "n9"
+    }
+   ],
+   "labels": [
+    [
+     "Bay Rd",
+     138.61112752958692,
+     -35.557677844074064
+    ],
+    [
+     "George Main Rd",
+     138.6112604660986,
+     -35.55685618933259
+    ],
+    [
+     "Victoria St",
+     138.61264535992996,
+     -35.55751898979983
+    ],
+    [
+     "High School",
+     138.61168,
+     -35.55633
+    ],
+    [
+     "Oval",
+     138.61347,
+     -35.55622
+    ]
+   ]
+  }
+ ]
+}

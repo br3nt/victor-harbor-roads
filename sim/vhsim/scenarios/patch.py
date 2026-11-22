@@ -32,6 +32,9 @@ class Patch:
     roundabouts: list[tuple[tuple[str, ...], tuple[str, ...]]] = field(default_factory=list)
     splits: dict[str, list[dict[str, str]]] = field(default_factory=dict)
     con_lane_adds: set[tuple[str, str, int, int]] = field(default_factory=set)
+    # S9: routing preferences (routingType, vClasses, priority): SUMO divides an edge's routing cost by
+    # `priority` for those vClasses on edges of that routingType (written next to the net, loaded by runs)
+    preferences: list[tuple[str, str, float]] = field(default_factory=list)
 
     def set_edge(self, eid: str, **attrs: str) -> None:
         cur = self.edges.setdefault(eid, {})
@@ -65,6 +68,7 @@ class Patch:
                     raise ValueError(f"conflicting splits of edge {k}")
                 out.splits[k] = list(v)
             out.con_lane_adds |= p.con_lane_adds
+            out.preferences += [x for x in p.preferences if x not in out.preferences]
             for k, v in p.netconvert_options.items():
                 if out.netconvert_options[k] != v:
                     raise ValueError(f"conflicting netconvert option {k}: {out.netconvert_options[k]} vs {v}")
@@ -115,6 +119,17 @@ class Patch:
                       for f, t, a, b in sorted(self.con_lane_adds)]
             written.append(_write(patch_dir / "s6.con.xml", head, "connections", lines))
         return written
+
+    def write_preferences(self, path: Path) -> Path | None:
+        """SUMO additional file with the routing preferences (None, and any old file removed, if there are none)."""
+        path = Path(path)
+        if not self.preferences:
+            path.unlink(missing_ok=True)
+            return None
+        lines = [f"    <preference routingType={quoteattr(rt)} vClasses={quoteattr(vc)} priority=\"{pr:g}\"/>"
+                 for rt, vc, pr in self.preferences]
+        return _write(path, "<!-- Routing preferences (vhsim.scenarios); loaded by duarouter and sumo. -->\n",
+                      "additional", lines)
 
 
 def _attrs(a: dict[str, str]) -> str:

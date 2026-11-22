@@ -1,0 +1,81 @@
+{
+ "added": {
+  "edges": 4,
+  "ids": [
+   "-c5_new_598113159_838727835",
+   "-c5_new_838727641_598224260",
+   "c5_new_598113159_838727835",
+   "c5_new_838727641_598224260"
+  ]
+ },
+ "checks": {
+  "edges": 4690,
+  "ok": true,
+  "roundabout_problems": {},
+  "traffic_lights": 0,
+  "undrivable_passenger": [],
+  "undrivable_truck": []
+ },
+ "components": [
+  "c5b"
+ ],
+ "edges_touched_directed_km": 32.741,
+ "junction_aliases": {},
+ "movements_extra": [],
+ "movements_missing": {},
+ "movements_removed_after_guess": [],
+ "net": "sim/data/networks/c5b_bays.net.xml",
+ "new_signals": [],
+ "notes": [
+  "C5 existing ring road (Welch Rd / Armstrong Rd) as a link road: 14 edges to 60 km/h",
+  "C5b outer ring road (c5b): 6.7 km of existing road (Swains Crossing Road, Stock Road, Spring Road, Glenvale Road, Hutchinson Road, Mont Rosa Road) to 100 km/h, priority 11; 2 new two-way section(s), 3.0 km straight-line; 36 ring-road edges routingType c5_link (trucks' routing priority 0.5); legs lowered to priority 10 where the outer road is major: -1568495085#0, -1568495085#2, -46837959#11, -46837959#12, 1568495085#0, 1568495085#2, 46837959#11, 46837959#12"
+ ],
+ "removed": {
+  "directed_km": 0.0,
+  "edges": 0,
+  "ids": []
+ },
+ "rerouted_to_new_node": {
+  "edges": 0,
+  "ids": []
+ },
+ "routing_preferences": {
+  "file": "sim/data/networks/c5b_bays.prefs.add.xml",
+  "preferences": [
+   [
+    "c5_link",
+    "truck",
+    0.5
+   ]
+  ]
+ },
+ "scenario": "c5b",
+ "signal_cycles_s": {},
+ "speed_changed": {
+  "100": {
+   "directed_km": 13.499,
+   "edges": 16,
+   "streets": [
+    "Glenvale Road",
+    "Hutchinson Road",
+    "Mont Rosa Road",
+    "Spring Road",
+    "Stock Road",
+    "Swains Crossing Road"
+   ]
+  },
+  "60": {
+   "directed_km": 8.121,
+   "edges": 14,
+   "streets": [
+    "Armstrong Road",
+    "Welch Road"
+   ]
+  }
+ },
+ "turn_bays": 183,
+ "widened": {
+  "directed_km": 0.0,
+  "edges": 4
+ }
+}

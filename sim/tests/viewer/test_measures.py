@@ -3,7 +3,7 @@ import pytest
 
 from vhsim.viewer import formats
 from vhsim.viewer.additional import viewer_additional
-from vhsim.viewer.measures import edge_times, lane_measures, network_series, read_meandata
+from vhsim.viewer.measures import MeanData, edge_times, lane_measures, network_series, read_meandata
 from vhsim.viewer.network import network_json
 
 
@@ -39,6 +39,29 @@ def test_edge_times_free_flow_fill_and_congestion(nj, town_run):
     # interval 0 has no traffic there (free flow); the rush in interval 1 queues behind Main Rd traffic
     assert tt[0, e] == pytest.approx(ff, rel=0.01)
     assert tt[1, e] > 1.5 * ff
+
+
+def _one_edge_nj(length=194.0, speed_kmh=50.0):
+    return {"edges": {"id": ["e"], "length": [length], "speed_kmh": [speed_kmh]}}
+
+
+def test_edge_time_capped_at_observed_vehicle_seconds():
+    """SUMO's edgeData traveltime is length x vehicle-seconds / distance the vehicles' fronts travelled. When the
+    only sample is a vehicle already waiting at the stop line as the interval starts (it moves a few centimetres,
+    then leaves), that extrapolates to hours: Grantley Ave, 2025 summer baseline seed 2, 12:15-12:30, 19,308 s from
+    11.8 vehicle-seconds (the vehicle's whole traversal took 40 s). With less than one edge length travelled, the
+    time is the vehicle-seconds observed plus free flow over the part of the edge not covered."""
+    ed = MeanData(period=900.0, begins=[0.0, 900.0, 1800.0], values=[
+        {"e": {"sampledSeconds": 11.77, "traveltime": 19307.72, "speed": 0.40}},     # one vehicle leaving the stop line
+        {"e": {"sampledSeconds": 320.29, "traveltime": 51.90, "speed": 3.71}},       # a normal busy interval
+        {"e": {"sampledSeconds": 4500.0, "traveltime": 30000.0, "speed": 0.02}},     # a real jam: 5 vehicles stuck
+    ])
+    tt = edge_times(_one_edge_nj(), ed, begin=0, n_intervals=3)
+    ff = 194.0 / (50 / 3.6)
+    # 11.77 s observed + free flow over the 193.9 m the vehicle front did not cover
+    assert tt[0, 0] == pytest.approx(11.77 + ff * (1 - 11.77 / 19307.72), abs=0.01)
+    assert tt[1, 0] == pytest.approx(51.90)                # unchanged when the vehicles covered the edge
+    assert tt[2, 0] == pytest.approx(4500.0 + ff * (1 - 4500 / 30000))   # a jam stays long
 
 
 def test_lane_measures_shapes_and_ranges(nj, town_run):

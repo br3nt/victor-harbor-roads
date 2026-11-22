@@ -55,7 +55,13 @@ def free_flow_times(nj) -> np.ndarray:
 def edge_times(nj, ed: MeanData, begin: float, n_intervals: int) -> np.ndarray:
     """[T, E] seconds: SUMO ``traveltime`` where vehicles were on the edge, free-flow time elsewhere.
 
-    Never below half the free-flow time (guards against a single fast sample on a short edge)."""
+    Never below half the free-flow time (guards against a single fast sample on a short edge). Sparse samples
+    (assumption V1a): SUMO computes ``traveltime`` as length x vehicle-seconds / distance the vehicles' fronts
+    travelled, which explodes when the only sample is a vehicle already waiting at the stop line as the interval
+    starts (it moves centimetres, then leaves: 19,308 s on a 194 m street for a 40 s traversal). When the fronts
+    covered less than one edge length (``traveltime`` > vehicle-seconds), the time is the vehicle-seconds observed
+    plus free flow over the part of the edge not covered. A real queue (vehicles on the edge for much of the
+    interval) keeps its long time; intervals with at least one edge length travelled are unchanged."""
     ff = free_flow_times(nj)
     tt = np.tile(ff, (n_intervals, 1))
     idx = {eid: i for i, eid in enumerate(nj["edges"]["id"])}
@@ -63,11 +69,15 @@ def edge_times(nj, ed: MeanData, begin: float, n_intervals: int) -> np.ndarray:
     for k, vals in _slots(ed, begin, n_intervals):
         for eid, a in vals.items():
             i = idx.get(eid)
-            if i is None or a.get("sampledSeconds", 0) <= 0:
+            sampled = a.get("sampledSeconds", 0)
+            if i is None or sampled <= 0:
                 continue
             t = a.get("traveltime")
             if t is None or t <= 0:
                 t = length[i] / max(a.get("speed", 0.0), 0.1)
+            if t > sampled:
+                # the fronts covered sampled / t of the edge: observed seconds + free flow over the rest
+                t = sampled + ff[i] * (1.0 - sampled / t)
             tt[k, i] = max(t, 0.5 * ff[i])
     return tt
 

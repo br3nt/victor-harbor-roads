@@ -31,6 +31,19 @@ Two linked missions plus a side job. Every possible target shows its own marker 
 - **Bowls:** keep the bowls club, and let any character pay to play a game (Round B's bowls mini-game, with a fee).
 - **Postie bike:** a postie-style step-through motorbike (Brent liked it; Round B).
 
+## Launch round (after rounds A and B land)
+Brent approved (22 Nov 2026) creating a **public** repo `br3nt/schoolies-mayhem` for GitHub Pages once rounds A and B have landed.
+- **The public repo holds only the game** (copied from `game/`, without `data/raw/`, `tools/` test scratch, or anything from the traffic project). The licence notes keep the OpenStreetMap ODbL credit.
+- **Share card:** `og:title`, `og:description`, `og:image` (designed 1200×630: logo, the town at night, the three characters), `og:url`, `og:type`, `twitter:card=summary_large_image`, all with absolute URLs. Check with Facebook's Sharing Debugger.
+- **Instagram** shows no link cards in feed posts, so make a 15–30 s gameplay trailer clip and stills for posts and stories.
+- **itch.io:** a build script that zips the game (index.html at the root), plus a cover image and screenshots in itch sizes. Brent uploads it himself.
+- **Music:** original, reactive tracks only. No recognisable copies of copyrighted songs.
+  - Jaz gets party and EDM/doof, Merv gets swing, crooner and 60s–70s pub-rock style, Kev gets a 2000s pop-punk, indie and 2010s pop feel.
+  - Intensity rises through chases, police attention and struggles.
+  - Public-domain classics are fine for Merv (ragtime, marches, maybe "Waltzing Matilda").
+  - Spotify can be used read-only to set the tempo and style targets from current charts.
+- **Sound effects pass:** doors, dogs, party crowds, rotor wash, bikes and motorbikes, and boats.
+
 ## Round D (after rounds A and B land)
 
 ### Garage upgrades at the real repair places

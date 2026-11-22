@@ -649,6 +649,150 @@ def n8(base: Baseline) -> Patch:
     return p
 
 
+# ---- S9: C5 outer freight ring road (council Option 1; sim/assumptions/S9-ring-road.md) -------------
+
+C5_SPEED_KMH = 100                 # outer road, new and upgraded sections
+C5_LINK_SPEED_KMH = 60             # the existing ring road (Welch Rd / Armstrong Rd) as a "link road"
+C5_PRIORITY = 11                   # as Inman Valley Rd / Greenhills Rd: gives way to Victor Harbor Rd (trunk, 13)
+C5_MINOR_PRIORITY = 10             # other legs at the junctions where the outer road is the major road
+C5_NEW_TYPE = "highway.secondary"  # new sections: a two-lane rural arterial (gets A-INT-01 turn bays)
+C5_ROAD_NAME = "Outer ring road (C5, indicative)"
+C5_LINK_ROUTING_TYPE = "c5_link"   # routingType of the existing ring road's edges
+C5_TRUCK_PRIORITY = 0.5            # trucks count the link road at twice its travel time when choosing a route
+_C5_SWAINS = ("361912151", "598113160", "Swains Crossing Road")        # Inman Valley Rd -> across the Inman River
+_C5_HUTCHINSON = ("598224260", "cluster_575381206_598224639", "Hutchinson Road")
+# Per variant: existing streets followed (from node, to node, street; both directions), new two-way sections
+# (from node, to node) and the junctions where the outer road becomes the major road.
+C5_VARIANTS: dict[str, dict] = {
+    # inner: Swains Crossing Rd, a new 0.4 km link to Water Reserve Rd, then Greenhills Rd (past Day Rd) to
+    # Hutchinson Rd and Hindmarsh Tiers Rd to Victor Harbor Rd: the consultation map's line along Greenhills Rd
+    "c5": {
+        "existing": (_C5_SWAINS,
+                     ("6599700307", "3414034121", "Water Reserve Road"),
+                     ("3414034121", "598224260", "Greenhills Road"),
+                     _C5_HUTCHINSON,
+                     ("cluster_575381206_598224639", "249072929", "Hindmarsh Tiers Road")),
+        "new": (("598113160", "6599700307"),),
+        "major_at": ("598113160", "3414034121", "598224260", "cluster_575381206_598224639"),
+    },
+    # outer: Swains Crossing Rd, Stock Rd, Spring Rd, then a new 2.9 km road 0.3-0.9 km west of Greenhills Rd
+    # (clear of the growth-area frontage) to Hutchinson Rd, and Mont Rosa Rd straight across Hindmarsh Tiers Rd
+    # to Victor Harbor Rd further north
+    "c5b": {
+        "existing": (_C5_SWAINS,
+                     ("598113160", "598113159", "Stock Road"),
+                     ("838727835", "838727650", "Spring Road"),
+                     ("838727650", "838727641", "Glenvale Road"),
+                     _C5_HUTCHINSON,
+                     ("cluster_575381206_598224639", "cluster_1388195608_575381275", "Mont Rosa Road")),
+        "new": (("598113159", "838727835"), ("838727641", "598224260")),
+        "major_at": ("598113160", "838727650", "838727641", "598224260", "cluster_575381206_598224639"),
+    },
+}
+
+
+def _street_path(net, a: str, b: str, street: str) -> list[str]:
+    """Shortest chain of edges named `street` from node a to node b."""
+    import heapq
+
+    best, todo, prev = {a: 0.0}, [(0.0, a)], {}
+    while todo:
+        d, n = heapq.heappop(todo)
+        if n == b:
+            break
+        if d > best.get(n, math.inf):
+            continue
+        for e in net.getNode(n).getOutgoing():
+            if e.getName() != street or e.getFunction() == "internal":
+                continue
+            m, nd = e.getToNode().getID(), d + e.getLength()
+            if nd < best.get(m, math.inf):
+                best[m], prev[m] = nd, e.getID()
+                heapq.heappush(todo, (nd, m))
+    if b not in prev:
+        raise ValueError(f"no {street} path from {a} to {b}")
+    out, n = [], b
+    while n != a:
+        out.append(prev[n])
+        n = net.getEdge(prev[n]).getFromNode().getID()
+    return out[::-1]
+
+
+def c5_new_edges(variant: str) -> list[str]:
+    return [x for a, b in C5_VARIANTS[variant]["new"] for x in (f"c5_new_{a}_{b}", f"-c5_new_{a}_{b}")]
+
+
+def c5_route(base: Baseline, variant: str) -> dict:
+    """{"existing": [(forward edges, reverse edges) per street section], "new": new edge ids}."""
+    return {"existing": [(_street_path(base.net, a, b, s), _street_path(base.net, b, a, s))
+                         for a, b, s in C5_VARIANTS[variant]["existing"]],
+            "new": c5_new_edges(variant)}
+
+
+def c5_outer_road(base: Baseline, variant: str, link_road: bool = True) -> Patch:
+    """Council Option 1: an outer two-lane 100 km/h road from Inman Valley Rd round the west and north of the
+    growth areas to Victor Harbor Rd, over existing roads where they follow the described route plus new
+    sections; the existing ring road becomes a 60 km/h link road that trucks avoid when routing. With
+    `link_road=False` (sensitivity C5s) the ring road keeps today's limits; trucks still prefer the outer road."""
+    v = C5_VARIANTS[variant]
+    route = c5_route(base, variant)
+    ring = sorted(e.getID() for e in base.net.getEdges() if e.getName() in RING_ROAD)
+    p = (speed_limit(base, ring, C5_LINK_SPEED_KMH, "C5 existing ring road (Welch Rd / Armstrong Rd) as a link road")
+         if link_road else Patch(notes=["C5s: existing ring road keeps today's speed limits"]))
+    for e in ring:
+        p.set_edge(e, routingType=C5_LINK_ROUTING_TYPE)
+    p.preferences.append((C5_LINK_ROUTING_TYPE, "truck", C5_TRUCK_PRIORITY))
+    outer = set()
+    for fwd, rev in route["existing"]:
+        for e in fwd + rev:
+            p.set_edge(e, speed=kmh(C5_SPEED_KMH), priority=str(C5_PRIORITY))
+            outer.add(e)
+    new_m = 0.0
+    for a, b in v["new"]:
+        fid, rid = f"c5_new_{a}_{b}", f"-c5_new_{a}_{b}"
+        outer |= {fid, rid}
+        na, nb = base.net.getNode(a), base.net.getNode(b)
+        new_m += math.dist(na.getCoord(), nb.getCoord())
+        for eid, x, y in ((fid, na, nb), (rid, nb, na)):
+            p.set_edge(eid, **{"from": x.getID(), "to": y.getID(), "name": C5_ROAD_NAME, "speed": kmh(C5_SPEED_KMH),
+                               "numLanes": "1", "priority": str(C5_PRIORITY), "type": C5_NEW_TYPE})
+            # the junctions' existing connections are loaded explicitly, so join the new edge to every road there
+            feeders = [u for u in x.getIncoming() if u.getFunction() != "internal"]
+            onward = [d.getID() for d in y.getOutgoing() if d.getFunction() != "internal"]
+            for u in feeders:
+                p.con_adds.add((u.getID(), eid))
+                p.movements.setdefault(u.getID(), baseline_movements(base, u.getID())).add(eid)
+            p.con_adds |= {(eid, d) for d in onward}
+            p.movements[eid] = set(onward)
+    lowered = []
+    for nid in v["major_at"]:
+        node = base.net.getNode(nid)
+        for e in list(node.getIncoming()) + list(node.getOutgoing()):
+            if e.getFunction() != "internal" and e.getID() not in outer and e.getPriority() >= C5_PRIORITY:
+                p.set_edge(e.getID(), priority=str(C5_MINOR_PRIORITY))
+                lowered.append(e.getID())
+    km = sum(base.net.getEdge(e).getLength() for e in outer if base.net.hasEdge(e)) / 2000
+    p.notes.append(f"C5{'' if variant == 'c5' else 'b'} outer ring road ({variant}): "
+                   f"{km:.1f} km of existing road ({', '.join(s for _, _, s in v['existing'])}) to "
+                   f"{C5_SPEED_KMH} km/h, priority {C5_PRIORITY}; {len(v['new'])} new two-way section(s), "
+                   f"{new_m / 1000:.1f} km straight-line; {len(ring)} ring-road edges routingType {C5_LINK_ROUTING_TYPE} "
+                   f"(trucks' routing priority {C5_TRUCK_PRIORITY:g}); legs lowered to priority {C5_MINOR_PRIORITY} "
+                   f"where the outer road is major: {', '.join(sorted(lowered)) or 'none'}")
+    return p
+
+
+def c5(base: Baseline) -> Patch:
+    return c5_outer_road(base, "c5")
+
+
+def c5b(base: Baseline) -> Patch:
+    return c5_outer_road(base, "c5b")
+
+
+def c5s(base: Baseline) -> Patch:
+    return c5_outer_road(base, "c5", link_road=False)
+
+
 SCENARIOS: dict[str, tuple] = {
     "c1a": (c1a,),
     "c1b": (c1b,),
@@ -671,6 +815,10 @@ SCENARIOS: dict[str, tuple] = {
     "n7": (n2, n5_greenhills, n4),
     "n8": (n8,),
     "n9": (n3, n4),
+    # S9 (sim/assumptions/S9-ring-road.md): council ring-road Option 1, inner and outer readings
+    "c5": (c5,),
+    "c5b": (c5b,),
+    "c5s": (c5s,),       # sensitivity: C5 with the existing ring road left at today's limits
 }
 
 

@@ -74,7 +74,7 @@
      "scale": 0.1,
      "missing": 65535,
      "unit": "s",
-     "description": "mean time to traverse the edge for vehicles in the interval (SUMO edgeData traveltime); free-flow time (length / speed limit) when no vehicles; capped at 6553.4 s; 65535 = impassable"
+     "description": "mean time to traverse the edge for vehicles in the interval (SUMO edgeData traveltime; when the vehicles travelled less than one edge length, the vehicle-seconds observed plus free flow over the rest, assumption V1a); free-flow time (length / speed limit) when no vehicles; capped at 6553.4 s; 65535 = impassable"
     }
    ]
   }
@@ -542,5 +542,6 @@
  ],
  "synthetic": false,
  "notes": "",
- "created": "2026-11-21T06:25:00Z"
+ "created": "2026-11-21T06:25:00Z",
+ "edge_time_rule": "V1a"
 }

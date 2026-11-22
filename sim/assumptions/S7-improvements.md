@@ -318,7 +318,36 @@ under high growth. Did not help: N2/N5 at today's traffic, N6 turn bans, N8 Vict
 - Growth demand has no estate streets; the 2041 summer peak was not run (it does not finish for any
   option, A-INT-05) and the optional 2031 high summer run was not done.
 
-### C5 (outer freight ring road) — not built
+### Grantley Ave in the viewer: a 53-minute difference that was an export artefact (22 Nov 2026)
+The residents' site showed Grantley Ave → Woolworths on a 2025 summer peak day at 12:30 as 53 minutes faster under
+the council package than today (56.6 minutes today). Checked against the three 2025 summer runs of today's network:
+- **Not a real queue.** The vehicles' own exit times (vehroute) give the longest traversal of the Grantley Ave
+  section before Hindmarsh Rd (`-42530401#0`, 194 m) between 12:00 and 13:00 as 70, 97 and 79 s in seeds 1–3 (22,
+  15 and 15 vehicles). The queue there is a normal side-street wait of under a minute and a half.
+- **Not a stuck vehicle or a teleport.** No teleport on Grantley Ave, Bridge Tce or the crossing link in any seed
+  (5, 2 and 1 teleports in the whole day elsewhere); the A-INT-02 impatience and junction-blocker settings are not
+  involved.
+- **The cause:** SUMO's edgeData `traveltime` (length × vehicle-seconds ÷ distance the vehicles' fronts travelled).
+  In 12:15–12:30, seeds 2 and 3 each saw a single vehicle that had been waiting at the stop line since before 12:15;
+  it moved a few centimetres and left after 12 s and 7 s. SUMO extrapolated 19,308 s and 9,678 s; the seed mean
+  reached the export format's cap (6,553 s), and the viewer interpolated that into the 12:30 departure.
+- **Fix (export layer, assumption V1a in `S5-viewer.md`):** when the vehicles covered less than one edge length in
+  the interval, the edge time is the vehicle-seconds observed plus free flow over the rest of the edge. Grantley Ave
+  at 12:15 becomes 24 s (seed mean); Grantley Ave → Woolworths at 12:30 becomes 2.7 minutes today against
+  3.6 minutes under the council package (the package is about a minute slower, not 53 minutes faster). In the 2025
+  summer baseline the rule changes 517 of 449,568 edge-intervals by more than a second and 17 by more than
+  5 minutes, all on short local streets and car-park aisles. Published runs are re-timed with
+  `python -m vhsim.viewer.retime`.
+- **N4/N9 do not depend on it.** Every number in this note (time stopped from tripinfo, hotspot vehicle-hours from
+  edgeData `waitingTime`, approach delays from vehroute exit times) is computed without `traveltime`, so the N4/N9
+  summer results stand (time stopped −7% and −18%; Bridge Tce at the crossing 51 → 16 s a vehicle). The artefact
+  only affected the viewer: it put the same false 56-minute value on that section in today's network and in N4
+  (both 56.4–56.6 minutes at 12:30), and none in N9 or the council package, so before the fix the residents' site
+  overstated the gain of N9 and CP at that one section and time, and understated N4's.
+
+### C5 (outer freight ring road) — not built here; see S9
+Built afterwards from the described end points and existing roads: `sim/assumptions/S9-ring-road.md`. The
+original reason for leaving it out follows.
 The indicative alignment (S-A04b) could not be placed reliably. Georeferencing the map from road
 junctions the map labels (Greenhills/Hutchinson Rd, Hutchinson/Hindmarsh Tiers Rd, Greenhills/Day Rd)
 gave scales that disagree by nearly a factor of two (the labelled junctions cannot be pinned on the map), so the new sections (south-west across the Inman

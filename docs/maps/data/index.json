@@ -20,7 +20,9 @@
   "n6": "networks/n6.json",
   "n9": "networks/n9.json",
   "n7": "networks/n7.json",
-  "n8": "networks/n8.json"
+  "n8": "networks/n8.json",
+  "c5": "networks/c5.json",
+  "c5b": "networks/c5b.json"
  },
  "runs": [
   {
@@ -649,6 +651,50 @@
    "seed": 1,
    "label": "c4 \u00b7 weekday_term \u00b7 2041 moderate",
    "path": "runs/c4__weekday_term__2041-moderate__s1/meta.json"
+  },
+  {
+   "id": "c5__summer_peak__2025-base__mean",
+   "scenario": "c5",
+   "network": "c5",
+   "condition": "summer_peak",
+   "year": 2025,
+   "growth": "base",
+   "seed": "mean",
+   "label": "c5 \u00b7 summer_peak \u00b7 2025 base",
+   "path": "runs/c5__summer_peak__2025-base__mean/meta.json"
+  },
+  {
+   "id": "c5__summer_peak__2025-base__s1",
+   "scenario": "c5",
+   "network": "c5",
+   "condition": "summer_peak",
+   "year": 2025,
+   "growth": "base",
+   "seed": 1,
+   "label": "c5 \u00b7 summer_peak \u00b7 2025 base",
+   "path": "runs/c5__summer_peak__2025-base__s1/meta.json"
+  },
+  {
+   "id": "c5__weekday_term__2041-high__mean",
+   "scenario": "c5",
+   "network": "c5",
+   "condition": "weekday_term",
+   "year": 2041,
+   "growth": "high",
+   "seed": "mean",
+   "label": "c5 \u00b7 weekday_term \u00b7 2041 high",
+   "path": "runs/c5__weekday_term__2041-high__mean/meta.json"
+  },
+  {
+   "id": "c5b__weekday_term__2041-high__mean",
+   "scenario": "c5b",
+   "network": "c5b",
+   "condition": "weekday_term",
+   "year": 2041,
+   "growth": "high",
+   "seed": "mean",
+   "label": "c5b \u00b7 weekday_term \u00b7 2041 high",
+   "path": "runs/c5b__weekday_term__2041-high__mean/meta.json"
   },
   {
    "id": "cp__summer_peak__2025-base__mean",

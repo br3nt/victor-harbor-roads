@@ -75,10 +75,83 @@ are about +60%. A staged reading: N9 now, then the Armstrong Rd roundabouts as t
 no tested option fixes the Victoria St corridor or the Hindmarsh Rd side streets (about 80% of summer delay stays
 where it is under N9).</li>
 <li><strong>Didn't help:</strong> N6 (turn bans: traffic moves onto other side streets; +22% in summer) and N8
-(Victoria St left-turn lanes). The council's outer freight ring road (C5) was not built: its indicative map could not
-be placed reliably.</li>
+(Victoria St left-turn lanes).</li>
+<li>The council's two ring-road options are compared in <a href="#ring-road">their own section</a>.</li>
 </ul>""")
     return "\n".join(o)
+
+
+RING_OPTIONS = [  # (id, plain name) — S9, sim/assumptions/S9-ring-road.md
+    ("baseline", "Option 2 as it is: today's ring road"),
+    ("n7", "Option 2 with junction fixes (N7: roundabouts at Armstrong/Crozier and Armstrong/Greenhills, plus Hindmarsh/Grantley)"),
+    ("b3", "Option 2 widened to four lanes (B3)"),
+    ("c5", "Option 1: outer ring road via Greenhills Rd (C5), existing ring at 60 km/h"),
+    ("c5b", "Option 1: outer ring road west of Greenhills Rd (C5b), existing ring at 60 km/h"),
+]
+RING_COMBOS = [("weekday_term", "2025", "base", "2025 term weekday"), ("summer_peak", "2025", "base", "2025 summer peak day"),
+               ("weekday_term", "2031", "high", "2031 high growth, term weekday"),
+               ("summer_peak", "2031", "high", "2031 high growth, summer peak day"),
+               ("weekday_term", "2041", "high", "2041 high growth, term weekday")]
+
+
+def ring_road_options() -> str:
+    """Section from the S9 tables (vhsim.integration.s9_ring): the council's two ring-road options."""
+    f = DATA / "results" / "report_s9" / "summary.csv"
+    if not f.exists():
+        return ""
+    s = pd.read_csv(f, dtype={"year": str})
+
+    def cell(sc, c, y, g):
+        x = s[(s.scenario == sc) & (s.condition == c) & (s.year == y) & (s.growth == g)]
+        if x.empty:
+            return "not run"
+        r = x.iloc[0]
+        return "today" if sc == "baseline" else f"{r.stopped_change_pct:+.0f}%"
+
+    o = ["""<h2 id="ring-road">The council's ring-road options</h2>
+<p>Option 1 is a new outer freight ring road with the existing ring road (Welch Rd / Armstrong Rd) lowered to
+60 km/h; Option 2 keeps the current ring road. The council's map is indicative, so we built Option 1 from the route
+it describes over existing roads (Swains Crossing Rd, Greenhills Rd, Hutchinson Rd, Hindmarsh Tiers Rd) plus short
+new sections, in two readings, with trucks preferring the outer road. Method and assumptions:
+<code>sim/assumptions/S9-ring-road.md</code>. "2025" is today's demand; 2031 and 2041 are the high growth series.</p>
+<table><thead><tr><th>Option</th>""" + "".join(f"<th>Time stopped, {h(lab)}</th>" for *_, lab in RING_COMBOS)
+         + "</tr></thead><tbody>"]
+    for sc, name in RING_OPTIONS:
+        o.append(f"<tr><td>{h(name)}</td>" + "".join(f"<td>{cell(sc, c, y, g)}</td>" for c, y, g, _ in RING_COMBOS)
+                 + "</tr>")
+    o.append("</tbody></table><p>Change in total time vehicles spend stopped, against today's network on the same seeds, "
+             "same year and condition. \"not run\": the run did not finish by 22 Nov 2026 (machine overloaded, not "
+             "gridlock). Seeds per cell: " + h(", ".join(f"{LBL}: {int(n)}" for LBL, n in _seed_counts(s))) + ".</p>")
+    o.append(RING_FINDINGS)
+    return "\n".join(o)
+
+
+def _seed_counts(s: pd.DataFrame):
+    for sc, name in RING_OPTIONS:
+        for c, y, g, lab in RING_COMBOS:
+            x = s[(s.scenario == sc) & (s.condition == c) & (s.year == y) & (s.growth == g)]
+            if not x.empty:
+                yield f"{sc} {lab}", x.seeds.iloc[0]
+
+
+RING_FINDINGS = """<ul>
+<li><strong>Option 1 as consulted made things worse in every run that finished:</strong> at 2041 high growth (term
+weekday, 3 seeds) time stopped rose 18% (outer road via Greenhills Rd) and 30% (outer road further west), trips 16–22 s
+longer; on a 2025 summer day (one seed) +83%. It does take through trucks off the existing ring road (about 410 a day
+to 30–40), and the ring-road junction queues almost disappear, but at 60 km/h the existing ring road is no longer
+faster than going through town: Armstrong/Welch Rd lose about half their traffic, and much of it moves onto Hindmarsh
+Rd (+14% vehicle-km), Adelaide Rd (+23%) and the town-centre streets, where it queues at side streets and the
+Grantley Ave crossing. Trucks using town-centre streets rise by about a quarter, and trips between the northern growth
+areas and the town centre get slightly longer (7.4 to 7.8–7.9 minutes).</li>
+<li><strong>Option 2 with junction fixes is the best tested at every growth level:</strong> roundabouts at Armstrong
+Rd / Crozier Rd and Armstrong Rd / Greenhills Rd (plus Hindmarsh Rd / Grantley Ave, N7) cut time stopped 24% at 2041
+high growth, 4–6% on 2031 weekdays and 37–43% on 2031 summer days (single runs). Widening the ring road without fixing
+its junctions (B3) is worse than today at 2041.</li>
+<li><strong>Not settled:</strong> whether an outer road helps if the existing ring road keeps its speed (that test
+did not finish), and Option 1's 2031 and most 2025 runs. The model has no estate streets or new links for the growth
+areas and little through freight, which an Option 1 design would change. Details and gaps:
+<code>sim/assumptions/S9-ring-road.md</code>.</li>
+</ul>"""
 
 
 def body() -> str:
@@ -144,6 +217,7 @@ def body() -> str:
                      f"<td>{v('cp', 'median')}</td><td>{v('cp', 'p95')}</td><td>{v('bp', 'median')}</td><td>{v('bp', 'p95')}</td></tr>")
     o.append("</tbody></table>")
     o.append(better_options())
+    o.append(ring_road_options())
     o.append("""<h2 id="findings">Findings (preliminary, as modelled)</h2><ul>
 <li><strong>Council's town-centre package:</strong> about +28 s per trip and about +60% time stopped in queues on a summer peak day (+275 vehicle-hours a day); about +14 s per trip on a term weekday. Part of the extra trip time is the lower limits themselves.</li>
 <li><strong>Which part matters:</strong> on a summer peak day the one-way loop is the largest of the components modelled separately (time stopped +44%; anticlockwise worse); on a term weekday the signals are (+23%) and the loop is neutral.</li>
@@ -154,9 +228,9 @@ def body() -> str:
 </ul>
 <h2 id="to-check">Known issues to check</h2><ul>
 <li>Under the council package, Torrens Lane (tagged a residential street in OpenStreetMap) goes from tens to 500–700 vehicles a day. If it is really a narrow service lane, this inflates the package's penalty slightly.</li>
-<li>Growth: at 2041 (about 15 years from now) high growth (State high series) a term weekday finishes (see <a href="#better-options">better options</a>), but a summer day does not: every option jams by early afternoon (<code>sim/assumptions/integration.md</code> A-INT-05). Growth areas load onto today's roads, without their future streets and link roads. Saturday, New Year's Eve and the outer ring road options (C5/C6) are not yet run.</li>
+<li>Growth: at 2041 (about 15 years from now) high growth (State high series) a term weekday finishes (see <a href="#better-options">better options</a>), but a summer day does not: every option jams by early afternoon (<code>sim/assumptions/integration.md</code> A-INT-05). Growth areas load onto today's roads, without their future streets and link roads. Saturday and New Year's Eve are not yet run, nor Option 2's activity centre north of the ring road (C6).</li>
 </ul>
-<p>Interactive maps of every run: <a rel="related" href="../maps/index.html">Victor Harbor Road Options</a> (a residents' trip checker, plus the detailed viewer with travel time to any place, congestion per lane and direction, and before/after). Source: <code>viewer/</code> in the project.</p>""")
+<p>Interactive maps of every run: <a rel="related" href="../maps/index.html">Victor Harbor Road Options</a> (a residents' trip checker, plus the detailed viewer with travel time to any place, congestion per lane and direction, and before/after). Source: <code>viewer/</code> in the project. Corrected 22 Nov 2026: a road section where the only vehicle in a 15-minute interval was leaving the stop line could show an hour-long travel time (Grantley Ave at 12:30 on a summer day showed the council package 53 minutes faster than today; it is about a minute slower). Only the maps were affected, not the tables on this page (<code>sim/assumptions/S5-viewer.md</code> V1a).</p>""")
     return "\n".join(o)
 
 

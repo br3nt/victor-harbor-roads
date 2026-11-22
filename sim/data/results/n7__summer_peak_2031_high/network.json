@@ -1,0 +1,34 @@
+{
+ "key": "n7__summer_peak_2031_high",
+ "scenario": "n7",
+ "condition": "summer_peak",
+ "year": "2031",
+ "growth": "high",
+ "network": "n7_bays",
+ "seeds": [
+  1
+ ],
+ "errors": [],
+ "per_seed": [
+  {
+   "seed": 1,
+   "teleports": 3,
+   "trips": 96552,
+   "mean_trip_min": 6.98,
+   "median_trip_min": 6.35,
+   "p95_trip_min": 14.4,
+   "total_delay_veh_h": 2433.7,
+   "total_waiting_veh_h": 629.3
+  }
+ ],
+ "mean": {
+  "teleports": 3.0,
+  "trips": 96552.0,
+  "mean_trip_min": 6.98,
+  "median_trip_min": 6.35,
+  "p95_trip_min": 14.4,
+  "total_delay_veh_h": 2433.7,
+  "total_waiting_veh_h": 629.3
+ },
+ "viewer_export": "ok"
+}

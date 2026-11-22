@@ -37,6 +37,13 @@ def run_id(network: str, condition: str, year: int | str, growth: str, seed: int
     return f"{network}__{condition}_{year}_{growth}__s{seed}" + (f"__{tag}" if tag else "")
 
 
+def routing_preferences(network: str) -> Path | None:
+    """The network's SUMO routing-preference file (written by vhsim.scenarios.build, e.g. C5's truck
+    preference for the outer ring road), if it has one."""
+    p = NETWORKS / f"{network}.prefs.add.xml"
+    return p if p.exists() else None
+
+
 def run(network: str = "baseline_bays", condition: str = "weekday_term", year: int | str = 2025,
         growth: str = "base", seed: int = 1, end: int | None = None, additional=None,
         extra_args=(), max_teleport_fraction: float = 0.01, tag: str = "",
@@ -53,11 +60,15 @@ def run(network: str = "baseline_bays", condition: str = "weekday_term", year: i
     trips = combined_trips(snapped, DEMAND / "vtypes.add.xml", out / "trips.xml")
     end = end or (100800 if condition == "event_nye" else 93600)
     add = [viewer_additional(out / "viewer.add.xml", period=900)] + (list(additional) if additional else [])
+    prefs = routing_preferences(network)
+    if prefs:
+        add.append(prefs)
     t0 = time.time()
     res = simulate(net, trips, out, seed=seed, begin=0, end=end,
                    additional=add, extra_args=(*DEFAULT_SUMO_ARGS, *extra_args),
                    max_teleport_fraction=max_teleport_fraction,
-                   router_additional=taz, router_args=("--with-taz", "true"))
+                   router_additional=",".join(str(p) for p in (taz, prefs) if p),
+                   router_args=("--with-taz", "true"))
     return res, time.time() - t0
 
 

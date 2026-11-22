@@ -539,6 +539,9 @@ def stage_pages(out: Path) -> None:
     """The evidence page and the slides (viewer/onboarding/, viewer/deck/) become docs/onboarding/ and docs/deck/;
     a placeholder stands in for either one that is not committed yet."""
     docs = out / "docs"
+    if (out / "viewer" / "hotspots" / "index.html").exists():   # hotspot animations and pictures
+        shutil.copytree(out / "viewer" / "hotspots", docs / "hotspots",
+                        ignore=shutil.ignore_patterns("screenshots", "README.md"))
     for name, (title, text) in PLACEHOLDERS.items():
         src = out / "viewer" / name
         if (src / "index.html").exists():

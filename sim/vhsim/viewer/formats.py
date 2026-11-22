@@ -88,7 +88,9 @@ def write_edge_times(path, tt: np.ndarray) -> dict:
             "planes": [{"name": "travel_time_s", "dtype": "uint16", "offset": 0, "scale": EDGE_TIME_SCALE,
                         "missing": EDGE_TIME_IMPASSABLE, "unit": "s",
                         "description": "mean time to traverse the edge for vehicles in the interval (SUMO edgeData "
-                                       "traveltime); free-flow time (length / speed limit) when no vehicles; "
+                                       "traveltime; when the vehicles travelled less than one edge length, the "
+                                       "vehicle-seconds observed plus free flow over the rest, assumption V1a); "
+                                       "free-flow time (length / speed limit) when no vehicles; "
                                        "capped at 6553.4 s; 65535 = impassable"}]}
 
 

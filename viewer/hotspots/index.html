@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Victor Harbor Hotspots</title>
+<meta name="description" content="Each traffic hotspot in the Victor Harbor simulation: today's roads, the council's package and the best tested alternative, side by side.">
+<style>
+:root {
+  color-scheme: light;
+  --surface: #fcfcfb; --plane: #f3f2ef; --ink: #0b0b0b; --ink-2: #52514e; --muted: #6f6e69; --line: #e1e0d9;
+  --accent: #2a78d6; --badge-local: #e8e3d4; --badge-hot: #f7d9d2;
+  --hs-ground: #eef0ea; --hs-road: #c9cbcf; --hs-lane-mark: #f7f7f5;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --surface: #1a1a19; --plane: #0f0f0e; --ink: #f0efec; --ink-2: #c3c2b7; --muted: #9c9b94; --line: #2c2c2a;
+    --accent: #3987e5; --badge-local: #3a372d; --badge-hot: #4a2a24;
+    --hs-ground: #1d1f1c; --hs-road: #4a4c4f; --hs-lane-mark: #6b6e72;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --surface: #1a1a19; --plane: #0f0f0e; --ink: #f0efec; --ink-2: #c3c2b7; --muted: #9c9b94; --line: #2c2c2a;
+  --accent: #3987e5; --badge-local: #3a372d; --badge-hot: #4a2a24;
+  --hs-ground: #1d1f1c; --hs-road: #4a4c4f; --hs-lane-mark: #6b6e72;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--plane); color: var(--ink); font-size: 15px; line-height: 1.45; }
+header { padding: 20px 16px 8px; max-width: 1500px; margin: 0 auto; }
+header h1 { margin: 0 0 6px; font-size: 1.5rem; }
+header p { margin: 0 0 6px; color: var(--ink-2); max-width: 70ch; }
+.layout { display: grid; grid-template-columns: 300px 1fr; gap: 16px; padding: 8px 16px 32px; max-width: 1500px; margin: 0 auto; }
+@media (max-width: 900px) { .layout { grid-template-columns: 1fr; } }
+nav ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+nav button { width: 100%; text-align: left; background: var(--surface); color: var(--ink); border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; cursor: pointer; }
+nav button[aria-current="true"] { border-color: var(--accent); box-shadow: inset 3px 0 0 var(--accent); }
+nav .t { font-weight: 600; display: block; }
+nav .h { font-size: 0.82rem; color: var(--muted); display: block; margin-top: 2px; }
+.badge { display: inline-block; font-size: 0.72rem; padding: 0 6px; border-radius: 99px; margin-left: 6px; font-weight: 500; vertical-align: 1px; background: var(--badge-hot); }
+.badge.local { background: var(--badge-local); }
+main { min-width: 0; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; margin-bottom: 14px; }
+.card h2 { margin: 0 0 4px; font-size: 1.2rem; }
+.card h3 { margin: 12px 0 6px; font-size: 1rem; }
+.muted { color: var(--muted); }
+.sets { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
+.sets button, .hs-controls button { font: inherit; border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 6px; padding: 4px 10px; cursor: pointer; }
+.sets button[aria-pressed="true"], .hs-controls [aria-checked="true"] { background: var(--accent); color: #fff; border-color: var(--accent); }
+.hs-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 6px 0 10px; }
+.hs-clock { font-variant-numeric: tabular-nums; font-weight: 700; font-size: 1.1rem; min-width: 6ch; }
+.hs-scrub { flex: 1 1 160px; min-width: 120px; }
+.hs-period { color: var(--muted); font-size: 0.85rem; flex-basis: 100%; }
+.hs-panels { display: grid; gap: 12px; }
+.hs-panel { min-width: 0; }
+.hs-panel { margin: 0; }
+.hs-panel figcaption { font-size: 0.85rem; margin-bottom: 4px; max-width: 560px; }
+.hs-panel canvas { display: block; border-radius: 6px; border: 1px solid var(--line); }
+.hs-queues { list-style: none; padding: 0; margin: 6px 0 0; font-size: 0.82rem; max-width: 560px; }
+.hs-queues b { display: inline-block; min-width: 2.2ch; text-align: right; font-variant-numeric: tabular-nums; }
+.hs-legend { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 0.8rem; color: var(--ink-2); margin-top: 10px; }
+.hs-legend i { display: inline-block; width: 16px; height: 8px; margin-right: 5px; vertical-align: 1px; border-radius: 2px; }
+.hs-legend i.hs-big { width: 22px; height: 10px; border: 1.5px solid var(--ink); background: transparent; }
+.hs-bubble { display: inline-grid; place-items: center; width: 18px; height: 18px; border-radius: 50%; background: #c8102e; color: #fff; font-size: 0.7rem; margin-right: 5px; }
+table { border-collapse: collapse; font-size: 0.85rem; width: 100%; }
+th, td { border-bottom: 1px solid var(--line); padding: 4px 6px; text-align: right; font-variant-numeric: tabular-nums; }
+th:first-child, td:first-child { text-align: left; }
+.scroll { overflow-x: auto; }
+.imgs { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
+.imgs figure { margin: 0; }
+.imgs img { width: 100%; border-radius: 6px; border: 1px solid var(--line); }
+.imgs figcaption { font-size: 0.78rem; color: var(--muted); }
+ul.heads { margin: 4px 0 0; padding-left: 18px; }
+ul.heads li { margin-bottom: 4px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Victor Harbor traffic hotspots</h1>
+  <p>Each place below is a hotspot in the simulation or a spot residents asked about. For each one: today's roads, the council's package and the best alternative tested, side by side, for the same 15 minutes of the same simulated day.</p>
+  <p class="muted">"Now" is the model's today, built on 2025 data (this year is 2026). 2031 is about 5 years ahead. Model results are comparisons between options on the same demand, not forecasts.</p>
+</header>
+<div class="layout">
+  <nav aria-label="Hotspots"><ol id="list"></ol></nav>
+  <main id="main"><p class="muted">Loading…</p></main>
+</div>
+<script type="module">
+import { createPlayer } from './player.js';
+
+const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const man = await fetch('data/manifest.json').then((r) => r.json());
+const list = document.querySelector('#list'), main = document.querySelector('#main');
+const params = () => new URLSearchParams(location.hash.slice(1));
+
+list.innerHTML = man.hotspots.map((h, i) => `<li><button type="button" data-id="${esc(h.id)}">
+  <span class="t">${i + 1}. ${esc(h.short)}<span class="badge${h.kind === 'local' ? ' local' : ''}">${h.kind === 'local' ? 'local check' : 'hotspot'}</span></span>
+  <span class="h">${h.sets.length ? 'Animation' : 'No animation (quiet)'} · ${esc(h.chart?.key_approach || '')}</span></button></li>`).join('');
+list.addEventListener('click', (e) => { const b = e.target.closest('button[data-id]'); if (b) location.hash = `h=${b.dataset.id}`; });
+
+const PERIOD_SHORT = { summer_peak_2025_base: 'Summer, now', summer_peak_2031_moderate: 'Summer 2031 mod.', summer_peak_2031_high: 'Summer 2031 high',
+  weekday_term_2025_base: 'Weekday, now', weekday_term_2031_moderate: 'Weekday 2031 mod.', weekday_term_2031_high: 'Weekday 2031 high', weekday_term_2041_high: 'Weekday 2041 high' };
+
+function table(h) {
+  const c = h.chart;
+  if (!c) return '';
+  const ps = c.periods;
+  const cell = (row, p, key, unit) => row.jammed.includes(p) ? 'jammed' : (row[key][p] == null ? '–' : `${Math.round(row[key][p] * 10) / 10}${unit}`);
+  const head = `<tr><th>Scenario</th>${ps.map((p) => `<th>${esc(PERIOD_SHORT[p] || p)}</th>`).join('')}</tr>`;
+  const t1 = c.key_approach ? `<h3>Wait on ${esc(c.key_approach)} (seconds per vehicle)</h3><div class="scroll"><table>${head}${c.series.map((r) => `<tr><td>${esc(r.label)}</td>${ps.map((p) => `<td>${cell(r, p, 'key_wait_s', '')}</td>`).join('')}</tr>`).join('')}</table></div>` : '';
+  const t2 = `<h3>Time stopped at this spot (vehicle-hours a day)</h3><div class="scroll"><table>${head}${c.series.map((r) => `<tr><td>${esc(r.label)}</td>${ps.map((p) => `<td>${cell(r, p, 'stopped_veh_h', '')}</td>`).join('')}</tr>`).join('')}</table></div>`;
+  return t1 + t2 + '<p class="muted">– = that approach does not exist in the option (for example a street made one-way), or the run was not done. Now: mean of 3 runs; 2031: 1 run; 2041 weekday: 1–3 runs.</p>';
+}
+
+let current = null;
+async function show() {
+  const id = params().get('h') || man.hotspots[0].id;
+  const h = man.hotspots.find((x) => x.id === id) || man.hotspots[0];
+  list.querySelectorAll('button').forEach((b) => b.setAttribute('aria-current', String(b.dataset.id === h.id)));
+  const setKey = params().get('s') || h.sets[0]?.key;
+  const set = h.sets.find((s) => s.key === setKey) || h.sets[0];
+  main.innerHTML = `<section class="card"><h2>${esc(h.title)}</h2><p>${esc(h.why)}</p>
+      <p class="muted">Junctions measured: ${esc(h.junctions_used)}</p>
+      ${h.sets.length ? `<div class="sets" role="group" aria-label="Day and year">${h.sets.map((s) => `<button type="button" data-set="${esc(s.key)}" aria-pressed="${s === set}">${esc(s.label)}</button>`).join('')}</div><div id="stage"></div>` : '<p><strong>No animation:</strong> this spot is quiet in the model, so there is nothing to see moving.</p>'}
+    </section>
+    <section class="card"><h2>What the numbers say</h2><ul class="heads">${h.headlines.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>${table(h)}</section>
+    ${h.images.length ? `<section class="card"><h2>Congestion maps at the busiest quarter-hour</h2><div class="imgs">${h.images.map((f) => `<figure><img src="img/${esc(f)}" alt="${esc(f.replace(/__/g, ' ').replace('.png', ''))}" loading="lazy"><figcaption>${esc(f.split('__').slice(1).join(' · ').replace('.png', ''))}</figcaption></figure>`).join('')}</div></section>` : ''}`;
+  main.querySelectorAll('[data-set]').forEach((b) => b.addEventListener('click', () => { location.hash = `h=${h.id}&s=${b.dataset.set}`; }));
+  if (current) current.pause();
+  current = null;
+  if (set) current = await createPlayer(main.querySelector('#stage'), set.scenarios.map((s) => s.file));
+  window.__hotspots = { player: current, hotspot: h.id, set: set?.key };
+}
+addEventListener('hashchange', show);
+show();
+</script>
+</body>
+</html>

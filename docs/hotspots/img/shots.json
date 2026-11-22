@@ -1,0 +1,675 @@
+{
+ "shots": [
+  {
+   "hotspot": "foreshore-loop",
+   "name": "summer_peak_2025_base__baseline",
+   "file": "img/foreshore-loop__summer_peak_2025_base__baseline.png",
+   "a": "baseline__summer_peak__2025-base__mean",
+   "b": null,
+   "interval": 51,
+   "time": "12:45"
+  },
+  {
+   "hotspot": "foreshore-loop",
+   "name": "summer_peak_2025_base__cp",
+   "file": "img/foreshore-loop__summer_peak_2025_base__cp.png",
+   "a": "cp__summer_peak__2025-base__mean",
+   "b": null,
+   "interval": 51,
+   "time": "12:45"
+  },
+  {
+   "hotspot": "foreshore-loop",
+   "name": "summer_peak_2025_base__n9",
+   "file": "img/foreshore-loop__summer_peak_2025_base__n9.png",
+   "a": "n9__summer_peak__2025-base__mean",
+   "b": null,
+   "interval": 51,
+   "time": "12:45"
+  },
+  {
+   "hotspot": "foreshore-loop",
+   "name": "summer_peak_2025_base__diff_cp",
+   "file": "img/foreshore-loop__summer_peak_2025_base__diff_cp.png",
+   "a": "baseline__summer_peak__2025-base__mean",
+   "b": "cp__summer_peak__2025-base__mean",
+   "interval": 51,
+   "time": "12:45"
+  },
+  {
+   "hotspot": "foreshore-loop",
+   "name": "summer_peak_2025_base__diff_n9",
+   "file": "img/foreshore-loop__summer_peak_2025_base__diff_n9.png",
+   "a": "baseline__summer_peak__2025-base__mean",
+   "b": "n9__summer_peak__2025-base__mean",
+   "interval": 51,
+   "time": "12:45"
+  },
+  {
+   "hotspot": "lindsay-st",
+   "name": "summer_peak_2025_base__baseline",
+   "file": "img/lindsay-st__summer_peak_2025_base__baseline.png",
+   "a": "baseline__summer_peak__2025-base__mean",
+   "b": null,
+   "interval": 52,
+   "time": "13:00"
+  },
+  {
+   "hotspot": "lindsay-st",
+   "name": "summer_peak_2025_base__cp",
+   "file": "img/lindsay-st__summer_peak_2025_base__cp.png",
+   "a": "cp__summer_peak__2025-base__mean",
+   "b": null,
+   "interval": 52,
+   "time": "13:00"
+  },
+  {
+   "hotspot": "lindsay-st",
+   "name": "summer_peak_2025_base__n9",
+   "file": "img/lindsay-st__summer_peak_2025_base__n9.png",
+   "a": "n9__summer_peak__2025-base__mean",
+   "b": null,
+   "interval": 52,
+   "time": "13:00"
+  },
+  {
+   "hotspot": "lindsay-st",
+   "name": "summer_peak_2025_base__diff_cp",
+   "file": "img/lindsay-st__summer_peak_2025_base__diff_cp.png",
+   "a": "baseline__summer_peak__2025-base__mean",
+   "b": "cp__summer_peak__2025-base__mean",
+   "interval": 52,
+   "time": "13:00"
+  },
+  {
+   "hotspot": "lindsay-st",
+   "name": "summer_peak_2025_base__diff_n9",
+   "file": "img/lindsay-st__summer_peak_2025_base__diff_n9.png",
+   "a": "baseline__summer_peak__2025-base__mean",
+   "b": "n9__summer_peak__2025-base__mean",
+   "interval": 52,
+   "time": "13:00"
+  },
+  {
+   "hotspot": "torrens-signals",
+   "name": "summer_peak_2025_base__baseline",
+   "file": "img/torrens-signals__summer_peak_2025_base__baseline.png",
+   "a": "baseline__summer_peak__2025-base__mean",
+   "b": null,
+   "interval": 49,
+   "time": "12:15"
+  },
+  {
+   "hotspot": "torrens-signals",
+   "name": "summer_peak_2025_base__c4",
+   "file": "img/torrens-signals__summer_peak_2025_base__c4.png",
+   "a": "c4__summer_peak__2025-base__mean",
+   "b": null,
+   "interval": 49,
+   "time": "12:15"
+  },
+  {
+   "hotspot": "torrens-signals",
+   "name": "summer_peak_2025_base__n9",
+   "file": "img/torrens-signals__summer_peak_2025_base__n9.png",
+   "a": "n9__summer_peak__2025-base__mean",
+   "b": null,
+   "interval": 49,
+   "time": "12:15"
+  },
+  {
+   "hotspot": "torrens-signals",
+   "name": "summer_peak_2025_base__diff_c4",
+   "file": "img/torrens-signals__summer_peak_2025_base__diff_c4.png",
+   "a": "baseline__summer_peak__2025-base__mean",
+   "b": "c4__summer_peak__2025-base__mean",
+   "interval": 49,
+   "time": "12:15"
+  },
+  {
+   "hotspot": "torrens-signals",
+   "name": "summer_peak_2025_base__diff_n9",
+   "file": "img/torrens-signals__summer_peak_2025_base__diff_n9.png",
+   "a": "baseline__summer_peak__2025-base__mean",
+   "b": "n9__summer_peak__2025-base__mean",
+   "interval": 49,
+   "time": "12:15"
+  },
+  {
+   "hotspot": "victoria-st",
+   "name": "summer_peak_2025_base__baseline",
+   "file": "img/victoria-st__summer_peak_2025_base__baseline.png",
+   "a": "baseline__summer_peak__2025-base__mean",
+   "b": null,
+   "interval": 50,
+   "time": "12:30"
+  },
+  {
+   "hotspot": "victoria-st",
+   "name": "summer_peak_2025_base__cp",
+   "file": "img/victoria-st__summer_peak_2025_base__cp.png",
+   "a": "cp__summer_peak__2025-base__mean",
+   "b": null,
+   "interval": 50,
+   "time": "12:30"
+  },
+  {
+   "hotspot": "victoria-st",
+   "name": "summer_peak_2025_base__n8",
+   "file": "img/victoria-st__summer_peak_2025_base__n8.png",
+   "a": "n8__summer_peak__2025-base__mean",
+   "b": null,
+   "interval": 50,
+   "time": "12:30"
+  },
+  {
+   "hotspot": "victoria-st",
+   "name": "summer_peak_2025_base__diff_cp",
+   "file": "img/victoria-st__summer_peak_2025_base__diff_cp.png",
+   "a": "baseline__summer_peak__2025-base__mean",
+   "b": "cp__summer_peak__2025-base__mean",
+   "interval": 50,
+   "time": "12:30"
+  },
+  {
+   "hotspot": "victoria-st",
+   "name": "summer_peak_2025_base__diff_n8",
+   "file": "img/victoria-st__summer_peak_2025_base__diff_n8.png",
+   "a": "baseline__summer_peak__2025-base__mean",
+   "b": "n8__summer_peak__2025-base__mean",
+   "interval": 50,
+   "time": "12:30"
+  },
+  {
+   "hotspot": "grantley",
+   "name": "summer_peak_2025_base__baseline",
+   "file": "img/grantley__summer_peak_2025_base__baseline.png",
+   "a": "baseline__summer_peak__2025-base__mean",
+   "b": null,
+   "interval": 55,
+   "time": "13:45"
+  },
+  {
+   "hotspot": "grantley",
+   "name": "summer_peak_2025_base__cp",
+   "file": "img/grantley__summer_peak_2025_base__cp.png",
+   "a": "cp__summer_peak__2025-base__mean",
+   "b": null,
+   "interval": 55,
+   "time": "13:45"
+  },
+  {
+   "hotspot": "grantley",
+   "name": "summer_peak_2025_base__n4",
+   "file": "img/grantley__summer_peak_2025_base__n4.png",
+   "a": "n4__summer_peak__2025-base__mean",
+   "b": null,
+   "interval": 55,
+   "time": "13:45"
+  },
+  {
+   "hotspot": "grantley",
+   "name": "summer_peak_2025_base__diff_cp",
+   "file": "img/grantley__summer_peak_2025_base__diff_cp.png",
+   "a": "baseline__summer_peak__2025-base__mean",
+   "b": "cp__summer_peak__2025-base__mean",
+   "interval": 55,
+   "time": "13:45"
+  },
+  {
+   "hotspot": "grantley",
+   "name": "summer_peak_2025_base__diff_n4",
+   "file": "img/grantley__summer_peak_2025_base__diff_n4.png",
+   "a": "baseline__summer_peak__2025-base__mean",
+   "b": "n4__summer_peak__2025-base__mean",
+   "interval": 55,
+   "time": "13:45"
+  },
+  {
+   "hotspot": "armstrong-crozier",
+   "name": "summer_peak_2025_base__baseline",
+   "file": "img/armstrong-crozier__summer_peak_2025_base__baseline.png",
+   "a": "baseline__summer_peak__2025-base__mean",
+   "b": null,
+   "interval": 46,
+   "time": "11:30"
+  },
+  {
+   "hotspot": "armstrong-crozier",
+   "name": "summer_peak_2025_base__cp",
+   "file": "img/armstrong-crozier__summer_peak_2025_base__cp.png",
+   "a": "cp__summer_peak__2025-base__mean",
+   "b": null,
+   "interval": 46,
+   "time": "11:30"
+  },
+  {
+   "hotspot": "armstrong-crozier",
+   "name": "summer_peak_2025_base__n3",
+   "file": "img/armstrong-crozier__summer_peak_2025_base__n3.png",
+   "a": "n3__summer_peak__2025-base__mean",
+   "b": null,
+   "interval": 46,
+   "time": "11:30"
+  },
+  {
+   "hotspot": "armstrong-crozier",
+   "name": "summer_peak_2025_base__diff_cp",
+   "file": "img/armstrong-crozier__summer_peak_2025_base__diff_cp.png",
+   "a": "baseline__summer_peak__2025-base__mean",
+   "b": "cp__summer_peak__2025-base__mean",
+   "interval": 46,
+   "time": "11:30"
+  },
+  {
+   "hotspot": "armstrong-crozier",
+   "name": "summer_peak_2025_base__diff_n3",
+   "file": "img/armstrong-crozier__summer_peak_2025_base__diff_n3.png",
+   "a": "baseline__summer_peak__2025-base__mean",
+   "b": "n3__summer_peak__2025-base__mean",
+   "interval": 46,
+   "time": "11:30"
+  },
+  {
+   "hotspot": "armstrong-crozier",
+   "name": "summer_peak_2031_high__baseline",
+   "file": "img/armstrong-crozier__summer_peak_2031_high__baseline.png",
+   "a": "baseline__summer_peak__2031-high__s1",
+   "b": null,
+   "interval": 52,
+   "time": "13:00"
+  },
+  {
+   "hotspot": "armstrong-crozier",
+   "name": "summer_peak_2031_high__cp",
+   "file": "img/armstrong-crozier__summer_peak_2031_high__cp.png",
+   "a": "cp__summer_peak__2031-high__s1",
+   "b": null,
+   "interval": 52,
+   "time": "13:00"
+  },
+  {
+   "hotspot": "armstrong-crozier",
+   "name": "summer_peak_2031_high__n7",
+   "file": "img/armstrong-crozier__summer_peak_2031_high__n7.png",
+   "a": "n7__summer_peak__2031-high__s1",
+   "b": null,
+   "interval": 52,
+   "time": "13:00"
+  },
+  {
+   "hotspot": "armstrong-crozier",
+   "name": "summer_peak_2031_high__diff_cp",
+   "file": "img/armstrong-crozier__summer_peak_2031_high__diff_cp.png",
+   "a": "baseline__summer_peak__2031-high__s1",
+   "b": "cp__summer_peak__2031-high__s1",
+   "interval": 52,
+   "time": "13:00"
+  },
+  {
+   "hotspot": "armstrong-crozier",
+   "name": "summer_peak_2031_high__diff_n7",
+   "file": "img/armstrong-crozier__summer_peak_2031_high__diff_n7.png",
+   "a": "baseline__summer_peak__2031-high__s1",
+   "b": "n7__summer_peak__2031-high__s1",
+   "interval": 52,
+   "time": "13:00"
+  },
+  {
+   "hotspot": "armstrong-greenhills",
+   "name": "summer_peak_2031_high__baseline",
+   "file": "img/armstrong-greenhills__summer_peak_2031_high__baseline.png",
+   "a": "baseline__summer_peak__2031-high__s1",
+   "b": null,
+   "interval": 52,
+   "time": "13:00"
+  },
+  {
+   "hotspot": "armstrong-greenhills",
+   "name": "summer_peak_2031_high__cp",
+   "file": "img/armstrong-greenhills__summer_peak_2031_high__cp.png",
+   "a": "cp__summer_peak__2031-high__s1",
+   "b": null,
+   "interval": 52,
+   "time": "13:00"
+  },
+  {
+   "hotspot": "armstrong-greenhills",
+   "name": "summer_peak_2031_high__n7",
+   "file": "img/armstrong-greenhills__summer_peak_2031_high__n7.png",
+   "a": "n7__summer_peak__2031-high__s1",
+   "b": null,
+   "interval": 52,
+   "time": "13:00"
+  },
+  {
+   "hotspot": "armstrong-greenhills",
+   "name": "summer_peak_2031_high__diff_cp",
+   "file": "img/armstrong-greenhills__summer_peak_2031_high__diff_cp.png",
+   "a": "baseline__summer_peak__2031-high__s1",
+   "b": "cp__summer_peak__2031-high__s1",
+   "interval": 52,
+   "time": "13:00"
+  },
+  {
+   "hotspot": "armstrong-greenhills",
+   "name": "summer_peak_2031_high__diff_n7",
+   "file": "img/armstrong-greenhills__summer_peak_2031_high__diff_n7.png",
+   "a": "baseline__summer_peak__2031-high__s1",
+   "b": "n7__summer_peak__2031-high__s1",
+   "interval": 52,
+   "time": "13:00"
+  },
+  {
+   "hotspot": "mccracken",
+   "name": "summer_peak_2025_base__baseline",
+   "file": "img/mccracken__summer_peak_2025_base__baseline.png",
+   "a": "baseline__summer_peak__2025-base__mean",
+   "b": null,
+   "interval": 63,
+   "time": "15:45"
+  },
+  {
+   "hotspot": "mccracken",
+   "name": "summer_peak_2025_base__cp",
+   "file": "img/mccracken__summer_peak_2025_base__cp.png",
+   "a": "cp__summer_peak__2025-base__mean",
+   "b": null,
+   "interval": 63,
+   "time": "15:45"
+  },
+  {
+   "hotspot": "mccracken",
+   "name": "summer_peak_2025_base__b4",
+   "file": "img/mccracken__summer_peak_2025_base__b4.png",
+   "a": "b4__summer_peak__2025-base__mean",
+   "b": null,
+   "interval": 63,
+   "time": "15:45"
+  },
+  {
+   "hotspot": "mccracken",
+   "name": "summer_peak_2025_base__diff_cp",
+   "file": "img/mccracken__summer_peak_2025_base__diff_cp.png",
+   "a": "baseline__summer_peak__2025-base__mean",
+   "b": "cp__summer_peak__2025-base__mean",
+   "interval": 63,
+   "time": "15:45"
+  },
+  {
+   "hotspot": "mccracken",
+   "name": "summer_peak_2025_base__diff_b4",
+   "file": "img/mccracken__summer_peak_2025_base__diff_b4.png",
+   "a": "baseline__summer_peak__2025-base__mean",
+   "b": "b4__summer_peak__2025-base__mean",
+   "interval": 63,
+   "time": "15:45"
+  },
+  {
+   "hotspot": "maude-st",
+   "name": "summer_peak_2025_base__baseline",
+   "file": "img/maude-st__summer_peak_2025_base__baseline.png",
+   "a": "baseline__summer_peak__2025-base__mean",
+   "b": null,
+   "interval": 50,
+   "time": "12:30"
+  },
+  {
+   "hotspot": "maude-st",
+   "name": "summer_peak_2025_base__cp",
+   "file": "img/maude-st__summer_peak_2025_base__cp.png",
+   "a": "cp__summer_peak__2025-base__mean",
+   "b": null,
+   "interval": 50,
+   "time": "12:30"
+  },
+  {
+   "hotspot": "maude-st",
+   "name": "summer_peak_2025_base__n9",
+   "file": "img/maude-st__summer_peak_2025_base__n9.png",
+   "a": "n9__summer_peak__2025-base__mean",
+   "b": null,
+   "interval": 50,
+   "time": "12:30"
+  },
+  {
+   "hotspot": "maude-st",
+   "name": "summer_peak_2025_base__diff_cp",
+   "file": "img/maude-st__summer_peak_2025_base__diff_cp.png",
+   "a": "baseline__summer_peak__2025-base__mean",
+   "b": "cp__summer_peak__2025-base__mean",
+   "interval": 50,
+   "time": "12:30"
+  },
+  {
+   "hotspot": "maude-st",
+   "name": "summer_peak_2025_base__diff_n9",
+   "file": "img/maude-st__summer_peak_2025_base__diff_n9.png",
+   "a": "baseline__summer_peak__2025-base__mean",
+   "b": "n9__summer_peak__2025-base__mean",
+   "interval": 50,
+   "time": "12:30"
+  },
+  {
+   "hotspot": "entrance-roundabout",
+   "name": "summer_peak_2025_base__baseline",
+   "file": "img/entrance-roundabout__summer_peak_2025_base__baseline.png",
+   "a": "baseline__summer_peak__2025-base__mean",
+   "b": null,
+   "interval": 56,
+   "time": "14:00",
+   "legend": "Legend Vehicles queued (average over 15 minutes) (vehicles halted) 02468+ no vehicles in these 15 minutes",
+   "changed": ""
+  },
+  {
+   "hotspot": "entrance-roundabout",
+   "name": "summer_peak_2025_base__cp",
+   "file": "img/entrance-roundabout__summer_peak_2025_base__cp.png",
+   "a": "cp__summer_peak__2025-base__mean",
+   "b": null,
+   "interval": 56,
+   "time": "14:00",
+   "legend": "Legend Vehicles queued (average over 15 minutes) (vehicles halted) 02468+ no vehicles in these 15 minutes",
+   "changed": ""
+  },
+  {
+   "hotspot": "entrance-roundabout",
+   "name": "summer_peak_2025_base__n7",
+   "file": "img/entrance-roundabout__summer_peak_2025_base__n7.png",
+   "a": "n7__summer_peak__2025-base__mean",
+   "b": null,
+   "interval": 56,
+   "time": "14:00",
+   "legend": "Legend Vehicles queued (average over 15 minutes) (vehicles halted) 02468+ no vehicles in these 15 minutes",
+   "changed": ""
+  },
+  {
+   "hotspot": "entrance-roundabout",
+   "name": "summer_peak_2025_base__diff_cp",
+   "file": "img/entrance-roundabout__summer_peak_2025_base__diff_cp.png",
+   "a": "baseline__summer_peak__2025-base__mean",
+   "b": "cp__summer_peak__2025-base__mean",
+   "interval": 56,
+   "time": "14:00",
+   "legend": "Legend Change in vehicles queued, B − A (vehicles halted) ≤−3−10+2≥+3 shorter queue in Blonger queue in B Changes smaller than half a vehicle either way are shown as no change (run-to-run noise). no vehicles in either run, or lane only in B removed in B (only in A)",
+   "changed": "What changed, B − A Queues are at least 1 vehicle longer in B on 9 streets (biggest: Burke Street, Lindsay Street, Torrens Lane); queues are at least 1 vehicle shorter in B on 2 streets (biggest: Bridge Terrace, McKinlay Street). Over 99% of lanes change by less than half a vehicle. Delay on the whole network in these 15 minutes: 42.2 vehicle-hours in A, 54.0 in B (+11.8). BIGGEST CHANGES (click to zoom) Burke Street +4 vehicles halted Lindsay Street +3 vehicles halted Torrens Lane +3 vehicles halted Bridge Terrace −2 vehicles halted Victoria Street +2 vehicles halted Crozier Road +2 vehicles "
+  },
+  {
+   "hotspot": "entrance-roundabout",
+   "name": "summer_peak_2025_base__diff_n7",
+   "file": "img/entrance-roundabout__summer_peak_2025_base__diff_n7.png",
+   "a": "baseline__summer_peak__2025-base__mean",
+   "b": "n7__summer_peak__2025-base__mean",
+   "interval": 56,
+   "time": "14:00",
+   "legend": "Legend Change in vehicles queued, B − A (vehicles halted) ≤−3−10+2≥+3 shorter queue in Blonger queue in B Changes smaller than half a vehicle either way are shown as no change (run-to-run noise). no vehicles in either run, or lane only in B removed in B (only in A)",
+   "changed": "What changed, B − A Queues are at least 1 vehicle shorter in B on 2 streets (biggest: Bridge Terrace, Crozier Road). Over 99% of lanes change by less than half a vehicle. Delay on the whole network in these 15 minutes: 42.2 vehicle-hours in A, 41.8 in B (−0.4). BIGGEST CHANGES (click to zoom) Bridge Terrace −2 vehicles halted Crozier Road −2 vehicles halted"
+  },
+  {
+   "hotspot": "whalers",
+   "name": "summer_peak_2025_base__baseline",
+   "file": "img/whalers__summer_peak_2025_base__baseline.png",
+   "a": "baseline__summer_peak__2025-base__mean",
+   "b": null,
+   "interval": 74,
+   "time": "18:30",
+   "legend": "Legend Vehicles queued (average over 15 minutes) (vehicles halted) 02468+ no vehicles in these 15 minutes",
+   "changed": ""
+  },
+  {
+   "hotspot": "whalers",
+   "name": "summer_peak_2025_base__cp",
+   "file": "img/whalers__summer_peak_2025_base__cp.png",
+   "a": "cp__summer_peak__2025-base__mean",
+   "b": null,
+   "interval": 74,
+   "time": "18:30",
+   "legend": "Legend Vehicles queued (average over 15 minutes) (vehicles halted) 02468+ no vehicles in these 15 minutes",
+   "changed": ""
+  },
+  {
+   "hotspot": "whalers",
+   "name": "summer_peak_2025_base__n9",
+   "file": "img/whalers__summer_peak_2025_base__n9.png",
+   "a": "n9__summer_peak__2025-base__mean",
+   "b": null,
+   "interval": 74,
+   "time": "18:30",
+   "legend": "Legend Vehicles queued (average over 15 minutes) (vehicles halted) 02468+ no vehicles in these 15 minutes",
+   "changed": ""
+  },
+  {
+   "hotspot": "whalers",
+   "name": "summer_peak_2025_base__diff_cp",
+   "file": "img/whalers__summer_peak_2025_base__diff_cp.png",
+   "a": "baseline__summer_peak__2025-base__mean",
+   "b": "cp__summer_peak__2025-base__mean",
+   "interval": 74,
+   "time": "18:30",
+   "legend": "Legend Change in vehicles queued, B − A (vehicles halted) ≤−3−10+2≥+3 shorter queue in Blonger queue in B Changes smaller than half a vehicle either way are shown as no change (run-to-run noise). no vehicles in either run, or lane only in B removed in B (only in A)",
+   "changed": "What changed, B − A No queue on a named street changes by 1 vehicle or more. Over 99% of lanes change by less than half a vehicle. Delay on the whole network in these 15 minutes: 15.1 vehicle-hours in A, 16.7 in B (+1.6)."
+  },
+  {
+   "hotspot": "whalers",
+   "name": "summer_peak_2025_base__diff_n9",
+   "file": "img/whalers__summer_peak_2025_base__diff_n9.png",
+   "a": "baseline__summer_peak__2025-base__mean",
+   "b": "n9__summer_peak__2025-base__mean",
+   "interval": 74,
+   "time": "18:30",
+   "legend": "Legend Change in vehicles queued, B − A (vehicles halted) ≤−3−10+2≥+3 shorter queue in Blonger queue in B Changes smaller than half a vehicle either way are shown as no change (run-to-run noise). no vehicles in either run, or lane only in B removed in B (only in A)",
+   "changed": "What changed, B − A No queue on a named street changes by 1 vehicle or more. 100% of lanes change by less than half a vehicle. Delay on the whole network in these 15 minutes: 15.1 vehicle-hours in A, 15.1 in B (+0.0)."
+  },
+  {
+   "hotspot": "service-stations",
+   "name": "summer_peak_2025_base__baseline",
+   "file": "img/service-stations__summer_peak_2025_base__baseline.png",
+   "a": "baseline__summer_peak__2025-base__mean",
+   "b": null,
+   "interval": 46,
+   "time": "11:30",
+   "legend": "Legend Vehicles queued (average over 15 minutes) (vehicles halted) 02468+ no vehicles in these 15 minutes",
+   "changed": ""
+  },
+  {
+   "hotspot": "service-stations",
+   "name": "summer_peak_2025_base__cp",
+   "file": "img/service-stations__summer_peak_2025_base__cp.png",
+   "a": "cp__summer_peak__2025-base__mean",
+   "b": null,
+   "interval": 46,
+   "time": "11:30",
+   "legend": "Legend Vehicles queued (average over 15 minutes) (vehicles halted) 02468+ no vehicles in these 15 minutes",
+   "changed": ""
+  },
+  {
+   "hotspot": "service-stations",
+   "name": "summer_peak_2025_base__n9",
+   "file": "img/service-stations__summer_peak_2025_base__n9.png",
+   "a": "n9__summer_peak__2025-base__mean",
+   "b": null,
+   "interval": 46,
+   "time": "11:30",
+   "legend": "Legend Vehicles queued (average over 15 minutes) (vehicles halted) 02468+ no vehicles in these 15 minutes",
+   "changed": ""
+  },
+  {
+   "hotspot": "service-stations",
+   "name": "summer_peak_2025_base__diff_cp",
+   "file": "img/service-stations__summer_peak_2025_base__diff_cp.png",
+   "a": "baseline__summer_peak__2025-base__mean",
+   "b": "cp__summer_peak__2025-base__mean",
+   "interval": 46,
+   "time": "11:30",
+   "legend": "Legend Change in vehicles queued, B − A (vehicles halted) ≤−3−10+2≥+3 shorter queue in Blonger queue in B Changes smaller than half a vehicle either way are shown as no change (run-to-run noise). no vehicles in either run, or lane only in B removed in B (only in A)",
+   "changed": "What changed, B − A Queues are at least 1 vehicle longer in B on 9 streets (biggest: Burke Street, Lindsay Street, Torrens Lane); queues are at least 1 vehicle shorter in B on 2 streets (Bridge Terrace). Over 99% of lanes change by less than half a vehicle. Delay on the whole network in these 15 minutes: 50.9 vehicle-hours in A, 61.7 in B (+10.7). BIGGEST CHANGES (click to zoom) Burke Street +4 vehicles halted Lindsay Street +3 vehicles halted Torrens Lane +3 vehicles halted Acraman Street +1 vehicles halted Crozier Road +1 vehicles halted Bridge Terrace −1 vehicles halted Victoria Street +1 v"
+  },
+  {
+   "hotspot": "service-stations",
+   "name": "summer_peak_2025_base__diff_n9",
+   "file": "img/service-stations__summer_peak_2025_base__diff_n9.png",
+   "a": "baseline__summer_peak__2025-base__mean",
+   "b": "n9__summer_peak__2025-base__mean",
+   "interval": 46,
+   "time": "11:30",
+   "legend": "Legend Change in vehicles queued, B − A (vehicles halted) ≤−3−10+2≥+3 shorter queue in Blonger queue in B Changes smaller than half a vehicle either way are shown as no change (run-to-run noise). no vehicles in either run, or lane only in B removed in B (only in A)",
+   "changed": "What changed, B − A Queues are at least 1 vehicle shorter in B on 3 streets (biggest: Crozier Road, Bridge Terrace, Victoria Street). Over 99% of lanes change by less than half a vehicle. Delay on the whole network in these 15 minutes: 50.9 vehicle-hours in A, 47.9 in B (−3.1). BIGGEST CHANGES (click to zoom) Crozier Road −3 vehicles halted Bridge Terrace −1 vehicles halted Victoria Street −1 vehicles halted"
+  },
+  {
+   "hotspot": "oval-roundabout",
+   "name": "summer_peak_2025_base__baseline",
+   "file": "img/oval-roundabout__summer_peak_2025_base__baseline.png",
+   "a": "baseline__summer_peak__2025-base__mean",
+   "b": null,
+   "interval": 50,
+   "time": "12:30",
+   "legend": "Legend Vehicles queued (average over 15 minutes) (vehicles halted) 02468+ no vehicles in these 15 minutes",
+   "changed": ""
+  },
+  {
+   "hotspot": "oval-roundabout",
+   "name": "summer_peak_2025_base__cp",
+   "file": "img/oval-roundabout__summer_peak_2025_base__cp.png",
+   "a": "cp__summer_peak__2025-base__mean",
+   "b": null,
+   "interval": 50,
+   "time": "12:30",
+   "legend": "Legend Vehicles queued (average over 15 minutes) (vehicles halted) 02468+ no vehicles in these 15 minutes",
+   "changed": ""
+  },
+  {
+   "hotspot": "oval-roundabout",
+   "name": "summer_peak_2025_base__n9",
+   "file": "img/oval-roundabout__summer_peak_2025_base__n9.png",
+   "a": "n9__summer_peak__2025-base__mean",
+   "b": null,
+   "interval": 50,
+   "time": "12:30",
+   "legend": "Legend Vehicles queued (average over 15 minutes) (vehicles halted) 02468+ no vehicles in these 15 minutes",
+   "changed": ""
+  },
+  {
+   "hotspot": "oval-roundabout",
+   "name": "summer_peak_2025_base__diff_cp",
+   "file": "img/oval-roundabout__summer_peak_2025_base__diff_cp.png",
+   "a": "baseline__summer_peak__2025-base__mean",
+   "b": "cp__summer_peak__2025-base__mean",
+   "interval": 50,
+   "time": "12:30",
+   "legend": "Legend Change in vehicles queued, B − A (vehicles halted) ≤−3−10+2≥+3 shorter queue in Blonger queue in B Changes smaller than half a vehicle either way are shown as no change (run-to-run noise). no vehicles in either run, or lane only in B removed in B (only in A)",
+   "changed": "What changed, B − A Queues are at least 1 vehicle longer in B on 10 streets (biggest: Torrens Lane, Victoria Street, Lindsay Street); queues are at least 1 vehicle shorter in B on 4 streets (biggest: Bridge Terrace, Crozier Road, George Main Road). 99% of lanes change by less than half a vehicle. Delay on the whole network in these 15 minutes: 63.0 vehicle-hours in A, 74.4 in B (+11.4). BIGGEST CHANGES (click to zoom) Bridge Terrace −4 vehicles halted Torrens Lane +4 vehicles halted Victoria Street +3 vehicles halted Crozier Road −3 vehicles halted Lindsay Street +3 vehicles halted George Main"
+  },
+  {
+   "hotspot": "oval-roundabout",
+   "name": "summer_peak_2025_base__diff_n9",
+   "file": "img/oval-roundabout__summer_peak_2025_base__diff_n9.png",
+   "a": "baseline__summer_peak__2025-base__mean",
+   "b": "n9__summer_peak__2025-base__mean",
+   "interval": 50,
+   "time": "12:30",
+   "legend": "Legend Change in vehicles queued, B − A (vehicles halted) ≤−3−10+2≥+3 shorter queue in Blonger queue in B Changes smaller than half a vehicle either way are shown as no change (run-to-run noise). no vehicles in either run, or lane only in B removed in B (only in A)",
+   "changed": "What changed, B − A Queues are at least 1 vehicle shorter in B on 6 streets (biggest: Crozier Road, George Main Road, Bridge Terrace); plus 1 unnamed road section. Over 99% of lanes change by less than half a vehicle. Delay on the whole network in these 15 minutes: 63.0 vehicle-hours in A, 48.0 in B (−15.0). BIGGEST CHANGES (click to zoom) Crozier Road −5 vehicles halted George Main Road −3 vehicles halted Bridge Terrace −3 vehicles halted Burke Street −3 vehicles halted unnamed road −2 vehicles halted Inman Valley Road −1 vehicles halted Maude Street −1 vehicles halted"
+  }
+ ],
+ "errors": []
+}

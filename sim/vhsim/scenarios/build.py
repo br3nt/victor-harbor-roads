@@ -146,6 +146,7 @@ def build_scenario(name: str, *, base: Baseline | None = None, out_dir: Path = c
     plain = work / f"{name}.plain"
     cycles = cap_cycles(plain / f"{name}.tll.xml", patch.signals) if patch.signals else {}
     bays_net = Path(out_dir) / f"{name}_bays.net.xml"
+    prefs = patch.write_preferences(Path(out_dir) / f"{name}_bays.prefs.add.xml")
     bays = turn_bays.build(plain_dir=plain, prefix=name, base_net=net_path, out_net=bays_net,
                            workdir=work / "bays")
     summary = {"scenario": name, "components": [c.__name__ for c in SCENARIOS[name]],
@@ -154,6 +155,9 @@ def build_scenario(name: str, *, base: Baseline | None = None, out_dir: Path = c
                "movements_extra": sorted(f"{f}->{t}" for f, t in leftover),
                "signal_cycles_s": cycles, "turn_bays": bays["bays"],
                "net": f"sim/data/networks/{bays_net.name}"}
+    if prefs:
+        summary["routing_preferences"] = {"file": f"sim/data/networks/{prefs.name}",
+                                          "preferences": [list(x) for x in patch.preferences]}
     summary["checks"] = check_net(bays_net)
     # a movement the definition does not allow (e.g. a lost turn ban), or one it needs but lacks, fails the build
     summary["checks"]["ok"] = summary["checks"]["ok"] and not leftover and not missing

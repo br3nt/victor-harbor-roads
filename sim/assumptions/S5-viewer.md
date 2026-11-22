@@ -77,6 +77,29 @@ about 9 MB raw per run; gzip typically reduces it 5–10×. The sample (1,238 la
   it, but the exporter does not write it yet: closed roads would be routed through at free-flow speed. Needed before
   event scenarios are shown: a closures input (edge, begin, end) to the exporter.
 
+## V1a. Sparse samples: less than one edge length travelled (added 22 Nov 2026)
+- **Value:** SUMO's edgeData `traveltime` is edge length × vehicle-seconds ÷ the distance the vehicles' fronts
+  travelled in the interval. When the vehicles covered less than one edge length (`traveltime` > vehicle-seconds),
+  the exporter uses the vehicle-seconds observed plus the free-flow time of the part of the edge not covered
+  (`t = sampled + free_flow × (1 − sampled / traveltime)`). Intervals in which at least one edge length was
+  travelled are unchanged; a real queue (vehicles on the edge for much of the interval) keeps a long time.
+- **Why:** SUMO extrapolates from centimetres when the only sample is a vehicle that was already waiting at the stop
+  line as the interval began. Grantley Ave (`-42530401#0`, 194 m) in the 2025 summer baseline, 12:15–12:30: seed 2
+  recorded 19,308 s from 11.8 vehicle-seconds and seed 3 9,678 s from 6.5 (one vehicle each, entered 0, left 1);
+  the seed mean hit the format's cap (6,553 s), so the residents' site showed Grantley Ave → Woolworths at 12:30
+  taking 56.6 minutes today and the council package "53 minutes faster". The vehicles' own exit times (vehroute)
+  show the longest traversal of that street between 12:00 and 13:00 was 70, 97 and 79 s in the three seeds; the
+  rule gives 24 s for the interval (seed mean), and the trip becomes 2.7 minutes today against 3.6 under the package.
+- **Extent:** in the 2025 summer baseline 517 of 449,568 edge-intervals change by more than 1 s, 17 by more than
+  5 minutes, all on short local streets or car-park aisles. Across the 99 runs published on 22 Nov 2026 (dry run
+  of the retime tool) every run had some: 1,012 edge-intervals inflated by more than 5 minutes, 3–33 per run.
+  Simulation results (tripinfo, edgeData waiting time,
+  movements, the R14/R15 tables and every S7 number) never used `traveltime`, so only the viewer and the
+  residents' site were affected. Runs exported before the fix are re-timed in place with
+  `python -m vhsim.viewer.retime` (edge times only; lane data unchanged).
+- **Sensitivity:** low; it can under-state a slow single vehicle that was observed for part of a long edge (the
+  rest of the edge is assumed free-flowing), which the next interval's value corrects.
+
 ## V2. Travel time to a target: arrival-anchored searches, routes driven forward
 - **Value:** for arrival times t, t + 3¾ min, t + 7½ min, … (4 anchors per 15-minute interval, up to 4 hours) a
   reverse time-dependent Dijkstra gives every edge's latest entry time and the route (a tree towards the target).
