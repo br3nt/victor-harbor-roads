@@ -1,0 +1,236 @@
+<!DOCTYPE html><html lang='en-AU'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1'><title>Hotspot evidence pack</title><style>body{font:16px/1.6 -apple-system,'Segoe UI',Helvetica,Arial,sans-serif;color:#1b1b1b;background:#fbfaf7;max-width:56rem;margin:0 auto;padding:1rem 16px 4rem}a{color:#0b5e78}h1,h2,h3{line-height:1.25}table{border-collapse:collapse;font-size:.92rem;display:block;overflow-x:auto}th,td{border:1px solid #ddd;padding:.35rem .5rem;vertical-align:top;text-align:left}code{font-size:.9em;background:#f0eee8;padding:0 .2em}pre{background:#f0eee8;padding:.6rem;overflow-x:auto}nav{font-size:.9rem;border-bottom:1px solid #ddd;padding-bottom:.4rem;margin-bottom:1rem}</style></head><body><nav><a href='/victor-harbor-roads/'>Home</a> · <a href='index.html'>Method and assumptions</a> · <a href='/victor-harbor-roads/kb/'>Evidence notes</a></nav><h1 id="hotspot-evidence-pack">Hotspot evidence pack</h1>
+<p>Hotspot by hotspot: today's roads, the council's package and the best tested alternative, with numbers,
+side-by-side animations of the same 15 simulated minutes, and congestion maps. Built for an onboarding page
+and a slide deck. Method and assumptions: <code>sim/assumptions/S8-hotspots.md</code>.</p>
+<p><strong>Years.</strong> This year is 2026. The model's "today" is built on 2025 data and is labelled <strong>now (2025 data)</strong>.
+2031 is <strong>in about 5 years</strong> (moderate or high growth, 1 run each); 2041 high growth is <strong>in about 15 years</strong>
+(term weekday only: the 2041 summer day jammed for every option tried there, i.e. today's roads, CP, BP and
+the four-lane ring road; the N options were not tried). Now = mean of 3 runs. The numbers compare
+options on the same traffic; they are not forecasts (Victoria St is over-loaded about 1.5× in the model,
+the town centre somewhat under-loaded).</p>
+<p><strong>Open it.</strong> <code>cd viewer &amp;&amp; node test/serve.mjs</code> then <a href="http://127.0.0.1:4418/hotspots/">http://127.0.0.1:4418/hotspots/</a>. One hotspot per entry
+in the list; <code>#h=&lt;id&gt;&amp;s=&lt;set&gt;</code> links straight to one.</p>
+<p><strong>Terms.</strong> <em>Wait</em> = seconds per vehicle on the approach beyond its free-flow time (the R15 approach delay).
+<em>Time stopped</em> = vehicle-hours a day standing still on the hotspot's lanes. <em>Queue</em> = vehicles standing still,
+averaged over the busiest 15 minutes (7.5 m a vehicle). Summer = the summer peak day.</p>
+<h2 id="hotspots-and-headline-numbers">Hotspots and headline numbers</h2>
+<p>Abbreviations: CP council package; C3 one-way loop alone; C4 signals alone; BP Brent's package; N3 Crozier Rd
+turn lanes; N4 Hindmarsh Rd / Grantley Ave roundabout; N7 three roundabouts (Armstrong/Crozier,
+Armstrong/Greenhills, Hindmarsh/Grantley); N8 Victoria St left-turn lanes; N9 = N3 + N4.</p>
+<h3 id="1-foreshore-route-of-the-one-way-loop-bridge-tce-north-flinders-pde-coral-st-foreshore-loop">1. Foreshore route of the one-way loop (Bridge Tce, north Flinders Pde, Coral St) — <code>foreshore-loop</code></h3>
+<p>Shows: the loop pushes Hindmarsh Rd / Eyre Tce traffic, trucks and caravans down Bridge Tce onto the
+foreshore. Animation: summer, now: today | CP | N9.
+- <strong>Summer, now (2025 data):</strong> Bridge Tce into north Flinders Pde carries about 2,600 vehicles a day with 14
+  trucks and 67 caravans on today's roads. With the council package: about 5,200 (82 trucks, 97 caravans);
+  the loop alone 7,400 (162 trucks, 118 caravans). N9 and BP leave it as today.
+- <strong>Term weekday, now:</strong> 1,030 → 2,740 a day with CP; trucks 10 → 66.
+- <strong>2031 (in about 5 years), high growth, summer:</strong> CP about 5,800 a day (63 trucks, 90 caravans) against
+  3,100 (14 trucks) today. The loop alone backs up badly here: 388 vehicle-hours stopped a day at this spot
+  (today's roads: 7), with worst approach waits over 100 s at Eyre Tce / Bridge Tce and Coral St / Ocean St.
+- Time stopped at the spot, summer now: 3.6 vehicle-hours today, 11.0 with CP.</p>
+<h3 id="2-crozier-rd-acraman-st-lindsay-st-lindsay-st">2. Crozier Rd / Acraman St / Lindsay St — <code>lindsay-st</code></h3>
+<p>Shows: traffic diverting through Acraman St under the loop, and Lindsay St residents waiting to get out.
+Animation: summer, now: today | CP | N9.
+- <strong>Summer, now:</strong> Lindsay St waits <strong>14 s</strong> a vehicle today, <strong>83 s</strong> with the council package (the loop
+  alone 48 s; BP 13 s; N9 12 s). Acraman St carries 1,800 a day today, 5,400 with CP.
+  Worst 5% of Lindsay St drivers: 55 s today, about 5 minutes (294 s) with CP.
+- <strong>2031 (in about 5 years):</strong> moderate growth 39 s today → 99 s CP; high growth 45 s → 142 s CP
+  (N9 38 s, BP 43 s). With the loop alone at high growth the junction backs up (312 s).
+- <strong>Term weekday, now:</strong> 5 s → 15 s with CP; Acraman St 1,500 → 5,800 a day.</p>
+<h3 id="3-torrens-st-roundabouts-at-seaview-rd-eyre-tce-and-at-crozier-rd-council-signals-c4-torrens-signals">3. Torrens St roundabouts at Seaview Rd / Eyre Tce and at Crozier Rd (council signals, C4) — <code>torrens-signals</code></h3>
+<p>Shows: replacing the two roundabouts with signals (C4). Animation: summer, now: today | C4 signals | N9.
+- <strong>Summer, now:</strong> time stopped at the two junctions 44 vehicle-hours a day today; <strong>91 with the signals
+  (C4)</strong>, 114 with the whole council package; N9 <strong>26</strong> (−40%; the Grantley roundabout takes load off the
+  Seaview roundabout). Eyre Tce waits 27 s today, 31 s with C4, 19 s with N9.
+- <strong>2031 (in about 5 years), high growth, summer:</strong> 67 today → 137 C4 / 162 CP; N9 40.
+- <strong>Term weekday, now:</strong> 12 today → 39 with C4.
+- Under CP, Torrens Lane (a narrow lane in reality) becomes a rat run at the Crozier Rd roundabout
+  (120 s waits): see the KB caveat on Torrens Lane.</p>
+<h3 id="4-victoria-st-between-bay-rd-and-torrens-st-victoria-st">4. Victoria St between Bay Rd and Torrens St — <code>victoria-st</code></h3>
+<p>Shows: the largest delay in town today; no tested option fixes it. Animation: summer, now: today | CP | N8
+(the option built for it).
+- <strong>Summer, now:</strong> 77 vehicle-hours stopped a day (the biggest single hotspot); CP 114; BP 80; N8 104
+  (worse); N9 67 and N7 70 (−14% and −9%, from traffic using other routes). Granite St waits 44 s;
+  Victoria St eastbound through the corridor about 22 s.
+- <strong>2031 (in about 5 years), summer:</strong> 193 (moderate) and 178 (high) today; CP 151 / 249; BP 188 / 234;
+  N9 113 / 183; N7 110 / 108. These are single runs and swing a lot here (today's roads come out worse at
+  moderate growth than at high, and N9 is 41% better at one growth and 3% worse at the other), so only the
+  consistent result stands: N7 is about 40% lower than today's roads at both growths. That is traffic taking
+  the improved ring road instead of Victoria St, not a fix for the corridor itself.
+- Caveat: Victoria St carries about 1.5× its counted traffic in the model and the car parks are simplified;
+  this is the least reliable hotspot.</p>
+<h3 id="5-bridge-tce-grantley-ave-link-onto-hindmarsh-rd-grantley">5. Bridge Tce / Grantley Ave link onto Hindmarsh Rd — <code>grantley</code></h3>
+<p>Shows: the right turn from Bridge Tce across Hindmarsh Rd via the 17 m crossing link, and N4's roundabout.
+Animation: summer, now: today | CP | N4.
+- <strong>Summer, now:</strong> Bridge Tce waits <strong>49 s</strong> today; <strong>15 s with N4</strong>; BP 50 s. The council package cuts it to
+  9 s only because the loop sends that traffic elsewhere (onto the foreshore, hotspot 1).
+- <strong>2031 (in about 5 years), high growth, summer:</strong> 89 s today → 19 s N4 (N9 20 s); BP 63 s; CP 15 s.
+- Time stopped, summer now: 33 → 13 vehicle-hours (N4).</p>
+<h3 id="6-armstrong-rd-crozier-rd-ring-road-armstrong-crozier">6. Armstrong Rd / Crozier Rd (ring road) — <code>armstrong-crozier</code></h3>
+<p>Shows: Crozier Rd traffic waiting for gaps on the 100 km/h ring road; worst junction as the town grows.
+Animations: summer now: today | CP | N3 turn lanes; summer 2031 high growth: today | CP | N7.
+- <strong>Summer, now:</strong> Crozier Rd waits <strong>29 s</strong> today; CP 43 s; BP 52 s (more ring-road traffic, fewer gaps);
+  <strong>N3 turn lanes 16 s</strong>; N7 roundabout 6 s.
+- <strong>2031 (in about 5 years), summer:</strong> moderate growth 80 s today, CP 71, BP 98, N3 26, N7 8; high growth
+  <strong>79 s today, CP 104, BP 112, N3 50, N7 8</strong>. Time stopped (high): 70 today, 50 with N3, 5 with N7.
+- <strong>2041 (in about 15 years), high growth, term weekday:</strong> 74 s today, CP 100, BP 130, N3 52, N7 8.
+- Reading: turn lanes (N3) roughly halve the wait now; by 2031 at high growth they are not enough (50 s),
+  while the roundabout (in N7) keeps Crozier Rd under 10 s in every year tested. The roundabout makes
+  ring-road traffic slow and give way, so Armstrong Rd itself queues at times (see the 2031 animation).</p>
+<h3 id="7-armstrong-rd-greenhills-rd-ring-road-armstrong-greenhills">7. Armstrong Rd / Greenhills Rd (ring road) — <code>armstrong-greenhills</code></h3>
+<p>Shows: growth-area traffic from Greenhills Rd joining the ring road. Animation: summer 2031 high growth:
+today | CP | N7.
+- <strong>Now:</strong> quiet (1.6 vehicle-hours a day in summer; Greenhills Rd 12 s).
+- <strong>2031 (in about 5 years), high growth, summer:</strong> 8 vehicle-hours; Greenhills Rd 20 s today, 23 s CP,
+  34 s BP, 8 s N7.
+- <strong>2041 (in about 15 years), high growth, term weekday:</strong> 15.6 vehicle-hours today, 26 BP, 19 CP, 2.9 N7;
+  Greenhills Rd 22 s today, 46 s BP, 27 s CP, 9 s N7.</p>
+<h3 id="8-mccracken-roundabout-by-bunnings-and-the-service-stations-local-check-mccracken">8. McCracken roundabout by Bunnings and the service stations (local check) — <code>mccracken</code></h3>
+<p>Junctions: <code>adelaide_hindmarsh_portelliot</code> (roundabout), Hindmarsh Rd / Antrim St (node 795603899),
+Hindmarsh Rd / Down St. Animation: summer, now: today | CP | B4 (two-lane roundabout).
+- <strong>Summer, now:</strong> main legs wait 4–14 s (Port Elliot Rd 14 s); 23 vehicle-hours stopped a day. B4 does not
+  help (27; Port Elliot Rd 12 s); CP 17. Down St waits 34 s (500 vehicles a day); Antrim St carries only
+  about 7 vehicles a day in the model (56 s) — too few to rate; Alexander St (minor leg) 50 s.
+- <strong>2031 (in about 5 years), high growth, summer:</strong> 32 vehicle-hours; Port Elliot Rd 14 s; Down St 42 s.</p>
+<h3 id="9-the-maude-st-roundabout-local-check-maude-st">9. The Maude St roundabout (local check) — <code>maude-st</code></h3>
+<p>The five-leg roundabout Armstrong Rd / George Main Rd / Inman Valley Rd / Mill Rd / Maude St
+(<code>armstrong_georgemain_inmanvalley</code>, at the Maude St industrial estate) plus Bay Rd / Maude St
+(node 773737914). Animation: summer, now: today | CP | N9.
+- <strong>Now:</strong> fine (6 vehicle-hours a day in summer; Maude St waits 11 s at the roundabout, 5 s at Bay Rd).
+- <strong>2031 (in about 5 years), summer:</strong> grows to 26–34 vehicle-hours; Maude St 41 s at high growth (CP 53 s,
+  BP 59 s, N9 49 s); N7 13 vehicle-hours. Single runs swing here too (CP is 14 vehicle-hours at moderate
+  growth but 36 at high), so read 2031 as "it gets busier", not as a ranking of options.</p>
+<h3 id="10-town-entrance-roundabout-victor-harbor-rd-welch-rd-waterport-rd-local-check-entrance-roundabout">10. Town entrance roundabout, Victor Harbor Rd / Welch Rd / Waterport Rd (local check) — <code>entrance-roundabout</code></h3>
+<p>Inside the simulated network (the northern gateway is about 6.5 km further north). No animation (quiet).
+- <strong>Summer, now:</strong> 4 vehicle-hours a day, waits 6–7 s. <strong>2031 high growth:</strong> 9 vehicle-hours, 10–11 s. No
+  option changes it by more than 1–2 s.</p>
+<h3 id="11-franklin-pde-by-whalers-the-bluff-end-local-check-whalers">11. Franklin Pde by Whaler's (the Bluff end) (local check) — <code>whalers</code></h3>
+<p>No animation (quiet). Waits 1–5 s on every simulated day and option, now and in 2031; under 0.1
+vehicle-hours stopped a day. New Year's Eve and other event days have not been simulated.</p>
+<h3 id="12-town-centre-service-stations-local-check-service-stations">12. Town-centre service stations (local check) — <code>service-stations</code></h3>
+<p>Shell (Hindmarsh Rd, nodes <code>cluster_11174609013_649114783</code>, <code>50904904#12.-20</code>), Caltex (Torrens St
+car-park lanes, right-before-left nodes 13163189011–36), Liberty (Victoria St / Inman St, nodes 1842610521,
+1948685925), Inman St / Newland St (531031939). No separate animation (Shell and Caltex are inside the
+Torrens St animation's view; Liberty inside Victoria St's).
+- <strong>Shell, summer now:</strong> Hindmarsh Rd 8 s; the station exit 13 s (about 40 vehicles a day). CP 21 s on
+  Hindmarsh Rd (loop traffic); N9 6 s.
+- <strong>Caltex, summer now:</strong> car-park lanes 22 s (240 a day); CP 38 s; N9 16 s.
+- <strong>Liberty:</strong> Victoria St 3–4 s; quiet.
+- <strong>Inman St / Newland St, summer:</strong> Newland St 14 s now, 44 s with CP; 2031 high growth 66 s today, 77 s CP.</p>
+<h3 id="13-the-roundabout-by-the-oval-bay-rd-victoria-st-george-main-rd-local-check-oval-roundabout">13. The roundabout by the oval: Bay Rd / Victoria St / George Main Rd (local check) — <code>oval-roundabout</code></h3>
+<p><code>bay_victoria_georgemain</code>, the only roundabout near the oval (High School about 100 m, Victor Harbor Oval
+about 150 m, Beachfront Holiday Park 290 m, Victor Harbor Holiday Park and the police station 330–500 m).
+Victoria St / Oval Rd (a give-way T) is in hotspot 4. Animation: summer, now: today | CP | N9.
+- <strong>Summer, now:</strong> George Main Rd waits 19 s (CP 23, BP 24, N9 18); 16 vehicle-hours a day.
+- <strong>2031 (in about 5 years), summer:</strong> moderate growth 67 s today, CP 36, BP 89, N9 28, N7 40; high growth
+  54 s today, CP 76, BP 90, N9 65, N7 35 (single runs; only BP is worse than today at both growths, probably
+  because its four-lane ring road draws more traffic down George Main Rd).</p>
+<h2 id="caveats">Caveats</h2>
+<ul>
+<li>One seed per animation and per 2031 result. Now (3 seeds) summer runs vary ±5–12% between seeds; single
+  2031 runs at busy hotspots swing much more (Victoria St, Maude St, the oval roundabout), so treat a 2031
+  difference as real only when it shows at both growths.</li>
+<li>Give-way gap acceptance is SUMO's model with the A-INT-02 impatience settings; not checked on site.</li>
+<li>Route choice by travel time only, so diversions into residential streets may be on the high side.</li>
+<li>New junctions (N3, N4, N7) are geometric approximations, not designs; N4 sits beside a level crossing.</li>
+<li>Queues in the numbers are 15-minute averages; the animations show moment-to-moment queues, counted only
+  inside the picture, and draw trucks and caravans 1.5 times their size so they can be picked out.</li>
+<li>Approach waits include about 1 s of crossing the previous junction, and leave out time waiting inside the
+  junction (right-turners at the turn line), so right-turn waits are somewhat understated.</li>
+<li>The hotspot areas here are wider than the S7 diagnosis's in places (oval roundabout, McCracken, Torrens
+  St), so their vehicle-hour totals are higher than S7's; compare options within these tables.</li>
+</ul>
+<h2 id="jammed-runs">Jammed runs</h2>
+<p>None of the 16 new 2031 runs (N3, N4, N7, N9 × moderate/high × weekday/summer) jammed (0–29 teleports each,
+under the 5% limit). Flagged as jammed in the hotspot files: the 2041 high-growth summer day for today's
+network, CP and BP (stopped before the end of the day, A-INT-05). The one-way loop alone (C3) at 2031 high
+growth, summer, did not jam by the batch rule (1,043 teleports, 1.1%) but shows extreme queues at hotspots
+1, 2 and 5.</p>
+<h2 id="files">Files</h2>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Size</th>
+<th>What</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>viewer/hotspots/index.html</code></td>
+<td>10 KB</td>
+<td></td>
+</tr>
+<tr>
+<td><code>viewer/hotspots/player.js</code></td>
+<td>14 KB</td>
+<td></td>
+</tr>
+<tr>
+<td><code>viewer/hotspots/data/manifest.json</code></td>
+<td>177 KB</td>
+<td></td>
+</tr>
+<tr>
+<td><code>viewer/hotspots/data/shots-plan.json</code></td>
+<td>17 KB</td>
+<td></td>
+</tr>
+<tr>
+<td><code>viewer/hotspots/img/shots.json</code></td>
+<td>26 KB</td>
+<td></td>
+</tr>
+<tr>
+<td><code>sim/data/results/hotspots/index.json</code></td>
+<td>11 KB</td>
+<td></td>
+</tr>
+<tr>
+<td><code>sim/data/results/hotspots/chart_waits.csv</code></td>
+<td>77 KB</td>
+<td></td>
+</tr>
+<tr>
+<td><code>sim/assumptions/S8-hotspots.md</code></td>
+<td>10 KB</td>
+<td></td>
+</tr>
+<tr>
+<td><code>sim/data/results/hotspots/&lt;id&gt;.json</code></td>
+<td>13 files, 2.0 MB</td>
+<td>metrics, headlines, chart and site checks per hotspot</td>
+</tr>
+<tr>
+<td><code>viewer/hotspots/data/&lt;hotspot&gt;/&lt;set&gt;/&lt;scenario&gt;.json</code></td>
+<td>33 files, 6.5 MB (largest 491 KB)</td>
+<td>animations</td>
+</tr>
+<tr>
+<td><code>viewer/hotspots/img/&lt;hotspot&gt;__&lt;set&gt;__&lt;view&gt;.png</code></td>
+<td>70 files, 14.9 MB</td>
+<td>congestion (vehicles queued) and difference maps from the engineer viewer</td>
+</tr>
+<tr>
+<td><code>viewer/hotspots/screenshots/*.png</code></td>
+<td>13 files, 4.3 MB</td>
+<td>the player in a headless browser (desktop, phone, dark)</td>
+</tr>
+</tbody>
+</table>
+<p>Animation files per hotspot:</p>
+<ul>
+<li><code>armstrong-crozier</code>: summer_peak_2025_base/baseline 68 KB, summer_peak_2025_base/cp 87 KB, summer_peak_2025_base/n3 65 KB, summer_peak_2031_high/baseline 89 KB, summer_peak_2031_high/cp 96 KB, summer_peak_2031_high/n7 106 KB</li>
+<li><code>armstrong-greenhills</code>: summer_peak_2031_high/baseline 98 KB, summer_peak_2031_high/cp 122 KB, summer_peak_2031_high/n7 81 KB</li>
+<li><code>foreshore-loop</code>: summer_peak_2025_base/baseline 231 KB, summer_peak_2025_base/cp 233 KB, summer_peak_2025_base/n9 188 KB</li>
+<li><code>grantley</code>: summer_peak_2025_base/baseline 150 KB, summer_peak_2025_base/cp 120 KB, summer_peak_2025_base/n4 140 KB</li>
+<li><code>lindsay-st</code>: summer_peak_2025_base/baseline 73 KB, summer_peak_2025_base/cp 124 KB, summer_peak_2025_base/n9 81 KB</li>
+<li><code>maude-st</code>: summer_peak_2025_base/baseline 294 KB, summer_peak_2025_base/cp 273 KB, summer_peak_2025_base/n9 251 KB</li>
+<li><code>mccracken</code>: summer_peak_2025_base/b4 245 KB, summer_peak_2025_base/baseline 231 KB, summer_peak_2025_base/cp 223 KB</li>
+<li><code>oval-roundabout</code>: summer_peak_2025_base/baseline 165 KB, summer_peak_2025_base/cp 136 KB, summer_peak_2025_base/n9 133 KB</li>
+<li><code>torrens-signals</code>: summer_peak_2025_base/baseline 389 KB, summer_peak_2025_base/c4 387 KB, summer_peak_2025_base/n9 362 KB</li>
+<li><code>victoria-st</code>: summer_peak_2025_base/baseline 416 KB, summer_peak_2025_base/cp 464 KB, summer_peak_2025_base/n8 491 KB</li>
+</ul>
+<p>Tests: <code>cd sim &amp;&amp; python -m pytest tests/integration</code> (hotspot metrics and animation export);
+<code>cd viewer &amp;&amp; node --test test/hotspots-player.test.mjs</code> (player); <code>node test/hotspots-smoke.mjs</code> (page in a
+headless browser, writes the screenshots); <code>node test/hotspot-shots.mjs [--resume]</code> (pictures).</p></body></html>

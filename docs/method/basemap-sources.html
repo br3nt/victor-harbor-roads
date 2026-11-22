@@ -1,0 +1,166 @@
+<!DOCTYPE html><html lang='en-AU'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1'><title>Base map: sources, licences and how it was made</title><style>body{font:16px/1.6 -apple-system,'Segoe UI',Helvetica,Arial,sans-serif;color:#1b1b1b;background:#fbfaf7;max-width:56rem;margin:0 auto;padding:1rem 16px 4rem}a{color:#0b5e78}h1,h2,h3{line-height:1.25}table{border-collapse:collapse;font-size:.92rem;display:block;overflow-x:auto}th,td{border:1px solid #ddd;padding:.35rem .5rem;vertical-align:top;text-align:left}code{font-size:.9em;background:#f0eee8;padding:0 .2em}pre{background:#f0eee8;padding:.6rem;overflow-x:auto}nav{font-size:.9rem;border-bottom:1px solid #ddd;padding-bottom:.4rem;margin-bottom:1rem}</style></head><body><nav><a href='/victor-harbor-roads/'>Home</a> · <a href='index.html'>Method and assumptions</a> · <a href='/victor-harbor-roads/kb/'>Evidence notes</a></nav><h1 id="base-map-sources-licences-and-how-it-was-made">Base map: sources, licences and how it was made</h1>
+<p>Files in this folder, all generated (do not edit by hand):</p>
+<table>
+<thead>
+<tr>
+<th>file</th>
+<th>what</th>
+<th>built by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>basemap.json</code></td>
+<td>sea, inland water, land use, rivers, rail, piers, bridges, labels (GeoJSON)</td>
+<td><code>python -m vhsim.viewer.basemap</code></td>
+</tr>
+<tr>
+<td><code>buildings.json</code></td>
+<td>11,813 building outlines with heights (GeoJSON)</td>
+<td>same</td>
+</tr>
+<tr>
+<td><code>terrain/{z}/{x}/{y}.png</code>, <code>terrain/tiles.json</code></td>
+<td>elevation tiles for MapLibre <code>raster-dem</code> (512 px, terrarium)</td>
+<td><code>python -m vhsim.viewer.terrain</code></td>
+</tr>
+<tr>
+<td><code>terrain-sources.json</code></td>
+<td>URL, retrieval time and sha256 of every downloaded source tile</td>
+<td>same</td>
+</tr>
+</tbody>
+</table>
+<p>Format: see the docstrings of <code>sim/vhsim/viewer/basemap.py</code> and <code>terrain.py</code>. Generalisation choices and building
+heights are assumptions, recorded in <code>sim/assumptions/S5-viewer.md</code> (V10, V11).</p>
+<h2 id="openstreetmap-sea-water-land-use-lines-buildings-most-labels">OpenStreetMap (sea, water, land use, lines, buildings, most labels)</h2>
+<ul>
+<li><strong>Source:</strong> extract <strong>G-01</strong>, <code>game/data/raw/G-01-victor-harbor-all.osm</code> (main checkout, git-ignored), all nodes and
+  ways plus multipolygon relations in the box 138.57–138.66 E, 35.53–35.598 S, from the Overpass API.
+  sha256 <code>4f8455f19ed3d6ed702ede2638cdb16c3175fc400bccb269ce997b850bd03ff1</code>, OSM data timestamp (<code>osm_base</code>)
+  2026-11-21T13:05:36Z, retrieved 2026-11-21T13:06:30Z. Full provenance: <code>game/data/raw/SOURCES.md</code>.</li>
+<li><strong>Licence:</strong> Open Database License (ODbL) 1.0. The map must show <strong>"© OpenStreetMap contributors"</strong> (link to
+  https://www.openstreetmap.org/copyright). <code>basemap.json</code> and <code>buildings.json</code> are derived databases of OSM data and
+  are offered under the ODbL as well.</li>
+<li><strong>What was derived:</strong> the sea is the part of the box on the right of the <code>natural=coastline</code> ways (OSM draws land on
+  the left); the three closed coastline rings (Granite Island, Wright Island, Seal Rock) and the <code>place=islet</code> way
+  near Chiton Rocks are land. Outside the box the sea comes from the terrain tiles instead (next section). Areas and lines are clipped to the box; buildings and pier outlines that cross the box edge are kept whole (41 buildings reach outside it). Everything is simplified by 0.5–1.5 m and rounded to 5 decimals.</li>
+<li><strong>The causeway:</strong> OSM maps the causeway to Granite Island as way 1004582502 "Granite Island Road"
+  (<code>highway=pedestrian</code>, <code>man_made=pier</code>, <code>bridge=yes</code>; 635 m from the mainland end to the island), with the
+  horse-drawn tram track (<code>railway=tram</code>, way 415051627, <code>bridge=yes</code>) along it and two short <code>area=yes</code> pier polygons named
+  "Old Causeway" (about 50 m and 80 m long) within 11 m of it, one at each end. These are in the <code>pier</code> layer (<code>c: pier</code>) together with
+  the other pier objects along it: the unnamed <code>area=yes</code> outline 1324252962 around the causeway deck, the short
+  "Granite Island Road" end piece 1324258369 and the small pier 1324252957. The pedestrian way and the tram are also in
+  the <code>bridge</code> layer (<code>foot</code>, <code>rail</code>). The label "The Causeway" sits at the middle of way 1004582502.</li>
+</ul>
+<h2 id="g-naf-address-points-suburb-label-positions-mount-breckan-check">G-NAF address points (suburb label positions, Mount Breckan check)</h2>
+<ul>
+<li><strong>Source:</strong> <code>viewer/residents/data/addresses.json</code> (Geoscape G-NAF, November 2026, see
+  <code>viewer/residents/data/SOURCES.md</code>).</li>
+<li><strong>Use:</strong> each locality with 100+ addresses gets one label, at the address point nearest the median of its
+  addresses (so it always lands on an address, never in the sea). Localities with 1,000+ addresses (Victor Harbor,
+  Encounter Bay, Hayborough, McCracken) show from zoom 12, the six rural ones from zoom 11.</li>
+<li><strong>Licence and attribution:</strong> Open G-NAF End User Licence Agreement (CC BY 4.0 plus a no-mail-generation
+  restriction). Attribution: "Incorporates or developed using G-NAF © Geoscape Australia licensed by the
+  Commonwealth of Australia under the Open Geo-coded National Address File (G-NAF) End User Licence Agreement.
+  Modified: reduced to this area and simplified."</li>
+</ul>
+<h2 id="terrain-elevation-tiles-label-heights">Terrain (elevation tiles, label heights)</h2>
+<ul>
+<li><strong>Source:</strong> AWS Open Data "Terrain Tiles" (Mapzen / Tilezen Joerd), terrarium encoding,
+  <code>https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png</code> (256 px; elevation m =
+  R × 256 + G + B / 256 − 32768). 80 source tiles (zoom 11: 16, zoom 12: 48, zoom 13: 16) retrieved
+  2026-11-21T23:10:15Z – 23:11:34Z UTC; each tile's URL, time and sha256 are in <code>terrain-sources.json</code>. Raw
+  downloads are cached in <code>sim/data/terrain-raw/</code> (git-ignored).</li>
+<li><strong>What was made:</strong> 20 tiles of 512 px, each a 2 × 2 mosaic of the four source tiles one zoom deeper, so tile z/x/y
+  covers the same area as the standard XYZ tile z/x/y: zoom 12 over the G-01 box (4 tiles, about 15 m per pixel),
+  zoom 11 (12 tiles) and zoom 10 (4 tiles) over the simulated network (138.208–138.693 E, 35.426–35.612 S).
+  Elevations below 0 (sea-floor bathymetry) were set to 0 and every value rounded to 1/8 m. Bounds of all tiles:
+  138.164062, −35.746512, 138.867188, −35.173808 (the z10 tiles); z11 and z12 tiles exist only where listed in
+  <code>tiles.json</code> → <code>tiles</code>; the viewer (<code>viewer/js/mapview.js</code>, the <code>vhdem://</code> protocol) cuts any other tile from its nearest bundled parent, so nothing is requested that is not there. A few isolated source pixels on land or at the shore were below 0
+  (down to −72 m, e.g. 138.7151 E 35.4682 S; −477 m offshore at 138.1649 E 35.5215 S) and are now 0.</li>
+<li><strong>Licences</strong> (from https://github.com/tilezen/joerd/blob/master/docs/attribution.md and <code>data-sources.md</code>):
+  the tiles combine Geoscience Australia's DEM of Australia (5 m around coastal South Australia; CC BY 4.0), SRTM and
+  GMTED2010 (U.S. Geological Survey, public domain, credit requested) and ETOPO1 bathymetry (NOAA, public domain).
+  Joerd's documentation lists the GA data at its native zoom (14) and SRTM for mid zooms on land, and does not say
+  which source each zoom 11–13 pixel came from, so all three Australian-relevant credits are given.</li>
+<li><strong>Attribution the map must show</strong> (also in <code>terrain/tiles.json</code> as <code>attribution</code>, as HTML):
+  "Terrain Tiles (Mapzen/Tilezen, AWS Open Data): Australia terrain data © Commonwealth of Australia (Geoscience
+  Australia) 2017, CC BY 4.0; SRTM and GMTED2010 terrain data courtesy of the U.S. Geological Survey; ETOPO1:
+  U.S. National Oceanic and Atmospheric Administration".</li>
+</ul>
+<h2 id="sea-outside-the-osm-box-from-the-terrain-tiles">Sea outside the OSM box (from the terrain tiles)</h2>
+<p>The <code>sea</code> feature continues beyond the G-01 box, out to the simulated network's box plus 0.03° on each side
+(138.178–138.723 E, 35.396–35.642 S), so the coast does not stop at a rectangle when the map is zoomed out.</p>
+<ul>
+<li><strong>Data:</strong> the terrain tiles above, on a 15 m grid (zoom 12 pixels); each pixel takes the finest tile written
+  there: zoom 12 (about 15 m) between 138.516 and 138.691 E and 35.461 and 35.604 S, zoom 11 (about 31 m) elsewhere.</li>
+<li><strong>Method:</strong> a pixel is sea when its elevation is below 1 m (the sea floor was clamped to 0; the source has patches
+  of 0.1–0.7 m offshore) and it is connected to the sea: to such a pixel inside the OSM sea, or to the south or west
+  edge of the area (the Southern Ocean and Gulf St Vincent). Low inland patches are not connected, so they stay land.
+  Offshore land that never reaches 5 m (blobs of 1–5 m in the source around the Waitpinga cliffs) and land specks
+  under 2 ha count as sea. The pixels are joined into polygons, simplified by 40 m, the G-01 box is cut out and the
+  detailed OSM sea is put back inside it; the two meet along the box edge with no gap (tested along the south and
+  east edges).</li>
+<li><strong>Accuracy:</strong> this coastline is good to about 30–50 m, not to the 1 m of the OSM coast inside the box. West
+  Island (south-west of The Bluff) comes out larger than it is, because the shallow 1–5 m fringe around it is
+  joined to it.</li>
+</ul>
+<h2 id="labels-placed-from-a-specific-object-or-by-hand">Labels placed from a specific object or by hand</h2>
+<p>Every other label comes straight from a named OSM object (islands, Petrel Cove, rivers, Newland Hill, parks,
+golf courses, schools, the hospital) at a point well inside its area (pole of inaccessibility) or, for rivers, at the
+middle of the river inside the box.</p>
+<table>
+<thead>
+<tr>
+<th>label</th>
+<th>position</th>
+<th>why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Encounter Bay</strong> (water)</td>
+<td>138.6125, −35.5720, <strong>hand-placed</strong></td>
+<td>OSM has no name for the bay as water ("Encounter Bay" there is only the suburb). Placed in open water south-west of the town centre, between the town and The Bluff, about 400 m off the Encounter Bay shore and clear of Wright Island and Granite Island.</td>
+</tr>
+<tr>
+<td><strong>The Bluff (Rosetta Head)</strong></td>
+<td>OSM node 4375060501 (<code>natural=peak</code>, 138.60378, −35.59141)</td>
+<td>the summit of the headland; OSM's <code>place=locality</code> node "Rosetta Head (The Bluff)" sits 30 m west of it. Height <code>ele</code> = 100 m: the highest of the four terrain pixels (zoom 12, 15 m grid) around the summit, rounded; OSM gives no height.</td>
+</tr>
+<tr>
+<td><strong>Town centre</strong></td>
+<td>OSM node 249072879 (<code>place=town</code> "Victor Harbor", 138.62347, −35.55456)</td>
+<td>OSM's town node, about 80 m from the Ocean Street / Coral Street corner.</td>
+</tr>
+<tr>
+<td><strong>The Causeway</strong></td>
+<td>middle of OSM way 1004582502</td>
+<td>see above.</td>
+</tr>
+<tr>
+<td><strong>Mount Breckan</strong></td>
+<td>inside OSM building way 762827955 (<code>name=Mount Breckan</code>), 138.62194, −35.54657</td>
+<td>OSM has the house itself. Cross-check with G-NAF: the nearest Renown Avenue address is <strong>27–31 Renown Avenue, Victor Harbor</strong>, 12 m from the label.</td>
+</tr>
+<tr>
+<td><strong>Chiton Rocks</strong></td>
+<td>OSM node 1178907825 (<code>place=locality</code>)</td>
+<td>as mapped (it sits just offshore, on the rocks).</td>
+</tr>
+<tr>
+<td><strong>Newland Hill</strong></td>
+<td>OSM node 3008902895</td>
+<td><code>ele</code> 164 m from OSM (the terrain tiles give 171 m there).</td>
+</tr>
+</tbody>
+</table>
+<p>Plain names are used for the hand-picked labels ("The Bluff (Rosetta Head)", "Town centre", "The Causeway");
+all other names are as in OSM or G-NAF.</p>
+<h2 id="rebuild">Rebuild</h2>
+<p>From <code>sim/</code> with the project venv (the OSM extract must be in the main checkout):</p>
+<pre><code>python -m vhsim.viewer.terrain     # downloads only tiles missing from sim/data/terrain-raw/
+python -m vhsim.viewer.basemap     # reads the terrain tiles for label heights
+</code></pre>
+<p>Both are deterministic: re-running them on the same inputs gives identical files.</p></body></html>

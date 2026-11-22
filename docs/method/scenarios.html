@@ -1,0 +1,251 @@
+<!DOCTYPE html><html lang='en-AU'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1'><title>Scenario definitions</title><style>body{font:16px/1.6 -apple-system,'Segoe UI',Helvetica,Arial,sans-serif;color:#1b1b1b;background:#fbfaf7;max-width:56rem;margin:0 auto;padding:1rem 16px 4rem}a{color:#0b5e78}h1,h2,h3{line-height:1.25}table{border-collapse:collapse;font-size:.92rem;display:block;overflow-x:auto}th,td{border:1px solid #ddd;padding:.35rem .5rem;vertical-align:top;text-align:left}code{font-size:.9em;background:#f0eee8;padding:0 .2em}pre{background:#f0eee8;padding:.6rem;overflow-x:auto}nav{font-size:.9rem;border-bottom:1px solid #ddd;padding-bottom:.4rem;margin-bottom:1rem}</style></head><body><nav><a href='/victor-harbor-roads/'>Home</a> · <a href='index.html'>Method and assumptions</a> · <a href='/victor-harbor-roads/kb/'>Evidence notes</a></nav><h1 id="scenario-definitions">Scenario definitions</h1>
+<p>Each scenario = a <strong>network patch</strong> over the baseline (S1) and/or a <strong>demand variant</strong> (S2), run
+under each condition (<code>weekday_term</code>, <code>saturday</code>, <code>summer_peak</code>, <code>event_nye</code>) and demand year
+(<code>2025/base</code>, <code>2031|2041|2051 × moderate|high</code>). Ids match the knowledge base Options Register
+(<code>site/options-register.html</code>).</p>
+<p>Where the council has not defined an option precisely, the definition below is <strong>our reading</strong>
+of its map, marked <em>Inference</em>, and a variant tests the main alternative reading. Sources:
+VHITS town-centre map (S-A04c, S-B03 p.93), Vision map (S-B03 p.92), ring-road map (S-A04b,
+S-B03 pp.91, 94), fact sheet (S-A03), survey text (S-A05).</p>
+<h2 id="baselines">Baselines</h2>
+<table>
+<thead>
+<tr>
+<th>Id</th>
+<th>Network</th>
+<th>Demand</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X0</td>
+<td>baseline (today)</td>
+<td>2025/base — calibration target</td>
+</tr>
+<tr>
+<td>X1</td>
+<td>baseline</td>
+<td>each future year/growth ("do nothing")</td>
+</tr>
+</tbody>
+</table>
+<h2 id="council-options-vhits-preliminary-vision">Council options (VHITS preliminary Vision)</h2>
+<table>
+<thead>
+<tr>
+<th>Id</th>
+<th>Change</th>
+<th>Definition used</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C1</td>
+<td>30 km/h town centre</td>
+<td>All edges inside the shaded town-centre area: bounded by Torrens St (west), Seaview Rd / Eyre Tce (north), Flinders Pde / foreshore (east), Esplanade (south). <strong>C1a</strong>: Torrens St and Victoria St stay at their current limit (they are DIT freight/strategic routes; S-D08, S-D22). <strong>C1b</strong>: Torrens St inside the area also 30 km/h.</td>
+<td><em>Inference</em> — boundary is shading only</td>
+</tr>
+<tr>
+<td>C2</td>
+<td>Shared use zones 10–20 km/h</td>
+<td>20 km/h on Ocean St (the 2014 Mainstreet plan's "shared space", S-B26) plus Albert Pl and Railway Tce within the area; pedestrian priority modelled as reduced speed plus pedestrian crossing delay at Ocean St / Coral St where SUMO supports it. <strong>C2b</strong>: 10 km/h.</td>
+<td><em>Inference</em> — locations not named</td>
+</tr>
+<tr>
+<td>C3</td>
+<td>One-way outer loop</td>
+<td><strong>Clockwise</strong> (reading of the map's arrows): Torrens St one-way north-east from Victoria St to the Hindmarsh/Seaview/Eyre roundabout; Eyre Tce → Flinders Pde one-way southbound to the Esplanade; Esplanade one-way westbound to the Victoria St / Albert Pl area; Victoria St stays two-way. Internal streets keep their current direction unless they conflict with the loop. <strong>C3b</strong>: anticlockwise.</td>
+<td><em>Inference</em> — streets and direction never named in text</td>
+</tr>
+<tr>
+<td>C4</td>
+<td>Traffic signals</td>
+<td>Replace the roundabouts at Torrens St/Hindmarsh Rd × Seaview Rd/Eyre Tce and Torrens St × Crozier Rd with signalised intersections (actuated, fixed cycle ≤ 90 s, pedestrian phase on Torrens St). Lane layout: existing approach lanes (no land acquisition) — <strong>C4b</strong>: three lanes per approach at Seaview/Eyre as the 2015–16 study said signals there would need (S-D21 s13.3.14).</td>
+<td>Sites named in text (S-A03); design not published</td>
+</tr>
+<tr>
+<td>C5</td>
+<td>Outer freight ring road (Option 1), inner reading</td>
+<td>Built from the described end points over existing roads, not traced from the map (S9, <code>sim/assumptions/S9-ring-road.md</code>): Inman Valley Rd → Swains Crossing Rd (existing Inman River crossing) → <strong>new 0.4 km link</strong> → Water Reserve Rd → Greenhills Rd past Day Rd → Hutchinson Rd → Hindmarsh Tiers Rd → Victor Harbor Rd. Outer road 100 km/h, one lane each way, priority over the side roads it meets; at Inman Valley Rd it forms the main road with Inman Valley Rd west (town-bound traffic gives way); give-way to Victor Harbor Rd. Existing ring road (Welch/Armstrong Rd) lowered to 60 km/h; trucks prefer the outer road (SUMO routing preference: the link road counts at twice its travel time for trucks). "More connections to the north growth area" not modelled (no estate streets, S2 M3/M15).</td>
+<td><em>Inference</em> — "indicative" alignment</td>
+</tr>
+<tr>
+<td>C5b</td>
+<td>Outer freight ring road (Option 1), outer reading</td>
+<td>As C5, but Swains Crossing Rd → Stock Rd → new 0.2 km link → Spring Rd → <strong>new 2.8 km road</strong> 0.3–0.9 km west of Greenhills Rd (clear of the growth-area frontage) to Hutchinson Rd, then Mont Rosa Rd straight across Hindmarsh Tiers Rd to Victor Harbor Rd</td>
+<td><em>Inference</em> — variant</td>
+</tr>
+<tr>
+<td>C5s</td>
+<td>Sensitivity of C5</td>
+<td>C5 with Welch Rd / Armstrong Rd left at today's limits (truck preference kept): separates the outer road from the 60 km/h downgrade</td>
+<td>Sensitivity (runs not finished, S9 gaps)</td>
+</tr>
+<tr>
+<td>C6</td>
+<td>Retain current ring road (Option 2)</td>
+<td>Baseline ring road; demand variant adds an activity centre (supermarket + services POIs) north of the ring road near Waggon Rd / Hindmarsh River (S-A03 p.5, S-B03 p.91).</td>
+<td>Demand-side change</td>
+</tr>
+<tr>
+<td>CP</td>
+<td>Council town-centre package</td>
+<td>C1a + C2 + C3 + C4 together, as consulted.</td>
+<td>Package</td>
+</tr>
+</tbody>
+</table>
+<h2 id="brents-options">Brent's options</h2>
+<table>
+<thead>
+<tr>
+<th>Id</th>
+<th>Change</th>
+<th>Definition used</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B1</td>
+<td>Keep two-way streets</td>
+<td>= baseline network (no C3)</td>
+</tr>
+<tr>
+<td>B2</td>
+<td>Timed/event speed zones on variable signs</td>
+<td>30 km/h on the C1 area edges <strong>only</strong> in <code>event_nye</code> and <code>summer_peak</code> 10:00–16:00; baseline limits otherwise</td>
+</tr>
+<tr>
+<td>B3</td>
+<td>Four-lane ring route</td>
+<td>Welch Rd + Armstrong Rd duplicated to two lanes each way (consistent with the Jan 2026 "duplication" note, S-B31); same speed limits</td>
+</tr>
+<tr>
+<td>B4</td>
+<td>Two-lane entry roundabout</td>
+<td>Adelaide Rd / Hindmarsh Rd / Port Elliot Rd roundabout (McCracken) with two circulating lanes and two-lane entries on Adelaide Rd and Hindmarsh Rd</td>
+</tr>
+<tr>
+<td>B5</td>
+<td>Roundabout slip lanes</td>
+<td>Left-turn bypass lanes at Torrens/Seaview/Eyre and Torrens/Crozier roundabouts, where the turning movement exists</td>
+</tr>
+<tr>
+<td>B6</td>
+<td>Retail closer to Encounter Bay</td>
+<td>Demand variant: a supermarket + services POI cluster in Encounter Bay (near Bay Rd / Franklin Pde)</td>
+</tr>
+<tr>
+<td>BP</td>
+<td>Brent's package</td>
+<td>B2 + B3 + B4 + B5</td>
+</tr>
+</tbody>
+</table>
+<h2 id="other-options">Other options</h2>
+<table>
+<thead>
+<tr>
+<th>Id</th>
+<th>Change</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>N1</td>
+<td>Close or half-close the Grantley Ave rail crossing</td>
+<td>2015–16 study: Seaview/Eyre roundabout reaches capacity in summer unless closed (S-D21 s13.3.15); 2017 left-in/left-out trial (S-D19)</td>
+</tr>
+<tr>
+<td>N2+</td>
+<td>Generated after the baseline shows where delay is (R16)</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h3 id="targeted-options-from-the-bottleneck-diagnosis-s7">Targeted options from the bottleneck diagnosis (S7)</h3>
+<p>Chosen from where the simulated delay actually is (<code>sim/assumptions/S7-improvements.md</code>, diagnosis of
+the 2025 summer and 2041 high-growth weekday baselines). Cost classes are rough orders of magnitude for
+comparison only (<strong>$</strong> under $0.5 M, <strong>$$</strong> $0.5–3 M, <strong>$$$</strong> $3–10 M; assumption S7-04); none is a costed design.</p>
+<table>
+<thead>
+<tr>
+<th>Id</th>
+<th>Change</th>
+<th>Why (diagnosis)</th>
+<th>Definition used</th>
+<th>Cost class</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>N2</td>
+<td>Roundabout at Armstrong Rd / Crozier Rd</td>
+<td>Worst single junction at 2041 high growth (Crozier Rd waits ~53 s per vehicle on a weekday) and the second-worst single approach in 2025 summer; B3 makes it worse</td>
+<td>Single-lane roundabout, ring radius 20 m (like the McCracken and Armstrong/George Main roundabouts), 3 legs, ring speed by the baseline's radius rule</td>
+<td>$$ (DIT arterial, rural roundabout)</td>
+</tr>
+<tr>
+<td>N3</td>
+<td>Crozier Rd approach flare at Armstrong Rd</td>
+<td>Cheap alternative to N2: today left- and right-turners share one lane, so left-turners queue behind right-turners waiting for a gap in both directions</td>
+<td>Last 40 m of the Crozier Rd approach get two lanes: kerb lane left, median lane right</td>
+<td>$ (line marking, some widening)</td>
+</tr>
+<tr>
+<td>N4</td>
+<td>Roundabout at Hindmarsh Rd / Grantley Ave (rail-crossing link to Bridge Tce)</td>
+<td>Worst approach in 2025 summer: Bridge Tce traffic turning right onto Hindmarsh Rd via the 17 m crossing link (~50 s per vehicle); N1 (closing the crossing) made things worse</td>
+<td>Single-lane roundabout, radius 12 m, centre moved 8 m west so ~13 m of the crossing link remains between the ring and Bridge Tce</td>
+<td>$$–$$$ (next to a level crossing: crossing protection and land on the west side needed)</td>
+</tr>
+<tr>
+<td>N5</td>
+<td>Ring-road junction roundabouts: N2 + Armstrong Rd / Greenhills Rd</td>
+<td>Greenhills Rd is the second ring-road give-way approach that fails at 2041 high growth (growth areas 1 and 3 load onto it)</td>
+<td>N2, plus a single-lane roundabout (radius 15 m) at Armstrong Rd / Greenhills Rd</td>
+<td>$$$ (two roundabouts)</td>
+</tr>
+<tr>
+<td>N6</td>
+<td>No right turn out of Granite St (onto Victoria St), Coral St (onto Torrens St) and Wattle Dr (onto Hindmarsh Rd)</td>
+<td>The worst side-street right turn on each of the three town-centre arterials in 2025 summer (27–48 s per vehicle; selection rule in S7-03)</td>
+<td>The right-turn movement out of each street removed; left turns and the turns into the street kept</td>
+<td>$ (signs; possibly a median)</td>
+</tr>
+<tr>
+<td>N7</td>
+<td>Combination: N5 + N4</td>
+<td>The three worst junctions together (ring road for growth, Grantley for summer)</td>
+<td>N2 + Armstrong/Greenhills roundabout + N4</td>
+<td>$$$</td>
+</tr>
+<tr>
+<td>N8</td>
+<td>Left-turn lanes on Victoria St eastbound into Oval Rd and the IGA car park</td>
+<td>The Victoria St corridor is the largest hotspot; 2,400 a day turn left into Oval Rd and 980 into the car park (summer 2025), slowing the one through lane</td>
+<td>Last 40 m before each turn: kerb lane left turn only, median lane through</td>
+<td>$</td>
+</tr>
+<tr>
+<td>N9</td>
+<td>Combination: N3 + N4</td>
+<td>The cheap Crozier Rd flare (best Armstrong/Crozier result at today's traffic) with the Grantley roundabout</td>
+<td>N3 flare + N4 roundabout</td>
+<td>$$–$$$</td>
+</tr>
+</tbody>
+</table>
+<p>Not built, with the reason in <code>S7-improvements.md</code>: roundabout metering signals (no roundabout
+approach in the diagnosis is starved by a dominant circulating flow except Eyre Tce, and its loss is
+small), better-designed signals at the C4 sites (the two roundabouts there are not bottlenecks today),
+a link road for growth area 1 (the demand model has no estate streets to connect it to), seasonal
+traffic management and a caravan route (no measured target in the model). C5 was first left out because the
+indicative alignment could not be georeferenced; it was built in S9 from the described end points and existing
+roads instead (rows C5 / C5b above).</p>
+<h2 id="outputs-per-run">Outputs per run</h2>
+<p>Accessibility (R14) and movement delay (R15) tables from <code>vhsim.metrics</code>; deltas vs X0/X1;
+foreshore exposure (R23a: trucks and caravans on Flinders Pde / Esplanade / past Warland Reserve);
+network totals. At least 5 seeds per run; report the spread across seeds.</p></body></html>

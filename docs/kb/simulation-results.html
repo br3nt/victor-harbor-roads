@@ -11,10 +11,10 @@
 </head>
 <body><nav class="kb-nav"><a href="victor-harbor-traffic-investigation.html">⌂ Home</a> · <a href="sitemap.html">Sitemap</a> · <a class="pn-navlink" href="private-names-review.html">Private residents</a></nav>
 <h1>Simulation Results</h1>
-<p><strong>Preliminary.</strong> First results from our <abbr title="Simulation of Urban MObility, an open-source traffic simulator">SUMO</abbr> (Simulation of Urban MObility) model of Victor Harbor now (traffic built from 2025 data): term weekday and summer peak day, 3 runs (random seeds) each. Independently reviewed on 21 Nov 2026; wording below follows that review. Method: <a rel="related" href="simulation-design.html">Simulation Design</a>; options: <a rel="related" href="options-register.html">Options Register</a>; assumptions and calibration fit: <code>sim/assumptions/integration.md</code> (A-INT-01 to 04) and <code>sim/assumptions/S6-scenarios.md</code>.</p>
+<p><strong>Preliminary.</strong> First results from our <abbr title="Simulation of Urban MObility, an open-source traffic simulator">SUMO</abbr> (Simulation of Urban MObility) model of Victor Harbor now (traffic built from 2025 data): term weekday and summer peak day, 3 runs (random seeds) each. Independently reviewed on 21 Nov 2026; wording below follows that review. Method: <a rel="related" href="simulation-design.html">Simulation Design</a>; options: <a rel="related" href="options-register.html">Options Register</a>; assumptions and calibration fit: <a href="/victor-harbor-roads/method/integration.html">Assumptions — integration</a> (A-INT-01 to 04) and <a href="/victor-harbor-roads/method/s6-scenarios.html">Assumptions — S6 scenario networks</a>.</p>
 <h2 id="how-to-read">How to read these results</h2>
 <ul>
-<li><strong>Differences, not forecasts.</strong> The model is partly calibrated: most main roads are within about ±25% of Department for Infrastructure and Transport (<abbr title="Department for Infrastructure and Transport">DIT</abbr>) daily counts, but Victoria St carries about 50% too much and Adelaide Rd about 40% too little, and the town centre is somewhat under-loaded: at the counted intersections the model carries about 0.80 of the 2017 turning counts projected to 2025 (method and validation: <code>sim/data/counts/PROJECTION.md</code>; <a rel="related" href="traffic-and-crash-data.html#projected-counts">projected counts</a>). Delay grows faster than traffic, so penalties in the town centre are more likely understated than overstated.</li>
+<li><strong>Differences, not forecasts.</strong> The model is partly calibrated: most main roads are within about ±25% of Department for Infrastructure and Transport (<abbr title="Department for Infrastructure and Transport">DIT</abbr>) daily counts, but Victoria St carries about 50% too much and Adelaide Rd about 40% too little, and the town centre is somewhat under-loaded: at the counted intersections the model carries about 0.80 of the 2017 turning counts projected to 2025 (method and validation: <a href="/victor-harbor-roads/method/projection.html">Projecting the 2017 turning counts to 2025</a>; <a rel="related" href="traffic-and-crash-data.html#projected-counts">projected counts</a>). Delay grows faster than traffic, so penalties in the town centre are more likely understated than overstated.</li>
 <li><strong>Noise.</strong> The 3 seeds share the same trips, so the spread shown is simulation noise only, not uncertainty about demand.</li>
 <li><strong>Metrics.</strong> "Trip time" is door-to-door driving time. "Time stopped" is total vehicle-hours stationary in queues; it does not depend on speed limits (unlike the simulator's "time loss" measure, which we do not use). Part of the extra trip time in lower-speed options is the lower limits themselves, assuming full compliance.</li>
 <li><strong>As modelled.</strong> Signals (C4) are a minimal design (one shared lane per approach, equal green split) and probably pessimistic; 20 km/h shared streets (C2) have no pedestrian delay and are probably optimistic. Brent's package here is B3+B4+B5 (time-based speed zones, B2, not included).</li>
@@ -96,7 +96,7 @@
 </tbody></table>
 <h2 id="better-options">Better options: aimed at where the delay actually is (R16)</h2>
 <p>We first located the delay on today's network (method, hotspot tables and assumptions:
-<code>sim/assumptions/S7-improvements.md</code>), then designed options aimed at it and ran them like the others.
+<a href="/victor-harbor-roads/method/s7-improvements.html">S7 — Where the delay is, and targeted options aimed at it</a>), then designed options aimed at it and ran them like the others.
 Most delay is <strong>side-street right turns onto one-lane main roads</strong> around midday (10:00–17:00 holds
 83–89% of it), not the town-centre roundabouts (most approaches average 3–8 s). The largest hotspots are Victoria St
 between Bay Rd and Torrens St (car-park and side-street turns), side streets onto Hindmarsh Rd, the Bridge Tce /
@@ -138,7 +138,7 @@ where it is under N9).</li>
 60 km/h; Option 2 keeps the current ring road. The council's map is indicative, so we built Option 1 from the route
 it describes over existing roads (Swains Crossing Rd, Greenhills Rd, Hutchinson Rd, Hindmarsh Tiers Rd) plus short
 new sections, in two readings, with trucks preferring the outer road. Method and assumptions:
-<code>sim/assumptions/S9-ring-road.md</code>. "2025" is today's demand; 2031 and 2041 are the high growth series.</p>
+<a href="/victor-harbor-roads/method/s9-ring-road.html">S9 — The council&#x27;s ring-road options (VHITS Option 1 vs Option 2)</a>. "2025" is today's demand; 2031 and 2041 are the high growth series.</p>
 <table><thead><tr><th>Option</th><th>Time stopped, 2025 term weekday</th><th>Time stopped, 2025 summer peak day</th><th>Time stopped, 2031 high growth, term weekday</th><th>Time stopped, 2031 high growth, summer peak day</th><th>Time stopped, 2041 high growth, term weekday</th></tr></thead><tbody>
 <tr><td>Option 2 as it is: today's ring road</td><td>today</td><td>today</td><td>today</td><td>today</td><td>today</td></tr>
 <tr><td>Option 2 with junction fixes (N7: roundabouts at Armstrong/Crozier and Armstrong/Greenhills, plus Hindmarsh/Grantley)</td><td>-2%</td><td>-10%</td><td>-6%</td><td>-37%</td><td>-24%</td></tr>
@@ -162,7 +162,7 @@ its junctions (B3) is worse than today at 2041.</li>
 <li><strong>Not settled:</strong> whether an outer road helps if the existing ring road keeps its speed (that test
 did not finish), and Option 1's 2031 and most 2025 runs. The model has no estate streets or new links for the growth
 areas and little through freight, which an Option 1 design would change. Details and gaps:
-<code>sim/assumptions/S9-ring-road.md</code>.</li>
+<a href="/victor-harbor-roads/method/s9-ring-road.html">S9 — The council&#x27;s ring-road options (VHITS Option 1 vs Option 2)</a>.</li>
 </ul>
 <h2 id="findings">Findings (preliminary, as modelled)</h2><ul>
 <li><strong>Council's town-centre package:</strong> about +28 s per trip and about +60% time stopped in queues on a summer peak day (+275 vehicle-hours a day); about +14 s per trip on a term weekday. Part of the extra trip time is the lower limits themselves.</li>
@@ -174,9 +174,9 @@ areas and little through freight, which an Option 1 design would change. Details
 </ul>
 <h2 id="to-check">Known issues to check</h2><ul>
 <li>Under the council package, Torrens Lane (tagged a residential street in OpenStreetMap) goes from tens to 500–700 vehicles a day. If it is really a narrow service lane, this inflates the package's penalty slightly.</li>
-<li>Growth: at 2041 (about 15 years from now) high growth (State high series) a term weekday finishes (see <a href="#better-options">better options</a>), but a summer day does not: every option jams by early afternoon (<code>sim/assumptions/integration.md</code> A-INT-05). Growth areas load onto today's roads, without their future streets and link roads. Saturday and New Year's Eve are not yet run, nor Option 2's activity centre north of the ring road (C6).</li>
+<li>Growth: at 2041 (about 15 years from now) high growth (State high series) a term weekday finishes (see <a href="#better-options">better options</a>), but a summer day does not: every option jams by early afternoon (<a href="/victor-harbor-roads/method/integration.html">Assumptions — integration</a> A-INT-05). Growth areas load onto today's roads, without their future streets and link roads. Saturday and New Year's Eve are not yet run, nor Option 2's activity centre north of the ring road (C6).</li>
 </ul>
-<p>Interactive maps of every run: <a rel="related" href="../maps/index.html">Victor Harbor Road Options</a> (a residents' trip checker, plus the detailed viewer with travel time to any place, congestion per lane and direction, and before/after). Source: <code>viewer/</code> in the project. Corrected 22 Nov 2026: a road section where the only vehicle in a 15-minute interval was leaving the stop line could show an hour-long travel time (Grantley Ave at 12:30 on a summer day showed the council package 53 minutes faster than today; it is about a minute slower). Only the maps were affected, not the tables on this page (<code>sim/assumptions/S5-viewer.md</code> V1a).</p>
+<p>Interactive maps of every run: <a rel="related" href="../maps/index.html">Victor Harbor Road Options</a> (a residents' trip checker, plus the detailed viewer with travel time to any place, congestion per lane and direction, and before/after). Source: <code>viewer/</code> in the project. Corrected 22 Nov 2026: a road section where the only vehicle in a 15-minute interval was leaving the stop line could show an hour-long travel time (Grantley Ave at 12:30 on a summer day showed the council package 53 minutes faster than today; it is about a minute slower). Only the maps were affected, not the tables on this page (<a href="/victor-harbor-roads/method/s5-viewer.html">Assumptions and data format — S5 viewer</a> V1a).</p>
 
 <aside class="kb-backlinks"><h2>Linked from</h2><ul><li><span class="rel">chapter</span> ← <a href="victor-harbor-traffic-investigation.html">Victor Harbor Traffic Investigation</a></li></ul></aside>
 

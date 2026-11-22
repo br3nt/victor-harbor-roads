@@ -551,6 +551,94 @@ def stage_pages(out: Path) -> None:
             (docs / name / "index.html").write_text(placeholder_page(title, text))
 
 
+# Method and assumption documents are written in Markdown in the repo; on the site every one is a web page
+# (docs/method/<slug>.html), and every mention of a .md path in the site's pages becomes a link to that page.
+METHOD_DOCS = [  # (repo path, group)
+    ("sim/DESIGN.md", "How the simulation is built"), ("sim/SCENARIOS.md", "How the simulation is built"),
+    ("sim/VIEWER.md", "How the simulation is built"),
+    ("sim/assumptions/integration.md", "Assumptions"), ("sim/assumptions/S1-network.md", "Assumptions"),
+    ("sim/assumptions/S2-demand.md", "Assumptions"), ("sim/assumptions/S3-counts.md", "Assumptions"),
+    ("sim/assumptions/S4-metrics.md", "Assumptions"), ("sim/assumptions/S5-viewer.md", "Assumptions"),
+    ("sim/assumptions/S6-scenarios.md", "Assumptions"), ("sim/assumptions/S7-improvements.md", "Assumptions"),
+    ("sim/assumptions/S8-hotspots.md", "Assumptions"), ("sim/assumptions/S9-ring-road.md", "Assumptions"),
+    ("sim/data/counts/COUNTS.md", "Data checks and forecasting"), ("sim/data/counts/PROJECTION.md", "Data checks and forecasting"),
+    ("sim/data/demand/VALIDATION.md", "Data checks and forecasting"), ("sim/data/networks/VALIDATION.md", "Data checks and forecasting"),
+    ("research/A-yoursay.md", "Research notes"), ("research/B-provenance.md", "Research notes"),
+    ("research/C-population.md", "Research notes"), ("research/D-traffic.md", "Research notes"),
+    ("research/E-network.md", "Research notes"), ("research/CONVENTIONS.md", "Research notes"),
+    ("viewer/hotspots/README.md", "Data sources for the maps"), ("viewer/basemap/SOURCES.md", "Data sources for the maps"),
+    ("viewer/residents/data/SOURCES.md", "Data sources for the maps"),
+]
+SITE_PATH = "/victor-harbor-roads"
+METHOD_CSS = ("body{font:16px/1.6 -apple-system,'Segoe UI',Helvetica,Arial,sans-serif;color:#1b1b1b;background:#fbfaf7;"
+              "max-width:56rem;margin:0 auto;padding:1rem 16px 4rem}a{color:#0b5e78}h1,h2,h3{line-height:1.25}"
+              "table{border-collapse:collapse;font-size:.92rem;display:block;overflow-x:auto}th,td{border:1px solid #ddd;"
+              "padding:.35rem .5rem;vertical-align:top;text-align:left}code{font-size:.9em;background:#f0eee8;padding:0 .2em}"
+              "pre{background:#f0eee8;padding:.6rem;overflow-x:auto}nav{font-size:.9rem;border-bottom:1px solid #ddd;"
+              "padding-bottom:.4rem;margin-bottom:1rem}")
+
+
+def _method_slug(path: str) -> str:
+    p = Path(path)
+    stem = p.stem
+    return f"{p.parent.name}-{stem}".lower() if stem in ("README", "SOURCES", "VALIDATION") else stem.lower()
+
+
+def stage_method(out: Path) -> dict:
+    import markdown  # rendering only; the repo keeps the Markdown sources
+    docs, dest = out / "docs", out / "docs" / "method"
+    dest.mkdir(parents=True, exist_ok=True)
+    pages = {}
+    for path, group in METHOD_DOCS:
+        src = out / path
+        if not src.exists():
+            continue
+        text = src.read_text()
+        title = next((l.lstrip("# ").strip() for l in text.splitlines() if l.startswith("# ")), Path(path).stem)
+        pages[path] = (_method_slug(path), title, group)
+    by_name = {Path(p).name: s for p, (s, _, _) in pages.items()}
+    for path, (slug, title, group) in pages.items():
+        src_text = (out / path).read_text().replace("/Users/brent/Development/victor-traffic-simulation/", "")
+        src_text = re.sub(r"/Users/[^/\s]+", "~", src_text)   # author's local paths are not for the public pages
+        body = markdown.markdown(src_text, extensions=["tables", "fenced_code", "toc", "sane_lists"])
+        # links between the documents: X.md -> X.html
+        body = re.sub(r'href="([^"#]*?)([^/"#]+)\.md(#[^"]*)?"',
+                      lambda m: f'href="{by_name[m.group(2) + ".md"]}.html{m.group(3) or ""}"' if (m.group(2) + ".md") in by_name else m.group(0),
+                      body)
+        (dest / f"{slug}.html").write_text(
+            f"<!DOCTYPE html><html lang='en-AU'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1'>"
+            f"<title>{html.escape(title)}</title><style>{METHOD_CSS}</style></head><body><nav><a href='{SITE_PATH}/'>Home</a> · "
+            f"<a href='index.html'>Method and assumptions</a> · <a href='{SITE_PATH}/kb/'>Evidence notes</a></nav>{body}</body></html>")
+    groups: dict = {}
+    for path, (slug, title, group) in pages.items():
+        groups.setdefault(group, []).append(f"<li><a href='{slug}.html'>{html.escape(title)}</a></li>")
+    (dest / "index.html").write_text(
+        f"<!DOCTYPE html><html lang='en-AU'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1'>"
+        f"<title>Method and assumptions</title><style>{METHOD_CSS}</style></head><body><nav><a href='{SITE_PATH}/'>Home</a> · "
+        f"<a href='{SITE_PATH}/kb/'>Evidence notes</a></nav><h1>Method and assumptions</h1><p>How the simulation was built, every "
+        f"assumption it makes, how the data was checked and forecast, and where each dataset comes from.</p>"
+        + "".join(f"<h2>{html.escape(g)}</h2><ul>{''.join(items)}</ul>" for g, items in groups.items()) + "</body></html>")
+    # every mention of a rendered .md path in the site's pages becomes a link to its page
+    n = 0
+    for f in docs.rglob("*.html"):
+        if dest in f.parents:
+            continue
+        s = f.read_text()
+        new = s
+        for path, (slug, title, _) in pages.items():
+            link = f'<a href="{SITE_PATH}/method/{slug}.html">{html.escape(title)}</a>'
+            new = new.replace(f"<code>{path}</code>", link)
+            new = re.sub(rf'(?<![\w/"=]){re.escape(path)}(?![\w])', link, new)
+        if new != s:
+            f.write_text(new); n += 1
+    landing = docs / "index.html"
+    if landing.exists() and "method/index.html" not in landing.read_text():
+        landing.write_text(landing.read_text().replace(
+            "</main>", "<p><a href='method/index.html'>Method and assumptions</a>: how the simulation was built, "
+                       "every assumption, and where each dataset comes from.</p></main>", 1))
+    return {"method_pages": len(pages), "pages_linked": n}
+
+
 def build_site(out: Path, viewer_data: Path) -> dict:
     docs = out / "docs"
     docs.mkdir()
@@ -560,7 +648,8 @@ def build_site(out: Path, viewer_data: Path) -> dict:
     stage_kb(out)
     n_maps = stage_maps(out, viewer_data)
     stage_game(out)
-    return {"map_data_files": n_maps}
+    method = stage_method(out)
+    return {"map_data_files": n_maps, **method}
 
 
 def build(root: Path, out: Path, viewer_data: Path | None = None, ref: str = "HEAD", site: bool = True) -> dict:

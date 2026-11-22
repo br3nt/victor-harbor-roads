@@ -1,0 +1,610 @@
+<!DOCTYPE html><html lang='en-AU'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1'><title>Baseline network — validation (S1)</title><style>body{font:16px/1.6 -apple-system,'Segoe UI',Helvetica,Arial,sans-serif;color:#1b1b1b;background:#fbfaf7;max-width:56rem;margin:0 auto;padding:1rem 16px 4rem}a{color:#0b5e78}h1,h2,h3{line-height:1.25}table{border-collapse:collapse;font-size:.92rem;display:block;overflow-x:auto}th,td{border:1px solid #ddd;padding:.35rem .5rem;vertical-align:top;text-align:left}code{font-size:.9em;background:#f0eee8;padding:0 .2em}pre{background:#f0eee8;padding:.6rem;overflow-x:auto}nav{font-size:.9rem;border-bottom:1px solid #ddd;padding-bottom:.4rem;margin-bottom:1rem}</style></head><body><nav><a href='/victor-harbor-roads/'>Home</a> · <a href='index.html'>Method and assumptions</a> · <a href='/victor-harbor-roads/kb/'>Evidence notes</a></nav><h1 id="baseline-network-validation-s1">Baseline network — validation (S1)</h1>
+<p>Build: <code>cd sim &amp;&amp; python -m vhsim.network.build</code> (≈5 s). Inputs: OSM extract <strong>S-E01</strong>
+(<code>sources/E/S-E01-overpass-victor-harbor.osm</code>, data timestamp 2026-11-20) and DIT State
+Maintained Roads legal speed limits <strong>S-D05</strong> (<code>sources/D/D-state-maintained-roads-vh-area.geojson</code>).
+Every check below is an automated test in <code>sim/tests/network/</code> (fast: <code>-m "not slow"</code>; the
+<code>slow</code> tests build the real network). Counts and lists are in <code>build_report.json</code>. Choices not taken
+from a source are in <code>sim/assumptions/S1-network.md</code> (ids A-S1-xx).</p>
+<h2 id="network-at-a-glance">Network at a glance</h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Edges (directed, non-internal)</td>
+<td>4,340</td>
+</tr>
+<tr>
+<td>Junctions</td>
+<td>1,796 (1,671 priority, 121 right-before-left, 4 dead ends)</td>
+</tr>
+<tr>
+<td>Roundabouts</td>
+<td>31 (from 32 OSM roundabout ways; the Armstrong Rd / George Main Rd ring is two OSM ways)</td>
+</tr>
+<tr>
+<td>Traffic lights</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Road length</td>
+<td>304.7 km of road (centreline, two-way roads counted once); 602.1 km of directed edges; 602.3 lane-km</td>
+</tr>
+<tr>
+<td>Driving side</td>
+<td>left (<code>--lefthand</code>); roundabouts circulate clockwise (tested)</td>
+</tr>
+<tr>
+<td>Vehicle classes</td>
+<td>every edge allows passenger, truck, trailer, delivery, bus (tested)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="import-requirement-1">Import (requirement 1)</h2>
+<p>netconvert 1.28 options (<code>vhsim/network/config.py</code>): <code>--lefthand</code>, <code>--geometry.remove</code>,
+<code>--roundabouts.guess</code>, <code>--junctions.join</code>, <code>--tls.guess false</code>, <code>--tls.guess-signals false</code>,
+<code>--tls.discard-loaded</code>, <code>--osm.turn-lanes</code>, <code>--output.street-names</code>, <code>--output.original-names</code>,
+<code>--keep-edges.by-vclass passenger,truck,trailer,delivery,bus</code>, <code>--remove-edges.isolated</code>,
+<code>--osm.all-attributes</code> (OSM <code>highway, maxspeed, lanes, oneway, ref, junction, service</code> kept as
+edge params). SUMO's OSM typemap is loaded with <code>vhsim/network/vh.typ.xml</code> on top (A-S1-01/02/04).</p>
+<ul>
+<li><strong>Dropped:</strong> footways, cycleways, paths, steps, pedestrian ways, tracks, construction/proposed
+  ways (no motor-vehicle class; tested). Before import, 153 OSM service ways that are not public
+  road are removed (A-S1-03): 66 <code>access=private</code>, 1 <code>access=no</code> (a bus-only link), 48
+  <code>service=driveway</code>, 38 <code>service=parking_aisle</code>. Other service roads (car-park entries, lanes,
+  access roads; 777 edges) are kept and open to cars at 20 km/h (A-S1-02).</li>
+<li><strong>Traffic lights:</strong> none. OSM has no signalised road junctions; its only three signal nodes are
+  pedestrian crossings (Torrens St near Coral St ×2, near Bay Rd / Franklin Pde) [S-E01]. They are
+  dropped with <code>--tls.discard-loaded</code>; pedestrians are not modelled, so a signal that only serves a
+  crossing would only add random stops (A-S1-06). The DIT signal layer also has none [S-D10].</li>
+<li><strong>Cut at the extract edge:</strong> 1 edge removed (an unnamed one-way service stub entering from nowhere,
+  near the hospital). Every other edge is drivable for cars (next section).</li>
+<li><strong>netconvert warnings</strong> (counts in <code>build_report.json</code>): 23 "Replacing loaded roundabout": the
+  first segment of a closed OSM roundabout way is merged into its neighbour by <code>--geometry.remove</code>,
+  so the roundabout is re-registered without that (no longer existing) edge id. This is what
+  research/E-network.md called "~20 incomplete roundabouts" (with its options the same message
+  read "Writing incomplete roundabout ... no longer exist"); it does not leave any ring incomplete
+  (next check). 33 sharp-turn and 48 turning-radius speed reductions (geometry); 24 "intersecting
+  left turns" at joined clusters, mostly Encounter Bay residential streets; 1 ignored restriction
+  (re-applied, see turn restrictions).</li>
+</ul>
+<h2 id="speeds-requirement-2">Speeds (requirement 2)</h2>
+<p>Rule: DIT legal limit [S-D05] where the edge runs along a State road section; else OSM
+<code>maxspeed</code> [S-E01]; else 50 km/h (20 km/h on service roads). An edge takes a DIT section when ≥ 60%
+of points sampled every 5 m along it lie within 20 m of the section centreline and run parallel
+to it (within 30°), and its name belongs to the same DIT road number (or it is an unnamed
+trunk/primary/secondary/link piece). Each edge's source is in <code>edge_attributes.csv</code>
+(<code>speed_source</code>, <code>dit_section</code>, <code>osm_maxspeed</code>, <code>legal_speed_kmh</code>).</p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Edges</th>
+<th>Directed km</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S-D05 (DIT)</td>
+<td>219</td>
+<td>36.6</td>
+</tr>
+<tr>
+<td>OSM maxspeed</td>
+<td>2,022</td>
+<td>328.5</td>
+</tr>
+<tr>
+<td>default (50 / service 20)</td>
+<td>1,960</td>
+<td>236.5</td>
+</tr>
+<tr>
+<td>roundabout cap (A-S1-05)</td>
+<td>139</td>
+<td>0.5</td>
+</tr>
+</tbody>
+</table>
+<p>DIT sections matched (directed km; both carriageways or directions count):</p>
+<table>
+<thead>
+<tr>
+<th>DIT section [S-D05]</th>
+<th>Limit</th>
+<th>Edges</th>
+<th>km</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>04760 Victor Harbor Rd 45.14–46.00</td>
+<td>80</td>
+<td>4</td>
+<td>0.56</td>
+</tr>
+<tr>
+<td>04760 Victor Harbor Rd 46.00–46.45</td>
+<td>60</td>
+<td>2</td>
+<td>1.00</td>
+</tr>
+<tr>
+<td>04760 Adelaide Rd 46.45–47.66</td>
+<td>60</td>
+<td>24</td>
+<td>2.06</td>
+</tr>
+<tr>
+<td>04760 Hindmarsh Rd 47.66–49.45</td>
+<td>60</td>
+<td>41</td>
+<td>3.08</td>
+</tr>
+<tr>
+<td>04760 Hindmarsh Rd 49.45–49.53</td>
+<td>60</td>
+<td>2</td>
+<td>0.22</td>
+</tr>
+<tr>
+<td>04760 Hindmarsh Rd 49.55–50.00</td>
+<td>50</td>
+<td>18</td>
+<td>0.56</td>
+</tr>
+<tr>
+<td>04760 Torrens St 50.00–50.56</td>
+<td>50</td>
+<td>25</td>
+<td>0.80</td>
+</tr>
+<tr>
+<td>04688 Port Elliot Rd 0.00–2.95</td>
+<td>60</td>
+<td>44</td>
+<td>5.20</td>
+</tr>
+<tr>
+<td>04793 Victoria St 31.72–32.36</td>
+<td>50</td>
+<td>21</td>
+<td>1.30</td>
+</tr>
+<tr>
+<td>04793 George Main Rd 31.59–31.72</td>
+<td>50</td>
+<td>3</td>
+<td>0.29</td>
+</tr>
+<tr>
+<td>04793 George Main Rd 30.41–31.59</td>
+<td>60</td>
+<td>26</td>
+<td>1.92</td>
+</tr>
+<tr>
+<td>04793 Inman Valley Rd 29.34–30.41</td>
+<td>60</td>
+<td>7</td>
+<td>2.31</td>
+</tr>
+<tr>
+<td>04793 Inman Valley Rd 28.44–29.34</td>
+<td>80</td>
+<td>4</td>
+<td>1.40</td>
+</tr>
+<tr>
+<td>04793 Inman Valley Rd 15.00–28.44</td>
+<td>100</td>
+<td>10</td>
+<td>15.98</td>
+</tr>
+</tbody>
+</table>
+<p>Hindmarsh Rd 49.53–49.55 (20 m, 50 km/h) is shorter than any edge and is absorbed by its
+neighbours. Hindmarsh Tiers Rd, Goolwa Rd and North Tce lie outside the extract.</p>
+<p><strong>DIT vs OSM conflicts (DIT used):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Street</th>
+<th>OSM</th>
+<th>DIT</th>
+<th>Directed km</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Torrens Street</td>
+<td>60</td>
+<td>50</td>
+<td>0.79 (22 edges: all of it)</td>
+</tr>
+<tr>
+<td>Victoria Street (Torrens St – Bay Rd)</td>
+<td>60</td>
+<td>50</td>
+<td>1.43</td>
+</tr>
+<tr>
+<td>Hindmarsh Road (RRD 49.55–50.00, Cornhill Rd – Torrens St)</td>
+<td>60</td>
+<td>50</td>
+<td>0.56</td>
+</tr>
+<tr>
+<td>Inman Valley Road</td>
+<td>100 / 80</td>
+<td>80 / 60</td>
+<td>0.44 / 1.27</td>
+</tr>
+</tbody>
+</table>
+<p>DIT warns its legal limits "may not coincide with the posted speed limit signage" [S-D06]. The DIT
+regulatory sign extract [S-D11] supports the DIT value in the town: a 50 sign on Torrens St near
+Crozier Rd (SI-105902, -35.5549, 138.6204), a 50 sign on Hindmarsh Rd before Torrens St
+(SI-105466, -35.5511, 138.6235), back-to-back 50/60 signs where Hindmarsh Rd changes
+(SI-105373/105374 and SI-105376/105377, about -35.5500, 138.6241, i.e. RRD ≈ 49.5), a 50 sign on
+Victoria St near King St (SI-105967) and back-to-back 50/60 signs at Victoria St / Bay Rd
+(SI-111221/111233). So OSM's 60 on Torrens St and Victoria St looks out of date. Tested:
+<code>test_torrens_street_uses_dit_50_not_osm_60</code>, <code>test_state_roads_take_dit_limits</code>.</p>
+<p><strong>Roundabouts:</strong> circulating edges get V = √(127 R (e+f)), e+f = 0.3, R = ring radius from the
+SUMO junction positions (A-S1-05), never above the legal limit: 18–20 km/h at the Torrens St
+roundabouts, 23 at Bay Rd, 27 at McCracken, 31 at Armstrong Rd / George Main Rd (tested 15–35).</p>
+<p><strong>Defaults that are probably too low (outside the town):</strong> untagged rural roads default to 50 km/h:
+Greenhills Rd 17.1 km (directed), Cartwright Rd 9.0, Waterport Rd 7.8 (its tagged part is 80),
+Wilson Hill Rd 5.2, Tugwell Rd 4.9, Jagger Rd 4.4 km. They only affect travel times to/from the
+north-west and north-east fringes. OSM tags Waitpinga Rd 110 km/h (22 km); unverified (SA's
+open-road default is 100).</p>
+<h2 id="lanes-requirement-3">Lanes (requirement 3)</h2>
+<p>OSM <code>lanes</code> where tagged (309 edges); otherwise one lane per direction on every road class
+(A-S1-04: SUMO's default of two per direction on untagged trunk/primary ways is wrong here).</p>
+<table>
+<thead>
+<tr>
+<th>Arterial</th>
+<th>Directed km</th>
+<th>Lanes per direction</th>
+<th>OSM-tagged km</th>
+<th>One-way (divided) km</th>
+<th>Speeds</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Torrens Street</td>
+<td>0.79</td>
+<td>1</td>
+<td>0.21</td>
+<td>0.62</td>
+<td>50</td>
+</tr>
+<tr>
+<td>Victoria Street</td>
+<td>2.10</td>
+<td>1</td>
+<td>0.22</td>
+<td>1.06</td>
+<td>50 / 60</td>
+</tr>
+<tr>
+<td>Hindmarsh Road</td>
+<td>3.85</td>
+<td>1</td>
+<td>2.06</td>
+<td>0.14</td>
+<td>50 / 60</td>
+</tr>
+<tr>
+<td>Adelaide Road</td>
+<td>2.05</td>
+<td>1</td>
+<td>2.05</td>
+<td>0.08</td>
+<td>60</td>
+</tr>
+<tr>
+<td>Port Elliot Road</td>
+<td>5.18</td>
+<td>1</td>
+<td>0.13</td>
+<td>0.13</td>
+<td>60</td>
+</tr>
+<tr>
+<td>Victor Harbor Road</td>
+<td>1.56</td>
+<td>1</td>
+<td>1.00</td>
+<td>0.44</td>
+<td>60 / 80</td>
+</tr>
+<tr>
+<td>Bay Road</td>
+<td>3.81</td>
+<td>1</td>
+<td>0</td>
+<td>0.29</td>
+<td>50 / 60</td>
+</tr>
+<tr>
+<td>Armstrong Road</td>
+<td>8.51</td>
+<td>1</td>
+<td>0</td>
+<td>0.02</td>
+<td>50 / 60 / 100</td>
+</tr>
+<tr>
+<td>Welch Road</td>
+<td>1.04</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>60 / 100</td>
+</tr>
+<tr>
+<td>Waterport Road</td>
+<td>10.04</td>
+<td>1</td>
+<td>0</td>
+<td>0.42</td>
+<td>50 / 80</td>
+</tr>
+</tbody>
+</table>
+<p>Where OSM tags lanes on these roads it always says one per direction (e.g. <code>lanes=2</code> on two-way
+Hindmarsh Rd and Adelaide Rd, <code>lanes=1</code> on the divided Torrens St and McCracken approaches).
+<strong>Not checked against aerial imagery</strong> (no imagery source is archived; this session had none).
+Turn pockets, flared roundabout entries and right-turn bays are <strong>not</strong> in OSM and not modelled
+(A-S1-10): a right-turner waiting on a one-lane approach blocks through traffic. This matters most
+for right turns from Torrens St / Hindmarsh Rd into Stuart St, Cornhill Rd and Grantley Ave, and
+for the ~50 m right-turn lane into Ocean St that the 2017 review describes [S-D19 s3]; add them as
+patches once the layout is checked.</p>
+<p><strong>Fix F1 — Torrens St → Ocean St right turn.</strong> OSM has no median opening at Torrens St / Ocean St,
+so the right turn from the north-east-bound carriageway into Ocean St did not exist. The 2017 review
+counts about 700 such right turns a day and recommends retaining them [S-D19 s3]. The build adds a
+one-lane median link (<code>vhsim/network/fixes/</code>, edge <code>vhfix_torrens_ocean_right</code>) that yields to the
+south-west-bound carriageway and leads only into Ocean St (tested). The real ~50 m storage is not
+modelled (A-S1-09). The other Torrens St side-street turns (Coral, Hill, Stuart: left and right) are
+present.</p>
+<h2 id="roundabouts-requirement-4">Roundabouts (requirement 4)</h2>
+<p><code>vhsim.network.checks.check_roundabouts</code> tests each ring: edges form one closed directed cycle,
+it circulates clockwise, every ring→ring link has priority (<code>M</code>), every entry yields (<code>m</code>), no
+ring node is signalised and it has approaches. <strong>All 31 pass</strong>, and every OSM
+<code>junction=roundabout</code> way is inside a SUMO roundabout (tested). Named rings:</p>
+<table>
+<thead>
+<tr>
+<th>Junction</th>
+<th>lat, lon</th>
+<th>Radius m</th>
+<th>Approaches</th>
+<th>Circulating km/h</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>torrens_victoria_wills</td>
+<td>-35.5559, 138.6207</td>
+<td>10</td>
+<td>4</td>
+<td>19</td>
+</tr>
+<tr>
+<td>torrens_crozier</td>
+<td>-35.5545, 138.6208</td>
+<td>11</td>
+<td>4</td>
+<td>20</td>
+</tr>
+<tr>
+<td>torrens_eyre_seaview_hindmarsh</td>
+<td>-35.5516, 138.6230</td>
+<td>9</td>
+<td>4</td>
+<td>18</td>
+</tr>
+<tr>
+<td>bay_victoria_georgemain</td>
+<td>-35.5573, 138.6119</td>
+<td>14</td>
+<td>4</td>
+<td>23</td>
+</tr>
+<tr>
+<td>esplanade_king</td>
+<td>-35.5572, 138.6189</td>
+<td>6</td>
+<td>3</td>
+<td>15</td>
+</tr>
+<tr>
+<td>adelaide_hindmarsh_portelliot (McCracken)</td>
+<td>-35.5365, 138.6391</td>
+<td>19</td>
+<td>4</td>
+<td>27</td>
+</tr>
+<tr>
+<td>crozier_canterbury</td>
+<td>-35.5495, 138.6110</td>
+<td>8</td>
+<td>4</td>
+<td>18</td>
+</tr>
+<tr>
+<td>canterbury_greenhills</td>
+<td>-35.5441, 138.6141</td>
+<td>9</td>
+<td>4</td>
+<td>18</td>
+</tr>
+<tr>
+<td>armstrong_georgemain_inmanvalley (ring road)</td>
+<td>-35.5569, 138.5996</td>
+<td>25</td>
+<td>5</td>
+<td>31</td>
+</tr>
+</tbody>
+</table>
+<p>The other 22 are residential rings (Encounter Bay, McCracken estates); they pass the same check,
+but their radius is small and their shapes come only from OSM: treat them as approximate. There is
+no roundabout on Armstrong Rd / Welch Rd other than the George Main Rd one inside the extract.</p>
+<h2 id="connectivity-requirement-5">Connectivity (requirement 5)</h2>
+<ul>
+<li><strong>Strongly connected:</strong> every edge is usable by cars, trucks and caravans (<code>trailer</code>): the
+  network is the largest strongly connected car component plus the one-way chains that link it to
+  the extract boundary (<code>checks.drivable_edges</code>; tested for passenger, truck, trailer).</li>
+<li><strong>Boundary U-turns (A-S1-08):</strong> where a two-way road splits into one-way carriageways just
+  before the extract ends (Victor Harbor Rd / Waterport Rd junction), netconvert builds no
+  turnaround, so the two-way road beyond the split was exit-only one way and entry-only the other.
+  Three U-turns are added (Victor Harbor Rd at -35.5221, Waterport Rd at -35.5201, Adelaide Rd at
+  -35.5266). After that, only edges touching the boundary itself lie outside the inner component
+  (tested), so any origin/destination mapped by lon/lat can reach any other inside the model.</li>
+<li><strong>Gateways</strong> (<code>gateway_edges.csv</code>): Victor Harbor Rd north, Port Elliot Rd east, Inman Valley Rd
+  west, Waitpinga Rd south-west, plus Welch Rd north, Greenhills Rd north and Waterport Rd east.
+  duarouter routes cars, trucks and caravans from every gateway to the town centre (Coral St) and
+  back, and trucks between every pair of gateways (tested).</li>
+<li><strong>Hindmarsh Tiers Rd is not in the extract.</strong> It meets Victor Harbor Rd at about -35.4986, 138.6289
+  [S-D05], north of S-E01's bbox (north edge -35.52); its traffic must enter on the Victor Harbor Rd
+  north gateway (<code>hindmarsh_tiers_rd</code> row resolves to the same edges).</li>
+<li><strong>The ring road is cut.</strong> S-E01 ends on Welch Rd at -35.5199, 138.6231, before Welch Rd meets
+  Victor Harbor Rd. In the model, Victor Harbor Rd north and Welch Rd north are separate gateways;
+  traffic that uses the ring road between Victor Harbor Rd and Inman Valley Rd / Waitpinga Rd must be
+  injected at the Welch Rd gateway, or it will route through town. The northern extension
+  S-S1-01 (below) closes this.</li>
+<li><strong>Suburbs:</strong> a residential street in each of Victor Harbor, Encounter Bay, Hayborough, McCracken
+  and Hindmarsh Valley (its part inside the extract, on Waterport Rd) routes to and from the town
+  centre by <code>fromLonLat</code>/<code>toLonLat</code> (the S2 trip format; tested).</li>
+</ul>
+<h2 id="turn-restrictions">Turn restrictions</h2>
+<p>All 16 OSM restriction relations map onto net movements (<code>vhsim/network/restrictions.py</code>;
+tested: none violated). Five had been lost and are re-applied as connection deletions in the plain
+files:</p>
+<ul>
+<li><strong>Victoria St 17070777–80</strong> (at Burke, King, Granite, Island Sts). OSM tags them <code>no_right_turn</code>
+  <em>into the median opening</em> from one carriageway; the opening only leads to the opposite carriageway,
+  so in effect they ban U-turns through the median. <code>--junctions.join</code> merged both carriageways and
+  the opening into one junction, the restriction was lost and a U-turn appeared; the build deletes it.
+  <strong>Correction for the knowledge base:</strong> these are not bans on turning right from Victoria St into
+  the side streets. Per OSM, eastbound traffic may still turn right into King St and Burke St
+  across the median, and westbound into Granite St and Island St.</li>
+<li><strong>Torrens St 8181749</strong> (no U-turn via the Torrens Lane median link, a via-way relation netconvert
+  ignored): re-applied.</li>
+</ul>
+<h2 id="named-junctions-requirement-6">Named junctions (requirement 6)</h2>
+<p><code>junctions.csv</code>: 37 intersections from research/E-network.md table E20b plus four on the ring road.
+Each is located by the streets that meet there near its OSM position; <code>control</code> is read back from
+the network and tested against the OSM control type (<code>control_osm</code>); <code>sumo_nodes</code>, <code>in_edges</code> and
+<code>out_edges</code> give the SUMO elements for movement metrics (S4). All 37 found; all match.</p>
+<p>Notes: Torrens St / Coral St has 3 legs (Coral St runs east only; the short <code>trunk_link</code> across the
+median is inside the joined junction). Hindmarsh Rd / Grantley Ave / Bridge Tce includes the Bridge
+Tce node 32 m away and service accesses (6 legs). Where two streets of equal class meet
+(e.g. Coral St / Ocean St) both are listed as <code>major_road</code>.</p>
+<h2 id="scenario-patches-requirement-7">Scenario patches (requirement 7)</h2>
+<p><code>vhsim.network.scenario.build(name, patches_dir)</code> loads the baseline plain files plus
+<code>*.nod|edg|con|tll|typ.xml</code> patches and writes <code>sim/data/networks/&lt;name&gt;.net.xml</code>. The baseline
+net itself is built the same way with no patches. Test scenario
+<code>patches/test_torrens_40/</code> sets one Torrens St edge (<code>50904910#0</code>) to 40 km/h; the test asserts that
+edge, and only that edge, changes. The plain files are deterministic (two builds are identical).</p>
+<h2 id="smoke-simulation-requirement-8">Smoke simulation (requirement 8)</h2>
+<p><code>python -m vhsim.network.smoke</code> (random trips, 10% trucks, one hour, <code>--time-to-teleport 300</code>):</p>
+<table>
+<thead>
+<tr>
+<th>Run</th>
+<th>Trips</th>
+<th>Arrived</th>
+<th>Teleports (jam / yield)</th>
+<th>Jam teleports at roundabouts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>random, seed 42</td>
+<td>400</td>
+<td>400</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>random, seed 1</td>
+<td>400</td>
+<td>400</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>random, seed 1</td>
+<td>3,000</td>
+<td>3,000</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>town-focused (<code>--mode town</code>), seed 7</td>
+<td>1,500</td>
+<td>1,500</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>town-focused, seeds 7 and 8</td>
+<td>3,000</td>
+<td>3,000</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>town-focused, seed 7 (overload)</td>
+<td>6,000</td>
+<td>6,000</td>
+<td>92 (30 / 62)</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p><code>--mode town</code> sends half the trips within 1.2 km of the town centre and half between gateways and
+the centre. At 3,000 trips/h the Torrens St roundabouts take ~200–550 entering vehicles/h (below the
+2017 peak-hour counts, e.g. 1,823/h at Torrens/Seaview/Eyre [S-D19]). At 6,000/h minor-street
+entries onto Hindmarsh Rd and Acraman St start timing out (yield teleports), but no roundabout
+deadlocks. Gridlock at roundabouts appears only far beyond observed demand (9,000/h). Random trips
+are not a demand model; capacity is checked again once S2/S3 demand and calibration exist.</p>
+<h2 id="northern-extension-s-s1-01-pending-download">Northern extension S-S1-01 (pending download)</h2>
+<p>The northern growth areas (UGMS areas 2 and 3, north of area 1) reach about -35.48, north of S-E01.
+<code>python -m vhsim.network.fetch_osm</code> fetches a supplementary Overpass extract with S-E01's tag
+filters (query <code>sources/E/query1.overpassql</code>, bbox -35.60, 138.55, -35.46, 138.67) into
+<code>sim/data/networks/raw/S-S1-01-overpass-victor-harbor-north.osm</code>, saves the query as
+<code>raw/S-S1-01.overpassql</code> and writes <code>raw/SOURCES.tsv</code> (id, url, query, OSM data timestamp,
+retrieved_at, sha256). When that file exists, <code>python -m vhsim.network.build</code> uses it instead of
+S-E01 (its bbox contains S-E01's), with the north edge at -35.46 for fringe detection and its own
+gateway list (Victor Harbor Rd and Hindmarsh Tiers Rd at the DIT centreline crossings of -35.46).
+Tests waiting for it (skipped until then): every northern road (Hutchinson Rd, Hindmarsh Tiers Rd,
+Waggon Rd, Day Rd, Greenhills Rd, Victor Harbor Rd, Waterport Rd, Welch Rd) routes to and from the
+town centre, Hindmarsh Tiers Rd is its own gateway, and a truck from Victor Harbor Rd north to Inman
+Valley Rd can use Welch Rd / Armstrong Rd. <strong>Not yet fetched:</strong> downloading needs the user's
+approval. Everything above describes the S-E01 build; rerun the build and this file's numbers
+after the fetch.</p>
+<h2 id="still-approximate">Still approximate</h2>
+<ol>
+<li>Lanes and turn bays: not imagery-checked; no turn pockets or flared entries (see Lanes).</li>
+<li>Ring road north end and Hindmarsh Tiers Rd outside the extract (see Connectivity).</li>
+<li>Junction geometry comes from OSM node positions and <code>--junctions.join</code>; divided-road junctions
+   are single SUMO junctions; internal turning speeds are netconvert's radius estimates.</li>
+<li>Rural untagged roads at 50 km/h; Waitpinga Rd 110 km/h from OSM (see Speeds).</li>
+<li>Give-way/stop signs are not imported: priority comes from road class (the T-junction rule). The
+   only OSM <code>stop</code>/<code>give_way</code> nodes are at Cockle Train level crossings; trains and the 23 railway
+   crossings are not modelled.</li>
+<li>Car parks: car-park aisles are dropped; entries are dead-end service stubs. No parking search
+   or parking capacity.</li>
+<li>Residential roundabouts outside the town centre: complete but small, OSM-shaped (table above).</li>
+<li>Pedestrian crossings (3 signalised, others zebra) and pedestrians are not modelled.</li>
+</ol></body></html>

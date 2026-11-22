@@ -1,0 +1,123 @@
+<!DOCTYPE html><html lang='en-AU'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1'><title>Assumptions — S1-network</title><style>body{font:16px/1.6 -apple-system,'Segoe UI',Helvetica,Arial,sans-serif;color:#1b1b1b;background:#fbfaf7;max-width:56rem;margin:0 auto;padding:1rem 16px 4rem}a{color:#0b5e78}h1,h2,h3{line-height:1.25}table{border-collapse:collapse;font-size:.92rem;display:block;overflow-x:auto}th,td{border:1px solid #ddd;padding:.35rem .5rem;vertical-align:top;text-align:left}code{font-size:.9em;background:#f0eee8;padding:0 .2em}pre{background:#f0eee8;padding:.6rem;overflow-x:auto}nav{font-size:.9rem;border-bottom:1px solid #ddd;padding-bottom:.4rem;margin-bottom:1rem}</style></head><body><nav><a href='/victor-harbor-roads/'>Home</a> · <a href='index.html'>Method and assumptions</a> · <a href='/victor-harbor-roads/kb/'>Evidence notes</a></nav><h1 id="assumptions-s1-network">Assumptions — S1-network</h1>
+<p>Each entry: value, reason, expected sensitivity, and what evidence would replace it. Sourced values are not listed here; they carry their source id in the data files.</p>
+<p>Sourced inputs, for reference: OSM extract S-E01 (roads, tags, roundabouts, turn restrictions);
+DIT legal speed limits S-D05; the right turn Torrens St → Ocean St from the 2017 Torrens Street
+review S-D19 (fix F1). Validation and results: <code>sim/data/networks/VALIDATION.md</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Id</th>
+<th>Assumption</th>
+<th>Value</th>
+<th>Reason</th>
+<th>Sensitivity</th>
+<th>Would be replaced by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A-S1-01</td>
+<td>Speed where neither DIT nor OSM gives one</td>
+<td>50 km/h</td>
+<td>SA default urban limit (Road Traffic Act default in built-up areas)</td>
+<td>Low in town (council streets, mostly 50 anyway). High on rural roads at the fringe (Greenhills Rd, Cartwright Rd, Waterport Rd east, Wilson Hill Rd, Tugwell Rd): likely 80–100 in reality, so travel times to the north-west/north-east fringes are too long</td>
+<td>Council speed-zone register; DIT sign layer for council roads; a site check</td>
+</tr>
+<tr>
+<td>A-S1-02</td>
+<td>Service roads (car-park entries, lanes, access roads)</td>
+<td>open to all motor vehicles, 20 km/h, 1 lane</td>
+<td>SUMO's default opens service roads to delivery vehicles only, which would cut car parks off; 20 km/h is SUMO's service-road default</td>
+<td>Low for network results; moderate for trips that end in car parks</td>
+<td>Car-park and lane survey</td>
+</tr>
+<tr>
+<td>A-S1-03</td>
+<td>OSM service ways dropped before import</td>
+<td><code>service=driveway|parking_aisle|drive-through|emergency_access</code>, or <code>access=private|no</code> (153 ways)</td>
+<td>Not public road; car-park aisles would add hundreds of tiny edges and right-before-left junctions with no data on their use</td>
+<td>Low; destinations still map to the nearest public edge</td>
+<td>Parking model (if parking search is ever modelled)</td>
+</tr>
+<tr>
+<td>A-S1-04</td>
+<td>Lanes where OSM has no <code>lanes</code> tag</td>
+<td>1 per direction, all classes (SUMO's typemap gives 2 per direction on trunk/primary)</td>
+<td>Every OSM lane tag on the town's arterials says one per direction; the 2017 review's typical cross-section (a proposal) labels a 1.4 m bike lane, a 3.3 m and a 2.5 m lane, read from the text extraction only [S-D19 fig. 6.1]; no 4-lane road is known in Victor Harbor</td>
+<td>High if wrong on Hindmarsh Rd / Adelaide Rd (capacity halves or doubles); not checked against imagery</td>
+<td>Aerial imagery check of each arterial; DIT asset data</td>
+</tr>
+<tr>
+<td>A-S1-05</td>
+<td>Roundabout circulating speed</td>
+<td>V = √(127 R (e+f)) km/h with e+f = 0.3, R = mean distance of the ring's SUMO junctions from their centre; capped at the legal limit (gives 18–20 km/h on the Torrens St roundabouts, 27 at McCracken)</td>
+<td>SUMO does not slow vehicles on curved normal edges; Austroads' speed–radius relation for low-speed curves</td>
+<td>Moderate for roundabout delay and capacity (gap acceptance, travel time through the ring)</td>
+<td>Measured circulating speeds; calibration against the 2017 turning counts</td>
+</tr>
+<tr>
+<td>A-S1-06</td>
+<td>Signalised pedestrian crossings (3)</td>
+<td>not modelled (signals dropped)</td>
+<td>Pedestrians are not simulated; a signal with no pedestrian demand would only add random stops</td>
+<td>Low–moderate on Torrens St near Coral St in busy periods</td>
+<td>Pedestrian counts and signal timings, if pedestrian delay matters</td>
+</tr>
+<tr>
+<td>A-S1-07</td>
+<td>Gateway, suburb and town-centre points used for connectivity checks</td>
+<td>coordinates in <code>vhsim/network/places.py</code></td>
+<td>Read off the network (one residential street per suburb; Coral St for the centre; the extract's boundary crossings)</td>
+<td>None on results (checks only); S2 owns the real zones and gateways</td>
+<td>S2 zones / gateways</td>
+</tr>
+<tr>
+<td>A-S1-08</td>
+<td>U-turns where a two-way road splits into one-way carriageways just before the extract ends (3: Victor Harbor Rd, Waterport Rd, Adelaide Rd near the north edge)</td>
+<td>allowed</td>
+<td>Stand-in for turning opportunities beyond the extract, so the two-way road stays usable both ways inside the model</td>
+<td>Low (only trips starting/ending on those stubs)</td>
+<td>A larger extract (S-S1-01) removes most of them</td>
+</tr>
+<tr>
+<td>A-S1-09</td>
+<td>Right-turn storage at Torrens St → Ocean St (fix F1)</td>
+<td>median link of ~10 m; the real ~50 m turn lane [S-D19] not modelled</td>
+<td>The turn lane is not in OSM and its exact geometry is not archived</td>
+<td>Moderate: right-turners queue back into the through lane sooner than in reality</td>
+<td>Concept/as-built plan or imagery; add a turn bay patch</td>
+</tr>
+<tr>
+<td>A-S1-10</td>
+<td>Turn bays, flared entries and right-turn lanes elsewhere</td>
+<td>none (OSM has none)</td>
+<td>No data</td>
+<td>Moderate–high for delays at priority junctions on Hindmarsh Rd / Torrens St (right-turners block the single lane)</td>
+<td>Imagery / intersection plans; patches per junction</td>
+</tr>
+<tr>
+<td>A-S1-11</td>
+<td>Priority at uncontrolled junctions</td>
+<td>from road class (OSM highway type); right-before-left only where all approaches are below 49 km/h (service roads)</td>
+<td>Give-way/stop signs on council roads are not in OSM; the class rule matches the T-junction rule at most town junctions</td>
+<td>Moderate at specific junctions where signs differ</td>
+<td>Council sign inventory</td>
+</tr>
+<tr>
+<td>A-S1-12</td>
+<td>DIT spatial match</td>
+<td>≥ 60% of the edge within 20 m of the section and parallel within 30°; name in the same DIT road</td>
+<td>Divided carriageways sit up to ~15 m off the centreline; name check stops side streets taking the State limit</td>
+<td>Low (checked section by section in VALIDATION.md)</td>
+<td>—</td>
+</tr>
+<tr>
+<td>A-S1-13</td>
+<td>Hindmarsh Tiers Rd and the Welch Rd / Victor Harbor Rd end of the ring road</td>
+<td>outside S-E01: Hindmarsh Tiers traffic enters on the Victor Harbor Rd north gateway; ring-road traffic must enter at the Welch Rd north gateway</td>
+<td>Extract bbox ends at -35.52</td>
+<td>High for ring-road and through-traffic routing until S-S1-01 is fetched</td>
+<td>S-S1-01 (<code>python -m vhsim.network.fetch_osm</code>)</td>
+</tr>
+</tbody>
+</table></body></html>

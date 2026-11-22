@@ -1,0 +1,28 @@
+<!DOCTYPE html><html lang='en-AU'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1'><title>addresses.json: sources and licence</title><style>body{font:16px/1.6 -apple-system,'Segoe UI',Helvetica,Arial,sans-serif;color:#1b1b1b;background:#fbfaf7;max-width:56rem;margin:0 auto;padding:1rem 16px 4rem}a{color:#0b5e78}h1,h2,h3{line-height:1.25}table{border-collapse:collapse;font-size:.92rem;display:block;overflow-x:auto}th,td{border:1px solid #ddd;padding:.35rem .5rem;vertical-align:top;text-align:left}code{font-size:.9em;background:#f0eee8;padding:0 .2em}pre{background:#f0eee8;padding:.6rem;overflow-x:auto}nav{font-size:.9rem;border-bottom:1px solid #ddd;padding-bottom:.4rem;margin-bottom:1rem}</style></head><body><nav><a href='/victor-harbor-roads/'>Home</a> · <a href='index.html'>Method and assumptions</a> · <a href='/victor-harbor-roads/kb/'>Evidence notes</a></nav><h1 id="addressesjson-sources-and-licence">addresses.json: sources and licence</h1>
+<p>Built by <code>sim/vhsim/viewer/addresses.py</code> (run from <code>sim/</code>: <code>python -m vhsim.viewer.addresses --gnaf DIR</code>).</p>
+<ul>
+<li><strong>Source</strong>: Geoscape Geocoded National Address File (G-NAF), November 2026 release, GDA2020, "Open G-NAF" on
+  data.gov.au (https://data.gov.au/data/dataset/geocoded-national-address-file-g-naf). Tables read: South Australia
+  <code>ADDRESS_DETAIL</code>, <code>ADDRESS_DEFAULT_GEOCODE</code>, <code>STREET_LOCALITY</code>, <code>LOCALITY</code>, and the flat-type authority code.
+  Only the SA files were fetched (about 270 MB of the 1.7 GB national zip, by HTTP range requests); nothing is kept
+  in the repository except the output.</li>
+<li><strong>Built</strong>: 2026-11-21.</li>
+<li><strong>Licence</strong>: Open G-NAF End User Licence Agreement, 26 February 2016: Creative Commons Attribution 4.0
+  International, plus a use restriction. The data must not be used to generate an address or a compilation of
+  addresses for the sending of mail unless each address has been verified as able to receive mail from another
+  source. We use it only to place a point on a map. Modified material must say it was modified, and the attribution
+  below must be kept (it is in the file's <code>attribution</code> field and on the residents' page).</li>
+<li><strong>Attribution</strong>: Incorporates or developed using G-NAF © Geoscape Australia licensed by the Commonwealth of Australia under the Open Geo-coded National Address File (G-NAF) End User Licence Agreement. Modified: reduced to this area and simplified.
+  (Wording to be checked against the notice that ships in the G-NAF release; the EULA PDF itself does not give it.)</li>
+<li><strong>What was kept</strong>: current principal addresses (not retired, not aliases) in Victor Harbor, Encounter Bay,
+  Hayborough, McCracken, Hindmarsh Valley, Lower Inman Valley, Inman Valley, Waitpinga, Mount Jagged and Back Valley.
+  Street name and type, locality, house number (with suffix, range or lot number), flat or unit, and the default
+  geocode (to 1 m). Dropped: building names, levels, parcel ids, dates, postcodes.</li>
+<li><strong>Counts</strong>: 15,656 addresses (unique number and flat) on 652 streets in 10 localities. Per locality: Victor Harbor
+  4,889; Encounter Bay 4,539; Hayborough 2,512; McCracken 1,630; Hindmarsh Valley 670; Waitpinga 503; Lower Inman
+  Valley 322; Inman Valley 317; Back Valley 169; Mount Jagged 105. File size about 0.27 MB. Hindmarsh Island and
+  Nangkita are in the G-NAF but outside the council area, so they are not included.</li>
+<li><strong>Privacy</strong>: these are published addresses with no names. The file is downloaded once by the page and searched
+  on the device; what a resident types is never sent anywhere.</li>
+<li><strong>Format</strong>: see the docstring of <code>addresses.py</code>.</li>
+</ul></body></html>

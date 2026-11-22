@@ -1,0 +1,125 @@
+<!DOCTYPE html><html lang='en-AU'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1'><title>Victor Harbor traffic simulation — design and contracts</title><style>body{font:16px/1.6 -apple-system,'Segoe UI',Helvetica,Arial,sans-serif;color:#1b1b1b;background:#fbfaf7;max-width:56rem;margin:0 auto;padding:1rem 16px 4rem}a{color:#0b5e78}h1,h2,h3{line-height:1.25}table{border-collapse:collapse;font-size:.92rem;display:block;overflow-x:auto}th,td{border:1px solid #ddd;padding:.35rem .5rem;vertical-align:top;text-align:left}code{font-size:.9em;background:#f0eee8;padding:0 .2em}pre{background:#f0eee8;padding:.6rem;overflow-x:auto}nav{font-size:.9rem;border-bottom:1px solid #ddd;padding-bottom:.4rem;margin-bottom:1rem}</style></head><body><nav><a href='/victor-harbor-roads/'>Home</a> · <a href='index.html'>Method and assumptions</a> · <a href='/victor-harbor-roads/kb/'>Evidence notes</a></nav><h1 id="victor-harbor-traffic-simulation-design-and-contracts">Victor Harbor traffic simulation — design and contracts</h1>
+<p>Goal: test the City of Victor Harbor's VHITS road/traffic options (and alternatives) with a
+microscopic simulation (Eclipse SUMO 1.28), today and at future demand, and report:</p>
+<ul>
+<li><strong>R14 accessibility:</strong> per residential area → POI category, travel-time distributions
+  (n, mean, median, p95, p99, histogram) by condition, scenario and year.</li>
+<li><strong>R15 intersections:</strong> per intersection → approach → turning movement, delay (wait to turn),
+  throughput and queue, by condition and scenario.</li>
+<li>Network totals, heavy vehicles/caravans past the foreshore (R23a), speed-limit effects (R23b).</li>
+</ul>
+<p>Knowledge-base context: <code>site/investigation-plan.html</code>, <code>site/simulation-design.html</code>,
+<code>site/road-network.html</code>, <code>site/traffic-and-crash-data.html</code>, <code>site/population-and-growth.html</code>,
+<code>site/housing-and-visitors.html</code>, <code>site/seasons-and-events.html</code>, <code>site/options-register.html</code>.</p>
+<h2 id="ground-rules-all-streams">Ground rules (all streams)</h2>
+<ul>
+<li>Python package <code>vhsim</code> in <code>sim/</code>; tests in <code>sim/tests/&lt;subpackage&gt;/</code>; run with
+  <code>../.venv/bin/pytest</code> from <code>sim/</code> (shared venv at the main checkout root:
+  <code>.venv</code>).</li>
+<li><strong>Red/green TDD.</strong> Every requirement gets a failing test first. Tests that run SUMO on the
+  real Victor Harbor data are marked <code>@pytest.mark.slow</code>; fast tests use the <code>grid_net</code> fixture
+  or small hand-made fixtures.</li>
+<li>Read archived sources through <code>vhsim.paths.SOURCES</code> (main checkout; some folders are
+  git-ignored so they are not in worktrees). <strong>Never modify anything under <code>sources/</code>.</strong></li>
+<li><strong>Provenance:</strong> every number taken from a source carries its source id (e.g. <code>S-D01</code>) in the
+  output file (a <code>source</code> column or a header comment). Every assumption that is NOT from a
+  source goes in <code>sim/assumptions/&lt;stream&gt;.md</code> (e.g. <code>S2-demand.md</code>), with a value, a reason and how
+  sensitive results are likely to be to it. Never present an assumption as data.</li>
+<li>Outputs that are small and deterministic (CSV, GeoJSON, XML &lt; ~5 MB) are committed under
+  <code>sim/data/...</code>. Large generated networks go to <code>sim/data/networks/*.net.xml</code> (git-ignored) and
+  must be reproducible with one command.</li>
+<li>Each stream owns ONLY its subpackage, its tests directory, its <code>sim/data/&lt;area&gt;/</code> folder and its
+  own <code>sim/assumptions/&lt;stream&gt;.md</code>. Do not edit <code>vhsim/paths.py</code>, <code>tests/conftest.py</code>, <code>pyproject.toml</code>
+  or another stream's files; if you need a change there, say so in your report.</li>
+<li>Coordinates: WGS84 lon/lat in all files exchanged between streams. SUMO-internal x/y only
+  inside a stream.</li>
+</ul>
+<h2 id="streams-and-their-contracts">Streams and their contracts</h2>
+<h3 id="s1-network-vhsimnetwork-simdatanetworks">S1 network — <code>vhsim/network/</code>, <code>sim/data/networks/</code></h3>
+<p>Builds the <strong>baseline</strong> SUMO network from the OSM extract <code>sources/E/S-E01-overpass-victor-harbor.osm</code>.</p>
+<p>Produces (command: <code>python -m vhsim.network.build</code>):
+- <code>sim/data/networks/baseline.net.xml</code> (git-ignored, reproducible) and
+  <code>sim/data/networks/baseline.plain/</code> (netconvert <code>--plain-output-prefix</code>: nod/edg/con/tll/typ,
+  committed if &lt; 5 MB total) — the base that scenario patches are applied to.
+- <code>sim/data/networks/junctions.csv</code>: one row per <em>named</em> intersection in the town-centre study
+  area: <code>junction_id, name, control (roundabout|priority|traffic_light|...), lon, lat, legs</code> and,
+  per approach, nothing else needed here.
+- <code>sim/data/networks/edge_attributes.csv</code>: <code>edge_id, street_name, speed_kmh, lanes, oneway,
+  speed_source (S-D05|OSM|default), lanes_source</code>.
+- <code>sim/data/networks/VALIDATION.md</code>: what was checked (roundabouts complete, connectivity,
+  speeds vs DIT legal limits, lanes on arterials) and what is still approximate.</p>
+<p>Requirements: passenger cars, trucks and caravans (vClass <code>passenger</code>, <code>truck</code>,
+<code>trailer</code>/<code>delivery</code> as appropriate) can drive; footways/cycleways dropped; no traffic lights
+(none exist today); speed limits on State roads from DIT's legal-limit layer
+<code>sources/D/D-state-maintained-roads-vh-area.geojson</code> (S-D05), otherwise OSM <code>maxspeed</code>,
+otherwise 50 km/h urban; ~20 "incomplete roundabouts" fixed or explained; network strongly
+connected for cars between all gateways and the town centre.</p>
+<p>Also provides the <strong>scenario patch mechanism</strong>: <code>vhsim.network.scenario.build(name, patches_dir)</code>
+applies netconvert patch files (<code>*.edg.xml</code>, <code>*.con.xml</code>, <code>*.nod.xml</code>, <code>*.tll.xml</code>) over the
+baseline plain files and writes <code>sim/data/networks/&lt;name&gt;.net.xml</code>. Scenario patch <em>content</em> is a
+later stream; S1 ships the mechanism plus one test scenario proving it works (e.g. a speed change
+on one edge).</p>
+<h3 id="s2-demand-vhsimdemand-simdatazones-simdatademand">S2 demand — <code>vhsim/demand/</code>, <code>sim/data/zones/</code>, <code>sim/data/demand/</code></h3>
+<p>Network-independent demand: who travels from where to where, when.</p>
+<p>Produces (command: <code>python -m vhsim.demand.build --condition &lt;c&gt; --year &lt;y&gt; --growth &lt;g&gt;</code>):
+- <code>sim/data/zones/residential_zones.geojson</code>: polygons (ABS 2021 mesh blocks for LGA 48050, or a
+  documented fallback) with <code>zone_id, suburb, dwellings, persons, occupied_households,
+  source</code>. Mesh-block counts: <code>sources/C/S-C30-victor-harbor-lga-mesh-blocks-2021.csv</code>.
+- <code>sim/data/zones/pois.geojson</code>: points with <code>poi_id, category, name, weight, source</code> for
+  categories <strong>supermarket, shops, dining, services, medical, gym, school, beach_foreshore,
+  recreation, caravan_park, accommodation, work</strong>. Start from <code>sources/E/S-E03-poi.geojson</code>.
+- <code>sim/data/zones/gateways.csv</code>: external entry points with lon/lat, road name and AADT (from
+  the counts stream's <code>aadt.csv</code> when available; otherwise S-D02 directly).
+- <code>sim/data/demand/&lt;condition&gt;_&lt;year&gt;_&lt;growth&gt;.trips.xml</code>: SUMO trips using <strong><code>fromLonLat</code> /
+  <code>toLonLat</code></strong> (network-independent), <code>depart</code> in seconds from midnight, <code>type</code> one of
+  <code>car, truck, caravan</code>. <strong>Vehicle id format (contract with S3):</strong>
+  <code>"{stratum}~{origin_zone}~{dest_category}~{dest_poi}~{seq}"</code> (SUMO rejects <code>|</code> and most punctuation in ids; field values must not contain <code>~</code>) where stratum is
+  <code>res</code> (resident), <code>vis</code> (visitor), <code>thr</code> (through traffic), <code>ext</code> (external with a local
+  end). Example: <code>res~MB40123450000~supermarket~poi_17~000042</code>.</p>
+<p>Conditions: <code>weekday_term</code>, <code>saturday</code>, <code>summer_peak</code> (weekday between Christmas and New Year),
+<code>event_nye</code>. Years/growth: <code>2025/base</code>, <code>2031|2041|2051</code> × <code>moderate|high</code> (UGMS scenarios:
+moderate ≈ +8,000 people by 2050 at 185 dwellings/yr; high ≈ +19,200 at GARP 318→410→475
+dwellings/yr; S-B10). New households go to the northern growth areas and infill; the growth-area
+polygons are approximations (document how they were drawn).</p>
+<p>Trip generation, purpose shares, time-of-day and destination choice are assumptions unless a
+source is archived: record each in <code>sim/assumptions/S2-demand.md</code>. Use the hourly profile from the counts
+stream (<code>sim/data/profiles/hourly_profile.csv</code>) when present; until then a placeholder profile
+with a clear <code>PLACEHOLDER</code> marker. Visitors are a separate layer sized so that inbound volume on
+Victor Harbor Rd reaches the DIT summer figure (&gt; 11,000/day, S-D18) in <code>summer_peak</code>.</p>
+<h3 id="s3-counts-vhsimcounts-simdatacounts-simdataprofiles">S3 counts — <code>vhsim/counts/</code>, <code>sim/data/counts/</code>, <code>sim/data/profiles/</code></h3>
+<p>Turns the observed data into calibration targets.</p>
+<p>Produces (command: <code>python -m vhsim.counts.build</code>):
+- <code>sim/data/counts/turning_2017.csv</code>: from the Tonkin 2017 Torrens Street review
+  (<code>sources/D/S-D-torrens-street-review-draft-2017.txt</code>, S-D19; PDF alongside), the 12-hour
+  (7am–7pm, Wed 26 Apr 2017) turning counts at 7 intersections in 15-minute bins:
+  <code>intersection, approach_road, approach_dir (N|NE|E|...), movement (L|T|R|U), to_road,
+  bin_start (HH:MM), light, heavy, cycle, source</code>. Tests must reproduce the report's own
+  totals (e.g. peak-hour volumes per intersection; ≈7,600 in / 6,700 out of the centre).
+- <code>sim/data/counts/aadt.csv</code>: DIT AADT sections near Victor Harbor (S-D01/S-D02;
+  <code>sources/D/D-tv-selected-roads-by-release.csv</code> and the GeoJSON in <code>sources/D/</code>):
+  <code>road, section, aadt, count_year, cv_pct, lon, lat (section midpoint), bearing, source</code>.
+- <code>sim/data/profiles/hourly_profile.csv</code>: share of daily traffic by hour (0–23) derived from the
+  2017 counts for 07–19 and an explicitly marked assumption for night hours.
+- <code>sim/data/counts/seasonal_factors.csv</code>: summer/peak factors with source or assumption marker.
+- <code>sim/data/counts/COUNTS.md</code>: what each target is, its date/season, and its limits.</p>
+<h3 id="s4-metrics-vhsimmetrics">S4 metrics — <code>vhsim/metrics/</code></h3>
+<p>Turns SUMO outputs into the report tables. Develop against small simulations on <code>grid_net</code> or a
+hand-made network; no dependency on S1/S2 outputs.</p>
+<p>Provides:
+- <code>vhsim.metrics.run.simulate(net, trips, out_dir, seed, end)</code>: runs duarouter + sumo with the
+  outputs the metrics need: <code>--tripinfo-output</code>, <code>--vehroute-output</code> with
+  <code>--vehroute-output.exit-times</code>, <code>--statistic-output</code>, edgeData; teleports logged.
+- <code>vhsim.metrics.accessibility</code>: from tripinfo + the vehicle-id contract above → table per
+  <code>(origin_area, dest_category, hour_band)</code> with <code>n, mean, median, p95, p99</code> and histogram bins;
+  <code>origin_area</code> is the zone's suburb via a zone→area mapping passed in.
+- <code>vhsim.metrics.movements</code>: from vehroute exit times → per <code>(junction_id, from_edge, to_edge)</code>
+  movement: <code>n, mean_delay, median_delay, p95_delay, flow_per_hour</code> where delay on the approach
+  edge = actual time on edge − free-flow time (length / allowed speed). Label each movement with
+  approach compass direction and turn type (L/T/R/U) from edge geometry.
+- <code>vhsim.metrics.compare</code>: scenario vs baseline deltas for both tables.
+- <code>vhsim.metrics.report</code>: writes HTML fragments (tables + <code>&lt;script type="application/json"&gt;</code> data
+  + simple inline SVG histograms) that the knowledge base can embed.</p>
+<h2 id="integration-main-loop-after-streams-land">Integration (main loop, after streams land)</h2>
+<p>Map counts to edges; calibrate the baseline (demand scaling / routeSampler against turning
+counts and AADT; target GEH &lt; 5 on most counted links); validate; then scenario patches
+(C1–C6, B1–B6, N1) and runs; results into the knowledge base.</p></body></html>

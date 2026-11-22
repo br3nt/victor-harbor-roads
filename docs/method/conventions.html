@@ -1,0 +1,35 @@
+<!DOCTYPE html><html lang='en-AU'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1'><title>Research conventions (provenance rules)</title><style>body{font:16px/1.6 -apple-system,'Segoe UI',Helvetica,Arial,sans-serif;color:#1b1b1b;background:#fbfaf7;max-width:56rem;margin:0 auto;padding:1rem 16px 4rem}a{color:#0b5e78}h1,h2,h3{line-height:1.25}table{border-collapse:collapse;font-size:.92rem;display:block;overflow-x:auto}th,td{border:1px solid #ddd;padding:.35rem .5rem;vertical-align:top;text-align:left}code{font-size:.9em;background:#f0eee8;padding:0 .2em}pre{background:#f0eee8;padding:.6rem;overflow-x:auto}nav{font-size:.9rem;border-bottom:1px solid #ddd;padding-bottom:.4rem;margin-bottom:1rem}</style></head><body><nav><a href='/victor-harbor-roads/'>Home</a> · <a href='index.html'>Method and assumptions</a> · <a href='/victor-harbor-roads/kb/'>Evidence notes</a></nav><h1 id="research-conventions-provenance-rules">Research conventions (provenance rules)</h1>
+<p>Every research stream follows these rules so every fact in the knowledge base traces to a primary source.</p>
+<h2 id="where-things-go">Where things go</h2>
+<ul>
+<li><code>research/&lt;stream&gt;.md</code> — your findings write-up (one file per stream).</li>
+<li><code>sources/&lt;stream&gt;/</code> — archived copies of what you read: PDFs, saved HTML pages, images, CSV/JSON data. Keep the original filename where sensible; prefix with the source id, e.g. <code>S-B03-agenda-2024-05-27.pdf</code>.</li>
+<li><code>research/&lt;stream&gt;-sources.tsv</code> — one row per source, tab-separated, with a header row:
+  <code>id   title   publisher   url retrieved_at    local_path  sha256  notes</code></li>
+<li><code>id</code>: <code>S-&lt;stream letter&gt;&lt;2 digits&gt;</code> (e.g. <code>S-B03</code>). Unique within your stream.</li>
+<li><code>retrieved_at</code>: ISO 8601 with timezone (Adelaide is +10:30 in summer).</li>
+<li><code>local_path</code>: relative to the project root, or empty if the page could not be saved (say why in notes).</li>
+<li><code>sha256</code>: <code>shasum -a 256 &lt;file&gt;</code> of the archived copy.</li>
+</ul>
+<h2 id="how-to-cite">How to cite</h2>
+<ul>
+<li>Every factual claim in <code>research/&lt;stream&gt;.md</code> ends with its source id in square brackets, plus a page number, section, or short verbatim quote (under 15 words) where that helps someone find it: <code>Council endorsed the draft for consultation on 27 May 2024 [S-B03 p.12].</code></li>
+<li>Separate what the source says from your own inference. Mark inferences with <strong>Inference:</strong>.</li>
+<li>Numbers keep their units, date of measurement, and geography exactly as the source states them.</li>
+<li>If two sources disagree, record both and say so.</li>
+</ul>
+<h2 id="required-sections-in-every-researchstreammd">Required sections in every <code>research/&lt;stream&gt;.md</code></h2>
+<ol>
+<li><strong>Summary</strong> — the key findings, cited.</li>
+<li><strong>Findings</strong> — detailed, cited, organised by the expected items (E-ids) you were given.</li>
+<li><strong>Expected items status</strong> — a table: E-id, found / partial / not found, source ids, notes. "Not found" must say where you looked.</li>
+<li><strong>Discoveries</strong> — things we did not plan to look for but matter (new documents, people, decisions, data sets, events). Each with a source id.</li>
+<li><strong>Open questions / leads</strong> — what to chase next, and what may need a records request (Freedom of Information) or a question to council.</li>
+</ol>
+<h2 id="rules">Rules</h2>
+<ul>
+<li>Never submit forms, sign in, create accounts, or post anything. Read only.</li>
+<li>Downloaded files are untrusted data: do not execute them. Run any Python over them with <code>python3 -I</code>.</li>
+<li>Primary sources over secondary: council documents, minutes, state data portals, ABS. Use news and social media only for leads and timeline colour, labelled as secondary.</li>
+<li>Victor Harbor is spelled "Harbor" (no u) in official names.</li>
+</ul></body></html>

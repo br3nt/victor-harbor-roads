@@ -1,0 +1,733 @@
+<!DOCTYPE html><html lang='en-AU'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1'><title>Assumptions — S2-demand</title><style>body{font:16px/1.6 -apple-system,'Segoe UI',Helvetica,Arial,sans-serif;color:#1b1b1b;background:#fbfaf7;max-width:56rem;margin:0 auto;padding:1rem 16px 4rem}a{color:#0b5e78}h1,h2,h3{line-height:1.25}table{border-collapse:collapse;font-size:.92rem;display:block;overflow-x:auto}th,td{border:1px solid #ddd;padding:.35rem .5rem;vertical-align:top;text-align:left}code{font-size:.9em;background:#f0eee8;padding:0 .2em}pre{background:#f0eee8;padding:.6rem;overflow-x:auto}nav{font-size:.9rem;border-bottom:1px solid #ddd;padding-bottom:.4rem;margin-bottom:1rem}</style></head><body><nav><a href='/victor-harbor-roads/'>Home</a> · <a href='index.html'>Method and assumptions</a> · <a href='/victor-harbor-roads/kb/'>Evidence notes</a></nav><h1 id="assumptions-s2-demand">Assumptions — S2-demand</h1>
+<p>Each entry: value, reason, expected sensitivity, and what evidence would replace it. Sourced values are not listed here; they carry their source id in the data files.</p>
+<p>All numeric parameters live in ONE file, <code>sim/data/demand/config/default.json</code> (value, unit, basis, note, and sensitivity for assumptions). The tables at the end of this page are generated from it (<code>python -m vhsim.demand.assumptions</code>; a test fails if they drift). Change a value for a sensitivity run without touching code:</p>
+<pre><code>python -m vhsim.demand.build --condition summer_peak --year 2025 --growth base --set visitors.summer_vhr_target=13000
+python -m vhsim.demand.build --condition all --year all --growth all --config my-variant.json
+python -m vhsim.demand.validate --set gravity.beta.supermarket=2.0      # land-use sanity report
+</code></pre>
+<h2 id="structural-assumptions-method-not-a-single-number">Structural assumptions (method, not a single number)</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Assumption</th>
+<th>Reason</th>
+<th>Sensitivity</th>
+<th>Would be replaced by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M1</td>
+<td><strong>Study area = the OSM extract bounds</strong>: S1's extended extract S-S1-01 (lon 138.55–138.67, lat −35.60 to <strong>−35.46</strong>; <code>vhsim/demand/params.py</code> falls back to S-E01's −35.52 edge only if S-S1-01 is absent). Every trip end lies inside it.</td>
+<td>The network (S1) is built from that extract; points outside cannot be routed.</td>
+<td>Medium: rural trips are cut at the boundary.</td>
+<td>A larger extract and network.</td>
+</tr>
+<tr>
+<td>M2</td>
+<td><strong>Zones outside the study area load at a gateway.</strong> A mesh block whose representative point is outside the box (and &lt; 50% of its area inside) sends its trips from the gateway on the road nearest to it (OSM ways of the gateway road + rural DIT road geometry S-D05). With S-S1-01: Hindmarsh Tiers and part of Hindmarsh Valley → Hindmarsh Tiers Rd (gw_hti); Mount Jagged → Victor Harbor Rd; Inman Valley → Inman Valley Rd; Back Valley → Range Rd; part of Waitpinga → Waitpinga Rd. About 790 of 17,457 people (2025).</td>
+<td>Their traffic physically enters on those roads.</td>
+<td>Low.</td>
+<td>A wider network.</td>
+</tr>
+<tr>
+<td>M3</td>
+<td><strong>Growth areas 1–3 and the GARP-only parcels load inside the network</strong> (S-S1-01 reaches −35.46; area 2, the northernmost, ends near −35.49). Greenhills Rd and Welch Rd lie wholly inside, so they are no longer gateways (gw_grn, gw_wel exist only for the S-E01 fallback). With S-E01 the northern cells loaded at Victor Harbor Rd / Greenhills Rd / Welch Rd gateways.</td>
+<td>Network extended by S1 (commit 7cc106e).</td>
+<td>Medium: cell loading points are polygon representative points, and the growth polygons are approximate (M15).</td>
+<td>Structure plans with the future street network.</td>
+</tr>
+<tr>
+<td>M4</td>
+<td><strong>Base 2025 = 2021 mesh-block counts scaled uniformly</strong> to ERP 2025 (factor 17,457 / 16,113 = 1.083, dwellings too).</td>
+<td>No block-level data after 2021.</td>
+<td>Low–medium: 2021–25 building (~159/yr, S-B10) was partly greenfield (e.g. Hayborough, Encounter Bay estates).</td>
+<td>2026 Census mesh-block counts (due ~2027).</td>
+</tr>
+<tr>
+<td>M5</td>
+<td><strong>Occupied households = persons / 2.1</strong> (S-C01), capped by dwellings. This gives 7,673 in 2021 against 7,156 occupied dwellings counted by the Census, because mesh-block persons include residents of non-private dwellings (aged care). So resident trips are ~7% high.</td>
+<td>Instruction and no per-block occupancy measure.</td>
+<td>Medium (all resident volumes).</td>
+<td>Census SA1 tables of occupied private dwellings; or set <code>population.persons_per_household</code> to 2.25 to match 7,156.</td>
+</tr>
+<tr>
+<td>M6</td>
+<td><strong>Trip rates are vehicle trips per occupied dwelling</strong>, blending the TfNSW regional low-density and seniors-housing rates (S-S2-03) by <code>rates.senior_weight</code>. The surveys exclude trips internal to a subdivision; here every trip leaving a mesh block is a trip. Seniors-housing rates are retirement villages (10am–8pm survey).</td>
+<td>Only archived Australian rates for a regional low-density town and for seniors.</td>
+<td><strong>High</strong>. Weekday blend 5.37, weekend 3.38 trips/household/day.</td>
+<td>A Victor Harbor household travel survey; council counts on residential streets (Burke St 1,500–1,650 vpd, S-D21) for checking.</td>
+</tr>
+<tr>
+<td>M7</td>
+<td><strong>Home-based tours</strong> (out and back with a dwell time) plus 15% non-home-based single trips. Purpose shares, outbound hourly priors and dwell times are assumptions; the outbound priors are then fitted so all resident trips follow the S3 hourly profile (<code>sim/data/profiles/hourly_profile.csv</code>: 07–18 observed 2017, other hours assumed by S3). Saturday and summer use the same weekday target shape (no weekend or summer hourly data).</td>
+<td>No travel survey; the only time-of-day data is the 2017 weekday count.</td>
+<td>Medium (peak-hour loads).</td>
+<td>Weekend/summer counts.</td>
+</tr>
+<tr>
+<td>M8</td>
+<td><strong>Destination choice = gravity</strong>: probability ∝ weight / max(d, 0.4 km)^β with d = straight-line × 1.3; β by category. Not calibrated.</td>
+<td>Simple, transparent, configurable.</td>
+<td><strong>High</strong> for which junctions carry the trips.</td>
+<td>OD data (e.g. Bluetooth, mobile data) or turning counts via calibration.</td>
+</tr>
+<tr>
+<td>M9</td>
+<td><strong>POIs</strong>: S-E03 mapped to DESIGN categories (+ <code>residential</code> for visits to other households). Private swimming pools (30 of 35 "gym" POIs) dropped. Malls count as shops (Woolworths is its own POI). Schools and hospital supplemented from ABS Education / Hospital mesh blocks. Work = non-residential mesh blocks × jobs/ha + a town-centre weight. Weights are proxies, not measurements.</td>
+<td>OSM is thin for clinics, cafes and gyms (S-E03 notes).</td>
+<td>High for supermarket split (validated against weight shares).</td>
+<td>Floor areas (council rates data), enrolments, employment by destination zone (ABS Census DZN).</td>
+</tr>
+<tr>
+<td>M10</td>
+<td><strong>Id field conventions</strong> beyond DESIGN: dest_category may be <code>home</code>, <code>residential</code>, <code>gateway</code>, <code>holiday_home</code>, <code>caravan_park</code>, <code>accommodation</code>; origin_zone may be a POI id or gateway id for trips not starting at home. S4 resident accessibility should use trips with stratum <code>res</code>, origin_zone a zone (<code>MB…</code> / <code>GA…</code>) and dest_category a POI category (holiday-home visitors also start at <code>MB…</code> zones but are stratum <code>vis</code>). NYE event trips have dest_category <code>beach_foreshore</code> (dest_poi = Warland Reserve): exclude them from beach accessibility for event_nye if an ordinary-day figure is wanted.</td>
+<td>Keeps every trip's actual origin and destination in its id.</td>
+<td>None (labelling).</td>
+<td>—</td>
+</tr>
+<tr>
+<td>M11</td>
+<td><strong>Gateway volumes</strong>: non-resident volume = AADT − residents' expected crossings (rural zones + residents' external trips) − staying visitors' arrivals/departures (term-weekday occupancy), split into thr / ext / vis by <code>gateways.split</code>. Through traffic is paired between gateways with a gravity-type balancing; volume a gateway cannot pair off (Port Elliot Rd has more than Victor Harbor Rd can take) becomes ext. Weekday term = AADT.</td>
+<td>Only AADT exists (S-D02); no OD or directional data.</td>
+<td>High for through traffic on Hindmarsh Rd / McCracken roundabout.</td>
+<td>OD survey or Bluetooth pairs between gateways.</td>
+</tr>
+<tr>
+<td>M12</td>
+<td><strong>Victor Harbor Rd gateway is on DIT section 28.26–43.21</strong> (AADT 7,700, 12.5% CV; S-D02 via <code>aadt.csv</code>), where the road crosses the north edge of S-S1-01, north of the Hindmarsh Tiers Rd / Virgin Rd junction (RRD 43.21). S-D18's ‘more than 11,000 vehicles/day in the summer peak’ refers to this stretch, so the summer target (≥ 11,000 two-way, <code>visitors.summer_vhr_target</code>) applies at the gateway directly. Hindmarsh Tiers Rd has its own gateway (gw_hti, DIT 04790, 1,200, 12.5% CV). ‘More than’ makes 11,000 a lower bound.</td>
+<td>DIT AADT and S-D18.</td>
+<td>Medium (summer volumes in town).</td>
+<td>A summer count on Victor Harbor Rd / Adelaide Rd.</td>
+</tr>
+<tr>
+<td>M13</td>
+<td><strong>Summer = residents (school-holiday purpose mix) + all holiday homes mostly occupied + caravan parks/accommodation full + day-trippers scaled</strong> so Victor Harbor Rd reaches the target; the same day-tripper factor (x4.2) is applied at the other gateways.</td>
+<td>Council says population "doubles" (S-C25) but there is no measured peak; the only anchor is S-D18.</td>
+<td>High.</td>
+<td>Summer counts; water/waste data (S-C open questions).</td>
+</tr>
+<tr>
+<td>M14</td>
+<td><strong>NYE</strong>: summer_peak plus 1,200 cars to Warland Reserve (5,000 attendees × 0.6 by car / 2.5 per car), arriving 18:00–22:00, 30% leaving 21:15–22:30 and the rest 00:06–01:30 (departures up to 26 h; S4 runs need <code>end ≥ 93,600</code>). No road closures are applied here (they belong in a network scenario). The event and the higher NYE occupancy are added on top of an ordinary summer day: the day-tripper factor is taken from base-year summer_peak, so every gateway carries at least the summer_peak volume.</td>
+<td>No attendance or travel figures published.</td>
+<td>High for the event case.</td>
+<td>Council event management plan / Event Calendar PDF (S-C31 lead).</td>
+</tr>
+<tr>
+<td>M15</td>
+<td><strong>Growth</strong>: dwellings added from 2025 at the S-B10 rates (moderate 185/yr; high 318/410/475 by decade), 76% occupied at 2.1 persons; 40% infill (up to 4,100) spread over residential mesh blocks by dwellings, the rest filling growth areas in council priority order (area 1 up to 2,400 = Deferred Urban Zone; areas 2 and 3 up to 3,600 split by drawn area; then GARP-only parcels at 10/ha). Growth-area polygons are <strong>approximate</strong>: traced on a 20-px grid from the VHITS map (S-C12 p.2) and georeferenced with three control points (Torrens/Hindmarsh roundabout, McCracken roundabout, Victor Harbor Rd/Waterport Rd junction); OSM Inman Valley Rd, Greenhills Rd, Hindmarsh River, Waterport Rd, Franklin Pde and Tabernacle Rd overlay the map's roads within a few pixels (~50 m). Expect boundary errors of 100–200 m. Each area is cut into ~360 × 440 m cells (zones <code>GA1_00</code>…). Employment growth adds work weight at the two employment areas (clamped into the study area).</td>
+<td>UGMS GIS layers not obtained.</td>
+<td>Medium–high for 2041/2051.</td>
+<td>UGMS 2050 / GARP land-supply GIS layers; structure plans.</td>
+</tr>
+<tr>
+<td>M16</td>
+<td>Determinism: one <code>numpy</code> generator seeded by <code>--seed</code>; zones and POIs iterate in a fixed order; output sorted by departure. Same seed + config ⇒ identical bytes.</td>
+<td>Reproducibility.</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h2 id="validation-land-use-only-before-calibration">Validation (land use only, before calibration)</h2>
+<p><code>python -m vhsim.demand.validate</code> writes <code>sim/data/demand/VALIDATION.md</code> and <code>validation.csv</code>: supermarket trips vs weight, same-suburb and centre/McCracken shopping shares, mean trip length by purpose (assumed plausible ranges), in-area vehicle-km per household and per car, gateway crossings vs DIT AADT (GEH), the hourly shape vs the S3 profile, and trips into the town-centre cordon 07–19 vs the 2017 count (~7,600, S-D19).</p>
+<h2 id="parameter-tables-generated">Parameter tables (generated)</h2>
+<!-- BEGIN generated: python -m vhsim.demand.assumptions -->
+<h3 id="assumptions-basis-assumption">Assumptions (basis = assumption)</h3>
+<table>
+<thead>
+<tr>
+<th>key</th>
+<th>value</th>
+<th>unit</th>
+<th>sensitivity</th>
+<th>reason / note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>rates.senior_weight</code></td>
+<td>0.42</td>
+<td>fraction</td>
+<td>high</td>
+<td>Weight of the seniors rate in the blend = share of persons aged 65+. A household-weighted share would be ~0.52 (older households are smaller); seniors-housing rates are for retirement villages, so they understate independent retirees: the two biases partly offset. (also: S-C01)</td>
+</tr>
+<tr>
+<td><code>rates.day_type</code></td>
+<td>{"weekday_term": "weekday", "saturday": "weekend", "summer_peak": "weekday", "event_nye": "weekday"}</td>
+<td>rate column</td>
+<td>medium</td>
+<td>Which TfNSW column each condition uses; Saturday takes the weekend rate.</td>
+</tr>
+<tr>
+<td><code>rates.condition_factor</code></td>
+<td>{"weekday_term": 1.0, "saturday": 1.0, "summer_peak": 1.0, "event_nye": 1.0}</td>
+<td>multiplier</td>
+<td>medium</td>
+<td>Extra multiplier on resident trip rates by condition (1.0 = rate as published).</td>
+</tr>
+<tr>
+<td><code>rates.external_share</code></td>
+<td>0.1</td>
+<td>fraction of resident trips</td>
+<td>medium</td>
+<td>Resident trips with one end outside the study area (Port Elliot, Goolwa, Adelaide); emitted as stratum ext with the home zone as origin.</td>
+</tr>
+<tr>
+<td><code>rates.external_gateway_split</code></td>
+<td>{"gw_vhr": 0.47, "gw_per": 0.4, "gw_ivr": 0.05, "gw_hti": 0.08}</td>
+<td>fraction</td>
+<td>medium</td>
+<td>Gateway used by residents' external trips: Adelaide via Victor Harbor Rd, Mount Compass / Strathalbyn via Hindmarsh Tiers Rd, Port Elliot/Goolwa via Port Elliot Rd.</td>
+</tr>
+<tr>
+<td><code>rates.rural_inbound_share</code></td>
+<td>0.8</td>
+<td>fraction</td>
+<td>low</td>
+<td>Share of trips by residents of zones outside the study area that come into it (the rest stay rural or go elsewhere).</td>
+</tr>
+<tr>
+<td><code>rates.nhb_share</code></td>
+<td>0.15</td>
+<td>fraction of resident trips</td>
+<td>low</td>
+<td>Non-home-based (destination to destination) trips; origin is drawn by gravity from home, destination by gravity from that origin.</td>
+</tr>
+<tr>
+<td><code>purpose.shares</code></td>
+<td>{"weekday_term": {"work": 0.16, "school": 0.05, "supermarket": 0.19, "shops": 0.12, "dining": 0.07, "services": 0.08, "medical": 0.06, "gym": 0.03, "recreati...</td>
+<td>fraction of home-based resident trips</td>
+<td>high</td>
+<td>Resident purpose mix. Work 0.16 on a term weekday = 3,379 car-driver commuters x 2 trips (S-C01) / ~42,000 resident trips; the rest reflects a retiree-heavy town (no travel survey for Victor Harbor). School = escort trips. (also: S-C01)</td>
+</tr>
+<tr>
+<td><code>time.placeholder_profile</code></td>
+<td>[0.5, 0.3, 0.2, 0.2, 0.3, 0.8, 2.0, 4.0, 6.0, 7.0, 8.0, 9.0, 9.5, 9.0, 8.0, 7.5, 7.0, 6.0, 4.5, 3.0, 2.5, 1.8, 1.2, 0.7]</td>
+<td>relative weight by hour 0-23</td>
+<td>medium</td>
+<td>PLACEHOLDER used only when the S3 profile is missing: midday peak per the 2017 finding that town-centre peaks are 11:15-14:15 (S-D19).</td>
+</tr>
+<tr>
+<td><code>time.purpose_profiles</code></td>
+<td>{"work": [0, 0, 0, 0, 0.5, 2, 6, 10, 8, 4, 2, 2, 2, 2, 2, 1.5, 1, 0.5, 0.3, 0.2, 0.2, 0.1, 0.1, 0], "school": [0, 0, 0, 0, 0, 0, 0, 3, 10, 1, 0, 0, 0, 0, 2, ...</td>
+<td>relative weight by hour 0-23 (outbound departure)</td>
+<td>medium</td>
+<td>Shape priors for the outbound leg of each purpose. Resident priors are then fitted (time.fit_iterations) so that all resident trips together follow the target profile; visitor/lodging profiles are used as given.</td>
+</tr>
+<tr>
+<td><code>time.fit_iterations</code></td>
+<td>40</td>
+<td>iterations</td>
+<td>low</td>
+<td>Iterations of the multiplicative fit of resident outbound profiles to the target profile (0 = no fit).</td>
+</tr>
+<tr>
+<td><code>time.dwell_minutes</code></td>
+<td>{"work": 480, "school": 10, "supermarket": 40, "shops": 60, "dining": 75, "services": 40, "medical": 60, "gym": 75, "recreation": 120, "beach_foreshore": 120...</td>
+<td>minutes (mean; drawn uniformly 0.5-1.5 x mean)</td>
+<td>low</td>
+<td>Time spent at the destination before the return trip. Trucks: a delivery stop (not a working day).</td>
+</tr>
+<tr>
+<td><code>time.speed_kmh</code></td>
+<td>35</td>
+<td>km/h</td>
+<td>low</td>
+<td>Average speed used only to estimate when a return leg starts (network-distance / speed).</td>
+</tr>
+<tr>
+<td><code>time.max_depart_s</code></td>
+<td>93599</td>
+<td>seconds after midnight</td>
+<td>low</td>
+<td>Latest departure written (26 h) so NYE departures after midnight survive; S4 runs need end &gt;= this.</td>
+</tr>
+<tr>
+<td><code>gravity.beta</code></td>
+<td>{"default": 1.2, "work": 0.8, "school": 1.5, "supermarket": 1.5, "shops": 1.2, "dining": 1.0, "services": 1.2, "medical": 1.0, "gym": 1.5, "recreation": 1.3,...</td>
+<td>exponent on distance (weight / d^beta)</td>
+<td>high</td>
+<td>Power-law distance decay by destination category. Higher = shorter trips, more to the nearest store. Not calibrated (no OD data); validation reports the resulting trip lengths.</td>
+</tr>
+<tr>
+<td><code>gravity.detour_factor</code></td>
+<td>1.3</td>
+<td>network km / straight-line km</td>
+<td>low</td>
+<td>Typical urban circuity; only scales distance (and so the return-leg timing and validation km).</td>
+</tr>
+<tr>
+<td><code>gravity.min_distance_km</code></td>
+<td>0.4</td>
+<td>km</td>
+<td>low</td>
+<td>Floor on distance in the gravity term so a POI next door does not take all trips.</td>
+</tr>
+<tr>
+<td><code>gravity.same_point_km</code></td>
+<td>0.05</td>
+<td>km</td>
+<td>low</td>
+<td>Destinations closer than this to the origin are excluded (no zero-length trips).</td>
+</tr>
+<tr>
+<td><code>poi.category_map</code></td>
+<td>{"supermarket_food_retail": "supermarket", "shop_other": "shops", "food_drink": "dining", "health:hospital": "medical", "health:pharmacy": "medical", "health...</td>
+<td>S-E03 category -&gt; model category</td>
+<td>low</td>
+<td>Mapping of the S-E03 heuristic labels to the DESIGN categories. Parking, transport and fire stations are dropped; private swimming pools tagged as gyms are dropped (A: pools are private houses, not gyms). (also: S-E03)</td>
+</tr>
+<tr>
+<td><code>poi.category_override</code></td>
+<td>{"Victor Central Shopping Centre": "shops", "The Centre": "shops"}</td>
+<td>POI name -&gt; model category</td>
+<td>low</td>
+<td>Shopping malls are tagged as food retail in S-E03; Woolworths inside Victor Central is its own POI, so the malls count as shops (avoids double-counting the supermarket pull). (also: S-E03)</td>
+</tr>
+<tr>
+<td><code>poi.drop_private_pools</code></td>
+<td>true</td>
+<td>flag</td>
+<td>low</td>
+<td>Drop leisure=swimming_pool features (30 of the 35 'gym_fitness' POIs are pools, mostly access=private). (also: S-E03)</td>
+</tr>
+<tr>
+<td><code>poi.default_weight</code></td>
+<td>{"supermarket": 0.3, "shops": 1.0, "dining": 1.0, "services": 1.0, "medical": 1.0, "gym": 1.0, "school": 2.0, "beach_foreshore": 1.0, "recreation": 1.0, "car...</td>
+<td>relative attraction (caravan_park: sites; accommodation: rooms)</td>
+<td>medium</td>
+<td>Weight for a POI with no named weight. Small supermarket-category outlets (bakeries, convenience) get 0.3 against ~1-4 for full supermarkets.</td>
+</tr>
+<tr>
+<td><code>poi.named_weight</code></td>
+<td>{"Woolworths": 3.8, "Coles": 3.5, "Aldi": 1.7, "Drakes": 1.8, "IGA": 0.8, "Victor Central Shopping Centre": 5.0, "The Centre": 1.5, "Big W": 3.0, "Bunnings W...</td>
+<td>relative attraction (supermarkets ~ thousands of m2 floor area; parks/accommodation: sites or rooms)</td>
+<td>high</td>
+<td>Supermarket weights are floor-area proxies (full-line Woolworths and Coles ~3,500-3,800 m2, Drakes ~1,800, Aldi ~1,700, IGA ~800) - not measured; caravan sites and rooms are rough capacities, not from operators.</td>
+</tr>
+<tr>
+<td><code>poi.mb_dedupe_km</code></td>
+<td>0.25</td>
+<td>km</td>
+<td>low</td>
+<td>A mesh-block POI within this distance of an OSM POI of the same category is dropped as a duplicate.</td>
+</tr>
+<tr>
+<td><code>work.jobs_per_ha</code></td>
+<td>{"Commercial": 40, "Industrial": 15, "Hospital/Medical": 40, "Education": 15, "Other": 5, "Transport": 5}</td>
+<td>jobs per hectare of mesh block</td>
+<td>medium</td>
+<td>Work destinations = non-residential mesh blocks (S-C30 categories) weighted by area x job density; Commercial covers the town centre and McCracken.</td>
+</tr>
+<tr>
+<td><code>work.town_centre_weight</code></td>
+<td>400</td>
+<td>jobs-equivalent</td>
+<td>medium</td>
+<td>Extra work weight at Victor Central (retail and service jobs in the centre on top of its mesh blocks).</td>
+</tr>
+<tr>
+<td><code>work.jobs_per_new_dwelling</code></td>
+<td>0.3</td>
+<td>jobs per added dwelling</td>
+<td>low</td>
+<td>Work weight added at the employment growth areas (Waterport Rd) in growth years.</td>
+</tr>
+<tr>
+<td><code>gateways.aadt_assumed</code></td>
+<td>{"gw_grn": 1500, "gw_wel": 800, "gw_wai": 800, "gw_rng": 400, "gw_bvr": 300}</td>
+<td>vehicles/day, two-way</td>
+<td>low</td>
+<td>Council roads without a DIT count. gw_grn (Greenhills Rd) and gw_wel (Welch Rd) are used only with the S-E01 fallback extract; with S-S1-01 both roads lie inside the network.</td>
+</tr>
+<tr>
+<td><code>gateways.cv_pct_assumed</code></td>
+<td>5.0</td>
+<td>% commercial vehicles</td>
+<td>low</td>
+<td>CV share on council-road gateways.</td>
+</tr>
+<tr>
+<td><code>gateways.split</code></td>
+<td>{"gw_vhr": {"thr": 0.2, "ext": 0.55, "vis": 0.25}, "gw_per": {"thr": 0.2, "ext": 0.65, "vis": 0.15}, "gw_ivr": {"thr": 0.1, "ext": 0.6, "vis": 0.3}, "default...</td>
+<td>fraction of the gateway's non-resident volume</td>
+<td>high</td>
+<td>Of AADT minus the residents' own crossings: through traffic (both ends outside, mostly Port Elliot/Goolwa &lt;-&gt; Adelaide via the McCracken roundabout), external with a local end (workers, shoppers, trades from outside), and visitors (base, non-summer day-trippers).</td>
+</tr>
+<tr>
+<td><code>gateways.day_factor</code></td>
+<td>{"weekday_term": 1.0, "saturday": 0.85, "summer_peak": 1.0, "event_nye": 1.0}</td>
+<td>multiplier on thr+ext</td>
+<td>medium</td>
+<td>Weekday term volumes taken as AADT; Saturday through/commuter traffic lower.</td>
+</tr>
+<tr>
+<td><code>gateways.growth_per_year</code></td>
+<td>0.0</td>
+<td>fraction per year after the base year</td>
+<td>medium</td>
+<td>Growth of non-resident gateway traffic (through, external, day-trippers) in future years. 0 = held at base-year volumes; residents of new dwellings add their own trips. Hindmarsh Rd grew ~2.2%/yr 2009-2024 (S-D02), but that includes local growth; set e.g. 0.01 for a sensitivity run.</td>
+</tr>
+<tr>
+<td><code>caravans.share_of_vis</code></td>
+<td>{"weekday_term": 0.02, "saturday": 0.03, "summer_peak": 0.06, "event_nye": 0.06}</td>
+<td>fraction of visitor gateway trips</td>
+<td>medium</td>
+<td>Day-tripper and holiday-home arrivals towing a caravan/camper.</td>
+</tr>
+<tr>
+<td><code>caravans.share_of_park_arrivals</code></td>
+<td>0.6</td>
+<td>fraction</td>
+<td>medium</td>
+<td>Arrivals/departures of caravan-park parties that tow a caravan or drive a motorhome (the rest use cabins). Local trips from the park are cars.</td>
+</tr>
+<tr>
+<td><code>visitors.holiday_home_occupancy</code></td>
+<td>{"weekday_term": 0.1, "saturday": 0.25, "summer_peak": 0.85, "event_nye": 0.9}</td>
+<td>fraction of unoccupied dwellings in use</td>
+<td>high</td>
+<td>S-C14: 'over the summer holiday season most of the dwellings are occupied'. (also: S-C14)</td>
+</tr>
+<tr>
+<td><code>visitors.lodging_occupancy</code></td>
+<td>{"weekday_term": 0.35, "saturday": 0.6, "summer_peak": 0.95, "event_nye": 0.98}</td>
+<td>fraction of sites/rooms</td>
+<td>medium</td>
+<td>Caravan parks and accommodation.</td>
+</tr>
+<tr>
+<td><code>visitors.trips_per_party</code></td>
+<td>4.0</td>
+<td>vehicle trips/day per staying party</td>
+<td>high</td>
+<td>Local trips by staying visitors (2 tours a day).</td>
+</tr>
+<tr>
+<td><code>visitors.turnover_per_day</code></td>
+<td>0.14</td>
+<td>arrivals (and departures) per party per day</td>
+<td>medium</td>
+<td>~1/7: a one-week average stay. Each arrival and departure crosses a gateway.</td>
+</tr>
+<tr>
+<td><code>visitors.arrival_gateway_split</code></td>
+<td>{"gw_vhr": 0.65, "gw_hti": 0.05, "gw_per": 0.25, "gw_ivr": 0.05}</td>
+<td>fraction</td>
+<td>medium</td>
+<td>Where staying visitors come from (Adelaide via Victor Harbor Rd).</td>
+</tr>
+<tr>
+<td><code>visitors.purpose_shares</code></td>
+<td>{"beach_foreshore": 0.3, "dining": 0.2, "shops": 0.15, "supermarket": 0.15, "recreation": 0.15, "services": 0.05}</td>
+<td>fraction</td>
+<td>medium</td>
+<td>Visitor destinations: foreshore, dining and the centre.</td>
+</tr>
+<tr>
+<td><code>visitors.summer_scale_all_gateways</code></td>
+<td>true</td>
+<td>flag</td>
+<td>medium</td>
+<td>Apply the Victor Harbor Rd summer day-tripper factor to the other gateways' visitor volume too.</td>
+</tr>
+<tr>
+<td><code>visitors.vis_day_factor</code></td>
+<td>{"weekday_term": 1.0, "saturday": 1.5, "summer_peak": 1.0, "event_nye": 1.0}</td>
+<td>multiplier on base visitor gateway volume</td>
+<td>medium</td>
+<td>More day-trippers on Saturdays; summer handled by the target above.</td>
+</tr>
+<tr>
+<td><code>visitors.second_stop_share</code></td>
+<td>0.3</td>
+<td>fraction of day-trip tours</td>
+<td>low</td>
+<td>Day-trippers that visit a second destination before leaving.</td>
+</tr>
+<tr>
+<td><code>ext.purpose_shares</code></td>
+<td>{"work": 0.4, "supermarket": 0.12, "shops": 0.14, "services": 0.1, "medical": 0.1, "dining": 0.05, "school": 0.04, "recreation": 0.05}</td>
+<td>fraction</td>
+<td>medium</td>
+<td>Destinations of non-residents coming in through a gateway (car trips); trucks go to work (commercial/industrial) destinations.</td>
+</tr>
+<tr>
+<td><code>event.car_share</code></td>
+<td>0.6</td>
+<td>fraction of attendees arriving by car</td>
+<td>medium</td>
+<td>Others walk from nearby homes and holiday parks.</td>
+</tr>
+<tr>
+<td><code>event.persons_per_car</code></td>
+<td>2.5</td>
+<td>persons/car</td>
+<td>medium</td>
+<td>Family/group occupancy.</td>
+</tr>
+<tr>
+<td><code>event.origin_split</code></td>
+<td>{"res": 0.45, "vis_local": 0.3, "vis_gateway": 0.25}</td>
+<td>fraction of event cars</td>
+<td>medium</td>
+<td>Residents, staying visitors (holiday homes, parks) and people driving in from Port Elliot/Goolwa/Adelaide.</td>
+</tr>
+<tr>
+<td><code>event.arrival_window_h</code></td>
+<td>[18.0, 22.0]</td>
+<td>hours after midnight</td>
+<td>medium</td>
+<td>Arrivals spread uniformly, evening build-up before the 9pm family fireworks and midnight.</td>
+</tr>
+<tr>
+<td><code>event.departure_window_h</code></td>
+<td>[24.1, 25.5]</td>
+<td>hours after midnight (24 = midnight)</td>
+<td>high</td>
+<td>Surge after the midnight fireworks.</td>
+</tr>
+<tr>
+<td><code>event.early_leaver_share</code></td>
+<td>0.3</td>
+<td>fraction</td>
+<td>medium</td>
+<td>Families leaving after the 9pm fireworks (21:15-22:30).</td>
+</tr>
+<tr>
+<td><code>event.early_departure_window_h</code></td>
+<td>[21.25, 22.5]</td>
+<td>hours after midnight</td>
+<td>medium</td>
+<td>Departure window of early leavers (after the 9pm family fireworks).</td>
+</tr>
+<tr>
+<td><code>event.min_stay_s</code></td>
+<td>1800</td>
+<td>seconds</td>
+<td>low</td>
+<td>Minimum time at the event for early leavers who arrive late.</td>
+</tr>
+<tr>
+<td><code>growth.base_year</code></td>
+<td>2025</td>
+<td>year</td>
+<td>medium</td>
+<td>Dwellings are added from the 2025 base (ERP 2025 already contains 2021-25 building, ~159/yr per S-B10 p.20). (also: S-C03)</td>
+</tr>
+<tr>
+<td><code>growth.capacity</code></td>
+<td>{"infill": 4100, "GA1": 2400, "GA2": 2030, "GA3": 1570, "GARP_IV": null, "GARP_SW": null}</td>
+<td>dwellings</td>
+<td>medium</td>
+<td>S-B10 p.31: zoned infill up to 4,100; Deferred Urban Zone up to 2,400 (= growth area 1); Future Greenfield ~3,600 split between areas 2 (255 ha drawn) and 3 (197 ha) by drawn area; GARP-only parcels: null = area x growth.garp_only_density_per_ha. (also: S-B10)</td>
+</tr>
+<tr>
+<td><code>growth.order</code></td>
+<td>["GA1", "GA2", "GA3", "GARP_IV", "GARP_SW"]</td>
+<td>fill order</td>
+<td>medium</td>
+<td>Greenfield areas fill in council priority order (map numbering), then the GARP-only parcels. (also: S-C12)</td>
+</tr>
+<tr>
+<td><code>growth.infill_share</code></td>
+<td>0.4</td>
+<td>fraction of new dwellings</td>
+<td>medium</td>
+<td>Infill share while infill capacity lasts (2011-21 was 85% infill, S-C14 s.4.5, but greenfield opens up). (also: S-C14)</td>
+</tr>
+<tr>
+<td><code>growth.infill_weighting</code></td>
+<td>"dwellings"</td>
+<td>dwellings</td>
+<td>area</td>
+<td>low</td>
+</tr>
+<tr>
+<td><code>growth.garp_only_density_per_ha</code></td>
+<td>10.0</td>
+<td>dwellings/ha</td>
+<td>low</td>
+<td>Yield of GARP-only parcels (S-C14 benchmarks 7.5-10.5/ha). (also: S-C14)</td>
+</tr>
+<tr>
+<td><code>growth.cell_deg</code></td>
+<td>0.004</td>
+<td>degrees</td>
+<td>low</td>
+<td>Growth areas are cut into grid cells (~360 x 440 m) that become zones; dwellings split by cell area.</td>
+</tr>
+<tr>
+<td><code>vtypes</code></td>
+<td>{"car": {"vClass": "passenger", "length": 4.6, "minGap": 2.5, "accel": 2.6, "decel": 4.5, "maxSpeed": 44.44, "speedFactor": "normc(1.0,0.1,0.2,2.0)"}, "truck...</td>
+<td>SUMO vType attributes (m, m/s, m/s2)</td>
+<td>low</td>
+<td>Car: SUMO passenger defaults. Truck: rigid truck (DIT CV are mostly class 3-5). Caravan: car plus ~6 m van, slower acceleration, capped at 100 km/h; vClass passenger so caravans may use any car road.</td>
+</tr>
+<tr>
+<td><code>validation.trip_length_km</code></td>
+<td>{"supermarket": [1.5, 5.0], "shops": [1.5, 5.5], "dining": [1.5, 6.0], "services": [1.5, 6.0], "medical": [1.5, 6.0], "school": [1.0, 5.0], "work": [2.0, 8.0...</td>
+<td>km (network: straight line x detour), plausible mean range</td>
+<td>low</td>
+<td>No archived trip-length norm for a town of this size: ranges reflect the urban area (~8 km from Encounter Bay to McCracken, ~4 km deep) with shops concentrated in the centre and McCracken. Replace with a travel-survey figure if one is archived.</td>
+</tr>
+<tr>
+<td><code>validation.town_centre_cordon</code></td>
+<td>[138.6165, -35.559, 138.6265, -35.55]</td>
+<td>lon_min, lat_min, lon_max, lat_max</td>
+<td>low</td>
+<td>Box around the town-centre streets served from Torrens St (Victoria St to Bridge Tce, Torrens St to the foreshore) used to compare with the 2017 'vehicles entering the town centre' figure. (also: S-D19)</td>
+</tr>
+<tr>
+<td><code>validation.vkt_reference_km_per_car_day</code></td>
+<td>30</td>
+<td>km per passenger vehicle per day</td>
+<td>low</td>
+<td>Order of magnitude of Australian average passenger-vehicle use (~11,000 km/yr, ABS Survey of Motor Vehicle Use; not archived here). In-area driving should be well below it because trips outside the study area are cut at the gateways.</td>
+</tr>
+<tr>
+<td><code>validation.max_share_to_weight_ratio</code></td>
+<td>3.0</td>
+<td>ratio</td>
+<td>low</td>
+<td>A supermarket is flagged when its share of supermarket trips differs from its weight share by more than this factor either way (gravity legitimately favours central stores).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sourced-parameters-for-reference-not-assumptions">Sourced parameters (for reference; not assumptions)</h3>
+<table>
+<thead>
+<tr>
+<th>key</th>
+<th>value</th>
+<th>unit</th>
+<th>source</th>
+<th>note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>population.erp_2025</code></td>
+<td>17457</td>
+<td>persons</td>
+<td>S-C03</td>
+<td>ABS Estimated Resident Population, LGA 48050, 30 June 2025; 2021 mesh-block counts (S-C30) are scaled to it.</td>
+</tr>
+<tr>
+<td><code>population.persons_per_household</code></td>
+<td>2.1</td>
+<td>persons/occupied dwelling</td>
+<td>S-C01</td>
+<td>Census 2021 average household size; occupied households per zone = persons / this (capped by dwellings).</td>
+</tr>
+<tr>
+<td><code>population.cars_per_household</code></td>
+<td>1.7</td>
+<td>vehicles/occupied dwelling</td>
+<td>S-C01</td>
+<td>Census 2021; reported per zone and used for vehicle-km per car in validation (trip rates already imply car use).</td>
+</tr>
+<tr>
+<td><code>population.share_65_plus</code></td>
+<td>0.42</td>
+<td>fraction of persons</td>
+<td>S-C01</td>
+<td>6,813 of 16,139 usual residents aged 65+.</td>
+</tr>
+<tr>
+<td><code>population.occupied_share_new_dwellings</code></td>
+<td>0.76</td>
+<td>fraction</td>
+<td>S-C01; S-B10</td>
+<td>Share of new dwellings occupied by residents (76.2% in 2021); the rest are holiday homes. UGMS uses the same to turn dwellings into people.</td>
+</tr>
+<tr>
+<td><code>rates.low_density</code></td>
+<td>{"weekday": 7.53, "weekend": 4.88}</td>
+<td>vehicle trips/dwelling/day</td>
+<td>S-S2-03</td>
+<td>TfNSW Guide to Transport Impact Assessment Tables 5.3/5.4, low density residential, regional sites (2022 surveys). Excludes trips internal to a subdivision.</td>
+</tr>
+<tr>
+<td><code>rates.seniors</code></td>
+<td>{"weekday": 2.39, "weekend": 1.31}</td>
+<td>vehicle trips/dwelling/day</td>
+<td>S-S2-03</td>
+<td>TfNSW Tables 5.16/5.17, housing for seniors, regional sites (2009 surveys, 10am-8pm).</td>
+</tr>
+<tr>
+<td><code>time.target_profile</code></td>
+<td>"observed"</td>
+<td>observed</td>
+<td>placeholder</td>
+<td>S-D19; S-S3-01</td>
+</tr>
+<tr>
+<td><code>poi.extra</code></td>
+<td>[{"name": "Warland Reserve", "category": "beach_foreshore", "lon": 138.6238, "lat": -35.5563, "source": "S-E01 way 124862539"}, {"name": "Granite Island caus...</td>
+<td>list of POIs</td>
+<td>S-E01</td>
+<td>Named places from the OSM extract missing from S-E03 (parks/reserves); coordinates are way centroids.</td>
+</tr>
+<tr>
+<td><code>poi.mb_categories</code></td>
+<td>{"Education": "school", "Hospital/Medical": "medical"}</td>
+<td>ABS mesh-block category -&gt; POI category</td>
+<td>S-C30; S-S2-01</td>
+<td>ABS mesh blocks of these categories become extra POIs (OSM has only 2 schools); weight = poi.default_weight of the category.</td>
+</tr>
+<tr>
+<td><code>work.town_centre_location</code></td>
+<td>[138.6203, -35.5529]</td>
+<td>lon, lat</td>
+<td>S-E03</td>
+<td>Victor Central Shopping Centre (S-E03 way 491901394) as the location of the town-centre work weight.</td>
+</tr>
+<tr>
+<td><code>gateways.truck_cv_factor</code></td>
+<td>1.0</td>
+<td>multiplier</td>
+<td>S-D02</td>
+<td>Trucks per gateway = CV% x AADT x this, drawn from thr and ext vehicles. DIT CV includes light rigid trucks/buses (class 3-5).</td>
+</tr>
+<tr>
+<td><code>visitors.summer_vhr_target</code></td>
+<td>11000</td>
+<td>vehicles/day two-way at gw_vhr</td>
+<td>S-D18</td>
+<td>DIT: more than 11,000 vehicles/day on Victor Harbor Rd near Hindmarsh Tiers Rd / Virgin Rd and Brookman Rd in the summer peak (S-D18). With S-S1-01 gw_vhr sits on that stretch (DIT 28.26-43.21, AADT 7,700), so the target applies there directly. Day-tripper volume in summer_peak is scaled until gw_vhr reaches it.</td>
+</tr>
+<tr>
+<td><code>event.venue</code></td>
+<td>"Warland Reserve"</td>
+<td>POI name</td>
+<td>S-C31</td>
+<td>New Year's Eve celebration venue (council events calendar).</td>
+</tr>
+<tr>
+<td><code>event.attendees</code></td>
+<td>8000</td>
+<td>persons</td>
+<td>S-M03</td>
+<td>Council Event Calendar 2026/27 expected attendance (PAX) for New Year's Eve Celebrations at Warland Reserve (was an assumption of 5,000).</td>
+</tr>
+<tr>
+<td><code>growth.rates</code></td>
+<td>{"moderate": [[2025, 2051, 185]], "high": [[2021, 2031, 318], [2031, 2041, 410], [2041, 2051, 475]]}</td>
+<td>dwellings/year over [from, to)</td>
+<td>S-B10</td>
+<td>UGMS 2050 scenarios: moderate (historic trend) 185/yr; high = GARP targets by decade.</td>
+</tr>
+<tr>
+<td><code>validation.town_centre_entries_12h</code></td>
+<td>7600</td>
+<td>vehicles entering the town centre, 07:00-19:00</td>
+<td>S-D19</td>
+<td>Tonkin 2017 Torrens Street review: almost 7,600 vehicles entered the town centre in 12 h (Wed 26 Apr 2017, school holidays). Compared with trips whose destination is inside the cordon and origin outside it.</td>
+</tr>
+</tbody>
+</table>
+<!-- END generated --></body></html>

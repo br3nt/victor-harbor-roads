@@ -1,0 +1,305 @@
+<!DOCTYPE html><html lang='en-AU'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1'><title>Assumptions and data format — S5 viewer</title><style>body{font:16px/1.6 -apple-system,'Segoe UI',Helvetica,Arial,sans-serif;color:#1b1b1b;background:#fbfaf7;max-width:56rem;margin:0 auto;padding:1rem 16px 4rem}a{color:#0b5e78}h1,h2,h3{line-height:1.25}table{border-collapse:collapse;font-size:.92rem;display:block;overflow-x:auto}th,td{border:1px solid #ddd;padding:.35rem .5rem;vertical-align:top;text-align:left}code{font-size:.9em;background:#f0eee8;padding:0 .2em}pre{background:#f0eee8;padding:.6rem;overflow-x:auto}nav{font-size:.9rem;border-bottom:1px solid #ddd;padding-bottom:.4rem;margin-bottom:1rem}</style></head><body><nav><a href='/victor-harbor-roads/'>Home</a> · <a href='index.html'>Method and assumptions</a> · <a href='/victor-harbor-roads/kb/'>Evidence notes</a></nav><h1 id="assumptions-and-data-format-s5-viewer">Assumptions and data format — S5 viewer</h1>
+<p>Each assumption: value, reason, expected sensitivity, what would replace it. The viewer shows simulation
+outputs; it adds no traffic data of its own. The data contract is <code>sim/VIEWER.md</code>; this file records the
+exact format and the choices made while implementing it.</p>
+<h2 id="files-exporter-output">Files (exporter output)</h2>
+<p><code>python -m vhsim.viewer.export --net &lt;net.xml&gt; --run &lt;run_dir&gt; [--run &lt;seed2&gt; ...] --out &lt;data_dir&gt; --scenario S
+--condition C --year Y --growth G [--seed N] [--network-name NAME] [--begin s] [--end s] [--bookmark "HH:MM=label"]
+[--bookmarks file.json] [--pois pois.geojson] [--zones zones.geojson] [--junctions junctions.csv]</code></p>
+<pre><code>&lt;data_dir&gt;/index.json                  {version, networks: {name: &quot;networks/&lt;name&gt;.json&quot;},
+                                        runs: [{id, scenario, network, condition, year, growth, seed, label, path}]}
+&lt;data_dir&gt;/networks/&lt;name&gt;.json        one per network variant
+&lt;data_dir&gt;/runs/&lt;run_id&gt;/meta.json     run_id = &quot;&lt;scenario&gt;__&lt;condition&gt;__&lt;year&gt;-&lt;growth&gt;__s&lt;seed&gt;&quot; (or &quot;__mean&quot;)
+&lt;data_dir&gt;/runs/&lt;run_id&gt;/lanes.bin.gz
+&lt;data_dir&gt;/runs/&lt;run_id&gt;/edge_times.bin.gz
+</code></pre>
+<p>Several <code>--run</code> directories (seeds) are averaged into one run with seed <code>mean</code> (plain mean per lane/edge and
+interval; a seed with no vehicles on a lane is left out of that lane's speed and density mean). <code>index.json</code> is merged,
+so runs can be exported one at a time into the same folder.</p>
+<p>Safety checks: the exporter refuses to replace <code>networks/&lt;name&gt;.json</code> with a network whose lane/edge ids differ
+(<code>--force-network</code> overrides; then re-export every run on it), refuses runs whose measured edges are mostly not in
+<code>--net</code>, and refuses seeds with different output periods. The viewer refuses a run whose <code>network_hash</code>, <code>n_lanes</code>
+or <code>n_edges</code> do not match the loaded network.</p>
+<h3 id="networksjson-columnar-one-array-per-field-index-position">networks/<name>.json (columnar: one array per field, index = position)</h3>
+<ul>
+<li><code>version</code>, <code>name</code>, <code>hash</code> (16 hex digits of SHA-1 over the edge and lane id lists: the order the run binaries
+  follow), <code>lefthand</code>, <code>bbox [w, s, e, n]</code>, <code>projection</code>, <code>routing_vclass</code> (<code>passenger</code>).</li>
+<li><code>nodes</code>: <code>id</code>, <code>lon</code>, <code>lat</code>, <code>name</code> (from S1 <code>junctions.csv</code> when given, else null), <code>type</code> (SUMO junction type).</li>
+<li><code>edges</code>: <code>id</code>, <code>from</code>/<code>to</code> (node index), <code>length</code> (m), <code>speed_kmh</code>, <code>name</code>, <code>lanes</code> (lane indices), <code>shape</code>
+  (flat <code>[lon, lat, lon, lat, …]</code>, 6 decimals ≈ 0.1 m, the edge's centre line from junction to junction),
+  <code>routable</code> (1 if <code>passenger</code> may use it), <code>next</code> (edge indices reachable through a SUMO connection),
+  <code>via_s</code> (free-flow time through the junction's internal lane for each <code>next</code>), <code>bearing</code> (deg, first→last point),
+  <code>slot</code> (drawing offset of the direction line, see below).</li>
+<li><code>lanes</code>: <code>id</code>, <code>edge</code> (edge index), <code>index</code> (SUMO lane index, 0 = kerb), <code>bearing</code>, <code>name</code>, <code>speed_kmh</code>, <code>length</code>,
+  <code>slot</code>, <code>shape</code> (the lane's own SUMO shape in lon/lat; the viewer draws lanes from the edge centre line + <code>slot</code>).</li>
+<li><code>pois</code>: <code>{id, category, name, lon, lat, node (nearest node a car can enter), snap_m, source}</code>.</li>
+<li><code>zones</code>: <code>{id, name, geometry (GeoJSON), edges (routable edges whose midpoint is inside), suburb?, dwellings?, …}</code>.</li>
+</ul>
+<h3 id="metajson">meta.json</h3>
+<p><code>run_id, label, network, network_hash, scenario, condition, year, growth, seed, begin_s, interval_s (900), n_intervals,
+n_lanes, n_edges, files {lanes, edge_times} (binary layouts, below), bookmarks [{t, label, kind: auto|scenario,
+detail}], series {delay_veh_h, waiting_veh_h, vehicles_mean, speed_ratio_mean} (one value per interval),
+summary {loaded, inserted, arrived, teleports, waiting, running, delay_veh_h_total, peak_interval_begin_s},
+queue_threshold_vehicles, sources (run dirs), synthetic, notes, created</code>.</p>
+<h3 id="binary-layout-both-files">Binary layout (both files)</h3>
+<p>gzip-compressed, little-endian, <strong>interval-major</strong> planes (<code>value[t * n + i]</code> for lane/edge <code>i</code> in interval <code>t</code>),
+each plane padded to a 4-byte boundary; <code>decoded = raw * scale</code> unless <code>raw == missing</code>. <code>meta.files.*.planes</code>
+lists <code>{name, dtype, offset, scale, missing, unit, description}</code>.</p>
+<table>
+<thead>
+<tr>
+<th>file</th>
+<th>plane</th>
+<th>dtype</th>
+<th>scale</th>
+<th>missing</th>
+<th>meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>lanes</td>
+<td><code>waiting_s</code></td>
+<td>uint16</td>
+<td>2</td>
+<td>–</td>
+<td>seconds vehicles were halted on the lane in the interval, summed over vehicles (cap 131070 s ≈ 145 vehicles halted all interval)</td>
+</tr>
+<tr>
+<td>lanes</td>
+<td><code>vehicles</code></td>
+<td>uint16</td>
+<td>1</td>
+<td>–</td>
+<td>vehicles entering the lane, incl. lane changes onto it (entered + departed + laneChangedTo); a vehicle can count on two lanes of one road</td>
+</tr>
+<tr>
+<td>lanes</td>
+<td><code>speed_ratio</code></td>
+<td>uint8</td>
+<td>1/254</td>
+<td>255</td>
+<td>time-weighted mean speed / lane limit (SUMO <code>speedRelative</code>), capped at 1; 255 = no vehicles</td>
+</tr>
+<tr>
+<td>lanes</td>
+<td><code>density</code></td>
+<td>uint8</td>
+<td>1</td>
+<td>255</td>
+<td>vehicles per km of lane (cap 254)</td>
+</tr>
+<tr>
+<td>edge_times</td>
+<td><code>travel_time_s</code></td>
+<td>uint16</td>
+<td>0.1</td>
+<td>65535</td>
+<td>SUMO edgeData <code>traveltime</code>; free-flow time where no vehicle; cap 6553.4 s; 65535 = impassable</td>
+</tr>
+</tbody>
+</table>
+<p>Size: 6 bytes per lane-interval + 2 per edge-interval before gzip. Victor Harbor scale (~15k lanes, 96 intervals) is
+about 9 MB raw per run; gzip typically reduces it 5–10×. The sample (1,238 lanes, 76 intervals) is 120–140 kB per run.</p>
+<h2 id="v1-edge-travel-time-sumo-edgedata-traveltime-free-flow-where-empty">V1. Edge travel time = SUMO edgeData <code>traveltime</code>, free-flow where empty</h2>
+<ul>
+<li><strong>Value:</strong> mean of the vehicles on the edge in each 15-minute interval (length / time-weighted mean speed, so it
+  includes queueing at the stop line); free-flow time (length / limit) where no vehicle used the edge; never below half
+  the free-flow time (guards one fast sample). Junction crossing time: free-flow time of the internal lane.</li>
+<li><strong>Reason:</strong> contract; edgeData is the only per-interval travel time SUMO gives for every edge.</li>
+<li><strong>Sensitivity:</strong> low on busy roads, higher on rarely used ones (a single slow vehicle sets the value). Seed-mean runs
+  smooth this. Waiting to turn is on the approach edge for all movements, so a long right-turn queue also slows the
+  through movement in the viewer (SUMO lane data would separate them; the routing graph is per edge). The junction
+  time counts only the first internal lane of a connection (slight underestimate for turns with an internal stop).</li>
+<li><strong>Not represented:</strong> road closures (event, NYE). The binary format has an "impassable" code and the router honours
+  it, but the exporter does not write it yet: closed roads would be routed through at free-flow speed. Needed before
+  event scenarios are shown: a closures input (edge, begin, end) to the exporter.</li>
+</ul>
+<h2 id="v1a-sparse-samples-less-than-one-edge-length-travelled-added-22-nov-2026">V1a. Sparse samples: less than one edge length travelled (added 22 Nov 2026)</h2>
+<ul>
+<li><strong>Value:</strong> SUMO's edgeData <code>traveltime</code> is edge length × vehicle-seconds ÷ the distance the vehicles' fronts
+  travelled in the interval. When the vehicles covered less than one edge length (<code>traveltime</code> &gt; vehicle-seconds),
+  the exporter uses the vehicle-seconds observed plus the free-flow time of the part of the edge not covered
+  (<code>t = sampled + free_flow × (1 − sampled / traveltime)</code>). Intervals in which at least one edge length was
+  travelled are unchanged; a real queue (vehicles on the edge for much of the interval) keeps a long time.</li>
+<li><strong>Why:</strong> SUMO extrapolates from centimetres when the only sample is a vehicle that was already waiting at the stop
+  line as the interval began. Grantley Ave (<code>-42530401#0</code>, 194 m) in the 2025 summer baseline, 12:15–12:30: seed 2
+  recorded 19,308 s from 11.8 vehicle-seconds and seed 3 9,678 s from 6.5 (one vehicle each, entered 0, left 1);
+  the seed mean hit the format's cap (6,553 s), so the residents' site showed Grantley Ave → Woolworths at 12:30
+  taking 56.6 minutes today and the council package "53 minutes faster". The vehicles' own exit times (vehroute)
+  show the longest traversal of that street between 12:00 and 13:00 was 70, 97 and 79 s in the three seeds; the
+  rule gives 24 s for the interval (seed mean), and the trip becomes 2.7 minutes today against 3.6 under the package.</li>
+<li><strong>Extent:</strong> in the 2025 summer baseline 517 of 449,568 edge-intervals change by more than 1 s, 17 by more than
+  5 minutes, all on short local streets or car-park aisles. Across the 99 runs published on 22 Nov 2026 (dry run
+  of the retime tool) every run had some: 1,012 edge-intervals inflated by more than 5 minutes, 3–33 per run.
+  Simulation results (tripinfo, edgeData waiting time,
+  movements, the R14/R15 tables and every S7 number) never used <code>traveltime</code>, so only the viewer and the
+  residents' site were affected. Runs exported before the fix are re-timed in place with
+  <code>python -m vhsim.viewer.retime</code> (edge times only; lane data unchanged).</li>
+<li><strong>Sensitivity:</strong> low; it can under-state a slow single vehicle that was observed for part of a long edge (the
+  rest of the edge is assumed free-flowing), which the next interval's value corrects.</li>
+</ul>
+<h2 id="v2-travel-time-to-a-target-arrival-anchored-searches-routes-driven-forward">V2. Travel time to a target: arrival-anchored searches, routes driven forward</h2>
+<ul>
+<li><strong>Value:</strong> for arrival times t, t + 3¾ min, t + 7½ min, … (4 anchors per 15-minute interval, up to 4 hours) a
+  reverse time-dependent Dijkstra gives every edge's latest entry time and the route (a tree towards the target).
+  The latest entry time is solved exactly on the piecewise-linear edge-time function. For each edge the two anchors
+  whose latest entry times bracket the departure t give two routes; both are driven forward from t with the
+  time-dependent edge times and the faster is shown. Edge times are interpolated linearly between interval
+  centres. Departure = start of the selected interval. Shown value = time from the <strong>middle</strong> of each road section
+  (route time minus half the section's free-flow time, so a queue at its stop line still counts).</li>
+<li><strong>Accuracy:</strong> every value is the exact time of a real route; it is longer than the true fastest time only when a
+  route neither bracketing anchor chose would be faster. Tested against a forward time-dependent search from each
+  origin on a 12 × 12 grid with sudden 1–10 minute queues on 30% of edges: 5,280 checks, worst error 5.0 s, 1 over
+  max(2%, 5 s). Time: about 12 ms for 9,800 edges in Node; 1–3 ms on the sample network in the browser.</li>
+<li><strong>Limits:</strong> exact only while FIFO holds (an edge's time never falls by more than 15 minutes between two interval
+  centres). Not modelled: drivers re-routing as conditions change, parking search (integration I3), the walk from
+  the car, road closures (V1). Edges with no route are grey.</li>
+</ul>
+<h2 id="v3-snapping-the-target">V3. Snapping the target</h2>
+<ul>
+<li><strong>Value:</strong> the target snaps to the nearest node that a car can drive into; a POI likewise. The node's label is its
+  S1 junction name or the street names meeting there.</li>
+<li><strong>Sensitivity:</strong> a target in the middle of a long road snaps to a junction up to half the road's length away.</li>
+</ul>
+<h2 id="v3b-zone-shading">V3b. Zone shading</h2>
+<ul>
+<li><strong>Value:</strong> a zone's value is the median travel time over the routable road sections whose midpoint lies inside it;
+  a zone with none (small mesh blocks) uses up to 3 nearest road sections within 300 m of its centroid
+  (<code>edges_nearest: true</code>); a zone with no road within 300 m (e.g. Granite Island) stays grey.</li>
+<li><strong>Sensitivity:</strong> presentation; a mesh block's median is close to the time from its frontage roads.</li>
+</ul>
+<h2 id="v4-automatic-bookmarks-exporter-vhsimviewerbookmarkspy">V4. Automatic bookmarks (exporter, <code>vhsim/viewer/bookmarks.py</code>)</h2>
+<ul>
+<li><strong>Value:</strong> peak interval of network delay (sum of SUMO <code>timeLoss</code>, vehicle-hours per interval); up to two sharpest
+  rises and two falls (each ≥ 15% of the peak and ≥ 0.5 vehicle-hours per 15 min; neighbouring intervals merged; a rise
+  into the peak interval is folded into the peak); the first interval where a junction approach (edge ending at a node
+  with 3+ legs) averages ≥ 5 halted vehicles per lane (<code>waitingTime / 900 / lanes</code>), top 5 approaches by peak queue; the label says
+  "halted vehicles per lane (15-minute average)".
+  In the browser, A-vs-B bookmarks mark the intervals where network delay differs most each way (≥ 10% of the peak and
+  ≥ 0.5 vehicle-hours).</li>
+<li><strong>Reason:</strong> plain, explainable rules. Thresholds are guesses tuned on the sample; <code>--queue-threshold</code> changes the queue one.</li>
+<li><strong>Sensitivity:</strong> presentation only.</li>
+</ul>
+<h2 id="v5-congestion-colours">V5. Congestion colours</h2>
+<ul>
+<li><strong>Value:</strong> speed ratio ≥ 80% of the limit counts as free-flowing (lightest colour); 0% = stopped. Waiting = average
+  halted vehicles (<code>waiting_s / 900</code>). Volume shown per hour. Lanes with no vehicles are grey.</li>
+<li><strong>Reason:</strong> SUMO's urban links rarely average the full limit even when empty (junction slow-downs, speed factor),
+  so a 100% anchor made every road look congested.</li>
+<li><strong>Sensitivity:</strong> presentation only.</li>
+</ul>
+<h2 id="v6-comparing-scenarios">V6. Comparing scenarios</h2>
+<ul>
+<li><strong>Value:</strong> lanes/edges are matched by SUMO id across networks; roads only in A are drawn dashed ("removed in B"),
+  roads only in B are grey. In difference mode speeds are capped at the free-flow anchor (80% of the limit) and a lane
+  with no vehicles counts as free-flowing, so an empty lane in A and a lightly used one in B do not show as a slow-down;
+  queue, volume and density count no vehicles as zero. A road with a route in A but none in B shows as the largest
+  increase (darkest red). When B's time window does not cover the selected time, B shows no data (it is not clamped to
+  its nearest interval); runs with different interval lengths cannot be compared. Differences inside a dead band (15 s, 5 percentage points, half a vehicle, 3 vehicles/km,
+  20 vehicles/h) are shown as no change, because single-seed runs differ by that much by chance.</li>
+<li><strong>Sensitivity:</strong> with one seed per scenario, small differences are noise; use seed-mean runs (several <code>--run</code>).
+  If a scenario patch renames edges (e.g. splits one), those edges will not match and show as removed + new.</li>
+</ul>
+<h2 id="v7-lane-drawing-offsets">V7. Lane drawing offsets</h2>
+<ul>
+<li><strong>Value:</strong> lanes are drawn from the edge's junction-to-junction centre line (<code>getRawShape</code>) with a pixel offset
+  (<code>slot</code> lane widths, MapLibre <code>line-offset</code>): two-way roads put each direction on its driving side (left in
+  left-hand networks, read from the net's <code>lefthand</code> attribute), kerb lane outermost, 0.15 lane widths gap at the
+  centre line; one-way roads are centred. Widths are exaggerated below zoom 16 and true to scale (3.2 m) above.</li>
+<li><strong>Sensitivity:</strong> presentation only. One-way roads imported with <code>spreadType=right</code> are drawn half a road width off.</li>
+</ul>
+<h2 id="v8-sample-data-simdataviewersample-python-m-vhsimviewersample">V8. Sample data (<code>sim/data/viewer/sample/</code>, <code>python -m vhsim.viewer.sample</code>)</h2>
+<ul>
+<li><strong>Value:</strong> NOT RESULTS. A quick netconvert of the S-E01 OSM extract clipped to 138.598–138.640 E, 35.540–35.568 S
+  (<code>--lefthand</code>, OSM speeds, no S1 fixes); 15,000 synthetic car/truck trips (shape of the S3 hourly profile, made-up
+  purposes: home ↔ centre/shops, 15% through traffic, 250 school trips per school each way at drop-off and pick-up);
+  2041-high = 1.3 × trips; summer peak = beach trips instead of school trips; "test_variant" = Victoria Street one-way
+  (south/west-bound edges deleted) and Esplanade 40 km/h. One seed per run. Places from S-E03; zones are a 3 × 3 grid
+  of test cells. Every run is marked <code>synthetic</code> and the UI shows a banner.</li>
+<li><strong>Reason:</strong> real network (S1), demand (S2) and calibrated runs are not ready; the viewer needed congestion and a
+  before/after difference to be built and tested against.</li>
+</ul>
+<h2 id="v9-external-libraries">V9. External libraries</h2>
+<ul>
+<li>MapLibre GL JS 5.6.0 from cdnjs (<code>viewer/index.html</code>); no build step. The tests load the same version from
+  <code>viewer/node_modules</code> so they run offline. Background map: OpenStreetMap raster tiles, off by default.</li>
+</ul>
+<h2 id="residents-site-viewerresidents">Residents' site (<code>viewer/residents/</code>)</h2>
+<h2 id="r1-trip-times">R1. Trip times</h2>
+<ul>
+<li><strong>Value:</strong> fastest time-dependent route (forward search, <code>routeFromNode</code>) from the simulated junction nearest each
+  end of the trip, departing at the trip's time, on the run for that option, day type, year and growth. Places more
+  than 800 m from any junction count as "outside the simulated area". Door-to-door parts (parking, walking) are not included.</li>
+<li><strong>Sensitivity:</strong> small for trips between named places; a home picked in a paddock snaps to the nearest road.</li>
+</ul>
+<h2 id="r2-about-the-same-band-grey">R2. "About the same" band (grey)</h2>
+<ul>
+<li><strong>Value:</strong> a trip is "about the same" when the option's time is within the larger of <strong>30 seconds or 5%</strong> of today's
+  time; outside it, faster (green) or slower (red). Route sections on the map use the larger of 3 seconds or 10% of
+  the section's time. Colours: Okabe-Ito bluish green and vermillion, always with words and ▲/▼/= symbols.</li>
+<li><strong>Single-seed runs</strong> (some future years are 1 seed): the band doubles to the larger of <strong>60 seconds or 10%</strong>, and
+  the page says the result is from a single run and less certain. The heat-map difference uses the same band.</li>
+<li><strong>Reason:</strong> results are seed means, and the 15-minute averaging of section times moves trip times by tens of
+  seconds even with no change. Not yet measured from the seed spread: when per-seed runs are exported, the band can
+  be set to about twice the seed-to-seed standard deviation of trip times.</li>
+<li><strong>Sensitivity:</strong> presentation; it decides only which small changes are called "about the same".</li>
+</ul>
+<h2 id="r3-day-types">R3. Day types</h2>
+<ul>
+<li>Weekday (school term) → <code>weekday_term</code>, Saturday → <code>saturday</code>, Summer holidays → <code>summer_peak</code>. Day types or
+  years without a run are shown as "not simulated yet"; nothing is interpolated or borrowed from another day or year.
+  2025 is "today" (growth <code>base</code>) for both growth settings.</li>
+</ul>
+<h2 id="r4-privacy">R4. Privacy</h2>
+<ul>
+<li>Trips and saved places live only in <code>localStorage</code> (key <code>vh-residents-v1</code>), every access wrapped in try/catch; if
+  storage is blocked the site works for the visit and says nothing is saved. No trip data goes in URLs, requests
+  or logs; all routing runs in the browser on the published results. Place search uses the published places list
+  (no external address lookup). The only third-party requests are the map library (cdnjs) and, if a future
+  version turns it on, background map tiles.</li>
+</ul>
+<h2 id="r5-data-the-site-loads">R5. Data the site loads</h2>
+<ul>
+<li><code>networks/&lt;name&gt;.lite.json</code> (routing-only, written by the exporter, or backfilled with
+  <code>python -m vhsim.viewer.lite --data &lt;dir&gt;</code>; falls back to the full network file) and each run's
+  <code>edge_times.bin.gz</code>. The "all options at a glance" table loads every option's network and only runs when asked.</li>
+</ul>
+<h2 id="base-map-viewerbasemap-vhsimviewerbasemappy-vhsimviewerterrainpy">Base map (<code>viewer/basemap/</code>, <code>vhsim/viewer/basemap.py</code>, <code>vhsim/viewer/terrain.py</code>)</h2>
+<p>Provenance, licences and hand-placed labels: <code>viewer/basemap/SOURCES.md</code>. These choices only change how the map
+looks; no simulation result depends on them.</p>
+<h2 id="v10-building-heights-3-d-buildings">V10. Building heights (3-D buildings)</h2>
+<ul>
+<li><strong>Value:</strong> OSM <code>height</code> when present (none in G-01), else <code>building:levels</code> × 3 m + 1 m (4 buildings), else a
+  default by type: house / detached / semi-detached / terrace / residential, and <code>building=yes</code> up to 800 m²: 4.5 m;
+  garage / carport / shed / roof / hut: 2.8 m; apartments: 10 m; retail / commercial / supermarket / office (or any
+  building with a <code>shop</code> tag): 6.5 m; school / college: 7 m; church or place of worship: 10 m; hospital: 9 m;
+  industrial / warehouse: 7 m; hotel: 10 m; <code>building=yes</code> over 800 m²: 6.5 m. Rounded to 0.5 m.</li>
+<li><strong>Reason:</strong> 97% of G-01 buildings are <code>building=yes</code> with no height or levels. Victor Harbor is mostly single-storey
+  detached houses (about 3 m walls plus a pitched roof, so about 4.5 m to the ridge); footprints over 800 m² are
+  shops, halls and sheds with high single-storey roofs. The type defaults are typical heights for one-storey
+  outbuildings, two-storey schools and shops, and three-storey apartment and hotel blocks.</li>
+<li><strong>Sensitivity:</strong> presentation only. A two-storey house is drawn about 2–3 m too low.</li>
+<li><strong>Class (<code>c</code>):</strong> from the <code>building</code> value, then <code>amenity</code> / <code>shop</code> / <code>tourism</code> tags; plain <code>building=yes</code> with
+  no other tag is <code>other</code> (not guessed to be a house), so most buildings are <code>other</code>.</li>
+<li>Buildings under 12 m² are dropped (mostly garden sheds and water tanks); outlines are simplified with a 0.5 m
+  tolerance and snapped to the 1e-5° (about 1 m) output grid.</li>
+</ul>
+<h2 id="v11-base-map-generalisation">V11. Base-map generalisation</h2>
+<ul>
+<li><strong>Value:</strong> areas and lines are clipped to the G-01 box (138.57–138.66 E, 35.53–35.598 S), where the extract is
+  complete; outside it the map shows the terrain only. Buildings and pier outlines crossing the box edge are kept whole. Simplification tolerances (in metres, before snapping to
+  1e-5°): sea and inland water 1 m, land use 1.5 m, lines 1 m, piers 0.5 m. Land-use areas under 20 m² are dropped.
+  <code>landuse=construction</code> (10 new housing estates) and <code>landuse=quarry</code> (1) are left out: they have no class in the
+  map style. <code>leisure=nature_reserve</code>, <code>swimming_pool</code> and <code>playground</code> areas are left out too.</li>
+<li><strong>Label zooms:</strong> islands and the bay 12 (islands under 10 ha 13); town suburbs (1,000+ G-NAF addresses) 12, rural
+  localities 11; landmarks, rivers, peaks and Petrel Cove 13; Chiton Rocks and the hospital 14; golf courses and
+  parks over 20 ha 13.5; other parks, the large named oval and schools 14.5.</li>
+<li><strong>Sea outside the G-01 box:</strong> from the terrain tiles: below 1 m and connected to the OSM sea or to the south/west
+  edge of the area; offshore land under 5 m or under 2 ha counts as sea; simplified by 40 m (details in
+  <code>viewer/basemap/SOURCES.md</code>). The 1 m and 5 m thresholds deal with noise in the source near the coast; a lower
+  coast (beaches under 1 m) would be drawn as sea, a 30–50 m effect at this scale.</li>
+<li><strong>Terrain:</strong> sea-floor elevations are set to 0 (a flat sea, no bathymetry shading) and elevations are rounded to
+  1/8 m. Zoom 12 (about 15 m per pixel) covers the town only; zooms 10–11 cover the whole network.</li>
+<li><strong>Sensitivity:</strong> presentation only.</li>
+</ul></body></html>

@@ -1,0 +1,912 @@
+<!DOCTYPE html><html lang='en-AU'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1'><title>S7 — Where the delay is, and targeted options aimed at it</title><style>body{font:16px/1.6 -apple-system,'Segoe UI',Helvetica,Arial,sans-serif;color:#1b1b1b;background:#fbfaf7;max-width:56rem;margin:0 auto;padding:1rem 16px 4rem}a{color:#0b5e78}h1,h2,h3{line-height:1.25}table{border-collapse:collapse;font-size:.92rem;display:block;overflow-x:auto}th,td{border:1px solid #ddd;padding:.35rem .5rem;vertical-align:top;text-align:left}code{font-size:.9em;background:#f0eee8;padding:0 .2em}pre{background:#f0eee8;padding:.6rem;overflow-x:auto}nav{font-size:.9rem;border-bottom:1px solid #ddd;padding-bottom:.4rem;margin-bottom:1rem}</style></head><body><nav><a href='/victor-harbor-roads/'>Home</a> · <a href='index.html'>Method and assumptions</a> · <a href='/victor-harbor-roads/kb/'>Evidence notes</a></nav><h1 id="s7-where-the-delay-is-and-targeted-options-aimed-at-it">S7 — Where the delay is, and targeted options aimed at it</h1>
+<p>Stream S7 (integration, 21–22 Nov 2026). Part 1 diagnoses where the simulated delay is on today's
+network; part 2 defines options aimed at those places (ids N2–N9 in <code>sim/SCENARIOS.md</code>); part 3 gives
+their results against today's network, the council's package (CP) and Brent's package (BP). Each
+assumption has a value, a reason and how sensitive results are to it.</p>
+<p>Tools: <code>python -m vhsim.integration.bottlenecks diagnose|hotspots ...</code> (from <code>sim/</code>; outputs in
+<code>sim/data/results/s7_diagnosis/</code>). Measure: <strong>vehicle-hours stopped</strong> (SUMO edgeData <code>waitingTime</code>,
+speed below 0.1 m/s), the same quantity as the "time stopped" in <code>report_2025_base/summary.csv</code> but
+summed per edge, seed mean of 3 runs. The edgeData total is a little below the trip total (440 vs 460
+vehicle-hours in summer 2025) because edgeData is written without internal lanes
+(<code>vhsim.metrics.run</code>): time stopped <em>inside</em> a junction, mostly right-turners waiting at the turn
+line, is on no edge. Per-approach and hotspot figures therefore slightly undercount right-turn waits;
+the trip totals in part 3 include them.</p>
+<h2 id="1-diagnosis-todays-network">1. Diagnosis (today's network)</h2>
+<h3 id="totals-and-time-of-day">Totals and time of day</h3>
+<table>
+<thead>
+<tr>
+<th>Run (today's network, 3 seeds)</th>
+<th>Vehicle-hours stopped / day (edgeData)</th>
+<th>Worst hour</th>
+<th>Share 10:00–17:00</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2025 term weekday</td>
+<td>128</td>
+<td>12:00–13:00 (19)</td>
+<td>83%</td>
+</tr>
+<tr>
+<td>2025 summer peak day</td>
+<td>440</td>
+<td>12:00–13:00 (84)</td>
+<td>87%</td>
+</tr>
+<tr>
+<td>2041 high growth, term weekday</td>
+<td>584</td>
+<td>12:00–13:00 (116)</td>
+<td>89%</td>
+</tr>
+</tbody>
+</table>
+<p>Delay is a <strong>midday</strong> problem (the counts' midday peak, S3), not a commuter-peak one. In summer
+it builds from 09:00, peaks at 12:00–13:00 and stays high until 16:00.</p>
+<h3 id="hotspots-vehicle-hours-stopped-per-day">Hotspots (vehicle-hours stopped per day)</h3>
+<p>A hotspot is a bottleneck's whole queue: every approach (and its turn bay) ending at the listed
+junction nodes. Definitions in <code>vhsim.integration.bottlenecks.HOTSPOTS</code>. Edges a scenario adds
+other than S7 ring edges (e.g. the B5/BP slip lanes <code>s6_slip_*</code>) belong to no hotspot, so for B5/BP
+the hotspot figures leave out waiting on the slips; the network total includes it.</p>
+<table>
+<thead>
+<tr>
+<th>Hotspot</th>
+<th>2025 weekday</th>
+<th>2025 summer</th>
+<th>2041 high weekday</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Victoria St, Bay Rd to Torrens St (its own through approaches, side streets, car-park accesses)</td>
+<td>22.4</td>
+<td>77.4</td>
+<td>110.2</td>
+</tr>
+<tr>
+<td>Hindmarsh Rd side streets north of the town centre (Wattle Dr, The Drive, Renown Ave, The Parkway, Adare Ave, Peace Ave, Rupara Ave)</td>
+<td>15.2</td>
+<td>48.8</td>
+<td>39.4</td>
+</tr>
+<tr>
+<td>Hindmarsh Rd / Grantley Ave / Bridge Tce (rail-crossing link)</td>
+<td>5.4</td>
+<td>32.6</td>
+<td>20.3</td>
+</tr>
+<tr>
+<td>Torrens/Seaview/Eyre roundabout + Eyre Tce / McKinlay St</td>
+<td>6.1</td>
+<td>28.7</td>
+<td>24.5</td>
+</tr>
+<tr>
+<td>Armstrong Rd / Crozier Rd</td>
+<td>3.0</td>
+<td>18.2</td>
+<td><strong>54.3</strong></td>
+</tr>
+<tr>
+<td>Torrens St / Coral St</td>
+<td>5.1</td>
+<td>12.2</td>
+<td>13.9</td>
+</tr>
+<tr>
+<td>McCracken roundabout</td>
+<td>4.9</td>
+<td>10.2</td>
+<td>9.3</td>
+</tr>
+<tr>
+<td>Crozier Rd / Burke St</td>
+<td>1.4</td>
+<td>9.3</td>
+<td>15.0</td>
+</tr>
+<tr>
+<td>Bay Rd / Victoria St / George Main Rd roundabout</td>
+<td>2.2</td>
+<td>5.6</td>
+<td>5.5</td>
+</tr>
+<tr>
+<td>Torrens St / Crozier Rd roundabout</td>
+<td>1.7</td>
+<td>4.8</td>
+<td>5.5</td>
+</tr>
+<tr>
+<td>Armstrong Rd / Greenhills Rd</td>
+<td>0.5</td>
+<td>1.6</td>
+<td>12.0</td>
+</tr>
+<tr>
+<td><strong>All eleven</strong></td>
+<td>68 (53%)</td>
+<td>249 (57%)</td>
+<td>310 (53%)</td>
+</tr>
+<tr>
+<td>Network total</td>
+<td>128</td>
+<td>440</td>
+<td>584</td>
+</tr>
+</tbody>
+</table>
+<p>The rest (about 45%) is spread thinly over hundreds of give-way junctions, driveways and car-park
+exits, none above about 6 vehicle-hours a day.</p>
+<h3 id="top-approaches-2025-summer-peak-day">Top approaches (2025 summer peak day)</h3>
+<table>
+<thead>
+<tr>
+<th>Junction</th>
+<th>Approach</th>
+<th>Vehicles/day</th>
+<th>Veh-h stopped</th>
+<th>s stopped / vehicle</th>
+<th>Worst hour</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bridge Tce at the Grantley Ave crossing</td>
+<td>Bridge Tce <code>217056482#0</code></td>
+<td>2,755</td>
+<td>23.1</td>
+<td>30</td>
+<td>15:00</td>
+</tr>
+<tr>
+<td>Armstrong Rd / Crozier Rd</td>
+<td>Crozier Rd <code>39946279</code></td>
+<td>3,182</td>
+<td>14.8</td>
+<td>17</td>
+<td>12:00</td>
+</tr>
+<tr>
+<td>Victoria St at the IGA car-park entry</td>
+<td>Victoria St eastbound <code>173449383#3</code></td>
+<td>9,588</td>
+<td>13.4</td>
+<td>5</td>
+<td>15:00</td>
+</tr>
+<tr>
+<td>Victoria St at the IGA car-park entry</td>
+<td>car-park exit <code>-1432093544</code></td>
+<td>992</td>
+<td>11.3</td>
+<td>41</td>
+<td>11:00</td>
+</tr>
+<tr>
+<td>Granite St / Victoria St</td>
+<td>Granite St <code>42530572#1</code></td>
+<td>1,218</td>
+<td>10.8</td>
+<td>32</td>
+<td>11:00</td>
+</tr>
+<tr>
+<td>Hindmarsh Rd / Wattle Dr</td>
+<td>Wattle Dr <code>-43152356#0</code></td>
+<td>1,006</td>
+<td>10.2</td>
+<td>37</td>
+<td>11:00</td>
+</tr>
+<tr>
+<td>Torrens/Seaview/Eyre roundabout</td>
+<td>Eyre Tce <code>184390356</code></td>
+<td>2,616</td>
+<td>9.6</td>
+<td>13</td>
+<td>12:00</td>
+</tr>
+<tr>
+<td>Eyre Tce / McKinlay St</td>
+<td>McKinlay St <code>42645831#7</code></td>
+<td>1,845</td>
+<td>8.7</td>
+<td>17</td>
+<td>12:00</td>
+</tr>
+<tr>
+<td>Crozier Rd / Burke St</td>
+<td>Burke St <code>1242247847#2</code></td>
+<td>1,842</td>
+<td>8.4</td>
+<td>16</td>
+<td>12:00</td>
+</tr>
+<tr>
+<td>Victoria St / Oval Rd</td>
+<td>Victoria St eastbound <code>173449383#0</code></td>
+<td>10,870</td>
+<td>8.3</td>
+<td>3</td>
+<td>11:00</td>
+</tr>
+<tr>
+<td>Hindmarsh Rd / Grantley Ave</td>
+<td>crossing link <code>-184390360#1</code></td>
+<td>2,154</td>
+<td>8.1</td>
+<td>14</td>
+<td>12:00</td>
+</tr>
+<tr>
+<td>Victoria St / Oval Rd</td>
+<td>Victoria St westbound <code>1242247851#0</code></td>
+<td>12,096</td>
+<td>7.3</td>
+<td>2</td>
+<td>12:00</td>
+</tr>
+<tr>
+<td>Torrens St / Coral St</td>
+<td>Coral St <code>60269602#2</code></td>
+<td>1,387</td>
+<td>7.0</td>
+<td>18</td>
+<td>12:00</td>
+</tr>
+<tr>
+<td>Bay Rd / Bartel Blvd</td>
+<td>Bartel Blvd <code>-183540840#0</code></td>
+<td>3,246</td>
+<td>6.5</td>
+<td>7</td>
+<td>12:00</td>
+</tr>
+<tr>
+<td>Hindmarsh Rd / Renown Ave</td>
+<td>Renown Ave <code>46824061#2</code></td>
+<td>794</td>
+<td>6.4</td>
+<td>29</td>
+<td>12:00</td>
+</tr>
+</tbody>
+</table>
+<p>(2025 weekday and 2041 tables: <code>sim/data/results/s7_diagnosis/*__approaches.csv</code>.)</p>
+<h3 id="what-the-delay-is">What the delay is</h3>
+<ol>
+<li><strong>Side-street right turns onto busy one-lane arterials</strong> are most of it. Movement detail
+   (<code>movements.csv</code>, summer 2025): Bridge Tce traffic turns left into the 17 m Grantley Ave crossing
+   link (50 s mean wait) and then right onto Hindmarsh Rd (20 s) — the link holds two cars, so the
+   right-turners' wait backs up into Bridge Tce. Wattle Dr right onto Hindmarsh Rd: 48 s. Granite St
+   right onto Victoria St: 45 s. Coral St right onto Torrens St: 27 s. Crozier Rd onto Armstrong Rd:
+   left 32 s and right 25 s (left-turners queue behind right-turners in the one shared lane).</li>
+<li><strong>Victoria St between Bay Rd and Torrens St</strong> is a chain of closely spaced give-way junctions and
+   car-park accesses on a one-lane-each-way street carrying 10,000–12,000 vehicles a day in summer:
+   2,400 a day turn left into Oval Rd (17 s each, slowing the through lane), 980 turn left into the
+   IGA car park (1,400 at 2041 high growth), the car-park exit waits 41 s, Granite St's right turn 45 s, and the westbound queue
+   from the Bay Rd roundabout entry reaches back 120 m. <strong>Caution:</strong> the calibration over-loads
+   Victoria St (1.53 x the DIT count, A-INT-04) and models the car parks with a few OSM service roads,
+   so this hotspot is the least trustworthy; a real fix here needs the car-park access design, which the
+   model cannot test.</li>
+<li><strong>The roundabouts are not the main problem today.</strong> Mean approach delay at the two Torrens St
+   roundabouts (Seaview/Eyre and Crozier) is 3–8 s on most approaches; the exceptions are Eyre Tce
+   (13 s weekday, 20 s summer), Seaview Rd (8 / 13 s) and Crozier Rd from the west (5 / 8 s); at
+   Torrens/Victoria/Wills, Wills St 7 / 10 s; at McCracken the three main legs 3–8 s (a minor leg
+   9 / 14 s); at Bay Rd 2–7 s (<code>report_2025_base/intersections.csv</code>). This is
+   why the council's signals (C4) and Brent's slip lanes (B5) do not help: they replace or bypass
+   junctions that are not where the queues are.</li>
+<li><strong>At 2041 high growth the ring road's give-way junctions fail.</strong> Armstrong Rd / Crozier Rd becomes
+   the worst junction in town (54 vehicle-hours; Crozier Rd waits 53 s a vehicle, its left-turners
+   92 s); Armstrong Rd / Greenhills Rd grows from 0.5 (2025 weekday) to 12. The growth areas load onto the rural roads
+   north of the ring (Waggon Rd, Day Rd, Greenhills Rd, Fuller Rd; S2 M3/M15) and cross or join the
+   ring road at these give-way junctions. Both packages make this worse: CP 92, BP 106, B3 alone 92
+   vehicle-hours at Armstrong/Crozier (more traffic on the ring road, fewer gaps for Crozier Rd).</li>
+</ol>
+<h2 id="2-options-and-their-assumptions">2. Options and their assumptions</h2>
+<p>General: every option is a netconvert patch over the baseline (<code>vhsim.scenarios.defs</code>, patches in
+<code>sim/data/networks/patches/&lt;id&gt;/</code>, built with <code>python -m vhsim.scenarios.build &lt;id&gt; --smoke</code>), then the
+A-INT-01 turn bays as for every scenario. All pass the connectivity checks and the 30-minute smoke run.</p>
+<h3 id="s7-01-new-single-lane-roundabouts-n2-n4-n5">S7-01. New single-lane roundabouts (N2, N4, N5)</h3>
+<ul>
+<li><strong>Value:</strong> the priority junction is replaced by a ring of one node per leg on a circle of radius <em>r</em>
+  round the old junction, one-lane ring edges running clockwise, approach and exit edges trimmed to
+  the circle (<code>roundabout()</code> in <code>defs.py</code>, geometry in <code>vhsim/scenarios/s7.py</code>). The old junction's
+  connections are dropped and netconvert computes the roundabout's (every movement stays possible;
+  U-turns become possible). Ring speed follows the baseline's own single-lane roundabouts,
+  v² = 2.9 r (m/s; 20 m → 27 km/h, 12 m → 21 km/h, 15 m → 24 km/h). Ring nodes are recorded as
+  aliases of the named junction (<code>meta/summary.json</code> <code>junction_aliases</code>) so the R15 tables find them.</li>
+<li><strong>Radii:</strong> N2 Armstrong/Crozier 20 m (as McCracken 18.8 m and Armstrong/George Main 25.4 m, rural
+  100 km/h road); N5 Armstrong/Greenhills 15 m (the next Armstrong Rd node is 30 m north; 20 m would leave a
+  9 m stub before it, 15 m about 14 m); N4 Hindmarsh/Grantley 12 m (urban, between the Torrens St roundabouts' 9–11 m
+  and McCracken).</li>
+<li><strong>N4 placement:</strong> the crossing link from Hindmarsh Rd to Bridge Tce is 17 m long. The ring centre
+  is moved 8 m west (away from the railway) so about 13 m of link remains between the ring and Bridge
+  Tce. Real design would need the roundabout's footprint west of Hindmarsh Rd (land) and level-crossing
+  protection: queues from the ring would otherwise stand on the crossing (they already do today with
+  the give-way). <strong>Inference</strong> — no design exists.</li>
+<li><strong>Not modelled:</strong> approach speed reduction signs before a rural roundabout (SUMO slows vehicles at
+  the ring anyway), entry deflection, pedestrians.</li>
+<li><strong>Sensitivity:</strong> moderate for delay at the junction (gap acceptance at a roundabout entry vs a
+  give-way T is SUMO's model, with the A-INT-02 impatience settings); low elsewhere.</li>
+</ul>
+<h3 id="s7-02-approach-flares-and-turn-lanes-n3-n8">S7-02. Approach flares and turn lanes (N3, N8)</h3>
+<ul>
+<li><strong>Value:</strong> the approach edge is split so its last 40 m (at most half the edge; netconvert then cuts
+  the junction area, leaving 28–41 m) have two lanes, the new end edge named <code>&lt;id&gt;.bay</code> like the
+  A-INT-01 bays. N3 (Crozier Rd at Armstrong Rd): kerb lane left turns, median lane right turns.
+  N8 (Victoria St eastbound into Oval Rd <code>173449383#0</code> and into the IGA car park <code>173449383#3</code>): kerb
+  lane for the left turn only, median lane for through traffic, so slowing left-turners no longer hold
+  up the through lane.</li>
+<li><strong>Inference:</strong> lengths are our choice (a typical short turn lane); widths and land not checked.</li>
+<li><strong>Sensitivity:</strong> low-moderate; SUMO's lane-change model decides how early drivers move over.</li>
+</ul>
+<h3 id="s7-03-no-right-turn-out-n6">S7-03. No right turn out (N6)</h3>
+<ul>
+<li><strong>Value:</strong> the right-turn movement out of Granite St (onto Victoria St), Coral St (onto Torrens St)
+  and Wattle Dr (onto Hindmarsh Rd) is removed.</li>
+<li><strong>Selection:</strong> the side-street right turn with the most vehicle-hours on each of the three arterials
+  through or next to the town centre (summer 2025 movements: Granite St 13.0, Wattle Dr 10.6, Coral St
+  8.0 vehicle-hours a day). Not included: Burke St onto Crozier Rd (14.7; Crozier Rd is a local road,
+  not an arterial) and Bartel Blvd / Harbour View Tce onto Bay Rd (10.3 / 8.9; Bay Rd was left for a
+  later variant). Renown Ave onto Hindmarsh Rd has a longer wait per vehicle (38 s) than Coral St but
+  fewer vehicles. Drivers re-route (A-INT-03 rerouting) — typically left
+  then round the next roundabout, or via a parallel side street.</li>
+<li><strong>Sensitivity:</strong> where the displaced right-turners go decides the result; the model chooses by travel
+  time, real drivers may also pick routes through residential streets the model under-uses.</li>
+</ul>
+<h3 id="s7-04-cost-classes">S7-04. Cost classes</h3>
+<ul>
+<li><strong>Value:</strong> $ under $0.5 M (line marking, signs, short widening), $$ $0.5–3 M (one roundabout on an
+  existing road reserve), $$$ $3–10 M (two roundabouts, or one needing land and rail-crossing work).</li>
+<li><strong>Why:</strong> an order-of-magnitude label so options can be compared; not from a source and not a cost
+  estimate. Replace with council or DIT estimates.</li>
+<li><strong>Sensitivity:</strong> none for the simulation results; affects only how options are ranked for value.</li>
+</ul>
+<h3 id="s7-05-options-considered-and-not-built">S7-05. Options considered and not built</h3>
+<ul>
+<li><strong>Roundabout metering signals (holiday peaks only):</strong> metering helps an entry starved by one dominant
+  circulating flow. Only the Eyre Tce entry at the Torrens/Seaview/Eyre roundabout shows that pattern
+  (13–20 s a vehicle, about 10 vehicle-hours on a summer day); metering the Hindmarsh Rd flow would
+  move part of that delay to Hindmarsh Rd. The possible gain is small next to the hotspots above.</li>
+<li><strong>Properly designed signals (turn bays, protected turns) at the C4 sites:</strong> the two roundabouts
+  carry their load with 3–8 s average delay on most approaches (Eyre Tce and Seaview Rd 13–20 s in
+  summer); their hotspot totals are 5–30 vehicle-hours a day, so even a signal design that removed
+  all of it would be a small gain, and C4 as built added 20–25%. Not a target.</li>
+<li><strong>Link road giving growth area 1 a second way out:</strong> the demand model loads the growth areas onto
+  existing rural roads (no estate streets, S2 M3/M15), so any new link's connection points would be
+  invented. N2/N5 treat the junctions that growth traffic actually uses in the model.</li>
+<li><strong>Signed caravan/heavy-vehicle route; seasonal traffic management:</strong> heavy vehicles on the foreshore
+  are few in every run (R23a table, <code>foreshore.csv</code>) and seasonal management (event road closures,
+  marshals) has no measurable model counterpart.</li>
+<li><strong>C5 outer freight ring road:</strong> see the end of part 3.</li>
+</ul>
+<h2 id="3-results">3. Results</h2>
+<p>Runs: <code>python -m vhsim.integration.batch</code> as for every scenario (A-INT-02/03 settings, rerouting on),
+2025 base demand 3 seeds per condition, 2041 high-growth term weekday 1–3 seeds per option (3 for today's network, CP, BP, B3). Tables:
+<code>python -m vhsim.integration.s7_tables</code> (from <code>report_&lt;year&gt;_&lt;growth&gt;_s7/</code> and
+<code>s7_diagnosis/hotspots__*.csv</code>). "Time stopped" is the trip total (tripinfo <code>waitingTime</code>), as in the
+main report; hotspot numbers are edgeData vehicle-hours as in part 1. Summer runs vary a lot between
+seeds (today's network 450–472, BP 437–546 vehicle-hours), so differences under about 10% in summer
+are within the noise unless the seed ranges separate.</p>
+<h3 id="2025-todays-demand">2025 (today's demand)</h3>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Weekday: trip Δ (s)</th>
+<th>Weekday: time stopped (veh-h, seed range)</th>
+<th>vs today</th>
+<th>Summer: trip Δ (s)</th>
+<th>Summer: time stopped (veh-h, seed range)</th>
+<th>vs today</th>
+<th>vs CP</th>
+<th>vs BP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Today's network</td>
+<td>0</td>
+<td>137 (134–142)</td>
+<td>—</td>
+<td>0</td>
+<td>460 (450–472)</td>
+<td>—</td>
+<td>−37%</td>
+<td>−6%</td>
+</tr>
+<tr>
+<td>CP council package</td>
+<td>+14.4</td>
+<td>216 (205–224)</td>
+<td>+58%</td>
+<td>+28.2</td>
+<td>734 (714–754)</td>
+<td>+60%</td>
+<td>—</td>
+<td>+49%</td>
+</tr>
+<tr>
+<td>BP Brent's package</td>
+<td>−2.4</td>
+<td>134 (132–137)</td>
+<td>−2%</td>
+<td>0</td>
+<td>492 (437–546)</td>
+<td>+7%</td>
+<td>−33%</td>
+<td>—</td>
+</tr>
+<tr>
+<td>N2 Armstrong/Crozier roundabout</td>
+<td>+1.8</td>
+<td>140 (139–141)</td>
+<td>+3%</td>
+<td>+4.2</td>
+<td>490 (472–504)</td>
+<td>+7%</td>
+<td>−33%</td>
+<td>0%</td>
+</tr>
+<tr>
+<td>N3 Crozier Rd flare</td>
+<td>−0.6</td>
+<td>132 (132–134)</td>
+<td>−3%</td>
+<td>−2.4</td>
+<td>426 (408–445)</td>
+<td>−7%</td>
+<td>−42%</td>
+<td>−13%</td>
+</tr>
+<tr>
+<td>N4 Hindmarsh/Grantley roundabout</td>
+<td>+0.6</td>
+<td>125 (124–127)</td>
+<td>−8%</td>
+<td>0</td>
+<td>429 (404–477)</td>
+<td>−7%</td>
+<td>−42%</td>
+<td>−13%</td>
+</tr>
+<tr>
+<td>N5 N2 + Armstrong/Greenhills roundabout</td>
+<td>+3.6</td>
+<td>144 (143–146)</td>
+<td>+5%</td>
+<td>+6.6</td>
+<td>505 (489–514)</td>
+<td>+10%</td>
+<td>−31%</td>
+<td>+3%</td>
+</tr>
+<tr>
+<td>N6 no right turn out of 3 side streets</td>
+<td>+0.6</td>
+<td>138 (137–140)</td>
+<td>+1%</td>
+<td>+8.4</td>
+<td>561 (518–641)</td>
+<td>+22%</td>
+<td>−24%</td>
+<td>+14%</td>
+</tr>
+<tr>
+<td>N7 N5 + N4</td>
+<td>+4.2</td>
+<td>134 (131–140)</td>
+<td>−2%</td>
+<td>+1.8</td>
+<td>412 (399–427)</td>
+<td>−10%</td>
+<td>−44%</td>
+<td>−16%</td>
+</tr>
+<tr>
+<td>N8 Victoria St left-turn lanes</td>
+<td>0</td>
+<td>138 (134–140)</td>
+<td>+1%</td>
+<td>+2.4</td>
+<td>500 (479–526)</td>
+<td>+9%</td>
+<td>−32%</td>
+<td>+2%</td>
+</tr>
+<tr>
+<td><strong>N9 N3 + N4</strong></td>
+<td>0</td>
+<td><strong>122 (120–123)</strong></td>
+<td><strong>−11%</strong></td>
+<td><strong>−3.6</strong></td>
+<td><strong>378 (364–386)</strong></td>
+<td><strong>−18%</strong></td>
+<td><strong>−49%</strong></td>
+<td><strong>−23%</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Vehicle-hours stopped at the hotspots, summer peak day (edgeData, seed mean):</p>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Armstrong/Crozier</th>
+<th>Grantley/Bridge Tce</th>
+<th>Victoria St</th>
+<th>Hindmarsh side sts</th>
+<th>Seaview rbt + Eyre</th>
+<th>Torrens/Coral</th>
+<th>Network</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Today</td>
+<td>18.2</td>
+<td>32.6</td>
+<td>77.4</td>
+<td>48.8</td>
+<td>28.7</td>
+<td>12.2</td>
+<td>440</td>
+</tr>
+<tr>
+<td>CP</td>
+<td>37.1</td>
+<td>5.3</td>
+<td>113.6</td>
+<td>49.7</td>
+<td>20.9</td>
+<td>7.1</td>
+<td>714</td>
+</tr>
+<tr>
+<td>BP</td>
+<td>36.6</td>
+<td>32.7</td>
+<td>80.0</td>
+<td>44.6</td>
+<td>22.8</td>
+<td>10.9</td>
+<td>470</td>
+</tr>
+<tr>
+<td>N2</td>
+<td>2.8</td>
+<td>36.7</td>
+<td>91.0</td>
+<td>50.4</td>
+<td>30.1</td>
+<td>12.4</td>
+<td>470</td>
+</tr>
+<tr>
+<td>N3</td>
+<td>11.5</td>
+<td>32.2</td>
+<td>68.8</td>
+<td>47.4</td>
+<td>26.3</td>
+<td>11.9</td>
+<td>407</td>
+</tr>
+<tr>
+<td>N4</td>
+<td>24.1</td>
+<td>12.6</td>
+<td>86.5</td>
+<td>53.5</td>
+<td>17.6</td>
+<td>8.3</td>
+<td>412</td>
+</tr>
+<tr>
+<td>N6</td>
+<td>26.5</td>
+<td>33.9</td>
+<td>97.6</td>
+<td>78.3</td>
+<td>29.9</td>
+<td>1.2</td>
+<td>541</td>
+</tr>
+<tr>
+<td>N7</td>
+<td>2.4</td>
+<td>16.4</td>
+<td>70.4</td>
+<td>64.0</td>
+<td>20.4</td>
+<td>8.5</td>
+<td>395</td>
+</tr>
+<tr>
+<td>N8</td>
+<td>18.6</td>
+<td>34.3</td>
+<td>103.7</td>
+<td>48.5</td>
+<td>28.4</td>
+<td>11.5</td>
+<td>477</td>
+</tr>
+<tr>
+<td>N9</td>
+<td>12.0</td>
+<td>12.0</td>
+<td>66.7</td>
+<td>52.5</td>
+<td>16.5</td>
+<td>8.4</td>
+<td>360</td>
+</tr>
+</tbody>
+</table>
+<p>Mean delay on the key approaches, summer (s per vehicle, R15 definition): Crozier Rd at Armstrong Rd
+today 29, CP 43, BP 52, N2 7, N3 16, N9 16; Bridge Tce at the crossing today 51, CP 10 (traffic pushed
+elsewhere by the loop), BP 52, N4 16, N9 16; Eyre Tce at the Seaview roundabout today 20, N4 17,
+N9 16. Full tables: <code>report_2025_base_s7/intersections.csv</code>.</p>
+<p>Reading:
+- <strong>N4 and N3 each help on their own, and together (N9) they are the best option tested at today's
+  traffic</strong>: 11% less time stopped on a term weekday and 18% less on a summer day, trips 3.6 s shorter
+  in summer, with seed ranges well clear of today's (364–386 vs 450–472). N4 gives the Bridge Tce /
+  Grantley traffic a roundabout instead of a right turn across both Hindmarsh Rd streams, and also
+  takes load off the Seaview/Eyre roundabout (drivers who now use Grantley instead). N3 stops Crozier
+  Rd's left-turners queuing behind right-turners. Both packages are worse than today in summer; N9 is
+  49% below CP and 23% below BP.
+- <strong>N2 fixes its own junction and still loses overall at today's traffic.</strong> Armstrong/Crozier drops
+  from 18 to 3 vehicle-hours in summer, but the network total rises 7% (seed ranges 472–504 vs
+  450–472, so this is not noise) and trips are 2–4 s longer. Two effects: every vehicle on the
+  100 km/h ring road now slows to the 27 km/h ring, and the easier Crozier Rd exit draws traffic
+  down Crozier Rd and into the Victoria St corridor (+14 vehicle-hours there) and George Main Rd.
+  N5 adds a second ring-road roundabout and is worse again (+5% / +10%). The cheap flare (N3) is the
+  better answer at this junction until traffic grows.
+- <strong>N6 (turn bans) makes summer worse (+22%).</strong> Granite St's wait falls from 44 to 12 s and Coral St's
+  queue disappears, but the displaced right-turners go round via the Hindmarsh Rd side streets
+  (49 → 78 vehicle-hours) and Victoria St. Banning turns moves the delay.
+- <strong>N8 (Victoria St left-turn lanes) does nothing useful</strong> (+1% weekday, +9% summer, within or near
+  the summer noise). The Victoria St queues are not mainly caused by slowing left-turners in this
+  model; see the caution on Victoria St in part 1.
+- Trucks on the foreshore (vehicle-km on Flinders Pde and the Esplanade) stay at 4–8 a day for every
+  N option, against 10–17 under CP.</p>
+<h3 id="2041-high-growth-term-weekday">2041 high growth, term weekday</h3>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Seeds</th>
+<th>Mean trip (min)</th>
+<th>Trip Δ vs today's network (s)</th>
+<th>Time stopped (veh-h, seed range)</th>
+<th>vs today's network</th>
+<th>vs CP</th>
+<th>vs BP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Today's network</td>
+<td>3</td>
+<td>6.65</td>
+<td>0</td>
+<td>608 (589–619)</td>
+<td>—</td>
+<td>−38%</td>
+<td>−37%</td>
+</tr>
+<tr>
+<td>CP council package</td>
+<td>3</td>
+<td>7.14</td>
+<td>+29.4</td>
+<td>976 (910–1,084)</td>
+<td>+61%</td>
+<td>—</td>
+<td>+1%</td>
+</tr>
+<tr>
+<td>BP Brent's package</td>
+<td>3</td>
+<td>6.98</td>
+<td>+19.8</td>
+<td>965 (773–1,189)</td>
+<td>+59%</td>
+<td>−1%</td>
+<td>—</td>
+</tr>
+<tr>
+<td>B3 four-lane ring road</td>
+<td>3</td>
+<td>6.75</td>
+<td>+6.0</td>
+<td>748 (698–785)</td>
+<td>+23%</td>
+<td>−23%</td>
+<td>−22%</td>
+</tr>
+<tr>
+<td>N2 Armstrong/Crozier roundabout</td>
+<td>1</td>
+<td>6.64</td>
+<td>−0.6</td>
+<td>559</td>
+<td>−8%</td>
+<td>−43%</td>
+<td>−42%</td>
+</tr>
+<tr>
+<td>N3 Crozier Rd flare</td>
+<td>2</td>
+<td>6.61</td>
+<td>−2.4</td>
+<td>571 (538–604)</td>
+<td>−6%</td>
+<td>−42%</td>
+<td>−41%</td>
+</tr>
+<tr>
+<td>N4 Hindmarsh/Grantley roundabout</td>
+<td>2</td>
+<td>6.71</td>
+<td>+3.6</td>
+<td>634 (510–757)</td>
+<td>+4%</td>
+<td>−35%</td>
+<td>−34%</td>
+</tr>
+<tr>
+<td>N5 N2 + Armstrong/Greenhills roundabout</td>
+<td>2</td>
+<td>6.62</td>
+<td>−1.8</td>
+<td>513 (497–529)</td>
+<td>−16%</td>
+<td>−47%</td>
+<td>−47%</td>
+</tr>
+<tr>
+<td><strong>N7 N5 + N4</strong></td>
+<td>2</td>
+<td><strong>6.59</strong></td>
+<td><strong>−3.6</strong></td>
+<td><strong>465 (454–476)</strong></td>
+<td><strong>−24%</strong></td>
+<td><strong>−52%</strong></td>
+<td><strong>−52%</strong></td>
+</tr>
+<tr>
+<td>N9 N3 + N4</td>
+<td>3</td>
+<td>6.62</td>
+<td>−1.8</td>
+<td>556 (509–642)</td>
+<td>−9%</td>
+<td>−43%</td>
+<td>−42%</td>
+</tr>
+</tbody>
+</table>
+<p>Hotspots (edgeData vehicle-hours; Armstrong/Crozier, Armstrong/Greenhills, Grantley/Bridge Tce,
+Victoria St): today 54 / 12 / 20 / 110; CP 92 / 16 / 3 / 154; BP 106 / 26 / 16 / 194; N5 4 / 3 / 21 /
+96; N7 4 / 3 / 7 / 98; N9 54 / 13 / 7 / 113. Crozier Rd's mean wait at Armstrong Rd: today 74 s,
+CP 100, BP 130, N3 52, N5 and N7 8 s.</p>
+<p>Reading:
+- <strong>At high growth the ring-road junctions decide the result.</strong> With roundabouts at Armstrong/Crozier
+  and Armstrong/Greenhills (N5, N7) the runs are lower and much more stable between seeds; without
+  them (N3, N4, N9) the Crozier Rd queue at Armstrong Rd tips into long queues on some seeds and the
+  totals swing (N4: 510 on one seed, 757 on the other). N7 is the best option tested: 24% less time
+  stopped than today's network at 2041 demand and about half of either package's, trips 3.6 s shorter.
+- <strong>This reverses the 2025 ranking at Armstrong/Crozier:</strong> the roundabout (N2/N5) costs a little at
+  today's traffic and pays at 2041 high growth; the flare (N3) helps today and is not enough in 2041.
+  A staged reading: flare now, roundabout when growth area traffic arrives.
+- <strong>No option copes with 2041 high growth.</strong> N7's 465 vehicle-hours a day is still 3.4 times today's
+  weekday (137). The growth areas load onto existing rural roads (no estate streets or new links, S2
+  M3/M15), so the growth result says more about where growth traffic is forced to go in the model than
+  about a planned 2041 network.
+- One or two seeds per option and a large seed spread for N4 and N9: the 2041 differences under about
+  15% are not firm. N5 and N7 are clear of today's range on both seeds.</p>
+<h3 id="what-clearly-helps">What clearly helps</h3>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Today's traffic (2025)</th>
+<th>2041 high growth</th>
+<th>Cost class</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>N9</strong> Crozier Rd flare + Hindmarsh/Grantley roundabout</td>
+<td>Best: −11% weekday, −18% summer time stopped; summer trips −3.6 s; seed ranges clear of today's</td>
+<td>−9%, noisy (509–642)</td>
+<td>$$–$$$</td>
+</tr>
+<tr>
+<td><strong>N7</strong> roundabouts at Armstrong/Crozier, Armstrong/Greenhills and Hindmarsh/Grantley</td>
+<td>−2% weekday, −10% summer, trips +2–4 s</td>
+<td>Best: −24%, stable</td>
+<td>$$$</td>
+</tr>
+<tr>
+<td>N3 Crozier Rd flare alone</td>
+<td>−3% / −7%</td>
+<td>−6%</td>
+<td>$</td>
+</tr>
+<tr>
+<td>N4 Hindmarsh/Grantley roundabout alone</td>
+<td>−8% / −7%</td>
+<td>+4%, very noisy</td>
+<td>$$–$$$</td>
+</tr>
+</tbody>
+</table>
+<p>Every N option except N6 is far better than the council package (CP is +58–61% on time stopped in
+every condition). Against Brent's package: on a summer day N3, N4, N7 and N9 are 13–23% lower; on a
+term weekday the packages and options are within a few per cent except N4 (−6%) and N9 (−9%); at 2041
+high growth every option run is 34–52% lower, because BP (with its four-lane ring road) is as bad as CP.</p>
+<p>A combined reading: <strong>N9 now (Crozier Rd flare and a Grantley roundabout), and the Armstrong Rd
+roundabouts (N5, which replaces the flare) when growth-area traffic arrives</strong>, i.e. N7 by the 2030s
+under high growth. Did not help: N2/N5 at today's traffic, N6 turn bans, N8 Victoria St left-turn lanes.</p>
+<h3 id="caveats">Caveats</h3>
+<ul>
+<li>No option touches the largest hotspot, the Victoria St corridor (shopping-centre accesses on a
+  one-lane street), and that hotspot is the model's least reliable (Victoria St over-loaded 1.5 x,
+  car parks as OSM service roads). The Hindmarsh Rd side-street right turns (about 50 vehicle-hours on a
+  summer day) are untouched too. Even N9 leaves about 80% of the summer delay where it is.</li>
+<li>Gap acceptance at give-way junctions and roundabout entries is SUMO's model with the A-INT-02
+  impatience settings; the roundabout-vs-give-way comparisons (N2, N4, N5, N7) depend on it. It has not
+  been checked against observed waits.</li>
+<li>The roundabouts, flares and turn lanes are geometric approximations, not designs; N4 sits beside a
+  level crossing and would need crossing protection and land west of Hindmarsh Rd.</li>
+<li>Summer runs vary ±5–12% between seeds; 2041 option runs have 1–3 seeds.</li>
+<li>Growth demand has no estate streets; the 2041 summer peak was not run (it does not finish for any
+  option, A-INT-05) and the optional 2031 high summer run was not done.</li>
+</ul>
+<h3 id="grantley-ave-in-the-viewer-a-53-minute-difference-that-was-an-export-artefact-22-nov-2026">Grantley Ave in the viewer: a 53-minute difference that was an export artefact (22 Nov 2026)</h3>
+<p>The residents' site showed Grantley Ave → Woolworths on a 2025 summer peak day at 12:30 as 53 minutes faster under
+the council package than today (56.6 minutes today). Checked against the three 2025 summer runs of today's network:
+- <strong>Not a real queue.</strong> The vehicles' own exit times (vehroute) give the longest traversal of the Grantley Ave
+  section before Hindmarsh Rd (<code>-42530401#0</code>, 194 m) between 12:00 and 13:00 as 70, 97 and 79 s in seeds 1–3 (22,
+  15 and 15 vehicles). The queue there is a normal side-street wait of under a minute and a half.
+- <strong>Not a stuck vehicle or a teleport.</strong> No teleport on Grantley Ave, Bridge Tce or the crossing link in any seed
+  (5, 2 and 1 teleports in the whole day elsewhere); the A-INT-02 impatience and junction-blocker settings are not
+  involved.
+- <strong>The cause:</strong> SUMO's edgeData <code>traveltime</code> (length × vehicle-seconds ÷ distance the vehicles' fronts travelled).
+  In 12:15–12:30, seeds 2 and 3 each saw a single vehicle that had been waiting at the stop line since before 12:15;
+  it moved a few centimetres and left after 12 s and 7 s. SUMO extrapolated 19,308 s and 9,678 s; the seed mean
+  reached the export format's cap (6,553 s), and the viewer interpolated that into the 12:30 departure.
+- <strong>Fix (export layer, assumption V1a in <code>S5-viewer.md</code>):</strong> when the vehicles covered less than one edge length in
+  the interval, the edge time is the vehicle-seconds observed plus free flow over the rest of the edge. Grantley Ave
+  at 12:15 becomes 24 s (seed mean); Grantley Ave → Woolworths at 12:30 becomes 2.7 minutes today against
+  3.6 minutes under the council package (the package is about a minute slower, not 53 minutes faster). In the 2025
+  summer baseline the rule changes 517 of 449,568 edge-intervals by more than a second and 17 by more than
+  5 minutes, all on short local streets and car-park aisles. Published runs are re-timed with
+  <code>python -m vhsim.viewer.retime</code>.
+- <strong>N4/N9 do not depend on it.</strong> Every number in this note (time stopped from tripinfo, hotspot vehicle-hours from
+  edgeData <code>waitingTime</code>, approach delays from vehroute exit times) is computed without <code>traveltime</code>, so the N4/N9
+  summer results stand (time stopped −7% and −18%; Bridge Tce at the crossing 51 → 16 s a vehicle). The artefact
+  only affected the viewer: it put the same false 56-minute value on that section in today's network and in N4
+  (both 56.4–56.6 minutes at 12:30), and none in N9 or the council package, so before the fix the residents' site
+  overstated the gain of N9 and CP at that one section and time, and understated N4's.</p>
+<h3 id="c5-outer-freight-ring-road-not-built-here-see-s9">C5 (outer freight ring road) — not built here; see S9</h3>
+<p>Built afterwards from the described end points and existing roads: <code>sim/assumptions/S9-ring-road.md</code>. The
+original reason for leaving it out follows.
+The indicative alignment (S-A04b) could not be placed reliably. Georeferencing the map from road
+junctions the map labels (Greenhills/Hutchinson Rd, Hutchinson/Hindmarsh Tiers Rd, Greenhills/Day Rd)
+gave scales that disagree by nearly a factor of two (the labelled junctions cannot be pinned on the map), so the new sections (south-west across the Inman
+River to Greenhills Rd, and the north/north-east section to Victor Harbor Rd) would have invented end
+points. The parts that follow existing roads (Greenhills Rd from Day Rd north, Hutchinson Rd, then
+Hindmarsh Tiers Rd) are already in the network at 50–100 km/h. In this demand model C5 could only
+attract through traffic between Inman Valley Rd and Victor Harbor Rd, a small flow, and would not touch
+the bottlenecks in part 1. It needs the council's alignment (or a careful georeferencing like S2's for
+the growth map) before it is worth simulating.</p></body></html>
