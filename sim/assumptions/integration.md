@@ -59,3 +59,9 @@ growth areas loaded onto existing roads.
 Moderate growth, summer peak day (1 seed each, 22 Nov 2026): 2031 moderate finished for all options; 2041 moderate
 finished for today's network, the council package, Brent's package and C4, but C3 (one-way loop), B3 and N1 hit the
 45-minute cap; 2051 moderate jammed for all seven options tried.
+
+Disk housekeeping (22 Nov 2026): to free disk space, the run folders in `sim/data/runs/` no longer keep the
+regenerable intermediates (`routes.rou.alt.xml`, `routes.rou.xml`, `trips.xml`, `trips.snapped.xml`), and their
+outputs (`vehroute`, `tripinfo`, `edgedata`, `viewer_lanedata`, `viewer_edgedata`, `teleports`) are gzip-compressed
+(`*.xml.gz`). The aggregated results, viewer exports and reports are unaffected. To re-run a report that reads raw
+run outputs, decompress first: `find sim/data/runs -name '*.xml.gz' -exec gunzip {} +` (or the folders you need).

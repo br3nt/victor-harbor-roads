@@ -51,6 +51,7 @@ KEEP = {"game/data/raw/SOURCES.md", "game/data/raw/G-01-victor-harbor-all.overpa
 # (prefix or exact path, reason); first match wins. Paths outside INCLUDE_DIRS are left out as "not published".
 EXCLUDE = [
     ("bin/pseudonyms.tsv", "the real names behind the pseudonyms (private repository only)"),
+    ("bin/publish-game", "the game's own publishing script (the game is published separately as br3nt/schoolies-mayhem)"),
     ("game/data/raw/", "raw OpenStreetMap extract (its SOURCES.md and query are kept)"),
     ("sim/data/demand/raw/S-S2-03a-tfnsw-tia-guide-pdf-pp54-55-62-text.txt",
      "text extract of a third-party document (Transport for NSW); URL and sha256 in SOURCES.tsv"),
@@ -329,6 +330,9 @@ def _phone_allowed(number: str, line: str, path: str) -> bool:
 
 def _email_allowed(email: str, line: str, path: str) -> bool:
     domain = email.rsplit("@", 1)[1].lower()
+    # GitHub's SSH user and the author's GitHub no-reply address (already on every public commit) are not private
+    if email.lower() in ("git@github.com", "1089651+br3nt@users.noreply.github.com"):
+        return True
     if domain.endswith(".gov.au") or any(domain == d or domain.endswith("." + d) for d in RESERVED_EMAIL_DOMAINS):
         return True
     return path.endswith(".osm") and bool(OSM_CONTACT_TAG.search(line))
@@ -523,16 +527,17 @@ def public_meta(meta: dict) -> dict:
     return out
 
 
+GAME_URL = "https://br3nt.github.io/schoolies-mayhem/"
+
+
 def stage_game(out: Path) -> None:
-    g, dst = out / "game", out / "docs" / "game"
+    """The game has its own site (br3nt/schoolies-mayhem, published by the game session); /game/ redirects there."""
+    dst = out / "docs" / "game"
     dst.mkdir(parents=True)
-    shutil.copy(g / "index.html", dst)
-    shutil.copytree(g / "css", dst / "css")
-    shutil.copytree(g / "js", dst / "js")
-    (dst / "data").mkdir()
-    for f in (g / "data").iterdir():
-        if f.is_file():
-            shutil.copy(f, dst / "data")
+    (dst / "index.html").write_text(
+        f'<!DOCTYPE html><html lang="en-AU"><head><meta charset="utf-8"><title>Schoolies Mayhem</title>'
+        f'<meta http-equiv="refresh" content="0; url={GAME_URL}"><link rel="canonical" href="{GAME_URL}"></head>'
+        f'<body><p>Schoolies Mayhem has moved to <a href="{GAME_URL}">{GAME_URL}</a>.</p></body></html>')
 
 
 def stage_pages(out: Path) -> None:

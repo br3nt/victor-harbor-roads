@@ -1,0 +1,31 @@
+name: Bug report
+description: Something in the game isn't working right
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What you did, what you expected, and what happened instead.
+    validations:
+      required: true
+  - type: input
+    id: where
+    attributes:
+      label: Character, night and job
+      placeholder: e.g. Kev, night 2, Hoon on the Esplanade
+  - type: input
+    id: build
+    attributes:
+      label: Game version
+      description: Shown in the pause menu (or leave blank).
+  - type: input
+    id: device
+    attributes:
+      label: Browser and device
+      placeholder: e.g. Chrome on a MacBook, Safari on an iPhone
+  - type: textarea
+    id: shots
+    attributes:
+      label: Screenshot or clip
+      description: Drag images or a short video in here if you can.
