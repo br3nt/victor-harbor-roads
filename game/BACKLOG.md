@@ -43,6 +43,23 @@ Brent approved (22 Nov 2026) creating a **public** repo `br3nt/schoolies-mayhem`
   - Public-domain classics are fine for Merv (ragtime, marches, maybe "Waltzing Matilda").
   - Spotify can be used read-only to set the tempo and style targets from current charts.
 - **Sound effects pass:** doors, dogs, party crowds, rotor wash, bikes and motorbikes, and boats.
+- **Feedback links** in the title and pause menus (open in a new tab):
+  - "Report a bug" opens a GitHub issue form, pre-filled with the game version, browser, character, night and job.
+  - "Suggest an idea" opens GitHub Discussions (an "Ideas" category, with upvotes).
+  - Enable Discussions and add the issue templates in the public repo.
+  - Say that GitHub needs an account; offer an email alternative only if Brent provides one.
+
+## Steam round (later, if the free launch catches on)
+- **Brent does himself:** the Steamworks partner signup and the US$100 Steam Direct fee, plus identity, tax and bank checks.
+- **Desktop wrapper** (Electron or Tauri) with Windows and macOS builds and full-screen support.
+- **Controller support** throughout: menus, driving, on foot, the mini-games.
+- **Steamworks integration:** achievements (map the badges from round D), cloud saves, and rich presence ("Night 2 · Party in the Park").
+- **Store page:** capsules in all sizes, a trailer, screenshots, a description and the content survey, with a "coming soon" page live at least 2 weeks before launch.
+- **Commercial tidy-up:**
+  - keep everything original (music, art);
+  - keep the OpenStreetMap credit;
+  - make sure no real business names or logos remain;
+  - consider moving the lock-up to a building that isn't recognisably a real private venue (Mount Breckan).
 
 ## Round D (after rounds A and B land)
 

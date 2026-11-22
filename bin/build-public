@@ -639,6 +639,33 @@ def stage_method(out: Path) -> dict:
     return {"method_pages": len(pages), "pages_linked": n}
 
 
+HOME = f'<a href="{SITE_PATH}/" class="site-home" style="font-weight:600;text-decoration:none">&#8962; Home</a>'
+HOME_LINKS = [  # (page under docs/, text to find, replacement): a way back to the site's home page on every app page
+    ("maps/engineer.html", '<h1 class="title">', f'<span style="margin-right:.8rem;font-size:.9rem">{HOME}</span><h1 class="title">'),
+    ("maps/residents/index.html", '<p class="eyebrow">', f'<p class="eyebrow">{HOME} &middot; '),
+    ("maps/index.html", '<p class="eyebrow">', f'<p class="eyebrow">{HOME} &middot; '),
+    ("hotspots/index.html", "<header>", f'<header><p style="margin:0 0 .4rem;font-size:.9rem">{HOME}</p>'),
+    ("onboarding/index.html", '<header class="hero">', f'<header class="hero"><p style="margin:0;padding:.6rem 16px 0;font-size:.9rem">{HOME}</p>'),
+    ("deck/index.html", ">Full evidence page</a>", f">Full evidence page</a> &middot; {HOME}"),
+]
+
+
+def add_home_links(docs: Path) -> list[str]:
+    done = []
+    for page, find, repl in HOME_LINKS:
+        f = docs / page
+        if f.exists() and find in f.read_text():
+            f.write_text(f.read_text().replace(find, repl, 1)); done.append(page)
+    # knowledge base: "Home" goes to the site; the notes' own front page is "Evidence notes"
+    for f in (docs / "kb").glob("*.html"):
+        s = f.read_text()
+        new = s.replace('<nav class="kb-nav"><a href="victor-harbor-traffic-investigation.html">⌂ Home</a>',
+                        f'<nav class="kb-nav">{HOME} · <a href="victor-harbor-traffic-investigation.html">Evidence notes</a>')
+        if new != s:
+            f.write_text(new)
+    return done
+
+
 def build_site(out: Path, viewer_data: Path) -> dict:
     docs = out / "docs"
     docs.mkdir()
@@ -649,7 +676,8 @@ def build_site(out: Path, viewer_data: Path) -> dict:
     n_maps = stage_maps(out, viewer_data)
     stage_game(out)
     method = stage_method(out)
-    return {"map_data_files": n_maps, **method}
+    homes = add_home_links(docs)
+    return {"map_data_files": n_maps, **method, "home_links": homes}
 
 
 def build(root: Path, out: Path, viewer_data: Path | None = None, ref: str = "HEAD", site: bool = True) -> dict:
